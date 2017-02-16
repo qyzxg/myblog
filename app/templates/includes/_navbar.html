@@ -1,0 +1,53 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">qyzxg</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="{{ url_for('.index') }}">主页<span class="sr-only">(current)</span></a></li>
+                <li><a href="{{ url_for('.service') }}">服务</a></li>
+                <li><a href="{{ url_for('.about') }}">关于</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">下拉框 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">flask入门</a></li>
+                        <li><a href="#">模块</a></li>
+                        <li><a href="#">函数</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">面向对象</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">机器学习</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="站内搜索">
+                </div>
+                <button type="submit" class="btn btn-default">搜索</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{  url_for('user', username = current_user.username)}}"><img src="{{ current_user.avatar }}" class="img-circle" width="32px" height="32px"></a></li>
+                    <li><a href="{{  url_for('user', username = current_user.username)}}"><strong>{{ current_user.username }}</strong></a></li>
+                    <li><a href="{{ url_for('.logout') }}"><strong>退出</strong></a></li>
+                {% else %}
+                    <li><a href="{{ url_for('.login') }}"><strong>登录</strong></a></li>
+                    <li><a href="{{ url_for('.register') }}"><strong>注册</strong></a></li>
+                {% endif %}
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>

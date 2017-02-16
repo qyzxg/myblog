@@ -1,0 +1,58 @@
+{% extends 'admin/base.html' %}
+{% from "bootstrap/pagination.html" import render_pagination %}
+{% block head_title %}
+    {{ title }}
+<title>博客管理</title>
+{% endblock %}
+{% block breadcrumb %}
+<ol class="breadcrumb">
+  <li><a href="{{ url_for('.admin_index') }}">后台首页</a></li>
+  <li class="active">博客管理</li>
+</ol>
+{% endblock %}
+{% block right_content %}
+    <div class="table-responsive">
+    <table class="table table-bordered table-hover ">
+  <thead>
+    <tr>
+      <th><mark>文章标题</mark></th>
+      <th><mark>文章作者</mark></th>
+        <th><mark>发布时间</mark></th>
+      <th><mark>评论数量</mark></th>
+      <th><mark>阅读数量</mark></th>
+        <th><mark>修改文章</mark></th>
+      <th><mark>删除文章</mark></th>
+{#      <th>操作</th>#}
+    </tr>
+  </thead>
+  <tbody>
+  {% for post in posts %}
+    <tr>
+      <td><a href="{{ url_for('.details', id = post.id) }}"><h5>{{ post.title|truncate(22, True) }}</h5></a></td>
+        <td><a href="{{ url_for('.user', username = post.author.username) }}"><h5>{{ post.author.username }}</h5></a></td>
+      <td><h5>{{ post.created.strftime('%Y-%m-%d %H:%M') }}</h5></td>
+        <td><h5>{{ post.comment_times }}</h5></td>
+      <td><h5>{{ post.read_times }}</h5></td>
+{#      <td>{{ user_obj.status.name }}</td>#}
+{#      <td>#}
+{#      {% if user_obj.status.name == 'LIMIT' %}#}
+{#        <a class="btn btn-default" href="javascript:;" title="" data-url="{{ url_for('admin_manage_user', pk=user_obj.id, status=1) }}">取消限制</a>#}
+{#      {% else %}#}
+{#        <a class="btn btn-info" href="javascript:;" title="" data-url="{{ url_for('admin_manage_user', pk=user_obj.id, status=0) }}">限制登录</a>#}
+{#      {% endif %}#}
+{#        <a href="{{ url_for('admin_user_role', pk=user_obj.id) }}" title="">管理角色</a>#}
+{#      </td>#}
+        <td><a href="{{ url_for('.edit',id=post.id) }}" class="btn btn-success">修改</a></td>
+    <td><a href="{{ url_for('.blog_manage',id=post.id) }}" class="btn btn-danger">删除</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+    </div>
+<!-- // 用户管理 -->
+<!-- 分页 -->
+    {% if pagination %}
+         {{ render_pagination(pagination) }}
+    {% endif %}
+<!-- // 分页 -->
+{% endblock %}

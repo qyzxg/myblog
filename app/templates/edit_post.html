@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block scripts %}
+    {{ super() }}
+    {{ pagedown.include_pagedown() }}
+{% endblock %}
+
+{% block content%}
+    <div class="container">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.title(class="form-control", placeholder="请输入文章标题" ) }}
+            {% for error in form.title.errors %}
+                                        <span style="color: #feff14;">{{ error }}</span>
+                                    {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.body(only_input=True,rows=10,class="form-control") }}
+            {% for error in form.body.errors %}
+                                        <span style="color: #feff14;">{{ error }}</span>
+                                    {% endfor %}
+            </div>
+            <div>
+                {{ form.body(only_preview=True) }}
+            </div>
+            <div class="col-md-3 col-xs-12">
+                            <button type="submit" class="btn btn-info btn-block"><b>&nbsp&nbsp发布&nbsp&nbsp</b>
+                                </button>
+                        </div>
+
+        </form>
+    </div>
+{% endblock %}

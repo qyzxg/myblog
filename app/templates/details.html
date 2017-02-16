@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% from "bootstrap/pagination.html" import render_pagination %}
+{% block left_content %}
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}
+        </div>
+    {% endfor %}
+    <div>
+        <h4>{{ post.title | safe }}</h4>
+    </div>
+    <hr>
+    {# Meta 信息 #}
+    <span>作者&nbsp&nbsp:{{ post.author.username }}</span> <span>&nbsp&nbsp&nbsp&nbsp发表日期&nbsp&nbsp:{{ post.created }}</span>
+
+    {# 正文 #}
+    <hr>
+    <div>
+        {{ post.body_html | safe }}
+    </div>
+
+    {# 操作链接 #}
+    <h3>评论</h3>
+    {# 发表评论 #}
+    <div>
+        <form action="" method="post" class="form-horizontal" name="send">
+            {{ form.csrf_token }}
+            <div class="form-group">
+                {{ form.body(only_input=True,rows=1,class="form-control") }}
+            </div>
+            <div class="col-md-3 col-xs-12">
+                <button type="submit" class="btn btn-info btn-block"><b>&nbsp&nbsp发表&nbsp&nbsp</b>
+                    <span class="glyphicon glyphicon-arrow-right"></span></button>
+            </div>
+        </form>
+        {% for error in form.body.errors %}
+            <span style="color: #feff14;">{{ error }}</span>
+        {% endfor %}
+
+    </div>
+    {# 评论列表 #}
+
+    <div>
+        {% for comment in post.comments|sort(attribute='created',reverse=True ) %}
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object img-circle" src="{{ comment.author.avatar }}" class="img-circle"
+                             width="32px" height="32px">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <small class="text-muted"><a
+                            href="{{ url_for('user', username = comment.author.username) }}">{{ comment.author.username }}</a>
+                    </small>
+                    <small class="text-muted">{{ comment.created }}</small>
+                    <div>{{ comment.body }}</div>
+
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+{% block right_content %}
+
+    <p>这是右边栏</p>
+    <p>这是右边栏</p>
+    <p>这是右边栏</p>
+{% endblock %}

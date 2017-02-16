@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block left_content %}
+
+<h1>欢迎你来到自己的页面,{{user.username}}!</h1>
+<p><img src="{{ current_user.avatar }}" width="128px" height="128px" class="img-thumbnail"></p>
+    <p>您一共发表了{{ user.post_total }}篇文章</p>
+    <p><a href="{{ url_for('.upload') }}">修改您的图像</a></p>
+    <p><a href="{{ url_for('.admin_index') }}">管理用户</a></p>
+ {% endblock %}
+
+{% block right_content %}
+    <p>这是右边栏!</p>
+    <p>这是右边栏!</p>
+    <p>这是右边栏!</p>
+    <p>这是右边栏!</p>
+    <p>这是右边栏!</p>
+    {% endblock %}
