@@ -21,5 +21,5 @@ MAIL_PASSWORD = 'your password'
 MAIL_DEFAULT_SENDER = 'qyzxg1314@sina.com'
 
 UPLOAD_FOLDER = r'static\avatar\avatar'
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif', 'webp', 'bmp'])
 BASE_PATH = path.abspath(path.dirname(__file__))
