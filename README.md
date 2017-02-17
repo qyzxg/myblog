@@ -22,7 +22,7 @@ flush信息提示完善,可以给刚入门的同学做一个参考,下面简单�
 ##首页
 ![image](https://github.com/qyzxg/myblog/blob/master/screenshot/2017-02-17_080528.png)
 ##文章详情页
-![image](https://github.com/qyzxg/myblog/blob/master/screenshot/22017-02-17_080622.png)
+![image](https://github.com/qyzxg/myblog/blob/master/screenshot/2017-02-17_080622.png)
 ##个人资料页
 ![image](https://github.com/qyzxg/myblog/blob/master/screenshot/2017-02-17_080634.png)
 ##更换图像
