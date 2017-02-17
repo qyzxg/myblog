@@ -233,7 +233,8 @@ def edit(id=0):
 @app.route('/admin')
 @login_required
 def admin_index():
-    return render_template('admin/admin_index.html',title = '后台首页')
+    return render_template('admin/admin_index.html',title = '后台首页',
+                           menu=0)
 
 
 @app.route('/admin/users_manage', methods=['POST', 'GET'])
@@ -249,7 +250,7 @@ def users_manage():
     return render_template('admin/users_manage.html',
                            users=users,
                            pagination=pagination,
-                           title='用户管理')
+                           title='用户管理',menu=1)
 
 
 @app.route('/admin/blogs_manage', methods=['POST', 'GET'])
@@ -265,7 +266,8 @@ def blogs_manage():
     return render_template('admin/blogs_manage.html',
                            posts=posts,
                            pagination=pagination,
-                           title='博客管理')
+                           title='博客管理',
+                           menu=2)
 
 
 @app.route('/admin/comments_manage', methods=['POST', 'GET'])
@@ -281,7 +283,8 @@ def comments_manage():
     return render_template('admin/comments_manage.html',
                            comments=comments,
                            pagination=pagination,
-                           title='评论管理')
+                           title='评论管理',
+                           menu=3)
 
 
 # 博客管理
