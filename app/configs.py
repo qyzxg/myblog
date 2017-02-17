@@ -17,7 +17,7 @@ MAIL_PORT = 25
 # MAIL_USE_SSL = True
 # MAIL_DEBUG : default app.debug
 MAIL_USERNAME = 'qyzxg1314@sina.com'
-MAIL_PASSWORD = '852000zxg'
+MAIL_PASSWORD = 'your password'
 MAIL_DEFAULT_SENDER = 'qyzxg1314@sina.com'
 
 UPLOAD_FOLDER = r'static\avatar\avatar'
