@@ -4,7 +4,7 @@
     <head>
         {{ super() }}
         <link rel="shortcut icon" href="/static/avatar/favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" href="{{ url_for('static', filename = 'main.css') }}">
+        <link rel="stylesheet" href="{{ url_for('../static', filename = 'main.css') }}">
         {% include 'includes/_navbar.html' %}
         {#        {% include 'includes/_footer.html'%}#}
         <title>{% block title %}{{ title|safe }}{% endblock %}</title>

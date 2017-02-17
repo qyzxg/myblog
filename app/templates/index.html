@@ -15,55 +15,51 @@
         </div>
     {% endfor %}
 
-
-
     <a href="{{ url_for('.edit') }}" class="btn btn-primary">发表新文章</a>
-    <div id='article-entry' class="entry-box">
-        {% for post in posts|sort(attribute='read_times',reverse=True ) %}
-            <div class="article-entry-header">
-                <h4 class="article-entry-title">
-                    <a href="{{ url_for('.details', id = post.id) }}">{{ post.title|safe }}</a>
-                </h4>
-            </div>
-            <div class="article-entry-sum">
-                <div class="media">
-                    <div class="media-left">
-                        <a href="{{ url_for('user', username = post.author.username) }}">
-                            <img class="media-object img-circle" width="32px" height="32px"
-                                 src="{{ post.author.avatar }}">
-                        </a>
-                    </div>
-                    <div class="media-body">
 
-                        <div>{{ post.body|safe| truncate(300, True) }}</div>
-
-                    </div>
+    {% for post in posts|sort(attribute='read_times',reverse=True ) %}
+<div id='article-entry' class="entry-box">
+<div class="article-entry-header">
+            <h4 class="article-entry-title">
+                <a href="{{ url_for('.details', id = post.id) }}">{{ post.title|safe }}</a>
+            </h4>
+        </div>
+        <div class="article-entry-sum">
+            <div class="media">
+                <div class="media-left">
+                    <a href="{{ url_for('user', username = post.author.username) }}">
+                        <img class="media-object img-circle" width="32px" height="32px"
+                             src="{{ post.author.avatar }}">
+                    </a>
                 </div>
+                <div class="media-body">
 
+                    <div>{{ post.body|safe| truncate(300, True) }}</div>
+
+                </div>
             </div>
-            <div class="article-entry-info">
-                <div class="base-info">
+
+        </div>
+        <div class="article-entry-info">
+            <div class="base-info">
                     <span class="label label-default">作者&nbsp;:<span
                             class="badge"><strong>{{ post.author.username }}</strong></span></span>&nbsp;
-                    <span class="label label-default">时间&nbsp;:<span
-                            class="badge"><strong>{{ post.created.strftime('%Y-%m-%d %H:%M') }}</strong></span></span>&nbsp;
-                    <span class="label label-default">浏览&nbsp;:<span
-                            class="badge"><strong>{{ post.read_times }}</strong></span></span>&nbsp;
-                    <span class="label label-default">评论&nbsp;:<span
-                            class="badge"><strong>{{ post.comment_times }}</strong></span></span>
-                </div>
-                <div class="main-info">
-
-                </div>
+                <span class="label label-default">时间&nbsp;:<span
+                        class="badge"><strong>{{ post.created.strftime('%Y-%m-%d %H:%M') }}</strong></span></span>&nbsp;
+                <span class="label label-default">浏览&nbsp;:<span
+                        class="badge"><strong>{{ post.read_times }}</strong></span></span>&nbsp;
+                <span class="label label-default">评论&nbsp;:<span
+                        class="badge"><strong>{{ post.comment_times }}</strong></span></span>
             </div>
+        </div>
+</div>
+    {% endfor %}
 
-        {% endfor %}
+    {% if pagination %}
+        {{ render_pagination(pagination) }}
+    {% endif %}
 
-        {% if pagination %}
-            {{ render_pagination(pagination) }}
-        {% endif %}
 
-    </div>
 
 {% endblock %}
 {% block right_content %}
@@ -79,3 +75,4 @@
 {#    <hr>#}
 {#    {{ super() }}#}
 {#{% endblock %}#}
+
