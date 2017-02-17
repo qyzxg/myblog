@@ -226,6 +226,14 @@ def edit(id=0):
                            form=form,
                            post=post)
 
+@app.route('/ckupload/', methods=['POST'])
+def ckupload():
+    """file/img upload interface"""
+    form = PostForm()
+    response = form.upload(name=app)
+    return response
+
+
 
 '''后台管理部分'''
 

@@ -2,10 +2,11 @@
 # -*- coding:utf-8 -*-
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField,BooleanField,FileField
+from wtforms import StringField, PasswordField, SubmitField,BooleanField,FileField,TextAreaField
 from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError
 from app import db
 from app.models import User
+from flaskckeditor import CKEditor
 
 from flask_pagedown.fields import PageDownField
 
@@ -62,14 +63,14 @@ class RegistForm(FlaskForm):
 
 
 
-class PostForm(FlaskForm):
+class PostForm(FlaskForm,CKEditor):
     title = StringField(label="标题", validators=[DataRequired(),
-                                                Length(min=5, message='标题必须大于5个字!')],
+                                                Length(min=5,max=20, message='标题必须字数在5与20之间!')],
                         render_kw={"required": "required"})
-    body = PageDownField(label="正文", validators=[DataRequired(),
+    body = TextAreaField(label="正文", validators=[DataRequired(),
                                                  Length(min=10, message='文章内容必须大于10个字!')],
                          render_kw={"required": "required"})
-    submit = SubmitField(render_kw={'class': "btn btn-info btn-block"})
+    submit = SubmitField('发表',render_kw={'class': "btn btn-info btn-block"})
 
 
 class CommentForm(FlaskForm):

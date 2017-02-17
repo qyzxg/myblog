@@ -81,8 +81,8 @@ class Post(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
-    body = db.Column(db.String(3000))
-    body_html = db.Column(db.String(3000))
+    body = db.Column(db.String(10000))
+    body_html = db.Column(db.String(10000))
     created = db.Column(db.DateTime, index=True, default=datetime.datetime.now())
     comment_times = db.Column(db.Integer,default=0)
     read_times = db.Column(db.Integer,default=0)
