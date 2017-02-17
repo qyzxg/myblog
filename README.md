@@ -17,3 +17,19 @@ flush信息提示完善,可以给刚入门的同学做一个参考,下面简单�
 管理员对可以对所有用户进行管理,包括限制登录,给予和收回管理权限
 删除用户,对文章进行修改好删除,评论删除
 >后期还会在后台加上统计图表
+
+#主要部分截图
+##首页
+![image](https://github.com/qyzxg/myblog/blob/master/screenshot/2017-02-17_080528.png)
+##文章详情页
+![image](https://github.com/qyzxg/myblog/blob/master/screenshot/22017-02-17_080622.png)
+##个人资料页
+![image](https://github.com/qyzxg/myblog/blob/master/screenshot/2017-02-17_080634.png)
+##更换图像
+![image](https://github.com/qyzxg/myblog/blob/master/screenshot/2017-02-17_080642.png)
+##后台用户管理
+![image](https://github.com/qyzxg/myblog/blob/master/screenshot/2017-02-17_080659.png)
+##后台文章管理
+![image](https://github.com/qyzxg/myblog/blob/master/screenshot/2017-02-17_080708.png)
+##后台评论管理
+![image](https://github.com/qyzxg/myblog/blob/master/screenshot/2017-02-17_080715.png)
