@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField,BooleanField,FileField,TextAreaField
+from wtforms import StringField, PasswordField, SubmitField,BooleanField,FileField,TextAreaField,SelectField
 from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError
 from app import db
 from app.models import User
@@ -67,6 +67,8 @@ class PostForm(FlaskForm,CKEditor):
     title = StringField(label="标题", validators=[DataRequired(),
                                                 Length(min=5,max=20, message='标题必须字数在5与20之间!')],
                         render_kw={"required": "required"})
+    style = SelectField('类型',validators=[DataRequired()] )
+    category = SelectField('分类',validators=[DataRequired()] )
     body = TextAreaField(label="正文", validators=[DataRequired(),
                                                  Length(min=10, message='文章内容必须大于10个字!')],
                          render_kw={"required": "required"})

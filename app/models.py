@@ -88,6 +88,8 @@ class Post(db.Model):
     read_times = db.Column(db.Integer,default=0)
     comments = db.relationship('Comment', backref='post')
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    style = db.relationship('PostStyles',backref='post')
+    category = db.relationship('PostCategories', backref='post',)
 
     @staticmethod
     def on_body_changed(target, value, oldvalue, initiator):
@@ -98,6 +100,35 @@ class Post(db.Model):
 
 
 db.event.listen(Post.body, 'set', Post.on_body_changed)
+
+class PostStyles(db.Model):
+    __tablename__ = 'poststyles'
+    id = id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(20), default='原创', doc='原创')
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
+    def __init__(self,name):
+        self.name = name
+    # def get_poststyles(self):
+    #     if self.name==1:
+    #         return '原创'
+    #     else:
+    #         return '转载'
+
+class PostCategories(db.Model):
+    __tablename__ = 'postcategories'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(30))
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
+
+    def __init__(self, name):
+        self.name = name
+
+class Categories(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(30))
+    def __init__(self, name):
+        self.name = name
+
 
 class Comment(db.Model):
     __tablename__ = 'comments'
