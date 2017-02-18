@@ -9,7 +9,7 @@ from app.email import send_email
 from werkzeug.utils import secure_filename
 from os import path
 import time
-
+from app.decoratiors import admin_permission_requied
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
@@ -240,13 +240,20 @@ def ckupload():
 
 @app.route('/admin')
 @login_required
+
 def admin_index():
-    return render_template('admin/admin_index.html',title = '后台首页',
+    if current_user.role==0:
+        flash('您没有管理员权限!')
+        return render_template('profile.html', user=current_user)
+
+    else:
+        return render_template('admin/admin_index.html',title = '后台首页',
                            menu=0)
 
 
 @app.route('/admin/users_manage', methods=['POST', 'GET'])
 @login_required
+
 def users_manage():
     page_index = request.args.get('page', 1, type=int)
 
@@ -255,7 +262,11 @@ def users_manage():
     pagination = query.paginate(page_index, per_page=5, error_out=False)
 
     users = pagination.items
-    return render_template('admin/users_manage.html',
+    if current_user.role==0:
+        flash('您没有管理员权限!')
+        return redirect(url_for('index'))
+    else:
+        return render_template('admin/users_manage.html',
                            users=users,
                            pagination=pagination,
                            title='用户管理',menu=1)
@@ -263,6 +274,7 @@ def users_manage():
 
 @app.route('/admin/blogs_manage', methods=['POST', 'GET'])
 @login_required
+
 def blogs_manage():
     page_index = request.args.get('page', 1, type=int)
 
@@ -271,7 +283,11 @@ def blogs_manage():
     pagination = query.paginate(page_index, per_page=10, error_out=False)
 
     posts = pagination.items
-    return render_template('admin/blogs_manage.html',
+    if current_user.role==0:
+        flash('您没有管理员权限!')
+        return redirect(url_for('index'))
+    else:
+        return render_template('admin/blogs_manage.html',
                            posts=posts,
                            pagination=pagination,
                            title='博客管理',
@@ -280,6 +296,7 @@ def blogs_manage():
 
 @app.route('/admin/comments_manage', methods=['POST', 'GET'])
 @login_required
+
 def comments_manage():
     page_index = request.args.get('page', 1, type=int)
 
@@ -288,7 +305,11 @@ def comments_manage():
     pagination = query.paginate(page_index, per_page=10, error_out=False)
 
     comments = pagination.items
-    return render_template('admin/comments_manage.html',
+    if current_user.role==0:
+        flash('您没有管理员权限!')
+        return redirect(url_for('index'))
+    else:
+        return render_template('admin/comments_manage.html',
                            comments=comments,
                            pagination=pagination,
                            title='评论管理',
@@ -298,76 +319,98 @@ def comments_manage():
 # 博客管理
 @app.route('/admin/bolg_manage/<int:id>/')
 @login_required
+
 def blog_manage(id):
-    post = Post.query.filter_by(id=id).first()
-    comments = Comment.query.filter_by(post_id=post.id).all()
-    if post is None:
-        flash('文章不存在!')
-    if not current_user.is_authenticated:
-        flash('请登录后再操作!')
-    for i in comments:
-        db.session.delete(i)
-    db.session.delete(post)
-    db.session.commit()
-    return redirect(url_for('blogs_manage'))
+    if current_user.role==0:
+        flash('您没有管理员权限!')
+        return redirect(url_for('index'))
+    else:
+        post = Post.query.filter_by(id=id).first()
+        comments = Comment.query.filter_by(post_id=post.id).all()
+        if post is None:
+            flash('文章不存在!')
+        if not current_user.is_authenticated:
+            flash('请登录后再操作!')
+        for i in comments:
+            db.session.delete(i)
+        db.session.delete(post)
+        db.session.commit()
+        flash('文章删除成功!')
+        return redirect(url_for('blogs_manage'))
     # flash('文章删除成功')
 
 # 评论管理
 @app.route('/admin/comment_manage/<int:id>/')
 @login_required
+
 def comment_manage(id):
-    comment = Comment.query.filter_by(id=id).first()
-    if comment is None:
-        flash('评论不存在!')
-    if not current_user.is_authenticated:
-        flash('请登录后再操作!')
-    db.session.delete(comment)
-    db.session.commit()
-    return redirect(url_for('comments_manage'))
+    if current_user.role==0:
+        flash('您没有管理员权限!')
+        return redirect(url_for('index'))
+    else:
+        comment = Comment.query.filter_by(id=id).first()
+        if comment is None:
+            flash('评论不存在!')
+        if not current_user.is_authenticated:
+            flash('请登录后再操作!')
+        db.session.delete(comment)
+        db.session.commit()
+        flash('评论删除成功!')
+        return redirect(url_for('comments_manage'))
     # flash('评论删除成功')
 
 # 用户登录管理
 @app.route('/admin/login_manage/<int:id>/<int:status>/<int:delete>')
 @login_required
+
 def login_manage(id, status, delete):
-    user = User.query.filter_by(id=id, is_valid=1).first()
-    posts = Post.query.filter_by(author_id=user.id).all()
-    comments = Comment.query.filter_by(author_id=user.id).all()
-    if user is None:
-        flash('用户不存在!')
-    if not current_user.is_authenticated:
-        flash('请登录后再操作!')
-    # 设置用户状态
-    if int(status) == 1:
-        user.status = 1
+    if current_user.role==0:
+        flash('您没有管理员权限!')
+        return redirect(url_for('index'))
     else:
-        user.status = 0
-    if int(delete) == 1:
+        user = User.query.filter_by(id=id, is_valid=1).first()
+        posts = Post.query.filter_by(author_id=user.id).all()
+        comments = Comment.query.filter_by(author_id=user.id).all()
+        if user is None:
+            flash('用户不存在!')
+        if not current_user.is_authenticated:
+            flash('请登录后再操作!')
+    # 设置用户状态
+        if int(status) == 1:
+            user.status = 1
+        else:
+            user.status = 0
+        if int(delete) == 1:
         # 同时删除该用户的文章和评论
-        for i in comments:
-            db.session.delete(i)
-        for j in posts:
-            db.session.delete(j)
-        db.session.delete(user)
-        db.session.commit()
-        flash('用户删除成功!')
-    return redirect(url_for('users_manage'))
+            for i in comments:
+                db.session.delete(i)
+            for j in posts:
+                db.session.delete(j)
+            db.session.delete(user)
+            db.session.commit()
+            flash('用户删除成功!')
+        return redirect(url_for('users_manage'))
 
 #角色管理
 @app.route('/admin/role_manage/<int:id>/<int:role>/')
 @login_required
+# @admin_permission_requied
 def role_manage(id,role):
-    user = User.query.filter_by(id=id, is_valid=1).first()
-    if user is None:
-        flash('用户不存在!')
-    if not current_user.is_authenticated:
-        flash('请登录后再操作!')
-    # 设置用户角色
-    if int(role) == 1:
-        user.role = 1
+    if current_user.role==0:
+        flash('您没有管理员权限!')
+        return redirect(url_for('index'))
     else:
-        user.role = 0
-    return redirect(url_for('users_manage'))
+        user = User.query.filter_by(id=id, is_valid=1).first()
+        if user is None:
+            flash('用户不存在!')
+        if not current_user.is_authenticated:
+            flash('请登录后再操作!')
+    # 设置用户角色
+        if int(role) == 1:
+            user.role = 1
+        else:
+            user.role = 0
+        return redirect(url_for('users_manage'))
 
 # @app.route('/admin/role_manage', methods=['POST', 'GET'])
 # @login_required

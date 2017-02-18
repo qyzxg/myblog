@@ -1,12 +1,19 @@
 {% extends 'base.html' %}
 
 {% block left_content %}
-
+{% for message in get_flashed_messages() %}
+        <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}
+        </div>
+    {% endfor %}
 <h1>欢迎你来到自己的页面,{{user.username}}!</h1>
-<p><img src="{{ current_user.avatar }}" width="128px" height="128px" class="img-thumbnail"></p>
+<p><img src="{{ user.avatar }}" width="128px" height="128px" class="img-thumbnail"></p>
     <p>您一共发表了{{ user.post_total }}篇文章</p>
     <p><a href="{{ url_for('.upload') }}">修改您的图像</a></p>
-    <p><a href="{{ url_for('.admin_index') }}">管理用户</a></p>
+    {% if user.role==1 %}
+        <p><a href="{{ url_for('.admin_index') }}">后台管理</a></p>
+    {% endif %}
  {% endblock %}
 
 {% block right_content %}
