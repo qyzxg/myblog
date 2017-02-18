@@ -2,43 +2,55 @@
 
 {% block scripts %}
     {{ super() }}
-{#    {{ pagedown.include_pagedown() }}#}
+    {#    {{ pagedown.include_pagedown() }}#}
 
 {% endblock %}
 
 {% block content %}
-<!-- Content -->
-<div id='content'>
-     <div class="container">
-    <div class='panel panel-default'>
-        <div class='panel-heading'>
-            <i class='icon-edit icon-large'></i>&nbsp;&nbsp;&nbsp;发表文章
-        </div>
-        <div class='panel-body'>
-            <form method="post">
-                {{ form.csrf_token }}
-                {{ form.title(class='form-control', placeholder='请输入标题,字数在5--20之间', type='text') }}
-                <p><span>{% for error in form.title.errors %}
-                                        <span style="color: #feff14;">{{ error }}</span>
-                                    {% endfor %}</span></p>
-                {{ form.body(class='ckeditor',placeholder='请输入文章内容,必须大于10个字') }}
-                <script type="text/javascript">
-                    CKEDITOR.replace("body", {
-                        filebrowserUploadUrl: '/ckupload/',
-                        filebrowserImageUploadUrl: '/ckupload/'
-                    });
-                </script>
-                <br>
-                <div class="col-md-9 ">
-                {% for error in form.body.errors %}
-                                        <span style="color: #feff14;">{{ error }}</span>
-                                    {% endfor %}
-                        </div>
-                <div class="col-md-3 ">
-                            {{ form.submit(class="btn btn-info btn-block ") }}
-                        </div>
-            </form>
+    <!-- Content -->
+    <div id='content'>
+    <div class="container">
+        <div class='panel panel-default'>
+            <div class='panel-heading'>
+                <i class='icon-edit icon-large'></i>&nbsp;&nbsp;&nbsp;发表文章
+            </div>
+            <div class='panel-body'>
+                <form class="form-horizontal" method="post">
+                    {{ form.csrf_token }}
+                    {{ form.title(class='form-control', placeholder='请输入标题,字数在5--20之间', type='text') }}
+                    <p><span>{% for error in form.title.errors %}
+                        <span style="color: #feff14;">{{ error }}</span>
+                    {% endfor %}</span></p>
+                    <div>
+
+                        <p>{{ form.style(class="form-control",placeholder='请选择文章类型') }}</p>
+
+                        <p><span>{% for error in form.style.errors %}
+                            <span style="color: #feff14;">{{ error }}</span>
+                        {% endfor %}</span></p>
+                        {{ form.category(class="form-control",placeholder='请选择文章种类') }}
+
+                    </div>
+
+                    <br>
+                    {{ form.body(class='ckeditor',placeholder='请输入文章内容,必须大于10个字') }}
+                    <script type="text/javascript">
+                        CKEDITOR.replace("body", {
+                            filebrowserUploadUrl: '/ckupload/',
+                            filebrowserImageUploadUrl: '/ckupload/'
+                        });
+                    </script>
+                    <br>
+                    <div class="col-md-9 ">
+                        {% for error in form.body.errors %}
+                            <span style="color: #feff14;">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="col-md-3 ">
+                        {{ form.submit(class="btn btn-info btn-block ") }}
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-     </div>
 {% endblock %}

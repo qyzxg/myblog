@@ -1,7 +1,7 @@
 from app import app, db
 from flask import render_template, make_response, flash, redirect, url_for, request, send_from_directory
-from app.models import User, Post, Comment
-from app.forms import LoginForm, RegistForm, PostForm, CommentForm
+from app.models import User, Post, Comment,Categories,Styles
+from app.forms import LoginForm, RegistForm, PostForm, CommentForm,NewCategory
 from flask_login import current_user, login_user, login_required, logout_user
 import datetime
 from app.token import generate_confirmation_token, confirm_token
@@ -194,7 +194,8 @@ def details(id):
 @login_required
 def edit(id=0):
     form = PostForm()
-
+    form.style.choices = [(str(a.name1),str(a.name)) for a in Styles.query.all()]
+    form.category.choices = [(str(a.name1),str(a.name)) for a in Categories.query.all()]
     if id == 0:
         post = Post(author_id=current_user.id)
     else:
@@ -206,6 +207,8 @@ def edit(id=0):
         if form.validate_on_submit():
             post.body = form.body.data
             post.title = form.title.data
+            post.style = form.style.data
+            post.category = form.category.data
             db.session.add(post)
             db.session.commit()
             user.post_total += 1
@@ -216,6 +219,8 @@ def edit(id=0):
         return redirect(url_for('.index'))
     form.title.data = post.title
     form.body.data = post.body
+    form.style.data = post.style
+    form.category.data = post.category
 
     title = '添加新文章'
     if id > 0:
@@ -249,7 +254,21 @@ def admin_index():
     else:
         return render_template('admin/admin_index.html',title = '后台首页',
                            menu=0)
-
+@app.route('/admin/new_category', methods=['POST', 'GET'])
+@login_required
+def new_category():
+    categories = Categories.query.order_by(Categories.id)
+    form = NewCategory()
+    if form.validate_on_submit():
+        category = Categories(
+            name = form.name.data,
+            name1 = form.name.data
+        )
+        db.session.add(category)
+        db.session.commit()
+    return render_template('admin/new_category.html',
+                           categories=categories,
+                           form=form,menu=4,title='分类管理')
 
 @app.route('/admin/users_manage', methods=['POST', 'GET'])
 @login_required

@@ -1,0 +1,30 @@
+{% extends 'admin/base.html' %}
+
+{% block head_title %}
+    {{ title }}
+<title>分类管理</title>
+{% endblock %}
+{% block breadcrumb %}
+<ol class="breadcrumb">
+  <li><a href="{{ url_for('.admin_index') }}">后台首页</a></li>
+  <li class="active">分类管理</li>
+</ol>
+{% endblock %}
+{% block right_content %}
+    {{ super() }}
+    现有分类为:
+    {% for category in categories %}
+        <mark>{{ category.name }}&nbsp;&nbsp;&nbsp;&nbsp;</mark>
+
+    {% endfor %}
+    <br>
+    <br>
+    <form action="" method="post">
+    {{ form.csrf_token }}
+        {{ form.name }}
+        {{ form.submit }}
+    </form>
+    {% for error in form.name.errors %}
+                            <span style="color: #feff14;">{{ error }}</span>
+                        {% endfor %}
+{% endblock %}
