@@ -65,10 +65,10 @@ class RegistForm(FlaskForm):
 
 class PostForm(FlaskForm,CKEditor):
     title = StringField(label="标题", validators=[DataRequired(),
-                                                Length(min=5,max=20, message='标题必须字数在5与20之间!')],
+                                                Length(min=5,max=50, message='标题必须字数在5与20之间!')],
                         render_kw={"required": "required"})
-    style = SelectField('类型',coerce=str,validators=[DataRequired('11')])
-    category = SelectField('分类',coerce=str,validators=[DataRequired('2')])
+    style = SelectField('类型',coerce=str)
+    category = SelectField('分类',coerce=str)
     body = TextAreaField(label="正文", validators=[DataRequired(),
                                                  Length(min=10, message='文章内容必须大于10个字!')],
                          render_kw={"required": "required"})

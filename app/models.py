@@ -1,7 +1,7 @@
 from app import db, login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from markdown import markdown
+# from markdown import markdown
 import datetime
 
 class User(UserMixin, db.Model):
@@ -81,25 +81,25 @@ class Post(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
-    body = db.Column(db.String(10000))
-    body_html = db.Column(db.String(10000))
+    body = db.Column(db.Text)
+    # body_html = db.Column(db.String(5000))
     created = db.Column(db.DateTime, index=True, default=datetime.datetime.now())
     comment_times = db.Column(db.Integer,default=0)
     read_times = db.Column(db.Integer,default=0)
     comments = db.relationship('Comment', backref='post')
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    style = db.Column(db.String(30),default='原创')
-    category = db.Column(db.String(30), default='Python')
+    style = db.Column(db.String(50),default='原创')
+    category = db.Column(db.String(50), default='Python')
 
-    @staticmethod
-    def on_body_changed(target, value, oldvalue, initiator):
-        if value is None or (value is ''):
-            target.body_html = ''
-        else:
-            target.body_html = markdown(value)
+    # @staticmethod
+    # def on_body_changed(target, value, oldvalue, initiator):
+    #     if value is None or (value is ''):
+    #         target.body_html = ''
+    #     else:
+    #         target.body_html = markdown(value)
 
 
-db.event.listen(Post.body, 'set', Post.on_body_changed)
+# db.event.listen(Post.body, 'set', Post.on_body_changed)
 
 # class PostStyles(db.Model):
 #     __tablename__ = 'poststyles'
@@ -125,18 +125,18 @@ db.event.listen(Post.body, 'set', Post.on_body_changed)
 
 class Categories(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(30))
-    name1 = db.Column(db.String(30))
+    name = db.Column(db.String(50))
+    name1 = db.Column(db.String(50))
 
 class Styles(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(30))
-    name1 = db.Column(db.String(30))
+    name = db.Column(db.String(50))
+    name1 = db.Column(db.String(50))
 
 class Comment(db.Model):
     __tablename__ = 'comments'
     id = db.Column(db.Integer, primary_key=True)
-    body = db.Column(db.String(300))
+    body = db.Column(db.String(1000))
     created = db.Column(db.DateTime, index=True, default=datetime.datetime.now())
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
