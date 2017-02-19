@@ -14,55 +14,65 @@
     <!-- 用户管理 -->
     {{ super() }}
     <div class="table-responsive">
-    <table class="table table-bordered table-hover ">
-        <thead>
-        <tr>
-            <th><mark>用户名</mark></th>
-            <th><mark>邮箱</mark></th>
-            <th><mark>最后登录</mark></th>
-            <th><mark>用户状态</mark></th>
-            <th><mark>用户角色</mark></th>
-            <th><mark>登录管理</mark></th>
-            <th><mark>角色管理</mark></th>
-            <th><mark>用户删除</mark></th>
-
-
-            {#      <th>操作</th>#}
-        </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
+        <table class="table table-bordered table-hover ">
+            <thead>
             <tr>
-                <td><a href="{{ url_for('user', username = user.username) }}"><h5>{{ user.username }}</h5></a></td>
-                <td><h5>{{ user.email }}</h5></td>
-                <td><h5>{{ user.last_login.strftime('%Y-%m-%d %H:%M') }}</h5></td>
-                <td><h5>{{ user.get_status() }}</h5></td>
-            <td><h5>{{ user.get_roles() }}</h5></td>
-                {% if user.status == 1 %}
-                    <td><a href="{{ url_for('.login_manage',id=user.id,status=0,delete=0) }}" class="btn btn-primary">限制</a></td>
-                {% else %}
-                    <td><a href="{{ url_for('.login_manage',id=user.id,status=1,delete=0) }}" class="btn btn-success">解除</a></td>
-                {% endif %}
-            {% if user.role == 0 %}
-            <td><a href="{{ url_for('.role_manage',id=user.id,role=1) }}" class="btn btn-warning">管理</a></td>
-            {% else %}
-            <td><a href="{{ url_for('.role_manage',id=user.id,role=0) }}" class="btn btn-success">用户</a></td>
-             {% endif %}
-                <td><a href="{{ url_for('.login_manage',id=user.id,status=0,delete=1) }}" class="btn btn-danger">删除</a></td>
+                <th>
+                    <mark>用户名</mark>
+                </th>
+                <th>
+                    <mark>邮箱</mark>
+                </th>
+                <th>
+                    <mark>最后登录</mark>
+                </th>
+                <th>
+                    <mark>用户状态</mark>
+                </th>
+                <th>
+                    <mark>用户角色</mark>
+                </th>
+                <th>
+                    <mark>登录管理</mark>
+                </th>
+                <th>
+                    <mark>角色管理</mark>
+                </th>
+                <th>
+                    <mark>用户删除</mark>
+                </th>
 
-                {#      <td>{{ user_obj.status.name }}</td>#}
-                {#      <td>#}
-                {#      {% if user_obj.status.name == 'LIMIT' %}#}
-                {#        <a class="btn btn-default" href="javascript:;" title="" data-url="{{ url_for('admin_manage_user', pk=user_obj.id, status=1) }}">取消限制</a>#}
-                {#      {% else %}#}
-                {#        <a class="btn btn-info" href="javascript:;" title="" data-url="{{ url_for('admin_manage_user', pk=user_obj.id, status=0) }}">限制登录</a>#}
-                {#      {% endif %}#}
-                {#        <a href="{{ url_for('admin_user_role', pk=user_obj.id) }}" title="">管理角色</a>#}
-                {#      </td>#}
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td><a href="{{ url_for('user', username = user.username) }}"><h5>{{ user.username }}</h5></a></td>
+                    <td><h5>{{ user.email }}</h5></td>
+                    <td><h5>{{ user.last_login.strftime('%Y-%m-%d %H:%M') }}</h5></td>
+                    <td><h5>{{ user.get_status() }}</h5></td>
+                    <td><h5>{{ user.get_roles() }}</h5></td>
+                    {% if user.status == 1 %}
+                        <td><a href="{{ url_for('.login_manage',id=user.id,status=0,delete=0) }}"
+                               class="btn btn-primary">限制</a></td>
+                    {% else %}
+                        <td><a href="{{ url_for('.login_manage',id=user.id,status=1,delete=0) }}"
+                               class="btn btn-success">解除</a></td>
+                    {% endif %}
+                    {% if user.role == 0 %}
+                        <td><a href="{{ url_for('.role_manage',id=user.id,role=1) }}" class="btn btn-warning">管理</a>
+                        </td>
+                    {% else %}
+                        <td><a href="{{ url_for('.role_manage',id=user.id,role=0) }}" class="btn btn-success">用户</a>
+                        </td>
+                    {% endif %}
+                    <td><a href="{{ url_for('.login_manage',id=user.id,status=0,delete=1) }}"
+                           class="btn btn-danger">删除</a></td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
     <!-- // 用户管理 -->
     <!-- 分页 -->

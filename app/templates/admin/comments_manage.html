@@ -1,54 +1,55 @@
 {% extends 'admin/base.html' %}
 {% from "bootstrap/pagination.html" import render_pagination %}
 {% block head_title %}
-{{ title }}
+    {{ title }}
 {% endblock %}
 {% block breadcrumb %}
-<ol class="breadcrumb">
-  <li><a href="{{ url_for('.admin_index') }}">后台首页</a></li>
-  <li class="active">评论管理</li>
-</ol>
+    <ol class="breadcrumb">
+        <li><a href="{{ url_for('.admin_index') }}">后台首页</a></li>
+        <li class="active">评论管理</li>
+    </ol>
 {% endblock %}
 {% block right_content %}
     {{ super() }}
-     <div class="table-responsive">
-    <table class="table table-bordered table-hover ">
-  <thead>
-    <tr>
-      <th><mark>评论作者</mark></th>
-      <th><mark>博客ID</mark></th>
-      <th><mark>评论内容</mark></th>
-      <th><mark>评论时间</mark></th>
-      <th><mark>删除评论</mark></th>
-{#      <th>操作</th>#}
-    </tr>
-  </thead>
-  <tbody>
-  {% for comment in comments %}
-    <tr>
-      <td><h5>{{ comment.author.username }}</h5></td>
-      <td><h5>{{ comment.post_id }}</h5></td>
-      <td><h5>{{ comment.body|truncate(30, True) }}</h5></td>
-      <td><h5>{{ comment.created.strftime('%Y-%m-%d %H:%M') }}</h5></td>
-{#      <td>{{ user_obj.status.name }}</td>#}
-{#      <td>#}
-{#      {% if user_obj.status.name == 'LIMIT' %}#}
-{#        <a class="btn btn-default" href="javascript:;" title="" data-url="{{ url_for('admin_manage_user', pk=user_obj.id, status=1) }}">取消限制</a>#}
-{#      {% else %}#}
-{#        <a class="btn btn-info" href="javascript:;" title="" data-url="{{ url_for('admin_manage_user', pk=user_obj.id, status=0) }}">限制登录</a>#}
-{#      {% endif %}#}
-{#        <a href="{{ url_for('admin_user_role', pk=user_obj.id) }}" title="">管理角色</a>#}
-{#      </td>#}
-    <td><a href="{{ url_for('.comment_manage',id=comment.id) }}" class="btn btn-danger">删除</a></td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-     </div>
-<!-- // 用户管理 -->
-<!-- 分页 -->
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover ">
+            <thead>
+            <tr>
+                <th>
+                    <mark>评论作者</mark>
+                </th>
+                <th>
+                    <mark>博客ID</mark>
+                </th>
+                <th>
+                    <mark>评论内容</mark>
+                </th>
+                <th>
+                    <mark>评论时间</mark>
+                </th>
+                <th>
+                    <mark>删除评论</mark>
+                </th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for comment in comments %}
+                <tr>
+                    <td><h5>{{ comment.author.username }}</h5></td>
+                    <td><h5>{{ comment.post_id }}</h5></td>
+                    <td><h5>{{ comment.body|truncate(30, True) }}</h5></td>
+                    <td><h5>{{ comment.created.strftime('%Y-%m-%d %H:%M') }}</h5></td>
+                    <td><a href="{{ url_for('.comment_manage',id=comment.id) }}" class="btn btn-danger">删除</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- // 用户管理 -->
+    <!-- 分页 -->
     {% if pagination %}
-         {{ render_pagination(pagination) }}
+        {{ render_pagination(pagination) }}
     {% endif %}
-<!-- // 分页 -->
+    <!-- // 分页 -->
 {% endblock %}

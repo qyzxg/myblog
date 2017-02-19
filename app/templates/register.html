@@ -77,20 +77,6 @@
                             </div>
                         </div>
                     </div>
-                    {#            <div class="form-group">#}
-                    {#              <label for="authcode" class="col-sm-3 control-label">验证码：</label>#}
-                    {#              <div class="col-sm-5">#}
-                    {#                <div class="input-group">#}
-                    {#                <input type="text" class="form-control" name="authcode" placeholder="请输入验证码">#}
-                    {#               <div class="input-group-addon">#}
-                    {#               <span class="glyphicon glyphicon-ok"></span>#}
-                    {#               </div>#}
-                    {#            </div>#}
-                    {#            </div>#}
-                    {#            <label for="authcode_img" class="control-label col-sm-1" style="padding-top: 0px;">#}
-                    {#                <a class="btn btn-default" href="javascript:void(0)" onclick="document.getElementById('captcha_img').src='authcode.php?r'+Math.random()" title="换一个" ><img id="captcha_img" src="authcode.php?r=<?php echo rand();?>" alt="验证码"></a>#}
-                    {#            </label>#}
-                    {#            </div>#}
                     {{ form.csrf_token }}
                     <br>
                     <div class="row">

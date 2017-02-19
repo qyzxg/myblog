@@ -2,9 +2,8 @@
 # -*- coding:utf-8 -*-
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField,BooleanField,FileField,TextAreaField,SelectField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, FileField, TextAreaField, SelectField
 from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError
-from app import db
 from app.models import User
 from flaskckeditor import CKEditor
 
@@ -61,18 +60,16 @@ class RegistForm(FlaskForm):
         return data
 
 
-
-
-class PostForm(FlaskForm,CKEditor):
+class PostForm(FlaskForm, CKEditor):
     title = StringField(label="标题", validators=[DataRequired(),
-                                                Length(min=5,max=50, message='标题必须字数在5与20之间!')],
+                                                Length(min=5, max=50, message='标题必须字数在5与20之间!')],
                         render_kw={"required": "required"})
-    style = SelectField('类型',coerce=str)
-    category = SelectField('分类',coerce=str)
+    style = SelectField('类型', coerce=str)
+    category = SelectField('分类', coerce=str)
     body = TextAreaField(label="正文", validators=[DataRequired(),
                                                  Length(min=10, message='文章内容必须大于10个字!')],
                          render_kw={"required": "required"})
-    submit = SubmitField('发表',render_kw={'class': "btn btn-info btn-block"})
+    submit = SubmitField('发表', render_kw={'class': "btn btn-info btn-block"})
 
 
 class CommentForm(FlaskForm):
@@ -81,9 +78,11 @@ class CommentForm(FlaskForm):
                          render_kw={"required": "required"})
     submit = SubmitField(render_kw={'class': "btn btn-info btn-block"})
 
+
 class AvatarForm(FlaskForm):
-    avatar = FileField(label='图像',validators=[DataRequired("请选择一张图片")])
+    avatar = FileField(label='图像', validators=[DataRequired("请选择一张图片")])
+
 
 class NewCategory(FlaskForm):
-    name = StringField('分类',validators=[DataRequired("分类不允许为空")])
+    name = StringField('分类', validators=[DataRequired("分类不允许为空")])
     submit = SubmitField('添加')

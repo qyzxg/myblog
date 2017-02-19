@@ -7,11 +7,6 @@
 
         {% include 'includes/_navbar.html' %}
 
-{#    <link href="/static/stylesheets/application-a07755f5.css" rel="stylesheet" type="text/css" />#}
-
-
-{#    <link href="/static/stylesheets/index.css", rel="stylesheet" type="text/css" />#}
-        {#        {% include 'includes/_footer.html'%}#}
         <title>{% block title %}{{ title|safe }}{% endblock %}</title>
     </head>
 {% endblock %}
@@ -20,13 +15,9 @@
     {{ super() }}
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css">
-{#    <style>#}
-{#        .container{#}
-{#            margin-top: 30px;#}
-{#        }#}
-{#    #}
-{#    </style>#}
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.0/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css"/>
     <link rel="stylesheet" href="{{ url_for('static', filename = 'main.css') }}">
 {% endblock %}
 
@@ -35,15 +26,15 @@
 
 {% block content %}
     <div class="container">
-    <div class="col-md-9">
-    {% block left_content %}
+        <div class="col-md-9">
+            {% block left_content %}
 
-    {% endblock %}
+            {% endblock %}
         </div>
-    <div class="col-md-3">
-    {% block right_content %}
-    {% endblock %}
-    </div>
+        <div class="col-md-3">
+            {% block right_content %}
+            {% endblock %}
+        </div>
     </div>
 {% endblock %}
 

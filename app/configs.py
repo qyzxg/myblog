@@ -13,13 +13,12 @@ SECURITY_PASSWORD_SALT = 'qyzxg'
 
 MAIL_SERVER = 'smtp.sina.com'
 MAIL_PORT = 25
-# MAIL_USE_TLS = False
-# MAIL_USE_SSL = True
-# MAIL_DEBUG : default app.debug
 MAIL_USERNAME = 'qyzxg1314@sina.com'
 MAIL_PASSWORD = '852000zxg'
 MAIL_DEFAULT_SENDER = 'qyzxg1314@sina.com'
 
+
+'''upload'''
 UPLOAD_FOLDER = r'static\avatar\avatar'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif', 'webp', 'bmp'])
 BASE_PATH = path.abspath(path.dirname(__file__))

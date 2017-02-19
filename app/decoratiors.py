@@ -4,7 +4,7 @@
 from functools import wraps
 from flask_login import current_user
 from flask import flash
-from app.models import User
+
 
 
 def admin_permission_requied(view_func):
