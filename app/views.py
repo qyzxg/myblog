@@ -1,8 +1,8 @@
 from app import app, db
-from flask import render_template, make_response, flash, redirect,\
-    url_for, request, send_from_directory,g
+from flask import render_template, make_response, flash, redirect, \
+    url_for, request, send_from_directory, g
 from app.models import User, Post, Comment, Categories, Styles
-from app.forms import LoginForm, RegistForm, PostForm, CommentForm, NewCategory,SearchForm
+from app.forms import LoginForm, RegistForm, PostForm, CommentForm, NewCategory, SearchForm
 from flask_login import current_user, login_user, login_required, logout_user
 import datetime
 from app.token import generate_confirmation_token, confirm_token
@@ -34,12 +34,12 @@ def index():
 
 @app.route('/service')
 def service():
-    return render_template('service.html')
+    return render_template('service.html', title='服务')
 
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template('about.html', title='关于')
 
 
 @app.route('/register', methods=['POST', 'GET'])
@@ -67,7 +67,7 @@ def register():
         login_user(user, remember=True)
         flash('注册成功,请登录您的邮箱按照提示激活账户')
         return redirect(url_for('index'))
-    return render_template('register.html', form=form)
+    return render_template('register.html', form=form, title='用户注册')
 
 
 @app.route('/confirm/<token>')
@@ -109,7 +109,7 @@ def login():
         flash('欢迎回来,%s' % current_user.username)
         next_url = request.args.get('next')
         return redirect(next_url or url_for('index'))
-    return render_template('login.html', form=form)
+    return render_template('login.html', form=form, title = '用户登录')
 
 
 @app.route('/logout')
@@ -127,7 +127,7 @@ def user(username):
     if user == None:
         flash('不存在用户：' + username + '！')
         return redirect(url_for('index'))
-    return render_template('profile.html', user=user)
+    return render_template('profile.html', user=user, title='%s的资料' % user.username)
 
 
 def allowed_file(filename):
@@ -149,7 +149,7 @@ def upload():
             flash('图像修改成功')
             return redirect('upload')
         flash('您上传的文件不合法!')
-    return render_template('upload.html')
+    return render_template('upload.html', title='上传图像')
 
 
 @app.route('/uploaded_file/<filename>')
@@ -234,20 +234,12 @@ def edit(id=0):
                            post=post)
 
 
-@app.route('/ckupload/', methods=['POST'])
-def ckupload():
-    """file/img upload interface"""
-    form = PostForm()
-    response = form.upload(name=app)
-    return response
-
-
-
-#搜索
+# 搜索
 
 @app.before_request
 def before_request():
     g.search_form = SearchForm()
+
 
 @app.route('/search', methods=['POST', 'GET'])
 # @login_required
@@ -257,13 +249,15 @@ def search():
     return redirect(url_for('search_results', query=g.search_form.search.data))
 
 
-@app.route('/search_results/<query>',methods=['POST', 'GET'])
+@app.route('/search_results/<query>', methods=['POST', 'GET'])
 @login_required
 def search_results(query):
     results = Post.query.whoosh_search(query, app.config['MAX_SEARCH_RESULTS']).all()
     return render_template('search_results.html',
                            query=query,
                            results=results)
+
+
 '''后台管理部分'''
 
 
