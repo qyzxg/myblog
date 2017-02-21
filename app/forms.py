@@ -86,3 +86,6 @@ class AvatarForm(FlaskForm):
 class NewCategory(FlaskForm):
     name = StringField('分类', validators=[DataRequired("分类不允许为空")])
     submit = SubmitField('添加')
+
+class SearchForm(FlaskForm):
+    search = StringField('search', validators=[DataRequired("请输入一个关键词")])

@@ -1,7 +1,8 @@
 from app import app, db
-from flask import render_template, make_response, flash, redirect, url_for, request, send_from_directory
+from flask import render_template, make_response, flash, redirect,\
+    url_for, request, send_from_directory,g
 from app.models import User, Post, Comment, Categories, Styles
-from app.forms import LoginForm, RegistForm, PostForm, CommentForm, NewCategory
+from app.forms import LoginForm, RegistForm, PostForm, CommentForm, NewCategory,SearchForm
 from flask_login import current_user, login_user, login_required, logout_user
 import datetime
 from app.token import generate_confirmation_token, confirm_token
@@ -241,6 +242,28 @@ def ckupload():
     return response
 
 
+
+#搜索
+
+@app.before_request
+def before_request():
+    g.search_form = SearchForm()
+
+@app.route('/search', methods=['POST', 'GET'])
+# @login_required
+def search():
+    if not g.search_form.validate_on_submit():
+        return redirect(url_for('index'))
+    return redirect(url_for('search_results', query=g.search_form.search.data))
+
+
+@app.route('/search_results/<query>',methods=['POST', 'GET'])
+@login_required
+def search_results(query):
+    results = Post.query.whoosh_search(query, app.config['MAX_SEARCH_RESULTS']).all()
+    return render_template('search_results.html',
+                           query=query,
+                           results=results)
 '''后台管理部分'''
 
 

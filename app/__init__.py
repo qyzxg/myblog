@@ -4,6 +4,8 @@ from flask_bootstrap import Bootstrap
 from flask_login import LoginManager
 from flask_pagedown import PageDown
 from flask_mail import Mail
+import flask_whooshalchemyplus
+
 
 app = Flask(__name__, static_folder='static')
 app.config.from_pyfile('configs.py')
@@ -17,5 +19,6 @@ pagedown = PageDown()
 pagedown.init_app(app)
 Bootstrap(app)
 mail = Mail(app)
+flask_whooshalchemyplus.init_app(app)
 
 from app import models, views

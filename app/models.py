@@ -1,7 +1,9 @@
-from app import db, login_manager
+from app import db, login_manager,app
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 import datetime
+import flask_whooshalchemyplus as whoosh
+from jieba.analyse import ChineseAnalyzer
 
 
 class User(UserMixin, db.Model):
@@ -55,6 +57,8 @@ def load_user(user_id):
 
 class Post(db.Model):
     __tablename__ = 'posts'
+    __searchable__ = ['title', 'body']
+    __analyzer__ = ChineseAnalyzer()
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
     body = db.Column(db.Text)
@@ -66,6 +70,7 @@ class Post(db.Model):
     style = db.Column(db.String(50), default='原创')
     category = db.Column(db.String(50), default='Python')
 
+whoosh.whoosh_index(app,Post)
 
 class Categories(db.Model):
     id = db.Column(db.Integer, primary_key=True)
