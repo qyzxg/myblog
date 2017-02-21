@@ -28,7 +28,7 @@
                     </div>
                     <div class="media-body">
 
-                        <div>{{ post.body|truncate(300,killwords=True)|safe }}</div>
+                        <div>{{ post.body|striptags|truncate(300,killwords=True)|safe }}</div>
 
                     </div>
                 </div>
