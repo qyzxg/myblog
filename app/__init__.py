@@ -20,3 +20,6 @@ mail = Mail(app)
 flask_whooshalchemyplus.init_app(app)
 
 from app import models, views
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0')

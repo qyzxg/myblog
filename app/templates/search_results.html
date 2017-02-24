@@ -15,7 +15,7 @@
         <div id='article-entry' class="entry-box">
             <div class="article-entry-header">
                 <h4 class="article-entry-title">
-                    <a href="{{ url_for('.details', id = post.id) }}">[{{ post.style }}]&nbsp;&nbsp;{{ post.title|safe }}</a>
+                    <a href="{{ url_for('.details', id = post.id) }}">[{{ post.style }}]&nbsp;&nbsp;{{ post.title|safe|default('没搜到哦,换个词试试吧')  }}</a>
                 </h4>
             </div>
             <div class="article-entry-sum">
