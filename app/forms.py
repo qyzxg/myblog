@@ -89,3 +89,13 @@ class NewCategory(FlaskForm):
 
 class SearchForm(FlaskForm):
     search = StringField('search', validators=[DataRequired("请输入一个关键词")])
+
+class AuthEmail(FlaskForm):
+    email = StringField('email', validators=[DataRequired("请输入您注册时使用的邮箱")],render_kw={'class': "form-control", "required": "required"})
+
+    def get_user(self):
+        return User.query.filter_by(email=self.data['email']).first()
+
+class ResetPassword(FlaskForm):
+    password = PasswordField('password',  validators=[DataRequired(), Length(min=6, max=16, message='密码必须大于6位! ')],render_kw={'class': "form-control", "required": "required"})
+    confirm = PasswordField('confirm', validators=[DataRequired(), EqualTo('password', message='两次输入的密码不一样! ')],render_kw={'class': "form-control", "required": "required"})

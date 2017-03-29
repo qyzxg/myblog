@@ -24,7 +24,7 @@ class User(UserMixin, db.Model):
     comments = db.relationship('Comment', backref='author')
     post_total = db.Column(db.Integer, default=0)
     role = db.Column(db.Integer, default=0)
-
+    collects = db.relationship('Collect', backref='collecter')
     def set_password(self, password):
         self.password = generate_password_hash(password)
 
@@ -91,3 +91,9 @@ class Comment(db.Model):
     created = db.Column(db.DateTime, index=True, default=datetime.datetime.now())
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+class Collect(db.Model):
+    ____tablename__  = 'collects'
+    id = db.Column(db.Integer, primary_key=True)
+    created = db.Column(db.DateTime, index=True, default=datetime.datetime.now())
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))

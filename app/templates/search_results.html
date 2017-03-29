@@ -9,19 +9,19 @@
         </div>
     {% endfor %}
 
-    <h3> "{{query}}"的搜索结果:</h3>
+    <h3> "{{ query }}"的搜索结果:</h3>
 
     {% for post in results|sort(attribute='read_times',reverse=True ) %}
         <div id='article-entry' class="entry-box">
             <div class="article-entry-header">
                 <h4 class="article-entry-title">
-                    <a href="{{ url_for('.details', id = post.id) }}">[{{ post.style }}]&nbsp;&nbsp;{{ post.title|safe|default('没搜到哦,换个词试试吧')  }}</a>
+                    <a href="{{ url_for('.details', id = post.id) }}">[{{ post.style }}]&nbsp;&nbsp;{{ post.title|safe|default('没搜到哦,换个词试试吧') }}</a>
                 </h4>
             </div>
             <div class="article-entry-sum">
                 <div class="media">
                     <div class="media-left">
-                        <a href="{{ url_for('user', username = post.author.username) }}">
+                        <a href="{{ url_for('.user_index', username = post.author.username) }}">
                             <img class="media-object img-circle" width="32px" height="32px"
                                  src="{{ post.author.avatar }}">
                         </a>

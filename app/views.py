@@ -2,7 +2,8 @@ from app import app, db
 from flask import render_template, make_response, flash, redirect, \
     url_for, request, send_from_directory, g
 from app.models import User, Post, Comment, Categories, Styles
-from app.forms import LoginForm, RegistForm, PostForm, CommentForm, NewCategory, SearchForm
+from app.forms import LoginForm, RegistForm, PostForm, CommentForm, NewCategory, SearchForm, \
+    AuthEmail,ResetPassword
 from flask_login import current_user, login_user, login_required, logout_user
 import datetime
 from app.token import generate_confirmation_token, confirm_token
@@ -11,7 +12,7 @@ from werkzeug.utils import secure_filename
 from os import path
 import time
 
-
+#首页
 @app.route('/', methods=['POST', 'GET'])
 def index():
     # 记录cookie
@@ -41,7 +42,7 @@ def service():
 def about():
     return render_template('about.html', title='关于')
 
-
+#用户注册
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     form = RegistForm()
@@ -69,7 +70,7 @@ def register():
         return redirect(url_for('index'))
     return render_template('register.html', form=form, title='用户注册')
 
-
+#注册邮件确认
 @app.route('/confirm/<token>')
 @login_required
 def confirm_email(token):
@@ -79,7 +80,7 @@ def confirm_email(token):
         flash('确认链接不可用或已过期!', 'danger')
     user = User.query.filter_by(email=email).first_or_404()
     if user.confirmed:
-        flash('您的账户已激活. 请登录!', 'success')
+        flash('您的账户已经激活过了!', 'success')
     else:
         user.confirmed = True
         user.confirmed_on = datetime.datetime.now()
@@ -88,7 +89,20 @@ def confirm_email(token):
         flash('您的账户已激活,谢谢!', 'success')
     return redirect(url_for('index'))
 
+#发送激活邮件
+@app.route('/active', methods=['POST', 'GET'])
+@login_required
+def active():
+    user = current_user
+    token = generate_confirmation_token(user.email)
+    confirm_url = url_for('confirm_email', token=token, _external=True)
+    html = render_template('email.html', confirm_url=confirm_url)
+    subject = "Please confirm your email"
+    send_email(user.email, subject, html)
+    flash('激活邮件已发送至您的邮箱!')
+    return redirect(url_for('user_index',username=user.username))
 
+#用户登录
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     form = LoginForm()
@@ -111,7 +125,7 @@ def login():
         return redirect(next_url or url_for('index'))
     return render_template('login.html', form=form, title = '用户登录')
 
-
+#用户登出
 @app.route('/logout')
 @login_required
 def logout():
@@ -122,19 +136,122 @@ def logout():
 # 用户资料页
 @app.route('/user/<username>', methods=['POST', 'GET'])
 @login_required
-def user(username):
+def user_index(username):
     user = User.query.filter_by(username=username).first()
     if user == None:
         flash('不存在用户：' + username + '！')
         return redirect(url_for('index'))
-    return render_template('profile.html', user=user, title='%s的资料' % user.username)
+    return render_template('user/user_index.html', user=user,
+                           title='%s的资料' % user.username,
+                           menu=0)
 
+@app.route('/user/blogs_manage', methods=['POST', 'GET'])
+@login_required
+def user_blogs_manage():
+    page_index = request.args.get('page', 1, type=int)
+
+    query = Post.query.filter_by(author_id=current_user.id)
+
+    pagination = query.paginate(page_index, per_page=10, error_out=False)
+
+    posts = pagination.items
+
+    return render_template('user/blogs_manage.html',
+                               posts=posts,
+                               pagination=pagination,
+                               title='博客管理',
+                               menu=1)
+
+
+@app.route('/user/bolg_manage/<int:id>/')
+@login_required
+def user_blog_manage(id):
+    post = Post.query.filter_by(id=id).first()
+    comments = Comment.query.filter_by(post_id=post.id).all()
+    if post is None:
+        flash('文章不存在!')
+    if not current_user.is_authenticated:
+        flash('请登录后再操作!')
+    for i in comments:
+        db.session.delete(i)
+    db.session.delete(post)
+    db.session.commit()
+    flash('文章删除成功!')
+    return redirect(url_for('user_blogs_manage'))
+
+@app.route('/user/comments_manage', methods=['POST', 'GET'])
+@login_required
+def user_comments_manage():
+    page_index = request.args.get('page', 1, type=int)
+
+    query = Comment.query.filter_by(author_id=current_user.id)
+
+    pagination = query.paginate(page_index, per_page=10, error_out=False)
+
+    comments = pagination.items
+
+    return render_template('user/comments_manage.html',
+                               comments=comments,
+                               pagination=pagination,
+                               title='评论管理',
+                               menu=3)
+
+
+@app.route('/user/comment_manage/<int:id>/')
+@login_required
+def user_comment_manage(id):
+    comment = Comment.query.filter_by(id=id).first()
+    if comment is None:
+        flash('评论不存在!')
+    if not current_user.is_authenticated:
+        flash('请登录后再操作!')
+    db.session.delete(comment)
+    db.session.commit()
+    flash('评论删除成功!')
+    return redirect(url_for('user_comments_manage'))
+
+#重置密码邮箱确认
+@app.route('/reset/confirm_email', methods=["GET", "POST"])
+def reset_confirm_email():
+    form = AuthEmail()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if not user:
+            flash('该邮箱还没有注册')
+            return redirect(url_for('reset_confirm_email'))
+        else:
+            subject = "Password reset confirm email"
+            token = generate_confirmation_token(user.email)
+            confirm_url = url_for('reset_password',token=token,_external=True)
+            html = render_template('email.html', confirm_url=confirm_url)
+            send_email(user.email, subject, html)
+            flash('验证邮件已发送至您的邮箱')
+            return redirect(url_for('index'))
+    return render_template('auth_email.html', form=form)
+
+#重置密码
+@app.route('/reset/reset_password/<token>', methods=["GET", "POST"])
+def reset_password(token):
+    try:
+        email = confirm_token(token)
+    except:
+        flash('链接已过期')
+    form = ResetPassword()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=email).first()
+        user.password = form.password.data
+        user.set_password(form.data['password'])
+        db.session.add(user)
+        db.session.commit()
+        flash('密码修改成功')
+        return redirect(url_for('login'))
+    return render_template('reset_password.html', form=form, token=token)
 
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in app.config['ALLOWED_EXTENSIONS']
 
-
+#文件上传
 @app.route('/upload/', methods=['POST', 'GET'])
 @login_required
 def upload():
@@ -156,7 +273,7 @@ def upload():
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
-
+#文章详情页
 @app.route('/post/details/<int:id>', methods=['POST', 'GET'])
 def details(id):
     post = Post.query.get_or_404(id)
@@ -235,7 +352,6 @@ def edit(id=0):
 
 
 # 搜索
-
 @app.before_request
 def before_request():
     g.search_form = SearchForm()
@@ -260,19 +376,19 @@ def search_results(query):
 
 '''后台管理部分'''
 
-
+#管理员后台首页
 @app.route('/admin')
 @login_required
 def admin_index():
     if current_user.role == 0:
         flash('您没有管理员权限!')
-        return render_template('profile.html', user=current_user)
+        return render_template('user_index.html', user=current_user)
 
     else:
         return render_template('admin/admin_index.html', title='后台首页',
                                menu=0)
 
-
+#文章分类管理
 @app.route('/admin/new_category', methods=['POST', 'GET'])
 @login_required
 def new_category():
@@ -289,7 +405,7 @@ def new_category():
                            categories=categories,
                            form=form, menu=4, title='分类管理')
 
-
+# 用户管理
 @app.route('/admin/users_manage', methods=['POST', 'GET'])
 @login_required
 def users_manage():
@@ -309,7 +425,7 @@ def users_manage():
                                pagination=pagination,
                                title='用户管理', menu=1)
 
-
+#博客管理
 @app.route('/admin/blogs_manage', methods=['POST', 'GET'])
 @login_required
 def blogs_manage():
@@ -330,7 +446,7 @@ def blogs_manage():
                                title='博客管理',
                                menu=2)
 
-
+# 评论管理
 @app.route('/admin/comments_manage', methods=['POST', 'GET'])
 @login_required
 def comments_manage():
@@ -352,7 +468,7 @@ def comments_manage():
                                menu=3)
 
 
-# 博客管理
+# 博客删除
 @app.route('/admin/bolg_manage/<int:id>/')
 @login_required
 def blog_manage(id):
@@ -375,7 +491,7 @@ def blog_manage(id):
         # flash('文章删除成功')
 
 
-# 评论管理
+# 评论删除
 @app.route('/admin/comment_manage/<int:id>/')
 @login_required
 def comment_manage(id):

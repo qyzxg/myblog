@@ -1,0 +1,23 @@
+{% extends 'user/base.html' %}
+
+{% block head_title %}
+    {{ title }}
+{% endblock %}
+{% block right_content %}
+    {{ super() }}
+
+<p><img src="{{ user.avatar }}" width="128px" height="128px" class="img-thumbnail"></p>
+    <p>您一共发表了{{ user.post_total }}篇文章</p>
+    <p><a href="{{ url_for('.upload') }}">修改图像</a></p>
+    <p><a href="{{ url_for('.reset_confirm_email') }}">修改密码</a></p>
+    {% if user.confirmed==0 %}
+        <p><a href="{{ url_for('.active') }}">激活账户</a></p>
+    {% endif %}
+    {% if user.role==1 %}
+        <p><a href="{{ url_for('.admin_index') }}">后台管理</a></p>
+    {% endif %}
+{% endblock %}
+
+
+
+

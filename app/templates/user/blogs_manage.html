@@ -1,4 +1,4 @@
-{% extends 'admin/base.html' %}
+{% extends 'user/base.html' %}
 {% from "bootstrap/pagination.html" import render_pagination %}
 {% block head_title %}
     {{ title }}
@@ -6,7 +6,7 @@
 {% endblock %}
 {% block breadcrumb %}
     <ol class="breadcrumb">
-        <li><a href="{{ url_for('.admin_index') }}">后台首页</a></li>
+        <li><a href="{{ url_for('.user_index',username=current_user.username) }}">个人首页</a></li>
         <li class="active">博客管理</li>
     </ol>
 {% endblock %}
@@ -19,9 +19,7 @@
                 <th>
                     <mark>文章标题</mark>
                 </th>
-                <th>
-                    <mark>文章作者</mark>
-                </th>
+
                 <th>
                     <mark>发布时间</mark>
                 </th>
@@ -45,13 +43,12 @@
                 <tr>
                     <td><a href="{{ url_for('.details', id = post.id) }}"><h5>{{ post.title|truncate(22, True) }}</h5>
                     </a></td>
-                    <td><a href="{{ url_for('.user_index', username = post.author.username) }}">
-                        <h5>{{ post.author.username }}</h5></a></td>
+
                     <td><h5>{{ post.created.strftime('%Y-%m-%d %H:%M') }}</h5></td>
                     <td><h5>{{ post.comment_times }}</h5></td>
                     <td><h5>{{ post.read_times }}</h5></td>
                     <td><a href="{{ url_for('.edit',id=post.id) }}" class="btn btn-success">修改</a></td>
-                    <td><a href="{{ url_for('.blog_manage',id=post.id) }}" class="btn btn-danger">删除</a></td>
+                    <td><a href="{{ url_for('.user_blog_manage',id=post.id) }}" class="btn btn-danger">删除</a></td>
                 </tr>
             {% endfor %}
             </tbody>

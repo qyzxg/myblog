@@ -52,7 +52,7 @@
                 </div>
                 <div class="media-body">
                     <small class="text-muted"><a
-                            href="{{ url_for('user', username = comment.author.username) }}">{{ comment.author.username }}</a>
+                            href="{{ url_for('.user_index', username = comment.author.username) }}">{{ comment.author.username }}</a>
                     </small>
                     <small class="text-muted">{{ comment.created }}</small>
                     <div>{{ comment.body }}</div>

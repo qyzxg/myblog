@@ -27,7 +27,7 @@
             <div class="article-entry-sum">
                 <div class="media">
                     <div class="media-left">
-                        <a href="{{ url_for('user', username = post.author.username) }}">
+                        <a href="{{ url_for('.user_index', username = post.author.username) }}">
                             <img class="media-object img-circle" width="32px" height="32px"
                                  src="{{ post.author.avatar }}">
                         </a>
