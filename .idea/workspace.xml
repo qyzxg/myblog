@@ -2,47 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63bd6c3e-09d0-45ed-8561-0d52e5b0e3dd" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/Post/MAIN_p0lyi8dmwdo26e2k.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/Post/MAIN_pb55fhxqj2fiaen1.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/Post/MAIN_rbrnsz64so871lpx.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/Post/MAIN_ub3aqiggh4de7w2e.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/Post/_MAIN_332.toc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/migrations/README" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/migrations/alembic.ini" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/migrations/env.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/migrations/script.py.mako" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/migrations/versions/04dcf2c7a5aa_.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/migrations/versions/1774c8e55f29_.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/forms.py" afterPath="$PROJECT_DIR$/app/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models.py" afterPath="$PROJECT_DIR$/app/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/ckeditor.js" afterPath="$PROJECT_DIR$/app/static/ckeditor/ckeditor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/image/dialogs/image.js" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/image/dialogs/image.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/dist/jquery.lazyload.min.js" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/dist/jquery.lazyload.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/javascripts/jquery-ui.min.js" afterPath="$PROJECT_DIR$/app/static/javascripts/jquery-ui.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/stylesheets/main.css" afterPath="$PROJECT_DIR$/app/static/stylesheets/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/404.html" afterPath="$PROJECT_DIR$/app/templates/404.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/about.html" afterPath="$PROJECT_DIR$/app/templates/about.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/admin/admin_index.html" afterPath="$PROJECT_DIR$/app/templates/admin/admin_index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/admin/base.html" afterPath="$PROJECT_DIR$/app/templates/admin/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/admin/blogs_manage.html" afterPath="$PROJECT_DIR$/app/templates/admin/blogs_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/admin/users_manage.html" afterPath="$PROJECT_DIR$/app/templates/admin/users_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/auth_email.html" afterPath="$PROJECT_DIR$/app/templates/auth_email.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/base.html" afterPath="$PROJECT_DIR$/app/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/details.html" afterPath="$PROJECT_DIR$/app/templates/details.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/edit_post.html" afterPath="$PROJECT_DIR$/app/templates/edit_post.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/index.html" afterPath="$PROJECT_DIR$/app/templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/login.html" afterPath="$PROJECT_DIR$/app/templates/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/register.html" afterPath="$PROJECT_DIR$/app/templates/register.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/reset_password.html" afterPath="$PROJECT_DIR$/app/templates/reset_password.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/search_results.html" afterPath="$PROJECT_DIR$/app/templates/search_results.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/service.html" afterPath="$PROJECT_DIR$/app/templates/service.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/upload.html" afterPath="$PROJECT_DIR$/app/templates/upload.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/user/base.html" afterPath="$PROJECT_DIR$/app/templates/user/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/user/blogs_manage.html" afterPath="$PROJECT_DIR$/app/templates/user/blogs_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/user/comments_manage.html" afterPath="$PROJECT_DIR$/app/templates/user/comments_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/user/user_index.html" afterPath="$PROJECT_DIR$/app/templates/user/user_index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views.py" afterPath="$PROJECT_DIR$/app/views.py" />
     </list>
     <ignored path="todo.iws" />
@@ -109,8 +68,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="211" column="24" lean-forward="false" selection-start-line="211" selection-start-column="24" selection-end-line="211" selection-end-column="24" />
+            <state relative-caret-position="9978">
+              <caret line="636" column="20" lean-forward="false" selection-start-line="636" selection-start-column="20" selection-end-line="636" selection-end-column="20" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -943,7 +902,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.327787" sideWeight="0.47875568" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.327787" sideWeight="0.4969651" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25340393" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="运行" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23128119" sideWeight="0.49394855" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23128119" sideWeight="0.49394855" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29118136" sideWeight="0.4969651" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23358779" sideWeight="0.50855744" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977098" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1423,8 +1382,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="211" column="24" lean-forward="false" selection-start-line="211" selection-start-column="24" selection-end-line="211" selection-end-column="24" />
+        <state relative-caret-position="9978">
+          <caret line="636" column="20" lean-forward="false" selection-start-line="636" selection-start-column="20" selection-end-line="636" selection-end-column="20" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>

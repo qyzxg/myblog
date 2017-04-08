@@ -635,8 +635,6 @@ def comments_manage():
 @app.route('/admin/bolg_manage/<int:id>/')
 @login_required
 def blog_manage(id):
-    user = User.query.filter_by(id=post.author_id).first()
-    user.post_total -= 1
     if current_user.role == 0:
         flash('您没有管理员权限!')
         return redirect(url_for('index'))
