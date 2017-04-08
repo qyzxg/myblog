@@ -62,9 +62,12 @@ table a{
 }
 .entry-box {
 
-    padding: 15px;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    padding-top: 5px;
+    /*padding-top: 10px;*/
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     background-color: #4d5f71;
 
 
@@ -89,8 +92,8 @@ table a{
     text-decoration: none;
 }
 .article-entry-info {
-    height: 35px;
-    margin-top: 10px;
+    height: 28px;
+    margin-top: 8px;
 }
 .article-entry-info .base-info {
     float: left;
@@ -99,9 +102,6 @@ table a{
     float: right;
 }
 
-
-
-
-
-
-
+.list-group-item{
+    padding: 5px;
+}

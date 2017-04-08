@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 
-{% block content %}
-    <h2>page not found</h2>
+{% block left_content %}
+    <div><h3>您访问的页面去火星了,<a href="{{ url_for('.index') }}">返回首页</a></h3></div>
+{% endblock %}
+{% block right_content %}
+    <h3>hello</h3>
 {% endblock %}

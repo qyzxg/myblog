@@ -3,6 +3,12 @@
 {% block head_title %}
     {{ title }}
 {% endblock %}
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="{{ url_for('.admin_index') }}">后台首页</a></li>
+        <li class="active">后台首页</li>
+    </ol>
+{% endblock %}
 {% block right_content %}
     {{ super() }}
     <h5>后台管理首页</h5>

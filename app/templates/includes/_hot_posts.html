@@ -1,0 +1,16 @@
+<div id='article-entry' class="entry-box">
+
+            <div class="article-entry-header">
+                <h4 class="article-entry-title">
+                    热门评论文章
+                </h4>
+            </div>
+    {% for post in posts_ %}
+        <ul class="list-group">
+            <li class="list-group-item">
+                 <span class="badge">{{ post.comment_times }}</span>
+                <a href="{{ url_for('.details', id = post.id) }}">{{ post.title|striptags|truncate(15,killwords=True)|safe  }}</a>
+            </li>
+        </ul>
+    {% endfor %}
+</div>

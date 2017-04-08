@@ -11,6 +11,9 @@
 {% endblock %}
 {% block right_content %}
     {{ super() }}
+    {% if not comments %}
+    <div><p>您还没有发表评论哦!</p><a href="{{ url_for('.index') }}">先去首页看看文章吧!</a></div>
+    {% else %}
     <div class="table-responsive">
         <table class="table table-bordered table-hover ">
             <thead>
@@ -43,6 +46,7 @@
             </tbody>
         </table>
     </div>
+    {% endif %}
     <!-- // 用户管理 -->
     <!-- 分页 -->
     {% if pagination %}

@@ -1,0 +1,18 @@
+
+    <div id='article-entry' class="entry-box">
+
+            <div class="article-entry-header">
+                <h4 class="article-entry-title">
+
+                    <a href="{{ url_for('.user_todos_manage') }} " class="btn btn-primary">TODO管理</a>
+                </h4>
+            </div>
+    {% for todo in todos %}
+        <ul class="list-group">
+            <li class="list-group-item">
+                 <span class="badge">{{ todo.get_status() }}</span>
+                {{ todo.content|striptags|truncate(13,killwords=True)|safe  }}
+            </li>
+        </ul>
+    {% endfor %}
+</div>

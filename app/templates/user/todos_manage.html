@@ -1,0 +1,80 @@
+{% extends 'user/base.html' %}
+{% from "bootstrap/pagination.html" import render_pagination %}
+
+{% block head_title %}
+    {{ title }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="{{ url_for('.user_index',username=current_user.username) }}">个人首页</a></li>
+        <li class="active">TODO管理</li>
+    </ol>
+{% endblock %}
+
+{% block right_content %}
+    {{ super() }}
+ <form class="input-group" action="{{ url_for('.todo_add') }}" method="post">
+        <input class="form-control" id="centent" name="content" type="text">
+    <span class="input-group-btn">
+        <button class="btn btn-default" type="submit">添加</button>
+    </span>
+    </form>
+<br><br>
+    <h4>TODO列表:</h4>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover ">
+            <thead>
+            <tr>
+                <th>
+                    <mark>TODO内容</mark>
+                </th>
+
+                <th>
+                    <mark>创建时间</mark>
+                </th>
+                <th>
+                    <mark>完成时间</mark>
+                </th>
+                <th>
+                    <mark>状态</mark>
+                </th>
+                <th>
+                    <mark>更改状态</mark>
+                </th>
+                <th>
+                    <mark>删除TODO</mark>
+                </th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for todo in todos %}
+                <tr>
+                    <td><h5>{{ todo.content|truncate(30, True) }}</h5></td>
+                    <td><h5>{{ todo.created.strftime('%Y-%m-%d %H:%M') }}</h5></td>
+
+                    <td>
+                        {% if todo.finished %}
+                        <h5>{{ todo.finished.strftime('%Y-%m-%d %H:%M') }}</h5>
+                        {% else %}
+                        <h5>赶快去完成吧</h5>
+                        {% endif %}
+                    </td>
+                    <td><h5>{{ todo.get_status() }}</h5></td>
+                    {% if todo.status==0 %}
+                        <td><a href="{{ url_for('.todo_done',id=todo.id) }}" class="btn btn-success">已完成</a></td>
+                    {% endif %}
+                    {% if todo.status==1 %}
+                        <td><a href="{{ url_for('.todo_undone',id=todo.id) }}" class="btn btn-primary">未完成</a></td>
+                    {% endif %}
+                        <td><a href="{{ url_for('.todo_dele',id=todo.id) }}" class="btn btn-danger">删除</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% if pagination %}
+        {{ render_pagination(pagination) }}
+    {% endif %}
+{% endblock %}

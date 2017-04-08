@@ -47,7 +47,13 @@
             <tbody>
             {% for user in users %}
                 <tr>
-                    <td><a href="{{ url_for('.user_index', username = user.username) }}"><h5>{{ user.username }}</h5></a></td>
+                    <td>
+                        {% if current_user.id == user.id %}
+                        <a href="{{ url_for('.user_index', username = user.username) }}"><h5>{{ user.username }}</h5></a>
+                        {% else %}
+                        <a href="{{ url_for('.others', username = user.username) }}"><h5>{{ user.username }}</h5></a>
+                        {% endif %}
+                    </td>
                     <td><h5>{{ user.email }}</h5></td>
                     <td><h5>{{ user.last_login.strftime('%Y-%m-%d %H:%M') }}</h5></td>
                     <td><h5>{{ user.get_status() }}</h5></td>

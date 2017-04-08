@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
-{% block content %}
-    <div>关于</div>
+{% block left_content %}
+    <div><h3>关于</h3></div>
+{% endblock %}
+{% block right_content %}
+    {% include 'includes/_hot_posts.html' %}
 {% endblock %}

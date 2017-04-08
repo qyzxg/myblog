@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% from "bootstrap/pagination.html" import render_pagination %}
+{% block title %}{{ title|safe }}{% endblock %}
 {% block left_content %}
     {% for message in get_flashed_messages() %}
         <div class="alert alert-warning">
@@ -12,7 +13,13 @@
     </div>
     <hr>
     {# Meta 信息 #}
-    <span>作者&nbsp&nbsp:{{ post.author.username }}</span>
+    <span>作者&nbsp&nbsp:
+        {% if current_user.id == post.author_id %}
+        <a href="{{ url_for('.user_index', username = post.author.username) }}">{{ post.author.username }}</a>
+        {% else %}
+        <a href="{{ url_for('.others', username = post.author.username) }}">{{ post.author.username }}</a>
+        {% endif %}
+    </span>
     <span>&nbsp&nbsp&nbsp&nbsp发表日期&nbsp&nbsp:{{ post.created }}</span>
 
     {# 正文 #}
@@ -20,7 +27,28 @@
     <div>
         {{ post.body|safe }}
     </div>
-    {# 操作链接 #}
+    {# 收藏 #}
+    <div>
+        {% if current_user.is_authenticated %}
+            {% if not current_user.collecting(post) %}
+                <a href="{{ url_for('.collect',id=post.id) }}">
+                    <span class="label label-primary">添加收藏</span>
+                </a>
+            {% else %}
+                <a href="{{ url_for('.uncollect',id=post.id) }}">
+                    <span class="label label-default">取消收藏</span>
+                </a>
+            {% endif %}
+        {% else %}
+            <a href="{{ url_for('.collect',id=post.id) }}">
+                <span class="label label-primary">添加收藏</span>
+            </a>
+        {% endif %}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="{{ url_for('.edit') }} ">
+            <span class="label label-primary">发表文章</span>
+        </a>
+    </div>
     <h3>评论</h3>
     {# 发表评论 #}
     <div>
@@ -45,14 +73,18 @@
         {% for comment in post.comments|sort(attribute='created',reverse=True ) %}
             <div class="media">
                 <div class="media-left">
-                    <a href="#">
-                        <img class="media-object img-circle" src="{{ comment.author.avatar }}" class="img-circle"
-                             width="32px" height="32px">
-                    </a>
+
+                    <img class="media-object img-circle" src="{{ comment.author.avatar }}" class="img-circle"
+                         width="32px" height="32px">
+
                 </div>
                 <div class="media-body">
-                    <small class="text-muted"><a
-                            href="{{ url_for('.user_index', username = comment.author.username) }}">{{ comment.author.username }}</a>
+                    <small class="text-muted">
+                        {% if current_user.id == comment.author_id %}
+                            <a href="{{ url_for('.user_index', username = comment.author.username) }}">{{ comment.author.username }}</a>
+                        {% else %}
+                            <a href="{{ url_for('.others', username = comment.author.username) }}">{{ comment.author.username }}</a>
+                        {% endif %}
                     </small>
                     <small class="text-muted">{{ comment.created }}</small>
                     <div>{{ comment.body }}</div>
@@ -63,8 +95,12 @@
     </div>
 {% endblock %}
 {% block right_content %}
+    {% if current_user.is_anonymous %}
+    <br>
+    <br>
+    {% else %}
+    {% include 'includes/_todo_list.html' %}
+{% endif %}
 
-    <p>这是右边栏</p>
-    <p>这是右边栏</p>
-    <p>这是右边栏</p>
+    {% include 'includes/_hot_posts.html' %}
 {% endblock %}

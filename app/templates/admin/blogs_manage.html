@@ -45,8 +45,15 @@
                 <tr>
                     <td><a href="{{ url_for('.details', id = post.id) }}"><h5>{{ post.title|truncate(22, True) }}</h5>
                     </a></td>
-                    <td><a href="{{ url_for('.user_index', username = post.author.username) }}">
-                        <h5>{{ post.author.username }}</h5></a></td>
+                    <td>
+                        {% if current_user.id == post.author_id %}
+                        <a href="{{ url_for('.user_index', username = post.author.username) }}">
+                        <h5>{{ post.author.username }}</h5></a>
+                        {% else %}
+                        <a href="{{ url_for('.others', username = post.author.username) }}">
+                        <h5>{{ post.author.username }}</h5></a>
+                        {% endif %}
+                    </td>
                     <td><h5>{{ post.created.strftime('%Y-%m-%d %H:%M') }}</h5></td>
                     <td><h5>{{ post.comment_times }}</h5></td>
                     <td><h5>{{ post.read_times }}</h5></td>

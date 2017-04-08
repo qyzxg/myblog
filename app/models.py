@@ -1,9 +1,10 @@
-from app import db, login_manager,app
+from app import db, login_manager, app
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 import datetime
 import flask_whooshalchemyplus as whoosh
 from jieba.analyse import ChineseAnalyzer
+import re
 
 
 class User(UserMixin, db.Model):
@@ -24,7 +25,9 @@ class User(UserMixin, db.Model):
     comments = db.relationship('Comment', backref='author')
     post_total = db.Column(db.Integer, default=0)
     role = db.Column(db.Integer, default=0)
-    collects = db.relationship('Collect', backref='collecter')
+    collects = db.relationship('Post', secondary='collects', backref=db.backref('collected', lazy='dynamic'),
+                               lazy='dynamic')
+    todos = db.relationship('Todo', backref='user')
     def set_password(self, password):
         self.password = generate_password_hash(password)
 
@@ -44,6 +47,27 @@ class User(UserMixin, db.Model):
             return '管理'
         else:
             return '用户'
+
+            # 收藏/取消收藏
+
+    def collect(self, post):
+        if not self.collecting(post):
+            self.collects.append(post)
+            return self
+
+    def uncollect(self, post):
+        if self.collecting(post):
+            self.collects.remove(post)
+
+    def collecting(self, post):
+        if self.collects.filter(collect.c.post_id == post.id).count() > 0:
+            return True
+        else:
+            return False
+
+    def collected_posts(self):
+        return Post.query.join(collect, (collect.c.post_id == Post.id)).filter(
+            collect.c.user_id == self.id).order_by(Post.created.desc())
 
     def __repr__(self):
         return '<User %r>' % self.username
@@ -69,8 +93,20 @@ class Post(db.Model):
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     style = db.Column(db.String(50), default='原创')
     category = db.Column(db.String(50), default='Python')
+    post_img = db.Column(db.String(500), doc='文章首页地址', default=r'/static/images/post_default.jpg')
 
-whoosh.whoosh_index(app,Post)
+    def get_post_img(self, post):
+        reg = r'<img alt.*?src="(.*?)".*?/>'
+        img = re.compile(reg)
+        img_list = img.findall(post.body)
+        if img_list:
+            self.post_img = ''.join(img_list[0])
+        return self.post_img
+
+
+
+whoosh.whoosh_index(app, Post)
+
 
 class Categories(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -92,8 +128,23 @@ class Comment(db.Model):
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-class Collect(db.Model):
-    ____tablename__  = 'collects'
+
+class Todo(db.Model):
+    __tablename__ = 'todos'
     id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.String(100))
     created = db.Column(db.DateTime, index=True, default=datetime.datetime.now())
+    finished = db.Column(db.DateTime)
+    status = db.Column(db.Integer, default=0, doc='完成状态')
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    def get_status(self):
+        if self.status ==0:
+            return '未完成'
+        else:
+            return '已完成'
+
+collect = db.Table('collects',
+    db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
+    db.Column('post_id', db.Integer, db.ForeignKey('posts.id'))
+)
