@@ -1,9 +1,9 @@
 from app import app, db
 from flask import render_template, make_response, flash, redirect, \
     url_for, request, send_from_directory, g
-from app.models import User, Post, Comment, Categories, Styles,Todo
+from app.models import User, Post, Comment, Categories, Styles, Todo
 from app.forms import LoginForm, RegistForm, PostForm, CommentForm, NewCategory, SearchForm, \
-    AuthEmail,ResetPassword
+    AuthEmail, ResetPassword
 from flask_login import current_user, login_user, login_required, logout_user
 import datetime
 from app.token import generate_confirmation_token, confirm_token
@@ -12,7 +12,8 @@ from werkzeug.utils import secure_filename
 from os import path
 import time
 
-#首页
+
+# 首页
 @app.route('/', methods=['POST', 'GET'])
 def index():
     # 记录cookie
@@ -25,14 +26,14 @@ def index():
     posts_ = Post.query.order_by(Post.comment_times.desc()).limit(5)
     todos = None
     if current_user.is_authenticated:
-        todos = Todo.query.filter_by(user_id=current_user.id,status=0)
+        todos = Todo.query.filter_by(user_id=current_user.id, status=0)
     posts = pagination.items
     response = make_response(render_template('index.html',
                                              title='博客首页',
                                              posts_=posts_,
                                              posts=posts,
                                              pagination=pagination,
-                                             todos = todos))
+                                             todos=todos))
     response.set_cookie(key='user', value='name', expires=time.time() + 3600)
     response.set_cookie(key='pass', value='word', expires=time.time() + 3600)
     return response
@@ -40,17 +41,17 @@ def index():
 
 @app.route('/service')
 def service():
-
     posts_ = Post.query.order_by(Post.comment_times.desc()).limit(5)
-    return render_template('service.html', title='服务',posts_=posts_)
+    return render_template('service.html', title='服务', posts_=posts_)
 
 
 @app.route('/about')
 def about():
     posts_ = Post.query.order_by(Post.comment_times.desc()).limit(5)
-    return render_template('about.html', title='关于',posts_=posts_)
+    return render_template('about.html', title='关于', posts_=posts_)
 
-#用户注册
+
+# 用户注册
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     form = RegistForm()
@@ -78,7 +79,8 @@ def register():
         return redirect(url_for('index'))
     return render_template('register.html', form=form, title='用户注册')
 
-#注册邮件确认
+
+# 注册邮件确认
 @app.route('/confirm/<token>')
 @login_required
 def confirm_email(token):
@@ -97,7 +99,8 @@ def confirm_email(token):
         flash('您的账户已激活,谢谢!', 'success')
     return redirect(url_for('index'))
 
-#发送激活邮件
+
+# 发送激活邮件
 @app.route('/active', methods=['POST', 'GET'])
 @login_required
 def active():
@@ -108,9 +111,10 @@ def active():
     subject = "Please confirm your email"
     send_email(user.email, subject, html)
     flash('激活邮件已发送至您的邮箱!')
-    return redirect(url_for('user_index',username=user.username))
+    return redirect(url_for('user_index', username=user.username))
 
-#用户登录
+
+# 用户登录
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     form = LoginForm()
@@ -131,9 +135,10 @@ def login():
         flash('欢迎回来,%s' % current_user.username)
         next_url = request.args.get('next')
         return redirect(next_url or url_for('index'))
-    return render_template('login.html', form=form, title = '用户登录')
+    return render_template('login.html', form=form, title='用户登录')
 
-#用户登出
+
+# 用户登出
 @app.route('/logout')
 @login_required
 def logout():
@@ -158,6 +163,7 @@ def user_index(username):
                            title='%s的后台' % user.username,
                            menu=0)
 
+
 @app.route('/others/<username>', methods=['POST', 'GET'])
 def others(username):
     page_index = request.args.get('page', 1, type=int)
@@ -171,10 +177,11 @@ def others(username):
         pagination = query.paginate(page_index, per_page=10, error_out=False)
         posts = pagination.items
 
-    return render_template('user/others.html', user=user,posts=posts,
+    return render_template('user/others.html', user=user, posts=posts,
                            title='%s的资料' % user.username,
-                           pagination = pagination,posts_=posts_,
+                           pagination=pagination, posts_=posts_,
                            menu=0)
+
 
 @app.route('/user/blogs_manage', methods=['POST', 'GET'])
 @login_required
@@ -188,10 +195,10 @@ def user_blogs_manage():
     posts = pagination.items
 
     return render_template('user/blogs_manage.html',
-                               posts=posts,
-                               pagination=pagination,
-                               title='博客管理',
-                               menu=1)
+                           posts=posts,
+                           pagination=pagination,
+                           title='博客管理',
+                           menu=1)
 
 
 @app.route('/user/bolg_manage/<int:id>/')
@@ -213,10 +220,10 @@ def user_blog_manage(id):
     flash('文章删除成功!')
     return redirect(url_for('user_blogs_manage'))
 
+
 @app.route('/user/comments_manage', methods=['POST', 'GET'])
 @login_required
 def user_comments_manage():
-
     page_index = request.args.get('page', 1, type=int)
 
     query = Comment.query.filter_by(author_id=current_user.id)
@@ -226,10 +233,10 @@ def user_comments_manage():
     comments = pagination.items
 
     return render_template('user/comments_manage.html',
-                               comments=comments,
-                               pagination=pagination,
-                               title='评论管理',
-                               menu=3)
+                           comments=comments,
+                           pagination=pagination,
+                           title='评论管理',
+                           menu=3)
 
 
 @app.route('/user/comment_manage/<int:id>/')
@@ -258,10 +265,11 @@ def user_collects_manage():
     posts = pagination.items
 
     return render_template('user/collects_manage.html',
-                               posts=posts,
-                               pagination=pagination,
-                               title='收藏管理',
-                               menu=2)
+                           posts=posts,
+                           pagination=pagination,
+                           title='收藏管理',
+                           menu=2)
+
 
 @app.route('/user/collect_manage/<int:id>/')
 @login_required
@@ -271,6 +279,7 @@ def user_collect_manage(id):
     flash('取消收藏成功!')
     return redirect(url_for('user_collects_manage'))
 
+
 @app.route('/user/todos_manage', methods=['POST', 'GET'])
 @login_required
 def user_todos_manage():
@@ -279,9 +288,10 @@ def user_todos_manage():
     pagination = query.paginate(page_index, per_page=10, error_out=False)
     todos = pagination.items
     return render_template('user/todos_manage.html', todos=todos,
-                           title = 'TODO管理',menu=4,pagination=pagination,)
+                           title='TODO管理', menu=4, pagination=pagination, )
 
-@app.route('/user/todo_add', methods=['POST','GET' ])
+
+@app.route('/user/todo_add', methods=['POST', 'GET'])
 @login_required
 def todo_add():
     form = request.form
@@ -290,7 +300,7 @@ def todo_add():
         flash('todo内容不能为空!')
         return redirect(url_for('user_todos_manage'))
     else:
-        todo = Todo(content=content,created=datetime.datetime.now(), user_id=current_user.id)
+        todo = Todo(content=content, created=datetime.datetime.now(), user_id=current_user.id)
         db.session.add(todo)
         db.session.commit()
         flash('todo添加成功!')
@@ -308,6 +318,7 @@ def todo_done(id):
     flash('状态修改成功!')
     return redirect(url_for('user_todos_manage'))
 
+
 @app.route('/user/todo_undone/<int:id>')
 @login_required
 def todo_undone(id):
@@ -319,6 +330,7 @@ def todo_undone(id):
     flash('状态修改成功!')
     return redirect(url_for('user_todos_manage'))
 
+
 @app.route('/user/todo_dele/<int:id>')
 @login_required
 def todo_dele(id):
@@ -328,7 +340,8 @@ def todo_dele(id):
     flash('todo删除成功!')
     return redirect(url_for('user_todos_manage'))
 
-#重置密码邮箱确认
+
+# 重置密码邮箱确认
 @app.route('/reset/confirm_email', methods=["GET", "POST"])
 def reset_confirm_email():
     form = AuthEmail()
@@ -340,14 +353,15 @@ def reset_confirm_email():
         else:
             subject = "Password reset confirm email"
             token = generate_confirmation_token(user.email)
-            confirm_url = url_for('reset_password',token=token,_external=True)
+            confirm_url = url_for('reset_password', token=token, _external=True)
             html = render_template('email.html', confirm_url=confirm_url)
             send_email(user.email, subject, html)
             flash('验证邮件已发送至您的邮箱!')
             return redirect(url_for('index'))
-    return render_template('auth_email.html', form=form,title = '邮箱验证')
+    return render_template('auth_email.html', form=form, title='邮箱验证')
 
-#重置密码
+
+# 重置密码
 @app.route('/reset/reset_password/<token>', methods=["GET", "POST"])
 def reset_password(token):
     try:
@@ -364,13 +378,15 @@ def reset_password(token):
         flash('密码修改成功!')
         return redirect(url_for('login'))
     return render_template('reset_password.html', form=form, token=token,
-                           title = '重置密码')
+                           title='重置密码')
+
 
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in app.config['ALLOWED_EXTENSIONS']
 
-#文件上传
+
+# 文件上传
 @app.route('/upload/', methods=['POST', 'GET'])
 @login_required
 def upload():
@@ -392,10 +408,12 @@ def upload():
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
-#文章详情页
+
+# 文章详情页
 @app.route('/post/details/<int:id>', methods=['POST', 'GET'])
 def details(id):
     post = Post.query.get_or_404(id)
+
     post.comment_times = len(post.comments)
     posts_ = Post.query.order_by(Post.comment_times.desc()).limit(5)
     post.read_times += 1
@@ -421,34 +439,40 @@ def details(id):
 
         else:
             flash('登录后才能评论哦!')
-
+    page_index = request.args.get('page', 1, type=int)
+    query = Comment.query.filter_by(post_id=id).order_by(Comment.created.desc())
+    pagination = query.paginate(page_index, per_page=10, error_out=False)
+    comments = pagination.items
     return render_template('details.html',
                            title=post.title,
                            form=form,
                            post=post,
                            posts_=posts_,
                            todos=todos,
+                           pagination=pagination,
+                           comments=comments
                            )
 
 
-#收藏
+# 收藏
 @login_required
 @app.route('/collect/<int:id>')
 def collect(id):
-    post=Post.query.get_or_404(id)
+    post = Post.query.get_or_404(id)
     if current_user.is_authenticated:
         if current_user.collecting(post):
             flash('你已经收藏了这篇文章!')
-            return redirect(url_for('details',id=post.id))
+            return redirect(url_for('details', id=post.id))
     else:
         flash('登录后才能收藏哦!')
         return redirect(url_for('details', id=post.id))
 
     current_user.collect(post)
     flash('收藏成功!')
-    return redirect(url_for('details',id=post.id))
+    return redirect(url_for('details', id=post.id))
 
-#取消收藏
+
+# 取消收藏
 @login_required
 @app.route('/uncollect/<int:id>')
 def uncollect(id):
@@ -459,7 +483,6 @@ def uncollect(id):
     current_user.uncollect(post)
     flash('取消收藏成功!')
     return redirect(url_for('details', id=post.id))
-
 
 
 # 发表/修改文章
@@ -509,8 +532,9 @@ def edit(id=0):
 
 @app.route('/hot_posts/')
 def hot_posts():
-    posts = Post.query.order_by(Post.read_times.desc()).limit(3)
+    # posts = Post.query.order_by(Post.read_times.desc()).limit(3)
     return render_template('includes/_hot_posts.html')
+
 
 # 搜索
 @app.before_request
@@ -533,25 +557,27 @@ def search_results(query):
     return render_template('search_results.html',
                            query=query,
                            results=results,
-                           title = '%s的搜索结果' % query)
+                           title='%s的搜索结果' % query)
 
 
 '''后台管理部分'''
 
-#管理员后台首页
+
+# 管理员后台首页
 @app.route('/admin')
 @login_required
 def admin_index():
     if current_user.role == 0:
         flash('您没有管理员权限!')
         return render_template('user/user_index.html', user=current_user,
-                               title = '用户首页')
+                               title='用户首页')
 
     else:
         return render_template('admin/admin_index.html', title='管理员后台',
                                menu=0)
 
-#文章分类管理
+
+# 文章分类管理
 @app.route('/admin/new_category', methods=['POST', 'GET'])
 @login_required
 def new_category():
@@ -567,6 +593,7 @@ def new_category():
     return render_template('admin/new_category.html',
                            categories=categories,
                            form=form, menu=4, title='分类管理')
+
 
 # 用户管理
 @app.route('/admin/users_manage', methods=['POST', 'GET'])
@@ -588,7 +615,8 @@ def users_manage():
                                pagination=pagination,
                                title='用户管理', menu=1)
 
-#博客管理
+
+# 博客管理
 @app.route('/admin/blogs_manage', methods=['POST', 'GET'])
 @login_required
 def blogs_manage():
@@ -608,6 +636,7 @@ def blogs_manage():
                                pagination=pagination,
                                title='博客管理',
                                menu=2)
+
 
 # 评论管理
 @app.route('/admin/comments_manage', methods=['POST', 'GET'])
@@ -739,4 +768,4 @@ def user_id(uid):
 
 @app.errorhandler(404)
 def page_not_found(error):
-    return render_template('404.html',title = '404'), 404
+    return render_template('404.html', title='404'), 404

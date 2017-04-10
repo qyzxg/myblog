@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% from "bootstrap/pagination.html" import render_pagination %}
+
+
 {% block title %}{{ title|safe }}{% endblock %}
 
 
@@ -73,24 +75,16 @@
                             class="badge"><strong>{{ post.category }}</strong></span></span>
                 </div>
             </div>
-
         </div>
-
-
-
-
-
-
-
     {% endfor %}
+
 
     {% if pagination %}
         {{ render_pagination(pagination) }}
     {% endif %}
-
-
-
 {% endblock %}
+
+
 {% block right_content %}
 {% if current_user.is_anonymous %}
     <br>
@@ -105,8 +99,6 @@
 
 
 
-{#{% block footer %}#}
-{#    <hr>#}
-{#    {{ super() }}#}
-{#{% endblock %}#}
+{% block footer %}
 
+{% endblock %}

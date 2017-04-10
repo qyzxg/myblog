@@ -52,7 +52,10 @@
 
 
 {% block footer %}
-    <footer>
-        copyright 2017 by <a href="www.baidu.com">qyzxg</a>
-    </footer>
+    {{ super() }}
+    <div class="col-md-1 col-sm-1"></div>
+	<div class="col-md-12 col-sm-12">
+		<p>Copyright &copy; 2084 myblog.
+             | Design: <a rel="nofollow" href="http://www.51datas.com" target="_parent">myblog</a></p>
+	</div>
 {% endblock %}

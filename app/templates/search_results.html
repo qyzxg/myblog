@@ -10,6 +10,9 @@
         </div>
     {% endfor %}
 
+    {% if not results %}
+    <h3>"{{ query }}"&nbsp;没有搜索到哦,&nbsp;换个词试试吧!</h3>
+    {% else %}
     <h3> "{{ query }}"的搜索结果:</h3>
 
     {% for post in results|sort(attribute='read_times',reverse=True ) %}
@@ -51,4 +54,5 @@
             </div>
         </div>
     {% endfor %}
+    {% endif %}
 {% endblock %}

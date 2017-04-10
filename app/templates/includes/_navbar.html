@@ -41,7 +41,7 @@
             </form>
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated %}
-                    <li><a href="{{  url_for('.user_index', username = current_user.username)}}"><img src="{{ current_user.avatar }}" class="img-circle" width="32px" height="32px"></a></li>
+                    <li><a href="{{  url_for('.user_index', username = current_user.username)}}"><img src="{{ current_user.avatar }}" class="img-circle" width="21px" height="21px"></a></li>
                     <li><a href="{{  url_for('.user_index', username = current_user.username)}}"><strong>{{ current_user.username }}</strong></a></li>
                     <li><a href="{{ url_for('.logout') }}"><strong>退出</strong></a></li>
                 {% else %}

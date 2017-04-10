@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% from "bootstrap/pagination.html" import render_pagination %}
+
 {% block title %}{{ title|safe }}{% endblock %}
 {% block left_content %}
     {% for message in get_flashed_messages() %}
@@ -68,31 +69,37 @@
 
     </div>
     {# 评论列表 #}
-
+    <br>
+    <br>
+    <h3>评论列表:</h3>
     <div>
-        {% for comment in post.comments|sort(attribute='created',reverse=True ) %}
-            <div class="media">
-                <div class="media-left">
+        {% for comment in comments|sort(attribute='created',reverse=True ) %}
+            <div id='article-entry' class="entry-box">
+                <div class="media media-left">
 
                     <img class="media-object img-circle" src="{{ comment.author.avatar }}" class="img-circle"
                          width="32px" height="32px">
 
                 </div>
-                <div class="media-body">
-                    <small class="text-muted">
+                <div class="media media-body">
+                    <span >
                         {% if current_user.id == comment.author_id %}
-                            <a href="{{ url_for('.user_index', username = comment.author.username) }}">{{ comment.author.username }}</a>
+                            <a href="{{ url_for('.user_index', username = comment.author.username) }}">{{ comment.author.username }}&nbsp;</a>
                         {% else %}
-                            <a href="{{ url_for('.others', username = comment.author.username) }}">{{ comment.author.username }}</a>
+                            <a href="{{ url_for('.others', username = comment.author.username) }}">{{ comment.author.username }}&nbsp;</a>
                         {% endif %}
-                    </small>
-                    <small class="text-muted">{{ comment.created }}</small>
-                    <div>{{ comment.body }}</div>
+                    </span>
+                    <small > @ {{ comment.created.strftime('%Y-%m-%d %H:%M') }}&nbsp;: </small>
+                    <span>{{ comment.body }}</span>
 
                 </div>
             </div>
+
         {% endfor %}
     </div>
+    {% if pagination %}
+        {{ render_pagination(pagination) }}
+    {% endif %}
 {% endblock %}
 {% block right_content %}
     {% if current_user.is_anonymous %}
