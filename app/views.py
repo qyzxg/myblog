@@ -615,7 +615,7 @@ def search():
 
 
 @app.route('/search_results/<query>', methods=['POST', 'GET'])
-# @login_required
+
 def search_results(query):
     results = Post.query.whoosh_search(query, app.config['MAX_SEARCH_RESULTS']).all()
     return render_template('search_results.html',
@@ -822,12 +822,14 @@ def role_manage(id, role):
             user.role = 0
         return redirect(url_for('users_manage'))
 
+
 # 错误处理页面
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('404.html', title=u'页面未找到'), 404
 
-# @app.errorhandler(500)
-# def internal_error(error):
-#     db.session.rollback()
-#     return render_template('500.html', title=u'服务器错误'), 500
+
+@app.errorhandler(500)
+def internal_error(error):
+    db.session.rollback()
+    return render_template('500.html', title=u'服务器错误'), 500

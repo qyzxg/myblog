@@ -6,7 +6,7 @@ Style with support for rainbow parens
 
 .hljs {
   display: block; padding: 0.5em;
-  background: rgba(43,62,80,0.5); color: #D1D9E1;
+  background: #474949; color: #D1D9E1;
 }
 
 
