@@ -6,6 +6,16 @@ import flask_whooshalchemyplus as whoosh
 from jieba.analyse import ChineseAnalyzer
 import re
 
+follow = db.Table('followers',
+    db.Column('follower_id', db.Integer, db.ForeignKey('users.id')),
+    db.Column('followed_id', db.Integer, db.ForeignKey('users.id'))
+)
+
+collect = db.Table('collects',
+    db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
+    db.Column('post_id', db.Integer, db.ForeignKey('posts.id'))
+)
+
 
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
@@ -25,9 +35,16 @@ class User(UserMixin, db.Model):
     comments = db.relationship('Comment', backref='author')
     post_total = db.Column(db.Integer, default=0)
     role = db.Column(db.Integer, default=0)
-    collects = db.relationship('Post', secondary='collects', backref=db.backref('collected', lazy='dynamic'),
+    collects = db.relationship('Post', secondary=collect, backref=db.backref('collected', lazy='dynamic'),
                                lazy='dynamic')
     todos = db.relationship('Todo', backref='user')
+    followed = db.relationship('User',
+                               secondary=follow,
+                               primaryjoin=id == follow.c.follower_id,
+                               secondaryjoin=id == follow.c.followed_id,
+                               backref=db.backref('followers', lazy='dynamic'),
+                               lazy='dynamic')
+
     def set_password(self, password):
         self.password = generate_password_hash(password)
 
@@ -48,7 +65,7 @@ class User(UserMixin, db.Model):
         else:
             return '用户'
 
-            # 收藏/取消收藏
+    # 收藏/取消收藏
 
     def collect(self, post):
         if not self.collecting(post):
@@ -68,6 +85,25 @@ class User(UserMixin, db.Model):
     def collected_posts(self):
         return Post.query.join(collect, (collect.c.post_id == Post.id)).filter(
             collect.c.user_id == self.id).order_by(Post.created.desc())
+
+
+    #关注/取消关注
+    def follow(self, user):
+        if not self.following(user):
+            self.followed.append(user)
+            return self
+
+    def unfollow(self, user):
+        if self.following(user):
+            self.followed.remove(user)
+            return self
+
+    def following(self, user):
+        return self.followed.filter(follow.c.followed_id == user.id).count() > 0
+
+    def followed_users(self):
+        return User.query.join(follow, (follow.c.followed_id == User.id)).filter(
+            follow.c.follower_id == self.id).order_by(User.post_total.desc())
 
     def __repr__(self):
         return '<User %r>' % self.username
@@ -104,7 +140,6 @@ class Post(db.Model):
         return self.post_img
 
 
-
 whoosh.whoosh_index(app, Post)
 
 
@@ -139,12 +174,10 @@ class Todo(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     def get_status(self):
-        if self.status ==0:
+        if self.status == 0:
             return '未完成'
         else:
             return '已完成'
 
-collect = db.Table('collects',
-    db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
-    db.Column('post_id', db.Integer, db.ForeignKey('posts.id'))
-)
+
+

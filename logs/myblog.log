@@ -7,3 +7,853 @@
 2017-04-11 08:50:30,348 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
 2017-04-11 08:50:30,348 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
 2017-04-11 08:50:30,348 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 09:05:05,873 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 09:05:05,873 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 09:05:05,873 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 09:05:05,873 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 09:07:20,460 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 09:07:20,460 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 09:07:20,460 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 09:07:20,460 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 09:07:35,736 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 09:07:35,736 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 09:07:35,736 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 09:07:35,736 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 09:34:14,776 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 09:34:14,776 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 09:34:14,776 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 09:34:14,777 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 09:34:17,596 ERROR: Exception on /others/admin [GET] [in C:\Program Files\Anaconda3\lib\site-packages\flask\app.py:1587]
+Traceback (most recent call last):
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\relationships.py", line 2038, in _determine_joins
+    consider_as_foreign_keys=consider_as_foreign_keys
+  File "<string>", line 2, in join_condition
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\sql\selectable.py", line 828, in _join_condition
+    a, b, constraints, consider_as_foreign_keys)
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\sql\selectable.py", line 918, in _joincond_trim_constraints
+    "join explicitly." % (a.description, b.description))
+sqlalchemy.exc.AmbiguousForeignKeysError: Can't determine join between 'users' and 'followers'; tables have more than one foreign key constraint relationship between them. Please specify the 'onclause' of this join explicitly.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "E:/MyProject/myblog\app\views.py", line 170, in others
+    posts_ = Post.query.order_by(Post.comment_times.desc()).limit(5)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask_sqlalchemy\__init__.py", line 498, in __get__
+    mapper = orm.class_mapper(type)
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\base.py", line 421, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\base.py", line 400, in _inspect_mapped_class
+    mapper._configure_all()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\mapper.py", line 1167, in _configure_all
+    configure_mappers()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\mapper.py", line 2770, in configure_mappers
+    mapper._post_configure_properties()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\mapper.py", line 1710, in _post_configure_properties
+    prop.init()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\interfaces.py", line 183, in init
+    self.do_init()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\relationships.py", line 1629, in do_init
+    self._setup_join_conditions()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\relationships.py", line 1704, in _setup_join_conditions
+    can_be_synced_fn=self._columns_are_mapped
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\relationships.py", line 1972, in __init__
+    self._determine_joins()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\relationships.py", line 2089, in _determine_joins
+    % (self.prop, self.secondary))
+sqlalchemy.exc.AmbiguousForeignKeysError: Could not determine join condition between parent/child tables on relationship User.followed - there are multiple foreign key paths linking the tables via secondary table 'followers'.  Specify the 'foreign_keys' argument, providing a list of those columns which should be counted as containing a foreign key reference from the secondary table to each of the parent and child tables.
+2017-04-11 09:34:20,190 ERROR: Exception on / [GET] [in C:\Program Files\Anaconda3\lib\site-packages\flask\app.py:1587]
+Traceback (most recent call last):
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "E:/MyProject/myblog\app\views.py", line 23, in index
+    query = Post.query.order_by(Post.read_times.desc())
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask_sqlalchemy\__init__.py", line 498, in __get__
+    mapper = orm.class_mapper(type)
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\base.py", line 421, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\base.py", line 400, in _inspect_mapped_class
+    mapper._configure_all()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\mapper.py", line 1167, in _configure_all
+    configure_mappers()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\mapper.py", line 2767, in configure_mappers
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers.  Original exception was: Could not determine join condition between parent/child tables on relationship User.followed - there are multiple foreign key paths linking the tables via secondary table 'followers'.  Specify the 'foreign_keys' argument, providing a list of those columns which should be counted as containing a foreign key reference from the secondary table to each of the parent and child tables.
+2017-04-11 09:34:21,202 ERROR: Exception on / [GET] [in C:\Program Files\Anaconda3\lib\site-packages\flask\app.py:1587]
+Traceback (most recent call last):
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "E:/MyProject/myblog\app\views.py", line 23, in index
+    query = Post.query.order_by(Post.read_times.desc())
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask_sqlalchemy\__init__.py", line 498, in __get__
+    mapper = orm.class_mapper(type)
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\base.py", line 421, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\base.py", line 400, in _inspect_mapped_class
+    mapper._configure_all()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\mapper.py", line 1167, in _configure_all
+    configure_mappers()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\mapper.py", line 2767, in configure_mappers
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers.  Original exception was: Could not determine join condition between parent/child tables on relationship User.followed - there are multiple foreign key paths linking the tables via secondary table 'followers'.  Specify the 'foreign_keys' argument, providing a list of those columns which should be counted as containing a foreign key reference from the secondary table to each of the parent and child tables.
+2017-04-11 09:34:22,035 ERROR: Exception on / [GET] [in C:\Program Files\Anaconda3\lib\site-packages\flask\app.py:1587]
+Traceback (most recent call last):
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "E:/MyProject/myblog\app\views.py", line 23, in index
+    query = Post.query.order_by(Post.read_times.desc())
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask_sqlalchemy\__init__.py", line 498, in __get__
+    mapper = orm.class_mapper(type)
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\base.py", line 421, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\base.py", line 400, in _inspect_mapped_class
+    mapper._configure_all()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\mapper.py", line 1167, in _configure_all
+    configure_mappers()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\mapper.py", line 2767, in configure_mappers
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers.  Original exception was: Could not determine join condition between parent/child tables on relationship User.followed - there are multiple foreign key paths linking the tables via secondary table 'followers'.  Specify the 'foreign_keys' argument, providing a list of those columns which should be counted as containing a foreign key reference from the secondary table to each of the parent and child tables.
+2017-04-11 09:34:22,634 ERROR: Exception on / [GET] [in C:\Program Files\Anaconda3\lib\site-packages\flask\app.py:1587]
+Traceback (most recent call last):
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "E:/MyProject/myblog\app\views.py", line 23, in index
+    query = Post.query.order_by(Post.read_times.desc())
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask_sqlalchemy\__init__.py", line 498, in __get__
+    mapper = orm.class_mapper(type)
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\base.py", line 421, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\base.py", line 400, in _inspect_mapped_class
+    mapper._configure_all()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\mapper.py", line 1167, in _configure_all
+    configure_mappers()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\mapper.py", line 2767, in configure_mappers
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers.  Original exception was: Could not determine join condition between parent/child tables on relationship User.followed - there are multiple foreign key paths linking the tables via secondary table 'followers'.  Specify the 'foreign_keys' argument, providing a list of those columns which should be counted as containing a foreign key reference from the secondary table to each of the parent and child tables.
+2017-04-11 09:34:23,380 ERROR: Exception on / [GET] [in C:\Program Files\Anaconda3\lib\site-packages\flask\app.py:1587]
+Traceback (most recent call last):
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "E:/MyProject/myblog\app\views.py", line 23, in index
+    query = Post.query.order_by(Post.read_times.desc())
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask_sqlalchemy\__init__.py", line 498, in __get__
+    mapper = orm.class_mapper(type)
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\base.py", line 421, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\base.py", line 400, in _inspect_mapped_class
+    mapper._configure_all()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\mapper.py", line 1167, in _configure_all
+    configure_mappers()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\mapper.py", line 2767, in configure_mappers
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers.  Original exception was: Could not determine join condition between parent/child tables on relationship User.followed - there are multiple foreign key paths linking the tables via secondary table 'followers'.  Specify the 'foreign_keys' argument, providing a list of those columns which should be counted as containing a foreign key reference from the secondary table to each of the parent and child tables.
+2017-04-11 09:47:38,640 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 09:47:38,640 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 09:47:38,640 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 09:47:38,640 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 09:47:53,822 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 09:47:53,822 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 09:47:53,822 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 09:47:53,823 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 09:49:02,463 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 09:49:02,463 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 09:49:02,464 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 09:49:02,464 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 09:49:14,502 ERROR: Exception on / [GET] [in C:\Program Files\Anaconda3\lib\site-packages\flask\app.py:1587]
+Traceback (most recent call last):
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\ext\declarative\clsregistry.py", line 281, in __call__
+    x = eval(self.arg, globals(), self._dict)
+  File "<string>", line 1, in <module>
+NameError: name 'follow' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "E:/MyProject/myblog\app\views.py", line 23, in index
+    query = Post.query.order_by(Post.read_times.desc())
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask_sqlalchemy\__init__.py", line 498, in __get__
+    mapper = orm.class_mapper(type)
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\base.py", line 421, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\base.py", line 400, in _inspect_mapped_class
+    mapper._configure_all()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\mapper.py", line 1167, in _configure_all
+    configure_mappers()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\mapper.py", line 2770, in configure_mappers
+    mapper._post_configure_properties()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\mapper.py", line 1710, in _post_configure_properties
+    prop.init()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\interfaces.py", line 183, in init
+    self.do_init()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\relationships.py", line 1628, in do_init
+    self._process_dependent_arguments()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\relationships.py", line 1653, in _process_dependent_arguments
+    setattr(self, attr, attr_value())
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\ext\declarative\clsregistry.py", line 293, in __call__
+    (self.prop.parent, self.arg, n.args[0], self.cls)
+sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper|User|users, expression 'follow.c.follower_id == id' failed to locate a name ("name 'follow' is not defined"). If this is a class name, consider adding this relationship() to the <class 'app.models.User'> class after both dependent classes have been defined.
+2017-04-11 09:49:39,890 ERROR: Exception on / [GET] [in C:\Program Files\Anaconda3\lib\site-packages\flask\app.py:1587]
+Traceback (most recent call last):
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "E:/MyProject/myblog\app\views.py", line 23, in index
+    query = Post.query.order_by(Post.read_times.desc())
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask_sqlalchemy\__init__.py", line 498, in __get__
+    mapper = orm.class_mapper(type)
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\base.py", line 421, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\base.py", line 400, in _inspect_mapped_class
+    mapper._configure_all()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\mapper.py", line 1167, in _configure_all
+    configure_mappers()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\mapper.py", line 2767, in configure_mappers
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers.  Original exception was: When initializing mapper Mapper|User|users, expression 'follow.c.follower_id == id' failed to locate a name ("name 'follow' is not defined"). If this is a class name, consider adding this relationship() to the <class 'app.models.User'> class after both dependent classes have been defined.
+2017-04-11 09:49:39,899 ERROR: Exception on / [GET] [in C:\Program Files\Anaconda3\lib\site-packages\flask\app.py:1587]
+Traceback (most recent call last):
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "E:/MyProject/myblog\app\views.py", line 23, in index
+    query = Post.query.order_by(Post.read_times.desc())
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask_sqlalchemy\__init__.py", line 498, in __get__
+    mapper = orm.class_mapper(type)
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\base.py", line 421, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\base.py", line 400, in _inspect_mapped_class
+    mapper._configure_all()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\mapper.py", line 1167, in _configure_all
+    configure_mappers()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\mapper.py", line 2767, in configure_mappers
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers.  Original exception was: When initializing mapper Mapper|User|users, expression 'follow.c.follower_id == id' failed to locate a name ("name 'follow' is not defined"). If this is a class name, consider adding this relationship() to the <class 'app.models.User'> class after both dependent classes have been defined.
+2017-04-11 09:49:41,612 ERROR: Exception on / [GET] [in C:\Program Files\Anaconda3\lib\site-packages\flask\app.py:1587]
+Traceback (most recent call last):
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "E:/MyProject/myblog\app\views.py", line 23, in index
+    query = Post.query.order_by(Post.read_times.desc())
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask_sqlalchemy\__init__.py", line 498, in __get__
+    mapper = orm.class_mapper(type)
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\base.py", line 421, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\base.py", line 400, in _inspect_mapped_class
+    mapper._configure_all()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\mapper.py", line 1167, in _configure_all
+    configure_mappers()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\mapper.py", line 2767, in configure_mappers
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers.  Original exception was: When initializing mapper Mapper|User|users, expression 'follow.c.follower_id == id' failed to locate a name ("name 'follow' is not defined"). If this is a class name, consider adding this relationship() to the <class 'app.models.User'> class after both dependent classes have been defined.
+2017-04-11 09:51:13,285 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 09:51:13,285 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 09:51:13,286 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 09:51:13,286 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 09:51:22,186 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 09:51:22,187 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 09:51:22,187 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 09:51:22,187 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 09:51:31,872 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 09:51:31,872 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 09:51:31,872 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 09:51:31,872 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 09:51:37,470 ERROR: Exception on / [GET] [in C:\Program Files\Anaconda3\lib\site-packages\flask\app.py:1587]
+Traceback (most recent call last):
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "E:/MyProject/myblog\app\views.py", line 23, in index
+    query = Post.query.order_by(Post.read_times.desc())
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask_sqlalchemy\__init__.py", line 498, in __get__
+    mapper = orm.class_mapper(type)
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\base.py", line 421, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\base.py", line 400, in _inspect_mapped_class
+    mapper._configure_all()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\mapper.py", line 1167, in _configure_all
+    configure_mappers()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\mapper.py", line 2770, in configure_mappers
+    mapper._post_configure_properties()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\mapper.py", line 1710, in _post_configure_properties
+    prop.init()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\interfaces.py", line 183, in init
+    self.do_init()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\relationships.py", line 1629, in do_init
+    self._setup_join_conditions()
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\relationships.py", line 1704, in _setup_join_conditions
+    can_be_synced_fn=self._columns_are_mapped
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\relationships.py", line 1977, in __init__
+    self._check_foreign_cols(self.primaryjoin, True)
+  File "C:\Program Files\Anaconda3\lib\site-packages\sqlalchemy\orm\relationships.py", line 2490, in _check_foreign_cols
+    raise sa_exc.ArgumentError(err)
+sqlalchemy.exc.ArgumentError: Could not locate any simple equality expressions involving locally mapped foreign key columns for primary join condition 'followers.follower_id = :follower_id_1' on relationship User.followed.  Ensure that referencing columns are associated with a ForeignKey or ForeignKeyConstraint, or are annotated in the join condition with the foreign() annotation. To allow comparison operators other than '==', the relationship can be marked as viewonly=True.
+2017-04-11 10:03:33,346 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 10:03:33,346 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 10:03:33,346 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 10:03:33,347 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 10:04:15,619 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 10:04:15,619 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 10:04:15,619 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 10:04:15,620 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 10:04:58,315 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 10:04:58,315 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 10:04:58,316 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 10:04:58,316 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 10:05:05,255 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 10:05:05,256 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 10:05:05,256 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 10:05:05,256 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 10:07:05,464 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 10:07:05,464 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 10:07:05,464 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 10:07:05,464 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 10:07:17,549 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 10:07:17,549 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 10:07:17,549 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 10:07:17,550 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 10:07:24,529 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 10:07:24,529 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 10:07:24,529 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 10:07:24,529 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 10:15:50,458 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 10:15:50,458 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 10:15:50,458 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 10:15:50,458 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 10:15:58,132 ERROR: Exception on /follow/admin [GET] [in C:\Program Files\Anaconda3\lib\site-packages\flask\app.py:1587]
+Traceback (most recent call last):
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "E:/MyProject/myblog\app\views.py", line 496, in follow
+    if user == g.user:
+  File "C:\Program Files\Anaconda3\lib\site-packages\werkzeug\local.py", line 343, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: '_AppCtxGlobals' object has no attribute 'user'
+2017-04-11 10:18:43,527 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 10:18:43,528 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 10:18:43,528 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 10:18:43,528 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 10:18:51,196 ERROR: Exception on /follow/admin [GET] [in C:\Program Files\Anaconda3\lib\site-packages\flask\app.py:1587]
+Traceback (most recent call last):
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "E:/MyProject/myblog\app\views.py", line 499, in follow
+    u = current_user.follow(user)
+  File "C:\Program Files\Anaconda3\lib\site-packages\werkzeug\local.py", line 343, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'AnonymousUserMixin' object has no attribute 'follow'
+2017-04-11 10:19:46,246 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 10:19:46,246 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 10:19:46,246 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 10:19:46,246 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 10:21:41,455 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 10:21:41,455 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 10:21:41,455 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 10:21:41,456 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 10:22:08,187 ERROR: Exception on /unfollow/admin [GET] [in C:\Program Files\Anaconda3\lib\site-packages\flask\app.py:1587]
+Traceback (most recent call last):
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1642, in full_dispatch_request
+    response = self.make_response(rv)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1731, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response
+2017-04-11 10:22:40,183 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 10:22:40,183 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 10:22:40,183 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 10:22:40,184 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 10:26:03,886 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 10:26:03,887 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 10:26:03,887 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 10:26:03,887 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 10:50:36,552 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 10:50:36,552 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 10:50:36,553 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 10:50:36,553 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 10:50:43,741 ERROR: Exception on /user/followers_manage [GET] [in C:\Program Files\Anaconda3\lib\site-packages\flask\app.py:1587]
+Traceback (most recent call last):
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask_login\utils.py", line 228, in decorated_view
+    return func(*args, **kwargs)
+  File "E:/MyProject/myblog\app\views.py", line 278, in user_followers_manage
+    query = user.followed_users()
+  File "E:/MyProject/myblog\app\models.py", line 105, in followed_users
+    return Post.query.join(follow, (follow.c.followed_id == Post.user_id)).filter(
+AttributeError: type object 'Post' has no attribute 'user_id'
+2017-04-11 10:55:42,550 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 10:55:42,551 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 10:55:42,551 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 10:55:42,551 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 10:58:23,714 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 10:58:23,715 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 10:58:23,715 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 10:58:23,715 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 10:59:49,943 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 10:59:49,943 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 10:59:49,943 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 10:59:49,944 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 11:01:10,142 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 11:01:10,142 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 11:01:10,143 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 11:01:10,143 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 11:02:42,541 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 11:02:42,541 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 11:02:42,541 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 11:02:42,542 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 11:02:45,875 ERROR: Exception on /user/followers_manage [GET] [in C:\Program Files\Anaconda3\lib\site-packages\flask\app.py:1587]
+Traceback (most recent call last):
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask_login\utils.py", line 228, in decorated_view
+    return func(*args, **kwargs)
+  File "E:/MyProject/myblog\app\views.py", line 287, in user_followers_manage
+    menu=5)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\templating.py", line 134, in render_template
+    context, ctx.app)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\templating.py", line 116, in _render
+    rv = template.render(context)
+  File "C:\Program Files\Anaconda3\lib\site-packages\jinja2\environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "C:\Program Files\Anaconda3\lib\site-packages\jinja2\environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Program Files\Anaconda3\lib\site-packages\jinja2\_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "E:\MyProject\myblog\app\templates\user\followers_manage.html", line 2, in top-level template code
+    {% from "bootstrap/pagination.html" import render_pagination %}
+  File "E:\MyProject\myblog\app\templates\user\base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "E:\MyProject\myblog\app\templates\user\base.html", line 64, in block "content"
+    {% block right_content %}
+  File "E:\MyProject\myblog\app\templates\user\followers_manage.html", line 62, in block "right_content"
+    <td><a href="{{ url_for('.user_follower_manage',username=follower.username) }}" class="btn btn-danger">取消</a>
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\helpers.py", line 332, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\app.py", line 1811, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Program Files\Anaconda3\lib\site-packages\flask\helpers.py", line 322, in url_for
+    force_external=external)
+  File "C:\Program Files\Anaconda3\lib\site-packages\werkzeug\routing.py", line 1758, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'user_follower_manage' with values ['username']. Did you mean 'user_followers_manage' instead?
+2017-04-11 11:04:06,911 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 11:04:06,911 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 11:04:06,911 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 11:04:06,911 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 11:08:25,977 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 11:08:25,977 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 11:08:25,977 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 11:08:25,977 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 11:08:29,666 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 11:08:29,666 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 11:08:29,666 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 11:08:29,666 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 11:11:08,845 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 11:11:08,845 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 11:11:08,846 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 11:11:08,846 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 11:11:12,337 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 11:11:12,338 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 11:11:12,338 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 11:11:12,338 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 11:18:32,818 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 11:18:32,818 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 11:18:32,819 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 11:18:32,819 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 11:18:36,552 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 11:18:36,552 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 11:18:36,553 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 11:18:36,553 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 11:18:57,227 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 11:18:57,228 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 11:18:57,228 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 11:18:57,228 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 11:19:01,007 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 11:19:01,007 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 11:19:01,007 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 11:19:01,007 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 11:22:43,250 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 11:22:43,250 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 11:22:43,250 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 11:22:43,251 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 11:22:46,783 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 11:22:46,784 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 11:22:46,784 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 11:22:46,784 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 11:23:01,706 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 11:23:01,707 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 11:23:01,707 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 11:23:01,707 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 11:23:05,305 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 11:23:05,306 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 11:23:05,306 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 11:23:05,306 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 11:23:35,436 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 11:23:35,436 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 11:23:35,436 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 11:23:35,437 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 11:23:38,632 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 11:23:38,633 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 11:23:38,633 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 11:23:38,633 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 11:26:21,896 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 11:26:21,896 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 11:26:21,896 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 11:26:21,897 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 11:26:25,252 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 11:26:25,252 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 11:26:25,252 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 11:26:25,252 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 11:31:55,852 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 11:31:55,852 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 11:31:55,852 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 11:31:55,852 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 11:31:59,297 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 11:31:59,297 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 11:31:59,297 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 11:31:59,298 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 11:32:23,898 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 11:32:23,898 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 11:32:23,898 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 11:32:23,898 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 11:33:16,018 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 11:33:16,018 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 11:33:16,018 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 11:33:16,018 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 11:33:19,457 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 11:33:19,457 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 11:33:19,457 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 11:33:19,457 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 11:34:19,039 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 11:34:19,039 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 11:34:19,039 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 11:34:19,040 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 11:34:22,744 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 11:34:22,744 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 11:34:22,744 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 11:34:22,745 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 11:36:37,585 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 11:36:37,585 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 11:36:37,585 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 11:36:37,585 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 11:36:40,973 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 11:36:40,974 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 11:36:40,974 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 11:36:40,974 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 11:38:53,121 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 11:38:53,121 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 11:38:53,121 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 11:38:53,121 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 11:38:56,377 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 11:38:56,377 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 11:38:56,378 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 11:38:56,378 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 11:44:12,521 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 11:44:12,522 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 11:44:12,522 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 11:44:12,522 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 11:44:15,825 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 11:44:15,825 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 11:44:15,826 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 11:44:15,826 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 11:53:27,318 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 11:53:27,318 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 11:53:27,318 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 11:53:27,318 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 11:53:30,759 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 11:53:30,760 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 11:53:30,760 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 11:53:30,760 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 11:55:13,978 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 11:55:13,978 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 11:55:13,978 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 11:55:13,979 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 11:55:17,300 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 11:55:17,301 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 11:55:17,301 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 11:55:17,301 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 12:00:18,592 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 12:00:18,592 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 12:00:18,592 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 12:00:18,593 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 12:01:24,839 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 12:01:24,839 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 12:01:24,840 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 12:01:24,840 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 12:01:28,282 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 12:01:28,282 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 12:01:28,282 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 12:01:28,282 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 12:09:42,292 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 12:09:42,292 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 12:09:42,292 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 12:09:42,292 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 12:09:45,769 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 12:09:45,770 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 12:09:45,770 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 12:09:45,770 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 12:14:38,373 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 12:14:38,374 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 12:14:38,374 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 12:14:38,374 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 12:14:41,756 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 12:14:41,756 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 12:14:41,756 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 12:14:41,756 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 12:15:50,642 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 12:15:50,643 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 12:15:50,643 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 12:15:50,643 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 12:15:53,854 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 12:15:53,854 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 12:15:53,854 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 12:15:53,855 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 12:16:37,412 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 12:16:37,413 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 12:16:37,413 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 12:16:37,413 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 12:16:41,032 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 12:16:41,033 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 12:16:41,033 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 12:16:41,033 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 12:17:14,232 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 12:17:14,233 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 12:17:14,233 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 12:17:14,233 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 12:17:18,522 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 12:17:18,523 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 12:17:18,523 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 12:17:18,523 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 12:17:41,455 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 12:17:41,455 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 12:17:41,455 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 12:17:41,456 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 12:17:44,960 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 12:17:44,961 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 12:17:44,961 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 12:17:44,961 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 12:27:03,235 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 12:27:03,235 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 12:27:03,235 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 12:27:03,236 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 12:27:06,561 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 12:27:06,561 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 12:27:06,561 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 12:27:06,561 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 12:27:48,434 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 12:27:48,434 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 12:27:48,434 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 12:27:48,435 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 12:27:51,935 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 12:27:51,935 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 12:27:51,935 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 12:27:51,935 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 12:29:35,269 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 12:29:35,270 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 12:29:35,270 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 12:29:35,270 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 12:29:39,352 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 12:29:39,353 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 12:29:39,353 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 12:29:39,354 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 12:31:08,365 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 12:31:08,365 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 12:31:08,365 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 12:31:08,365 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 12:31:12,290 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 12:31:12,290 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 12:31:12,291 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 12:31:12,291 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 12:32:44,344 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 12:32:44,344 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 12:32:44,344 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 12:32:44,344 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 12:32:48,285 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 12:32:48,286 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 12:32:48,286 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 12:32:48,286 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 12:36:43,717 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 12:36:43,718 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 12:36:43,718 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 12:36:43,718 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 12:36:46,962 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 12:36:46,963 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 12:36:46,963 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 12:36:46,963 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 12:37:18,004 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 12:37:18,004 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 12:37:18,004 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 12:37:18,004 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 12:37:21,443 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 12:37:21,443 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 12:37:21,443 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 12:37:21,443 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]
+2017-04-11 12:38:18,516 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 12:38:18,516 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 12:38:18,516 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 12:38:18,517 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 12:38:22,645 INFO: 程序启动: [in E:\MyProject\myblog\app\__init__.py:36]
+2017-04-11 12:38:22,645 WARNING: 警告信息: [in E:\MyProject\myblog\app\__init__.py:38]
+2017-04-11 12:38:22,646 ERROR: 错误信息: [in E:\MyProject\myblog\app\__init__.py:39]
+2017-04-11 12:38:22,646 CRITICAL: 严重错误: [in E:\MyProject\myblog\app\__init__.py:40]

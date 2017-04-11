@@ -270,6 +270,22 @@ def user_collects_manage():
                            title='收藏管理',
                            menu=2)
 
+@app.route('/user/followers_manage', methods=['POST', 'GET'])
+@login_required
+def user_followers_manage():
+    page_index = request.args.get('page', 1, type=int)
+    user = current_user
+    query = user.followed_users()
+    pagination = query.paginate(page_index, per_page=10, error_out=False)
+
+    followers = pagination.items
+
+    return render_template('user/followers_manage.html',
+                           followers=followers,
+                           pagination=pagination,
+                           title='好友管理',
+                           menu=5)
+
 
 @app.route('/user/collect_manage/<int:id>/')
 @login_required
@@ -279,6 +295,13 @@ def user_collect_manage(id):
     flash('取消收藏成功!')
     return redirect(url_for('user_collects_manage'))
 
+@app.route('/user/follow_manage/<username>')
+@login_required
+def user_follower_manage(username):
+    user = User.query.filter_by(username=username).first()
+    current_user.unfollow(user)
+    flash('取消关注成功!')
+    return redirect(url_for('user_followers_manage'))
 
 @app.route('/user/todos_manage', methods=['POST', 'GET'])
 @login_required
@@ -472,6 +495,7 @@ def collect(id):
     return redirect(url_for('details', id=post.id))
 
 
+
 # 取消收藏
 @login_required
 @app.route('/uncollect/<int:id>')
@@ -484,6 +508,46 @@ def uncollect(id):
     flash('取消收藏成功!')
     return redirect(url_for('details', id=post.id))
 
+#关注
+@login_required
+@app.route('/follow/<username>')
+def follow(username):
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        flash('用户 %s 没有找到.' % user.username)
+        return redirect(url_for('index'))
+    if user == current_user:
+        flash('不能关注你自己')
+        return redirect(url_for('user_index', username=username))
+    u = current_user.follow(user)
+    if u is None:
+        flash('不能关注 ' + user.username + '!')
+        return redirect(url_for('others', username=username))
+    db.session.add(u)
+    db.session.commit()
+    flash('关注' + user.username + '成功')
+    return redirect(url_for('others', username=username))
+
+
+
+@login_required
+@app.route('/unfollow/<username>')
+def unfollow(username):
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        flash('用户 %s 没有找到.' % user.username)
+        return redirect(url_for('index'))
+    if user == current_user:
+        flash('不能取消关注你自己')
+        return redirect(url_for('user_index', username=username))
+    u = current_user.unfollow(user)
+    if u is None:
+        flash('不能取消关注 ' + user.username + '!')
+        return redirect(url_for('others', username=username))
+    db.session.add(u)
+    db.session.commit()
+    flash('取消关注' + user.username + '成功')
+    return redirect(url_for('others', username=username))
 
 # 发表/修改文章
 @app.route('/edit/', methods=['POST', 'GET'])
@@ -758,19 +822,12 @@ def role_manage(id, role):
             user.role = 0
         return redirect(url_for('users_manage'))
 
-
-@app.route('/user_id/<int:uid>')
-def user_id(uid):
-    return '您的id是:%d' % uid
-
-    # 处理404页面
-
-
+# 错误处理页面
 @app.errorhandler(404)
 def page_not_found(error):
-    return render_template('404.html', title='404'), 404
+    return render_template('404.html', title=u'页面未找到'), 404
 
-@app.errorhandler(500)
-def internal_error(error):
-    db.session.rollback()
-    return render_template('500.html', title='500'), 500
+# @app.errorhandler(500)
+# def internal_error(error):
+#     db.session.rollback()
+#     return render_template('500.html', title=u'服务器错误'), 500

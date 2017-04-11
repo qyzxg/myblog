@@ -31,19 +31,31 @@
     {# 收藏 #}
     <div>
         {% if current_user.is_authenticated %}
-            {% if not current_user.collecting(post) %}
-                <a href="{{ url_for('.collect',id=post.id) }}">
-                    <span class="label label-primary">添加收藏</span>
-                </a>
-            {% else %}
-                <a href="{{ url_for('.uncollect',id=post.id) }}">
-                    <span class="label label-default">取消收藏</span>
-                </a>
+
+                {% if not current_user.collecting(post) %}
+                    <a href="{{ url_for('.collect',id=post.id) }}">
+                        <span class="label label-primary">添加收藏</span>
+                    </a>
+                {% else %}
+                    <a href="{{ url_for('.uncollect',id=post.id) }}">
+                        <span class="label label-default">取消收藏</span>
+                    </a>
+                {% endif %}
+           
+        {% endif %}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        {% if current_user.is_authenticated %}
+            {% if current_user.id != post.author.id %}
+                {% if not current_user.following(post.author) %}
+                    <a href="{{ url_for('.follow',username=post.author.username) }}">
+                        <span class="label label-primary">关注作者</span>
+                    </a>
+                {% else %}
+                    <a href="{{ url_for('.unfollow',username=post.author.username) }}">
+                        <span class="label label-default">取消关注</span>
+                    </a>
+                {% endif %}
             {% endif %}
-        {% else %}
-            <a href="{{ url_for('.collect',id=post.id) }}">
-                <span class="label label-primary">添加收藏</span>
-            </a>
         {% endif %}
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a href="{{ url_for('.edit') }} ">

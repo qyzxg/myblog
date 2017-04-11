@@ -42,6 +42,7 @@
             <tbody>
             {% for post in posts %}
                 <tr>
+
                     <td><a href="{{ url_for('.details', id = post.id) }}"><h5>{{ post.title|truncate(22, True) }}</h5>
                     </a></td>
 
