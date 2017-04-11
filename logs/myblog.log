@@ -1,0 +1,9 @@
+
+2017-04-11 08:47:17,481 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 08:47:17,481 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 08:47:17,481 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 08:47:17,497 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]
+2017-04-11 08:50:30,348 INFO: 程序启动: [in E:/MyProject/myblog\app\__init__.py:36]
+2017-04-11 08:50:30,348 WARNING: 警告信息: [in E:/MyProject/myblog\app\__init__.py:38]
+2017-04-11 08:50:30,348 ERROR: 错误信息: [in E:/MyProject/myblog\app\__init__.py:39]
+2017-04-11 08:50:30,348 CRITICAL: 严重错误: [in E:/MyProject/myblog\app\__init__.py:40]

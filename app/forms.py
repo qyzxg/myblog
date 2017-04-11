@@ -45,14 +45,16 @@ class RegistForm(FlaskForm):
                         )
     submit = SubmitField(render_kw={'class': "btn btn-info btn-block"})
 
-    def validate_username(self, field):
+    @staticmethod
+    def validate_username(field):
         from app.models import User
         data = field.data
         if User.query.filter_by(username=data).first():
             raise ValidationError('用户名已存在')
         return data
 
-    def validate_email(self, field):
+    @staticmethod
+    def validate_email(field):
         from app.models import User
         data = field.data
         if User.query.filter_by(email=data).first():
