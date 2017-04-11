@@ -2,249 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63bd6c3e-09d0-45ed-8561-0d52e5b0e3dd" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codeTag/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imagepaste/docs/install.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imagepaste/docs/styles.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/LICENSE.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/check_permission.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/create.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/dist/jquery.lazyload.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/dist/js.cookie-2.0.3.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/dist/sweetalert.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/dist/sweetalert.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/function.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/function.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-ico-browser.ico" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-block.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-browser.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-bug.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-close-black.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-close-grey.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-close.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-coffee.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-credits.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-delete.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-disable.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-done.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-download.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-edit.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-english.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-faq.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-german.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-hideext.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-image.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-images.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-list.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-logout.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-password.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-polish.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-qedit.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-qtrash.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-refresh.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-select.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-settings.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-showext.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-translate.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-updates.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-upload-big.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-upload-grey.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-upload.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-use.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-version.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/img/cd-icon-warning.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/imgbrowser.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/imgdelete.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/imgupload.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/login.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/loginindex.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/logout.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/new.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/pluginconfig.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/styles.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/styles.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageuploader/uploads/placeholder.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/pbckcode/dialogs/PBSyntaxHighlighter.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/pbckcode/dialogs/pbckcode.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/pbckcode/dialogs/style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/pbckcode/icons/hidpi/pbckcode.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/pbckcode/icons/pbckcode.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/pbckcode/lang/en.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/pbckcode/lang/fr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/pbckcode/lang/ru.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/pbckcode/lang/tr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/pbckcode/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/preview/preview.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/css/wordcount.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/ar.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/ca.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/da.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/de.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/el.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/en.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/es.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/eu.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/fa.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/fi.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/fr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/he.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/hr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/hu.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/it.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/ja.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/nl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/no.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/pl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/pt-br.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/pt.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/ru.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/sk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/sv.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/tr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/zh-cn.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/samples/wordcount.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/samples/wordcountWithMaxCount.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/Post/MAIN_bjhdj2amodt2goqm.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/Post/MAIN_dfibfyyfe48s96bq.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/Post/MAIN_fl3myi4nlgh7cfi0.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/Post/MAIN_kfoq4bv2x6ie2brz.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/Post/MAIN_lggf1r7pao59ekv6.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/Post/MAIN_wswm7jps4x4qvuvz.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/Post/MAIN_xgndvvu1iwx3vzr9.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/Post/_MAIN_805.toc" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/icons.png" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/icons.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/icons_hidpi.png" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/icons_hidpi.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/icons.png" afterPath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/icons.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/icons_hidpi.png" afterPath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/icons_hidpi.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/CHANGES.md" afterPath="$PROJECT_DIR$/app/static/ckeditor/CHANGES.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/LICENSE.md" afterPath="$PROJECT_DIR$/app/static/ckeditor/LICENSE.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/build-config.js" afterPath="$PROJECT_DIR$/app/static/ckeditor/build-config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/ckeditor.js" afterPath="$PROJECT_DIR$/app/static/ckeditor/ckeditor.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/config.js" afterPath="$PROJECT_DIR$/app/static/ckeditor/config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/contents.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/contents.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/lang/en.js" afterPath="$PROJECT_DIR$/app/static/ckeditor/lang/en.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/lang/zh-cn.js" afterPath="$PROJECT_DIR$/app/static/ckeditor/lang/zh-cn.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/_translationstatus.txt" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/_translationstatus.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/CHANGES.md" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/CHANGES.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/README.md" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/README.ru.md" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/README.ru.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/arta.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/arta.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/ascetic.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/ascetic.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-dune.dark.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-dune.dark.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-dune.light.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-dune.light.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-forest.dark.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-forest.dark.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-forest.light.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-forest.light.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-heath.dark.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-heath.dark.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-heath.light.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-heath.light.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-lakeside.dark.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-lakeside.dark.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-lakeside.light.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-lakeside.light.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-seaside.dark.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-seaside.dark.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-seaside.light.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-seaside.light.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/brown_paper.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/brown_paper.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/dark.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/dark.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/default.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/default.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/docco.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/docco.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/far.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/far.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/foundation.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/foundation.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/github.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/github.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/googlecode.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/googlecode.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/idea.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/idea.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/ir_black.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/ir_black.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/magula.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/magula.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/mono-blue.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/mono-blue.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/monokai.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/monokai.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/monokai_sublime.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/monokai_sublime.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/obsidian.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/obsidian.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/paraiso.dark.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/paraiso.dark.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/paraiso.light.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/paraiso.light.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/pojoaque.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/pojoaque.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/railscasts.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/railscasts.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/rainbow.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/rainbow.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/school_book.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/school_book.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/solarized_dark.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/solarized_dark.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/solarized_light.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/solarized_light.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/sunburst.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/sunburst.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/tomorrow-night-blue.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/tomorrow-night-blue.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/tomorrow-night-bright.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/tomorrow-night-bright.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/tomorrow-night-eighties.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/tomorrow-night-eighties.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/tomorrow-night.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/tomorrow-night.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/tomorrow.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/tomorrow.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/vs.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/vs.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/xcode.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/xcode.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/zenburn.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/zenburn.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/image/dialogs/image.js" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/image/dialogs/image.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageresize/LICENSE.md" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageresize/LICENSE.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageresize/README.md" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageresize/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/scayt/CHANGELOG.md" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/scayt/CHANGELOG.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/scayt/LICENSE.md" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/scayt/LICENSE.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/scayt/README.md" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/scayt/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/scayt/dialogs/toolbar.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/scayt/dialogs/toolbar.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/scayt/skins/moono-lisa/scayt.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/scayt/skins/moono-lisa/scayt.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/_translationstatus.txt" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/_translationstatus.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wsc/LICENSE.md" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/wsc/LICENSE.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wsc/README.md" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/wsc/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wsc/dialogs/ciframe.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/wsc/dialogs/ciframe.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wsc/dialogs/tmpFrameset.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/wsc/dialogs/tmpFrameset.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wsc/dialogs/wsc.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/wsc/dialogs/wsc.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wsc/skins/moono-lisa/wsc.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/plugins/wsc/skins/moono-lisa/wsc.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/css/samples.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/css/samples.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/index.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/js/sample.js" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/js/sample.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/ajax.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/ajax.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/api.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/api.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/appendto.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/appendto.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/assets/outputxhtml/outputxhtml.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/assets/outputxhtml/outputxhtml.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/assets/posteddata.php" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/assets/posteddata.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/codesnippet/codesnippet.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/codesnippet/codesnippet.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/datafiltering.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/datafiltering.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/dialog/assets/my_dialog.js" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/dialog/assets/my_dialog.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/dialog/dialog.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/dialog/dialog.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/divreplace.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/divreplace.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/enterkey/enterkey.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/enterkey/enterkey.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/htmlwriter/outputforflash.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/htmlwriter/outputforflash.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/htmlwriter/outputhtml.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/htmlwriter/outputhtml.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/image2/image2.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/image2/image2.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/index.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/inlineall.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/inlineall.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/inlinebycode.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/inlinebycode.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/inlinetextarea.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/inlinetextarea.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/jquery.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/jquery.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/magicline/magicline.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/magicline/magicline.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/readonly.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/readonly.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/replacebyclass.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/replacebyclass.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/replacebycode.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/replacebycode.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/sample.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/sample.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/sample.js" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/sample.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/sample_posteddata.php" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/sample_posteddata.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/tabindex.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/tabindex.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/tableresize/tableresize.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/tableresize/tableresize.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/toolbar/toolbar.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/toolbar/toolbar.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/uicolor.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/uicolor.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/uilanguages.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/uilanguages.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/wysiwygarea/fullpage.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/wysiwygarea/fullpage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/xhtmlstyle.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/old/xhtmlstyle.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/css/fontello.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/css/fontello.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/font/LICENSE.txt" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/font/LICENSE.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/index.html" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/lib/codemirror/codemirror.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/lib/codemirror/codemirror.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/lib/codemirror/show-hint.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/lib/codemirror/show-hint.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/dialog.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/dialog.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/dialog_ie.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/dialog_ie.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/dialog_ie8.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/dialog_ie8.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/dialog_iequirks.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/dialog_iequirks.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/editor.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/editor.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/editor_gecko.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/editor_gecko.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/editor_ie.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/editor_ie.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/editor_ie8.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/editor_ie8.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/editor_iequirks.css" afterPath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/editor_iequirks.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/readme.md" afterPath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/readme.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/ckeditor/styles.js" afterPath="$PROJECT_DIR$/app/static/ckeditor/styles.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/details.html" afterPath="$PROJECT_DIR$/app/templates/details.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views.py" afterPath="$PROJECT_DIR$/app/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/myblog.log" afterPath="$PROJECT_DIR$/logs/myblog.log" />
     </list>
     <ignored path="todo.iws" />
@@ -373,8 +132,8 @@
       <file leaf-file-name="details.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/templates/details.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-115">
-              <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+            <state relative-caret-position="253">
+              <caret line="62" column="12" lean-forward="false" selection-start-line="62" selection-start-column="12" selection-end-line="62" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -621,6 +380,84 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myblog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myblog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ckeditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myblog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myblog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ckeditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugins" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myblog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myblog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ckeditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugins" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wordcount" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1064,7 +901,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.204236" sideWeight="0.49144253" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32612312" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1522,8 +1359,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/details.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-115">
-          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+        <state relative-caret-position="253">
+          <caret line="62" column="12" lean-forward="false" selection-start-line="62" selection-start-column="12" selection-end-line="62" selection-end-column="12" />
           <folding />
         </state>
       </provider>
