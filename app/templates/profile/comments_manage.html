@@ -1,0 +1,56 @@
+{% extends 'profile/base.html' %}
+{% from "bootstrap/pagination.html" import render_pagination %}
+{% block head_title %}
+    {{ title }}
+{% endblock %}
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="{{ url_for('profile.user_index',username=current_user.username) }}">个人首页</a></li>
+        <li class="active">评论管理</li>
+    </ol>
+{% endblock %}
+{% block right_content %}
+    {{ super() }}
+    {% if not comments %}
+    <div><p>您还没有发表评论哦!</p><a href="{{ url_for('public.index') }}">先去首页看看文章吧!</a></div>
+    {% else %}
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover ">
+            <thead>
+            <tr>
+
+                <th>
+                    <mark>博客ID</mark>
+                </th>
+                <th>
+                    <mark>评论内容</mark>
+                </th>
+                <th>
+                    <mark>评论时间</mark>
+                </th>
+                <th>
+                    <mark>删除评论</mark>
+                </th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for comment in comments %}
+                <tr>
+                    <td><h5>{{ comment.post_id }}</h5></td>
+                    <td><h5>{{ comment.body|truncate(30, True) }}</h5></td>
+                    <td><h5>{{ comment.created.strftime('%Y-%m-%d %H:%M') }}</h5></td>
+                    <td><a href="{{ url_for('profile.user_comment_manage',id=comment.id) }}" class="btn btn-danger">删除</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+    <!-- // 用户管理 -->
+    <!-- 分页 -->
+    {% if pagination %}
+        {{ render_pagination(pagination) }}
+    {% endif %}
+    <!-- // 分页 -->
+{% endblock %}

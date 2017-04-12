@@ -22,7 +22,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('created', sa.DateTime(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['user_id'], ['profile.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_collect_created'), 'collect', ['created'], unique=False)

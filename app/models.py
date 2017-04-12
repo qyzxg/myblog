@@ -1,10 +1,12 @@
-from app import db, login_manager, app
+from . import db, login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 import datetime
 import flask_whooshalchemyplus as whoosh
 from jieba.analyse import ChineseAnalyzer
 import re
+
+# app = create_app()
 
 follow = db.Table('followers',
     db.Column('follower_id', db.Integer, db.ForeignKey('users.id')),
@@ -140,7 +142,7 @@ class Post(db.Model):
         return self.post_img
 
 
-whoosh.whoosh_index(app, Post)
+# whoosh.whoosh_index(app, Post)
 
 
 class Categories(db.Model):

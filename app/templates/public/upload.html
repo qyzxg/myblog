@@ -1,0 +1,22 @@
+{% extends 'public/base.html' %}
+{% block title %}{{ title|safe }}{% endblock %}
+
+{% block content %}
+    <div id="content">
+        <div class="container">
+            {% for message in get_flashed_messages() %}
+                <div class="alert alert-warning">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        <div>您当前的图像是<img src="{{ current_user.avatar  }}" class="img-circle" width="128px" height="128px"></div>
+    <form action="" method="post" enctype="multipart/form-data">
+    <p>
+        <input type="file" name="file">
+        <input type="submit" value="上传">
+    </p>
+    </form>
+        </div>
+    </div>
+{% endblock %}

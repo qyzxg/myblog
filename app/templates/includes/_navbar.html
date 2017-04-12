@@ -9,15 +9,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ url_for('.index') }}">qyzxg</a>
+            <a class="navbar-brand" href="{{ url_for('public.index') }}">qyzxg</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="{{ url_for('.index') }}">主页<span class="sr-only">(current)</span></a></li>
-                <li><a href="{{ url_for('.service') }}">服务</a></li>
-                <li><a href="{{ url_for('.about') }}">关于</a></li>
+                <li class="active"><a href="{{ url_for('public.index') }}">主页<span class="sr-only">(current)</span></a></li>
+                <li><a href="{{ url_for('public.service') }}">服务</a></li>
+                <li><a href="{{ url_for('public.about') }}">关于</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">下拉框 <span class="caret"></span></a>
@@ -32,7 +32,7 @@
                     </ul>
                 </li>
             </ul>
-            <form class="navbar-form navbar-right" action="{{ url_for('.search') }}" method="post">
+            <form class="navbar-form navbar-right" action="{{ url_for('public.search') }}" method="post">
                 {{ g.search_form.csrf_token }}
                 <div class="form-group">
                     {{ g.search_form.search(class="form-control",placeholder="站内搜索") }}
@@ -41,12 +41,12 @@
             </form>
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated %}
-                    <li><a href="{{  url_for('.user_index', username = current_user.username)}}"><img src="{{ current_user.avatar }}" class="img-circle" width="21px" height="21px"></a></li>
-                    <li><a href="{{  url_for('.user_index', username = current_user.username)}}"><strong>{{ current_user.username }}</strong></a></li>
-                    <li><a href="{{ url_for('.logout') }}"><strong>退出</strong></a></li>
+                    <li><a href="{{  url_for('profile.user_index', username = current_user.username)}}"><img src="{{ current_user.avatar }}" class="img-circle" width="21px" height="21px"></a></li>
+                    <li><a href="{{  url_for('profile.user_index', username = current_user.username)}}"><strong>{{ current_user.username }}</strong></a></li>
+                    <li><a href="{{ url_for('auth.logout') }}"><strong>退出</strong></a></li>
                 {% else %}
-                    <li><a href="{{ url_for('.login') }}"><strong>登录</strong></a></li>
-                    <li><a href="{{ url_for('.register') }}"><strong>注册</strong></a></li>
+                    <li><a href="{{ url_for('auth.login') }}"><strong>登录</strong></a></li>
+                    <li><a href="{{ url_for('auth.register') }}"><strong>注册</strong></a></li>
                 {% endif %}
             </ul>
         </div><!-- /.navbar-collapse -->

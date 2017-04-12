@@ -22,7 +22,7 @@ def upgrade():
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('post_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['post_id'], ['posts.id'], ),
-    sa.ForeignKeyConstraint(['user_id'], ['users.id'], )
+    sa.ForeignKeyConstraint(['user_id'], ['profile.id'], )
     )
     op.drop_table('collect')
     # ### end Alembic commands ###
@@ -36,7 +36,7 @@ def downgrade():
     sa.Column('user_id', mysql.INTEGER(display_width=11), autoincrement=False, nullable=True),
     sa.Column('post_id', mysql.INTEGER(display_width=11), autoincrement=False, nullable=True),
     sa.ForeignKeyConstraint(['post_id'], ['posts.id'], name='collect_ibfk_2'),
-    sa.ForeignKeyConstraint(['user_id'], ['users.id'], name='collect_ibfk_1'),
+    sa.ForeignKeyConstraint(['user_id'], ['profile.id'], name='collect_ibfk_1'),
     sa.PrimaryKeyConstraint('id'),
     mysql_default_charset='utf8',
     mysql_engine='InnoDB'

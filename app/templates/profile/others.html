@@ -1,0 +1,131 @@
+{% extends 'profile/html' %}
+{% from "bootstrap/pagination.html" import render_pagination %}
+
+{% block title %}{{ title|safe }}{% endblock %}
+{% block left_content %}
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}
+        </div>
+    {% endfor %}
+    <div>
+        <p>
+        <h3>{{ user.username }}的资料:</h3></p>
+    </div>
+    <div class="media">
+        <div class="media-left">
+            <p><img src="{{ user.avatar }}" width="128px" height="128px" class="img-thumbnail"></p>
+
+        </div>
+        <div class="media-right">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover ">
+                    <thead>
+                    <tr>
+                        {#                        <th>#}
+                        {#                            <mark>用户名</mark>#}
+                        {#                        </th>#}
+                        <th>
+                            <mark>邮箱</mark>
+                        </th>
+                        <th>
+                            <mark>注册时间</mark>
+                        </th>
+                        <th>
+                            <mark>最后登录</mark>
+                        </th>
+
+                        <th>
+                            <mark>角色</mark>
+                        </th>
+                        <th>
+                            <mark>发帖数量</mark>
+                        </th>
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr>
+                        {#                        <td><h5>{{ user.username }}</h5></td>#}
+                        <td><h5>{{ user.email }}</h5></td>
+                        <td><h5>{{ user.created_at.strftime('%Y-%m-%d %H:%M') }}</h5></td>
+                        <td><h5>{{ user.last_login.strftime('%Y-%m-%d %H:%M') }}</h5></td>
+
+                        <td><h5>{{ user.get_roles() }}</h5></td>
+                        <td><h5>{{ user.post_total }}</h5></td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div>
+        {% if current_user.is_authenticated %}
+            {% if not current_user.following(user) %}
+                <a href="{{ url_for('profile.follow',username=user.username) }}">
+                    <span class="label label-primary">关注用户</span>
+                </a>
+            {% else %}
+                <a href="{{ url_for('profile.unfollow',username=user.username) }}">
+                    <span class="label label-default">取消关注</span>
+                </a>
+            {% endif %}
+        {% else %}
+
+        {% endif %}
+    </div>
+    <div>
+        <p>
+        <h3>{{ user.username }}发表的文章:</h3></p>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover ">
+            <thead>
+            <tr>
+                <th>
+                    <mark>文章标题</mark>
+                </th>
+                <th>
+                    <mark>发表时间</mark>
+                </th>
+                <th>
+                    <mark>阅读数量</mark>
+                </th>
+                <th>
+                    <mark>评论数量</mark>
+                </th>
+                <th>
+                    <mark>所属分类</mark>
+                </th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for post in posts %}
+                <tr>
+                    <td>
+                        <a href="{{ url_for('public.details', id = post.id) }}">
+                            <h5>{{ post.title }}</h5>
+                        </a>
+                    </td>
+                    <td><h5>{{ post.created.strftime('%Y-%m-%d %H:%M') }}</h5></td>
+                    <td><h5>{{ post.read_times }}</h5></td>
+                    <td><h5>{{ post.comment_times }}</h5></td>
+                    <td><h5>{{ post.category }}</h5></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% if pagination %}
+        {{ render_pagination(pagination) }}
+    {% endif %}
+{% endblock %}
+{% block right_content %}
+    {% include 'includes/_hot_posts.html' %}
+{% endblock %}

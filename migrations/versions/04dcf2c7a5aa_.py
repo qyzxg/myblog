@@ -30,7 +30,7 @@ def upgrade():
     sa.Column('name1', sa.String(length=50), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_table('users',
+    op.create_table('profile',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('username', sa.String(length=128), nullable=False),
     sa.Column('password', sa.String(length=200), nullable=False),
@@ -59,7 +59,7 @@ def upgrade():
     sa.Column('author_id', sa.Integer(), nullable=True),
     sa.Column('style', sa.String(length=50), nullable=True),
     sa.Column('category', sa.String(length=50), nullable=True),
-    sa.ForeignKeyConstraint(['author_id'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['author_id'], ['profile.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_posts_created'), 'posts', ['created'], unique=False)
@@ -69,7 +69,7 @@ def upgrade():
     sa.Column('created', sa.DateTime(), nullable=True),
     sa.Column('post_id', sa.Integer(), nullable=True),
     sa.Column('author_id', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['author_id'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['author_id'], ['profile.id'], ),
     sa.ForeignKeyConstraint(['post_id'], ['posts.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -83,7 +83,7 @@ def downgrade():
     op.drop_table('comments')
     op.drop_index(op.f('ix_posts_created'), table_name='posts')
     op.drop_table('posts')
-    op.drop_table('users')
+    op.drop_table('profile')
     op.drop_table('styles')
     op.drop_table('categories')
     # ### end Alembic commands ###

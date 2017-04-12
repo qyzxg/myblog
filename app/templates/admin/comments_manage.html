@@ -5,7 +5,7 @@
 {% endblock %}
 {% block breadcrumb %}
     <ol class="breadcrumb">
-        <li><a href="{{ url_for('.admin_index') }}">后台首页</a></li>
+        <li><a href="{{ url_for('admin.admin_index') }}">后台首页</a></li>
         <li class="active">评论管理</li>
     </ol>
 {% endblock %}
@@ -40,7 +40,7 @@
                     <td><h5>{{ comment.post_id }}</h5></td>
                     <td><h5>{{ comment.body|truncate(30, True) }}</h5></td>
                     <td><h5>{{ comment.created.strftime('%Y-%m-%d %H:%M') }}</h5></td>
-                    <td><a href="{{ url_for('.comment_manage',id=comment.id) }}" class="btn btn-danger">删除</a></td>
+                    <td><a href="{{ url_for('admin.comment_manage',id=comment.id) }}" class="btn btn-danger">删除</a></td>
                 </tr>
             {% endfor %}
             </tbody>

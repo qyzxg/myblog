@@ -1,0 +1,76 @@
+{% extends 'profile/base.html' %}
+{% from "bootstrap/pagination.html" import render_pagination %}
+{% block head_title %}
+    {{ title }}
+    <title>好友管理</title>
+{% endblock %}
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="{{ url_for('profile.user_index',username=current_user.username) }}">个人首页</a></li>
+        <li class="active">好友管理</li>
+    </ol>
+{% endblock %}
+{% block right_content %}
+    {{ super() }}
+    {% if not followers %}
+        <div><p>您还没有好友哦!</p><a href="{{ url_for('public.index') }}">去首页看看吧!</a></div>
+    {% else %}
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover ">
+                <thead>
+                <tr>
+                    <th>
+                        <mark>用户名</mark>
+                    </th>
+
+                    <th>
+                        <mark>邮箱</mark>
+                    </th>
+                    <th>
+                        <mark>注册时间</mark>
+                    </th>
+                    <th>
+                        <mark>最后登录</mark>
+                    </th>
+                    <th>
+                        <mark>角色</mark>
+                    </th>
+                    <th>
+                        <mark>发帖数量</mark>
+                    </th>
+                    <th>
+                        <mark>管理</mark>
+                    </th>
+
+                    {#      <th>操作</th>#}
+                </tr>
+                </thead>
+                <tbody>
+                {% for follower in followers %}
+                    <tr>
+                        <td><a href="{{ url_for('profile.others', username = follower.username) }}">
+                            <h5>{{ follower.username }}</h5>
+                        </a></td>
+
+                        <td><h5>{{ follower.email }}</h5></td>
+                        <td><h5>{{ follower.created_at.strftime('%Y-%m-%d %H:%M') }}</h5></td>
+                        <td><h5>{{ follower.last_login.strftime('%Y-%m-%d %H:%M')  }}</h5></td>
+                        <td><h5>{{ follower.get_roles() }}</h5></td>
+                        <td><h5>{{ follower.post_total }}</h5></td>
+
+                        {#                    <td><a href="{{ url_for('.edit',id=post.id) }}" class="btn btn-success">修改</a></td>#}
+                        <td><a href="{{ url_for('profile.user_follower_manage',username=follower.username) }}" class="btn btn-danger">取消</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+    <!-- // 用户管理 -->
+    <!-- 分页 -->
+    {% if pagination %}
+        {{ render_pagination(pagination) }}
+    {% endif %}
+    <!-- // 分页 -->
+{% endblock %}

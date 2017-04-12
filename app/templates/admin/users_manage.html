@@ -6,7 +6,7 @@
 <!-- 右侧内容 -->
 {% block breadcrumb %}
     <ol class="breadcrumb">
-        <li><a href="{{ url_for('.admin_index') }}">后台首页</a></li>
+        <li><a href="{{ url_for('admin.admin_index') }}">后台首页</a></li>
         <li class="active">用户管理</li>
     </ol>
 {% endblock %}
@@ -49,9 +49,9 @@
                 <tr>
                     <td>
                         {% if current_user.id == user.id %}
-                        <a href="{{ url_for('.user_index', username = user.username) }}"><h5>{{ user.username }}</h5></a>
+                        <a href="{{ url_for('profile.user_index', username = user.username) }}"><h5>{{ user.username }}</h5></a>
                         {% else %}
-                        <a href="{{ url_for('.others', username = user.username) }}"><h5>{{ user.username }}</h5></a>
+                        <a href="{{ url_for('profile.others', username = user.username) }}"><h5>{{ user.username }}</h5></a>
                         {% endif %}
                     </td>
                     <td><h5>{{ user.email }}</h5></td>
@@ -59,20 +59,20 @@
                     <td><h5>{{ user.get_status() }}</h5></td>
                     <td><h5>{{ user.get_roles() }}</h5></td>
                     {% if user.status == 1 %}
-                        <td><a href="{{ url_for('.login_manage',id=user.id,status=0,delete=0) }}"
+                        <td><a href="{{ url_for('admin.login_manage',id=user.id,status=0,delete=0) }}"
                                class="btn btn-primary">限制</a></td>
                     {% else %}
-                        <td><a href="{{ url_for('.login_manage',id=user.id,status=1,delete=0) }}"
+                        <td><a href="{{ url_for('admin.login_manage',id=user.id,status=1,delete=0) }}"
                                class="btn btn-success">解除</a></td>
                     {% endif %}
                     {% if user.role == 0 %}
-                        <td><a href="{{ url_for('.role_manage',id=user.id,role=1) }}" class="btn btn-warning">管理</a>
+                        <td><a href="{{ url_for('admin.role_manage',id=user.id,role=1) }}" class="btn btn-warning">管理</a>
                         </td>
                     {% else %}
-                        <td><a href="{{ url_for('.role_manage',id=user.id,role=0) }}" class="btn btn-success">用户</a>
+                        <td><a href="{{ url_for('admin.role_manage',id=user.id,role=0) }}" class="btn btn-success">用户</a>
                         </td>
                     {% endif %}
-                    <td><a href="{{ url_for('.login_manage',id=user.id,status=0,delete=1) }}"
+                    <td><a href="{{ url_for('admin.login_manage',id=user.id,status=0,delete=1) }}"
                            class="btn btn-danger">删除</a></td>
 
                 </tr>

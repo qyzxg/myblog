@@ -1,7 +1,8 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 
-from app import app
+from . import create_app
+app = create_app()
 
 from itsdangerous import URLSafeTimedSerializer
 

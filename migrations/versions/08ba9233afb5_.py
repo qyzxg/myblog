@@ -25,7 +25,7 @@ def upgrade():
     sa.Column('flished', sa.DateTime(), nullable=True),
     sa.Column('status', sa.Integer(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['user_id'], ['profile.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_todos_created'), 'todos', ['created'], unique=False)

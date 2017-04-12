@@ -33,21 +33,21 @@
         <div class="col-md-2">
             <!-- 左侧的菜单 -->
             <div class="list-group">
-            <a href="{{ url_for('.edit') }}" class="btn btn-primary">发表新文章</a>
+            <a href="{{ url_for('public.edit') }}" class="btn btn-primary">发表新文章</a>
                 <br>
                 <br>
-                <a href="{{ url_for('.admin_index') }}" class="list-group-item {% if menu==0 %} active {% endif %}">
+                <a href="{{ url_for('admin.admin_index') }}" class="list-group-item {% if menu==0 %} active {% endif %}">
                     <span class="glyphicon glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp后台首页
                 </a>
-                <a href="{{ url_for('.users_manage') }}"
+                <a href="{{ url_for('admin.users_manage') }}"
                    class="list-group-item {% if menu==1 %} active {% endif %}"><span class="glyphicon glyphicon-user"
                                                                                      aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp用户管理</a>
-                <a href="{{ url_for('.blogs_manage') }}"
+                <a href="{{ url_for('admin.blogs_manage') }}"
                    class="list-group-item {% if menu==2 %} active {% endif %}"><span class="glyphicon glyphicon-pencil"
                                                                                      aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp博客管理</a>
-                <a href="{{ url_for('.comments_manage') }}" class="list-group-item {% if menu==3 %} active {% endif %}"><span
+                <a href="{{ url_for('admin.comments_manage') }}" class="list-group-item {% if menu==3 %} active {% endif %}"><span
                         class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp评论管理</a>
-                <a href="{{ url_for('.new_category') }}"
+                <a href="{{ url_for('admin.new_category') }}"
                    class="list-group-item {% if menu==4 %} active {% endif %}"><span class="glyphicon glyphicon-tags"
                                                                                      aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp分类管理</a>
 {#                <a href="#" class="list-group-item {% if menu==5 %} active {% endif %}"><span#}
@@ -58,7 +58,7 @@
             <!-- 右侧内容 -->
             {% block breadcrumb %}
                 <ol class="breadcrumb">
-                    <li><a href="{{ url_for('admin_index') }}">后台首页</a></li>
+                    <li><a href="{{ url_for('admin.admin_index') }}">后台首页</a></li>
                     <li class="active">用户管理</li>
                 </ol>
             {% endblock %}

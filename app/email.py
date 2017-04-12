@@ -1,10 +1,11 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 
-from app import app, mail
+from . import create_app, mail
 from flask_mail import Message
 from threading import Thread
 
+app = create_app()
 
 # 异步发送电子邮件
 def send_async_email(app, msg):

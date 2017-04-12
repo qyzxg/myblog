@@ -1,0 +1,58 @@
+{% extends "public/base.html" %}
+{% block title %}{{ title|safe }}{% endblock %}
+{% block left_content %}
+
+
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {% if not results %}
+    <h3>"{{ query }}"&nbsp;没有搜索到哦,&nbsp;换个词试试吧!</h3>
+    {% else %}
+    <h3> "{{ query }}"的搜索结果:</h3>
+
+    {% for post in results|sort(attribute='read_times',reverse=True ) %}
+        <div id='article-entry' class="entry-box">
+            <div class="article-entry-header">
+                <h4 class="article-entry-title">
+                    <a href="{{ url_for('public.details', id = post.id) }}">[{{ post.style }}]&nbsp;&nbsp;{{ post.title|safe|default('没搜到哦,换个词试试吧') }}</a>
+                </h4>
+            </div>
+            <div class="article-entry-sum">
+                <div class="media">
+                    <div class="media-left">
+                        <a href="{{ url_for('profile.user_index', username = post.author.username) }}">
+                            <img class="media-object img-circle" width="32px" height="32px"
+                                 src="{{ post.author.avatar }}">
+                        </a>
+                    </div>
+                    <div class="media-body">
+
+                        <div>{{ post.body|striptags|truncate(300,killwords=True)|safe }}</div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="article-entry-info">
+                <div class="base-info">
+                    <span class="label label-default">作者&nbsp;:<span
+                            class="badge"><strong>{{ post.author.username }}</strong></span></span>&nbsp;
+                    <span class="label label-default">时间&nbsp;:<span
+                            class="badge"><strong>{{ post.created.strftime('%Y-%m-%d %H:%M') }}</strong></span></span>&nbsp;
+                    <span class="label label-default">浏览&nbsp;:<span
+                            class="badge"><strong>{{ post.read_times }}</strong></span></span>&nbsp;
+                    <span class="label label-default">评论&nbsp;:<span
+                            class="badge"><strong>{{ post.comment_times }}</strong></span></span>
+                    <span class="label label-default">分类&nbsp;:<span
+                            class="badge"><strong>{{ post.category }}</strong></span></span>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    {% endif %}
+{% endblock %}
