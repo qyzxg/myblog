@@ -1,5 +1,7 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
+
+import os
 from os import path
 
 SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:qyzxg@localhost:3306/blog'
@@ -14,9 +16,9 @@ SECURITY_PASSWORD_SALT = 'qyzxg'
 
 MAIL_SERVER = 'smtp.sina.com'
 MAIL_PORT = 25
-MAIL_USERNAME = 'qyzxg1314@sina.com'
-MAIL_PASSWORD = '852000zxg'
-MAIL_DEFAULT_SENDER = 'qyzxg1314@sina.com'
+MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER')
 
 
 '''upload'''
