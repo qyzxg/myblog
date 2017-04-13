@@ -17,7 +17,7 @@
         </div>
     {% endfor %}
 
-    <a href="{{ url_for('public.edit') }}" class="btn btn-primary">发表新文章</a>
+    <a href="{{ url_for('public.edit') }}" class="btn btn-primary"><span class="icon-edit icon-large"></span>&nbsp;&nbsp;发表新文章</a>
 
     {% for post in posts|sort(attribute='read_times',reverse=True ) %}
 

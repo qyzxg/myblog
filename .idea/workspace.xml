@@ -2,50 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63bd6c3e-09d0-45ed-8561-0d52e5b0e3dd" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/Post/MAIN_23k8ctfunpvg6h1t.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/Post/MAIN_3w5w7nkw680qql80.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/Post/MAIN_hrqgmghm6dxmirqy.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/Post/MAIN_vpgap0ea64teu5ku.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/Post/_MAIN_840.toc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/Post/MAIN_0ca0skqh3upwhmym.seg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/Post/MAIN_20mh9rdyee1nvp4z.seg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/Post/MAIN_2d5uugcgb8gm3bht.seg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/Post/MAIN_guiwyyn97rwitnn4.seg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/Post/MAIN_h9qoidx34lr93udl.seg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/Post/MAIN_iup7jnytiaqwebgx.seg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/Post/MAIN_jfi8m17g0htmqz8q.seg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/blog/Post/_MAIN_904.toc" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/views.py" afterPath="$PROJECT_DIR$/app/admin/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/auth/views.py" afterPath="$PROJECT_DIR$/app/auth/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/decoratiors.py" afterPath="$PROJECT_DIR$/app/decoratiors.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models.py" afterPath="$PROJECT_DIR$/app/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/profile/views.py" afterPath="$PROJECT_DIR$/app/profile/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/public/views.py" afterPath="$PROJECT_DIR$/app/public/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/stylesheets/main.css" afterPath="$PROJECT_DIR$/app/static/stylesheets/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/admin/admin_index.html" afterPath="$PROJECT_DIR$/app/templates/admin/admin_index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/admin/base.html" afterPath="$PROJECT_DIR$/app/templates/admin/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/admin/blogs_manage.html" afterPath="$PROJECT_DIR$/app/templates/admin/blogs_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/admin/comments_manage.html" afterPath="$PROJECT_DIR$/app/templates/admin/comments_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/admin/new_category.html" afterPath="$PROJECT_DIR$/app/templates/admin/new_category.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/admin/users_manage.html" afterPath="$PROJECT_DIR$/app/templates/admin/users_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/auth/auth_email.html" afterPath="$PROJECT_DIR$/app/templates/auth/auth_email.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/auth/base.html" afterPath="$PROJECT_DIR$/app/templates/auth/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/auth/login.html" afterPath="$PROJECT_DIR$/app/templates/auth/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/auth/register.html" afterPath="$PROJECT_DIR$/app/templates/auth/register.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/auth/reset_password.html" afterPath="$PROJECT_DIR$/app/templates/auth/reset_password.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/includes/_footer.html" afterPath="$PROJECT_DIR$/app/templates/includes/_footer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/includes/_navbar.html" afterPath="$PROJECT_DIR$/app/templates/includes/_navbar.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/base.html" afterPath="$PROJECT_DIR$/app/templates/profile/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/blogs_manage.html" afterPath="$PROJECT_DIR$/app/templates/profile/blogs_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/collects_manage.html" afterPath="$PROJECT_DIR$/app/templates/profile/collects_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/comments_manage.html" afterPath="$PROJECT_DIR$/app/templates/profile/comments_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/followers_manage.html" afterPath="$PROJECT_DIR$/app/templates/profile/followers_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/others.html" afterPath="$PROJECT_DIR$/app/templates/profile/others.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/todos_manage.html" afterPath="$PROJECT_DIR$/app/templates/profile/todos_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/user_index.html" afterPath="$PROJECT_DIR$/app/templates/profile/user_index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/public/404.html" afterPath="$PROJECT_DIR$/app/templates/public/404.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/public/500.html" afterPath="$PROJECT_DIR$/app/templates/public/500.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/public/about.html" afterPath="$PROJECT_DIR$/app/templates/public/about.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/public/base.html" afterPath="$PROJECT_DIR$/app/templates/public/base.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/public/details.html" afterPath="$PROJECT_DIR$/app/templates/public/details.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/public/edit_post.html" afterPath="$PROJECT_DIR$/app/templates/public/edit_post.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/public/index.html" afterPath="$PROJECT_DIR$/app/templates/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/public/search_results.html" afterPath="$PROJECT_DIR$/app/templates/public/search_results.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/public/service.html" afterPath="$PROJECT_DIR$/app/templates/public/service.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/public/upload.html" afterPath="$PROJECT_DIR$/app/templates/public/upload.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/myblog.log" afterPath="$PROJECT_DIR$/logs/myblog.log" />
     </list>
     <ignored path="todo.iws" />
@@ -144,8 +111,20 @@
       <file leaf-file-name="details.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/templates/public/details.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="27" column="25" lean-forward="false" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+            <state relative-caret-position="93">
+              <caret line="31" column="8" lean-forward="false" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
+              <folding>
+                <element signature="e#1009#1042#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit_post.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/public/edit_post.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-175">
+              <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -154,11 +133,13 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/templates/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-274">
-              <caret line="51" column="44" lean-forward="true" selection-start-line="51" selection-start-column="44" selection-end-line="51" selection-end-column="44" />
+            <state relative-caret-position="230">
+              <caret line="19" column="121" lean-forward="false" selection-start-line="19" selection-start-column="121" selection-end-line="19" selection-end-column="121" />
               <folding>
-                <element signature="e#2465#2471#0#HTML" expanded="true" />
-                <element signature="e#2640#2646#0#HTML" expanded="true" />
+                <element signature="e#522#528#0#HTML" expanded="true" />
+                <element signature="e#528#534#0#HTML" expanded="true" />
+                <element signature="e#2519#2525#0#HTML" expanded="true" />
+                <element signature="e#2694#2700#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -199,16 +180,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="299">
               <caret line="13" column="59" lean-forward="false" selection-start-line="13" selection-start-column="58" selection-end-line="13" selection-end-column="59" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_navbar.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/includes/_navbar.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="48" column="75" lean-forward="false" selection-start-line="48" selection-start-column="75" selection-end-line="48" selection-end-column="75" />
               <folding />
             </state>
           </provider>
@@ -296,7 +267,6 @@
         <option value="$PROJECT_DIR$/app/templates/profile/user_index.html" />
         <option value="$PROJECT_DIR$/app/templates/public/404.html" />
         <option value="$PROJECT_DIR$/app/templates/public/500.html" />
-        <option value="$PROJECT_DIR$/app/templates/public/edit_post.html" />
         <option value="$PROJECT_DIR$/app/templates/public/search_results.html" />
         <option value="$PROJECT_DIR$/app/templates/public/upload.html" />
         <option value="$PROJECT_DIR$/app/templates/public/base.html" />
@@ -304,11 +274,12 @@
         <option value="$PROJECT_DIR$/app/templates/admin/admin_index.html" />
         <option value="$PROJECT_DIR$/app/templates/includes/_navbar.html" />
         <option value="$PROJECT_DIR$/app/auth/views.py" />
-        <option value="$PROJECT_DIR$/app/templates/public/index.html" />
         <option value="$PROJECT_DIR$/app/static/stylesheets/main.css" />
         <option value="$PROJECT_DIR$/app/templates/includes/_footer.html" />
         <option value="$PROJECT_DIR$/app/templates/public/about.html" />
         <option value="$PROJECT_DIR$/app/templates/public/service.html" />
+        <option value="$PROJECT_DIR$/app/templates/public/edit_post.html" />
+        <option value="$PROJECT_DIR$/app/templates/public/index.html" />
         <option value="$PROJECT_DIR$/app/templates/public/details.html" />
       </list>
     </option>
@@ -320,10 +291,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="440" />
-    <option name="y" value="184" />
-    <option name="width" value="847" />
-    <option name="height" value="524" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -1003,10 +974,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="440" y="184" width="847" height="524" extended-state="1" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37738246" sideWeight="0.49144253" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2246596" sideWeight="0.49144253" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32612312" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32786885" sideWeight="0.5060514" order="7" side_tool="true" content_ui="tabs" />
@@ -1015,7 +986,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.327787" sideWeight="0.4969651" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25340393" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4295082" sideWeight="0.4969651" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4076923" sideWeight="0.49394855" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="运行" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26393443" sideWeight="0.49394855" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23358779" sideWeight="0.50855744" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977098" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1345,14 +1316,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/public/edit_post.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="63" column="14" lean-forward="false" selection-start-line="63" selection-start-column="14" selection-end-line="63" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/public/search_results.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="333">
@@ -1457,17 +1420,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-274">
-          <caret line="51" column="44" lean-forward="true" selection-start-line="51" selection-start-column="44" selection-end-line="51" selection-end-column="44" />
-          <folding>
-            <element signature="e#2465#2471#0#HTML" expanded="true" />
-            <element signature="e#2640#2646#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/profile/others.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1510,11 +1462,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/public/edit_post.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-175">
+          <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="19" column="121" lean-forward="false" selection-start-line="19" selection-start-column="121" selection-end-line="19" selection-end-column="121" />
+          <folding>
+            <element signature="e#522#528#0#HTML" expanded="true" />
+            <element signature="e#528#534#0#HTML" expanded="true" />
+            <element signature="e#2519#2525#0#HTML" expanded="true" />
+            <element signature="e#2694#2700#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/public/details.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="27" column="25" lean-forward="false" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
-          <folding />
+        <state relative-caret-position="93">
+          <caret line="31" column="8" lean-forward="false" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
+          <folding>
+            <element signature="e#1009#1042#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
