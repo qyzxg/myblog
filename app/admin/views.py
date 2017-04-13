@@ -1,12 +1,13 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
+from flask import render_template, flash, redirect, url_for, request
+from flask_login import current_user, login_required
 
 from .. import db
 from . import admin
-from flask import render_template, flash, redirect, url_for, request
 from ..models import User, Post, Comment, Categories
 from .forms import NewCategory
-from flask_login import current_user, login_required
+
 
 
 # 管理员后台首页

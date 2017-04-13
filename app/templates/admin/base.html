@@ -72,10 +72,11 @@
             {% endblock %}
         </div>
     </div>
-{% endblock %}
-
-{% block footer %}
-    <footer>
-        copyright 2017 by <a href="www.baidu.com">qyzxg</a>
-    </footer>
+    <div class="container">
+    <div class="col-md-12">
+    {% block footer %}
+    {% include 'includes/_footer.html' %}
+    {% endblock %}
+    </div>
+    </div>
 {% endblock %}

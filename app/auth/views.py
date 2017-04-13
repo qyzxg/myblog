@@ -1,18 +1,16 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 
-
-from . import auth
 from flask import render_template, flash, redirect, url_for, request
-from .. import db
-
-from .forms import LoginForm, RegistForm, AuthEmail, ResetPassword
 from flask_login import current_user, login_user, login_required, logout_user
 import datetime
+
+from . import auth
+from .. import db
+from .forms import LoginForm, RegistForm, AuthEmail, ResetPassword
 from ..token import generate_confirmation_token, confirm_token
 from ..email import send_email
 from ..models import User
-
 
 
 # 用户注册
@@ -106,6 +104,7 @@ def login():
 @login_required
 def logout():
     logout_user()
+    flash('您已成功登出,期待再次光临.')
     return redirect(url_for('public.index'))
 
 # 重置密码邮箱确认

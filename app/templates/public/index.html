@@ -46,7 +46,9 @@
                                      src="{{ post.author.avatar }}">
                             </a>
                         {% endif %}
+
                     </div>
+
                     <div class="media-body">
 
                         <div>{{ post.body|striptags|truncate(200,killwords=True)|safe }}</div>
@@ -66,13 +68,14 @@
                     <span class="label label-default">作者&nbsp;:<span
                             class="badge"><strong>{{ post.author.username }}</strong></span></span>&nbsp;
                     <span class="label label-default">时间&nbsp;:<span
-                            class="badge"><strong>{{ post.created.strftime('%Y-%m-%d %H:%M') }}</strong></span></span>&nbsp;
+                            class="badge"><strong>{{ post.created.strftime('%m-%d') }}</strong></span></span>&nbsp;
                     <span class="label label-default">浏览&nbsp;:<span
                             class="badge"><strong>{{ post.read_times }}</strong></span></span>&nbsp;
                     <span class="label label-default">评论&nbsp;:<span
                             class="badge"><strong>{{ post.comment_times }}</strong></span></span>
                     <span class="label label-default">分类&nbsp;:<span
                             class="badge"><strong>{{ post.category }}</strong></span></span>
+
                 </div>
             </div>
         </div>
@@ -100,5 +103,6 @@
 
 
 {% block footer %}
-
+    {{ super() }}
 {% endblock %}
+

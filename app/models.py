@@ -1,10 +1,11 @@
-from . import db, login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 import datetime
-import flask_whooshalchemyplus as whoosh
 from jieba.analyse import ChineseAnalyzer
 import re
+
+from . import db, login_manager
+
 
 # app = create_app()
 
@@ -140,9 +141,6 @@ class Post(db.Model):
         if img_list:
             self.post_img = ''.join(img_list[0])
         return self.post_img
-
-
-# whoosh.whoosh_index(app, Post)
 
 
 class Categories(db.Model):

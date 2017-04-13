@@ -1,6 +1,11 @@
-body {
-    padding-top: 50px;
+html{
 
+    height: 100%;
+}
+
+
+body {
+    min-height: 100%;
 }
 body a{
     text-decoration: none;
@@ -10,7 +15,7 @@ table a{
     text-decoration: none;
 }
 .container{
-            margin-top: 30px;
+            margin-top: 50px;
         }
 
 
@@ -26,13 +31,14 @@ table a{
   /*outline-offset: -2px;*/
 /*}*/
 
-#content {
-    width: 100%;
-    min-height: 600px;
-    /*background:#444 url(footer.png);*/
-    padding-top: 20px;
+/*#content {*/
+    /*width: 100%;*/
+    /*min-height: 600px;*/
+    /*!*background:#444 url(footer.png);*!*/
+    /*padding-top: 20px;*/
 
-}
+/*}*/
+
 
 .register {
     padding: 20px;
@@ -97,7 +103,9 @@ table a{
 }
 .article-entry-info .base-info {
     float: left;
+
 }
+
 .article-entry-info .main-info {
     float: right;
 }

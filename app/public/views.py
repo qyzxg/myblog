@@ -1,16 +1,19 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 
-from .. import db
-from . import public
 from flask import render_template, make_response, flash, redirect, \
     url_for, request, send_from_directory, g, current_app
-from ..models import User, Post, Comment, Categories, Styles, Todo
-from .forms import PostForm, CommentForm, SearchForm
 from flask_login import current_user, login_required
 from werkzeug.utils import secure_filename
+import flask_whooshalchemyplus as whoosh
 from os import path
 import time
+
+from .. import db
+from . import public
+from ..models import User, Post, Comment, Categories, Styles, Todo
+from .forms import PostForm, CommentForm, SearchForm
+
 
 
 @public.route('/', methods=['POST', 'GET'])
@@ -165,7 +168,11 @@ def hot_posts():
 # 搜索
 @public.before_app_request
 def before_request():
+    from .. import create_app
+    app = create_app()
+    whoosh.whoosh_index(app, Post)
     g.search_form = SearchForm()
+
 
 
 @public.route('/search', methods=['POST', 'GET'])

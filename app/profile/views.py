@@ -3,11 +3,13 @@
 
 
 from flask import render_template, flash, redirect, url_for, request
+from flask_login import current_user, login_required
+import datetime
+
 from ..models import User, Post, Comment, Todo
 from . import profile
 from .. import db
-from flask_login import current_user, login_required
-import datetime
+
 
 
 # 用户资料页

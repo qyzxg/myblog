@@ -11,5 +11,9 @@
 {% endblock %}
 {% block right_content %}
     {{ super() }}
-    <h5>后台管理首页</h5>
+    <h3>尊敬的超级管理员{{ current_user.username }},欢迎来到后台管理页面!</h3>
+{% endblock %}
+
+{% block footer %}
+    {{ super() }}
 {% endblock %}

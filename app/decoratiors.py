@@ -6,7 +6,6 @@ from flask_login import current_user
 from flask import flash
 
 
-
 def admin_permission_requied(view_func):
     @wraps
     def wraper(*args, **kwargs):

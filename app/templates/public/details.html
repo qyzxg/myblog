@@ -25,7 +25,7 @@
 
     {# 正文 #}
     <hr>
-    <div>
+    <div style="border: 1px solid #596a7b">
         {{ post.body|safe }}
     </div>
     {# 收藏 #}
@@ -57,12 +57,25 @@
                 {% endif %}
             {% endif %}
         {% endif %}
+
+        {% if current_user.is_authenticated %}
+            {% if current_user.id == post.author.id %}
+
+                    <a href="{{ url_for('public.edit',id=post.id) }}">
+                        <span class="label label-primary">编辑文章</span>
+                    </a>
+            {% endif %}
+        {% endif %}
+
+
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    {% if current_user.is_authenticated %}
         <a href="{{ url_for('public.edit') }} ">
             <span class="label label-primary">发表文章</span>
         </a>
+    {% endif %}
     </div>
-    <h3>评论</h3>
+    <h3>发表评论({{ post.comment_times }}):</h3>
     {# 发表评论 #}
     <div>
         <form action="" method="post" class="form-horizontal" name="send">
@@ -122,4 +135,8 @@
 {% endif %}
 
     {% include 'includes/_hot_posts.html' %}
+{% endblock %}
+
+{% block footer %}
+    {{ super() }}
 {% endblock %}

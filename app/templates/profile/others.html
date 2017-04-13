@@ -1,4 +1,4 @@
-{% extends 'profile/html' %}
+{% extends 'profile/base_other.html' %}
 {% from "bootstrap/pagination.html" import render_pagination %}
 
 {% block title %}{{ title|safe }}{% endblock %}
@@ -128,4 +128,8 @@
 {% endblock %}
 {% block right_content %}
     {% include 'includes/_hot_posts.html' %}
+{% endblock %}
+
+{% block footer %}
+    {{ super() }}
 {% endblock %}
