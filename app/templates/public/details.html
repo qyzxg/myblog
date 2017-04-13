@@ -22,11 +22,12 @@
             <a href="{{ url_for('profile.others', username = post.author.username) }}">{{ post.author.username }}</a>
         {% endif %}
     </span>
-    <span>&nbsp&nbsp&nbsp&nbsp发表日期&nbsp&nbsp:{{ post.created }}</span>
+    <span>&nbsp&nbsp&nbsp&nbsp时间&nbsp&nbsp:{{ post.created }}</span>
+    <span>&nbsp&nbsp&nbsp&nbsp分类&nbsp&nbsp:{{ post.category }}</span>
 </div>
     {# 正文 #}
     <hr>
-    <div style="border: 1px solid #596a7b">
+    <div style="border: 1px solid #596a7b; border-radius:5px">
         {{ post.body|safe }}
     </div>
     <br>

@@ -42,11 +42,11 @@ def create_app():
         app.logger.error(u'错误信息:')
         app.logger.critical(u'严重错误:')
 
-    from .admin import admin as admin_blueprint
-    app.register_blueprint(admin_blueprint)
+    from .admin import admin
+    app.register_blueprint(admin)
 
-    from .public import public as public_blueprint
-    app.register_blueprint(public_blueprint)
+    from .public import public
+    app.register_blueprint(public)
 
     from .auth import auth
     app.register_blueprint(auth)

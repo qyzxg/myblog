@@ -17,7 +17,7 @@
                 </div>
                 <div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1 register">
                     <div class="form-group">
-                        <label for="username" class="col-sm-3 control-label">用户名：</label>
+                        <label for="username" class="col-sm-3 control-label" style="font-size: 15px" >用&nbsp;&nbsp;户&nbsp;&nbsp;&nbsp;名：</label>
                         <div class="col-sm-8">
                             <div class="input-group">
                                 {#                <input type="text" class="form-control" name="username" placeholder="请输入用户名">#}
@@ -32,7 +32,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="password" class="col-sm-3 control-label">密码：</label>
+                        <label for="password" class="col-sm-3 control-label" style="font-size: 15px">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
                         <div class="col-sm-8">
                             <div class="input-group">
                                 {#                <input type="password" class="form-control" name="password" placeholder="请输入密码（六位以上）">#}
@@ -48,7 +48,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="chkpwd" class="col-sm-3 control-label">确认密码：</label>
+                        <label for="confirm" class="col-sm-3 control-label" style="font-size: 15px">确认密码：</label>
                         <div class="col-sm-8">
                             <div class="input-group">
                                 {#                <input type="password" class="form-control" name="chkpwd" placeholder="请确认密码">#}
@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="email" class="col-sm-3 control-label">邮箱：</label>
+                        <label for="email" class="col-sm-3 control-label" style="font-size: 15px">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</label>
                         <div class="col-sm-8">
                             <div class="input-group">
                                 {#                <input type="text" class="form-control" name="email" placeholder="请输入有效邮箱">#}
@@ -80,11 +80,11 @@
                     {{ form.csrf_token }}
                     <br>
                     <div class="row">
-                        <div class="col-md-3 col-md-offset-3 col-xs-12">
+                        <div class="col-md-4 col-md-offset-3 col-xs-12">
                             <button type="reset" class="btn btn-default btn-block"><b>&nbsp&nbsp清空&nbsp&nbsp</b>
                                 <span class="glyphicon glyphicon-remove"></span></button>
                         </div>
-                        <div class="col-md-3 col-xs-12">
+                        <div class="col-md-4 col-xs-12">
                             <button type="submit" class="btn btn-info btn-block"><b>&nbsp&nbsp注册&nbsp&nbsp</b>
                                 <span class="glyphicon glyphicon-arrow-right"></span></button>
                         </div>

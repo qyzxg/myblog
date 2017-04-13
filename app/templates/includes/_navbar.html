@@ -42,14 +42,14 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated %}
                     <li><a href="{{  url_for('profile.user_index', username = current_user.username)}}"><img src="{{ current_user.avatar }}" class="img-circle" width="21px" height="21px"></a></li>
-                    <li><a href="{{  url_for('profile.user_index', username = current_user.username)}}"><strong>{{ current_user.username }}</strong></a></li>
+                    <li><a href="{{  url_for('profile.user_index', username = current_user.username)}}">{{ current_user.username }}</a></li>
                     {% if current_user.role ==1 %}
-                        <li><a href="{{ url_for('admin.admin_index') }}"><strong>系统后台</strong></a></li>
+                        <li><a href="{{ url_for('admin.admin_index') }}">系统后台</a></li>
                     {% endif %}
-                    <li><a href="{{ url_for('auth.logout') }}"><strong>退出登录</strong></a></li>
+                    <li><a href="{{ url_for('auth.logout') }}">退出登录</a></li>
                 {% else %}
-                    <li><a href="{{ url_for('auth.login') }}"><strong>登录</strong></a></li>
-                    <li><a href="{{ url_for('auth.register') }}"><strong>注册</strong></a></li>
+                    <li><a href="{{ url_for('auth.login') }}">登录</a></li>
+                    <li><a href="{{ url_for('auth.register') }}">注册</a></li>
                 {% endif %}
             </ul>
         </div><!-- /.navbar-collapse -->

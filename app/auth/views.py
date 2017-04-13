@@ -33,8 +33,8 @@ def register():
         db.session.commit()
         token = generate_confirmation_token(user.email)
         confirm_url = url_for('auth.confirm_email', token=token, _external=True)
-        html = render_template('auth/email.html', confirm_url=confirm_url)
-        subject = "Please confirm your email"
+        html = render_template('auth/email_register.html', confirm_url=confirm_url)
+        subject = u"[noreply][51datas]账号注册邮件"
         send_email(user.email, subject, html)
         login_user(user, remember=True)
         flash('注册成功,请登录您的邮箱按照提示激活账户')
@@ -68,8 +68,8 @@ def active():
     user = current_user
     token = generate_confirmation_token(user.email)
     confirm_url = url_for('auth.confirm_email', token=token, _external=True)
-    html = render_template('auth/email.html', confirm_url=confirm_url)
-    subject = "Please confirm your email"
+    html = render_template('auth/email_active.html', confirm_url=confirm_url)
+    subject = u"[noreply][51datas]账号激活邮件"
     send_email(user.email, subject, html)
     flash('激活邮件已发送至您的邮箱!')
     return redirect(url_for('profile.user_index', username=user.username))
@@ -117,10 +117,10 @@ def reset_confirm_email():
             flash('该邮箱还没有注册!')
             return redirect(url_for('auth.reset_confirm_email'))
         else:
-            subject = "Password reset confirm email"
+            subject = u"[noreply][51datas]重置密码邮件"
             token = generate_confirmation_token(user.email)
             confirm_url = url_for('auth.reset_password', token=token, _external=True)
-            html = render_template('auth/email.html', confirm_url=confirm_url)
+            html = render_template('auth/email_reset.html', confirm_url=confirm_url)
             send_email(user.email, subject, html)
             flash('验证邮件已发送至您的邮箱!')
             return redirect(url_for('public.index'))
