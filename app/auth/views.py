@@ -142,7 +142,8 @@ def reset_password(token):
         user.set_password(form.data['password'])
         db.session.add(user)
         db.session.commit()
-        flash('密码修改成功!')
+        logout_user()
+        flash('密码修改成功,请重新登录!')
         return redirect(url_for('auth.login'))
     return render_template('auth/reset_password.html', form=form, token=token,
                            title='重置密码')
