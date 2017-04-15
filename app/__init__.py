@@ -5,12 +5,14 @@ from flask_login import LoginManager
 from flask_mail import Mail
 import flask_whooshalchemyplus
 from flaskext.markdown import Markdown
+from celery import Celery
+from .configs import CELERY_BROKER_URL, CELERY_RESULT_BACKEND
 
 bootstrap = Bootstrap()
 mail = Mail()
 db = SQLAlchemy()
 login_manager = LoginManager()
-
+celery = Celery(__name__, broker=CELERY_BROKER_URL, backend=CELERY_RESULT_BACKEND)
 login_manager.session_protection = 'strong'
 login_manager.login_message = '要访问该页面请您登录!'
 login_manager.needs_refresh_message = '请验证后再登录!'
@@ -26,6 +28,7 @@ def create_app():
     login_manager.init_app(app)
     Markdown(app)
     flask_whooshalchemyplus.init_app(app)
+    celery.conf.update(app.config)
 
     if not app.debug:
         import logging
@@ -54,6 +57,11 @@ def create_app():
     from .profile import profile
     app.register_blueprint(profile)
 
+    from .api_0_1 import api
+    app.register_blueprint(api, url_prefix='/api/v1.0')
+
     return app
+
+
 
 

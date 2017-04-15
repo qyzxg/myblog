@@ -8,7 +8,7 @@ from werkzeug.utils import secure_filename
 import flask_whooshalchemyplus as whoosh
 from os import path
 import time
-
+from ..tasks.celery_tasks import get_post_img
 from .. import db
 from . import public
 from ..models import User, Post, Comment, Categories, Styles, Todo
@@ -90,7 +90,8 @@ def edit(id=0):
             post.title = form.title.data
             post.style = form.style.data
             post.category = form.category.data
-            post.post_img = post.get_post_img(post)
+            img = get_post_img.delay(post)
+            post.post_img = img.get()
             db.session.add(post)
             db.session.commit()
             user.post_total += 1

@@ -1,5 +1,6 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from flask import url_for
 import datetime
 from jieba.analyse import ChineseAnalyzer
 import re
@@ -134,13 +135,26 @@ class Post(db.Model):
     category = db.Column(db.String(50), default='Python')
     post_img = db.Column(db.String(500), doc='文章首页地址', default=r'/static/images/post_default.jpg')
 
-    def get_post_img(self, post):
-        reg = r'<img alt.*?src="(.*?)".*?/>'
-        img = re.compile(reg)
-        img_list = img.findall(post.body)
-        if img_list:
-            self.post_img = ''.join(img_list[0])
-        return self.post_img
+    # def get_post_img(self, post):
+    #     reg = r'<img alt.*?src="(.*?)".*?/>'
+    #     img = re.compile(reg)
+    #     img_list = img.findall(post.body)
+    #     if img_list:
+    #         self.post_img = ''.join(img_list[0])
+    #     return self.post_img
+
+    def to_json(self):
+        json = {
+            # 'url': url_for('api.get_post', id=self.id, _external=True),
+            'body': self.body,
+            'created': self.created,
+            # 'author': url_for('api.get_user', id=self.author_id,
+            #                   _external=True),
+            # 'comments': url_for('api.get_post_comments', id=self.id,
+            #                     _external=True),
+            'comment_count': self.comment_times
+        }
+        return json
 
 
 class Categories(db.Model):
