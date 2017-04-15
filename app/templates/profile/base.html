@@ -3,6 +3,17 @@
 {% block head %}
     <head>
         {{ super() }}
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
+        <meta http-equiv="cache-control" content="no-cache">
+        <meta name="description" content="这是一个基于flask的开源多用户博客系统!">
+        <meta name="keywords" content="Python,博客，后端，前端,flask,redis,celery,web,入门,学习,教程,文章">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="index">
+        <meta name="author" content="qyzxg,qyzxg@live.com">
+        <meta name="copyright" content="qyzxg">
+        <meta name="revisit-after" content="1 days" >
+
         <link rel="shortcut icon" href="/static/avatar/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="{{ url_for('static', filename = 'stylesheets/main.css') }}">
         {% include 'includes/_navbar.html' %}

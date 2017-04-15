@@ -1,0 +1,23 @@
+<div id='article-entry' class="entry-box">
+
+            <div class="article-entry-header">
+                <h4 class="article-entry-title">
+                    热门作者
+                </h4>
+            </div>
+    {% for author in hot_authors %}
+        <ul class="list-group">
+            <li class="list-group-item" style="padding: inherit;margin: inherit">
+                 <span><img src="{{ author.avatar }}" class="img-circle" width="32px" height="32px"></span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% if current_user.id == author.id %}
+                    <span class="badge">{{ author.post_total }}</span>
+                    <a href="{{ url_for('profile.user_index', username = author.username) }}">{{ author.username  }}</a>
+                {% else %}
+                    <span class="badge">{{ author.post_total }}</span>
+                    <a href="{{ url_for('profile.others', username = author.username) }}">{{ author.username  }}</a>
+                {% endif %}
+            </li>
+        </ul>
+    {% endfor %}
+</div>

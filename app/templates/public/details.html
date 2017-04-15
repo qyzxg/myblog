@@ -23,7 +23,7 @@
         {% endif %}
     </span>
     <span>&nbsp&nbsp&nbsp&nbsp时间&nbsp&nbsp:{{ post.created }}</span>
-    <span>&nbsp&nbsp&nbsp&nbsp分类&nbsp&nbsp:{{ post.category }}</span>
+    <span>&nbsp&nbsp&nbsp&nbsp分类&nbsp&nbsp:<a href="{{ url_for('cates.get_cates',cate=post.category) }}">{{ post.category }}</a></span>
 </div>
     {# 正文 #}
     <hr>
@@ -141,7 +141,8 @@
     {% else %}
         {% include 'includes/_todo_list.html' %}
     {% endif %}
-
+    {% include 'includes/_post_cate.html' %}
+    {% include 'includes/_hot_author.html' %}
     {% include 'includes/_hot_posts.html' %}
 {% endblock %}
 

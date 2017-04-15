@@ -8,14 +8,16 @@ from werkzeug.utils import secure_filename
 import flask_whooshalchemyplus as whoosh
 from os import path
 import time
+import datetime
+import random
 from ..tasks.celery_tasks import get_post_img
-from .. import db
+from .. import db,cache
 from . import public
 from ..models import User, Post, Comment, Categories, Styles, Todo
 from .forms import PostForm, CommentForm, SearchForm
+import os
 
-
-
+@cache.cached(timeout=60, key_prefix='view_%s', unless=None)
 @public.route('/', methods=['POST', 'GET'])
 def index():
     # 记录cookie
@@ -24,17 +26,22 @@ def index():
     query = Post.query.order_by(Post.read_times.desc())
 
     pagination = query.paginate(page_index, per_page=10, error_out=False)
+
     posts_ = Post.query.order_by(Post.comment_times.desc()).limit(5)
+    hot_authors = User.query.order_by(User.post_total.desc()).limit(5)
     todos = None
     if current_user.is_authenticated:
         todos = Todo.query.filter_by(user_id=current_user.id, status=0)
     posts = pagination.items
+    categories = Categories.query.all()
     response = make_response(render_template('public/index.html',
                                              title='博客首页',
                                              posts_=posts_,
                                              posts=posts,
                                              pagination=pagination,
-                                             todos=todos))
+                                             todos=todos,
+                                             hot_authors=hot_authors,
+                                             categories=categories))
     response.set_cookie(key='user', value='name', expires=time.time() + 3600)
     response.set_cookie(key='pass', value='word', expires=time.time() + 3600)
     return response
@@ -69,6 +76,46 @@ def uploaded_file(filename):
     return send_from_directory(current_app.config['UPLOAD_FOLDER'], filename)
 
 
+#开启ck上传功能
+def gen_rnd_filename():
+    filename_prefix = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
+    return '%s%s' % (filename_prefix, str(random.randrange(1000, 10000)))
+
+
+@public.route('/ckupload/', methods=['POST'])
+def ckupload():
+    """CKEditor file upload"""
+    from .. import create_app
+    app = create_app()
+    error = ''
+    url = ''
+    callback = request.args.get("CKEditorFuncNum")
+    if request.method == 'POST' and 'upload' in request.files:
+        fileobj = request.files['upload']
+        fname, fext = os.path.splitext(fileobj.filename)
+        rnd_name = '%s%s' % (gen_rnd_filename(), fext)
+        filepath = os.path.join(app.static_folder, 'upload', rnd_name)
+        # 检查路径是否存在，不存在则创建
+        dirname = os.path.dirname(filepath)
+        if not os.path.exists(dirname):
+            try:
+                os.makedirs(dirname)
+            except:
+                error = 'ERROR_CREATE_DIR'
+        elif not os.access(dirname, os.W_OK):
+            error = 'ERROR_DIR_NOT_WRITEABLE'
+        if not error:
+            fileobj.save(filepath)
+            url = url_for('static', filename='%s/%s' % ('upload', rnd_name))
+    else:
+        error = 'post error'
+    res = """<script type="text/javascript">
+  window.parent.CKEDITOR.tools.callFunction(%s, '%s', '%s');
+</script>""" % (callback, url, error)
+    response = make_response(res)
+    response.headers["Content-Type"] = "text/html"
+    return response
+
 # 发表/修改文章
 @public.route('/edit/', methods=['POST', 'GET'])
 @public.route('/edit/<int:id>', methods=['POST', 'GET'])
@@ -90,10 +137,14 @@ def edit(id=0):
             post.title = form.title.data
             post.style = form.style.data
             post.category = form.category.data
-            img = get_post_img.delay(post)
-            post.post_img = img.get()
             db.session.add(post)
             db.session.commit()
+            post.post_img = post.get_post_img(post)
+
+            #异步获取
+            # img = get_post_img.delay(post)
+            # post.post_img = img.get()
+
             user.post_total += 1
             flash('文章发表成功!')
             return redirect(url_for('public.details', id=post.id))
@@ -122,8 +173,9 @@ def details(id):
 
     post.comment_times = len(post.comments)
     posts_ = Post.query.order_by(Post.comment_times.desc()).limit(5)
+    hot_authors = User.query.order_by(User.post_total.desc()).limit(5)
     post.read_times += 1
-
+    categories = Categories.query.all()
     form = CommentForm()
     # if not current_user.is_authenticated :
     todos = None
@@ -156,7 +208,9 @@ def details(id):
                            posts_=posts_,
                            todos=todos,
                            pagination=pagination,
-                           comments=comments
+                           comments=comments,
+                           categories=categories,
+                           hot_authors=hot_authors
                            )
 
 
@@ -180,16 +234,23 @@ def before_request():
 def search():
     if not g.search_form.validate_on_submit():
         return redirect(url_for('public.index'))
-    return redirect(url_for('public.search_results', query=g.search_form.search.data))
+    return redirect(url_for('public.search_results', key_word=g.search_form.search.data))
 
 
-@public.route('/search_results/<query>', methods=['POST', 'GET'])
-def search_results(query):
-    results = Post.query.whoosh_search(query, current_app.config['MAX_SEARCH_RESULTS']).all()
+@public.route('/search_results/<key_word>', methods=['POST', 'GET'])
+def search_results(key_word):
+    page_index = request.args.get('page', 1, type=int)
+
+    query = Post.query.whoosh_search(key_word, current_app.config['MAX_SEARCH_RESULTS'])
+    pagination = query.paginate(page_index, per_page=10, error_out=False)
+    results = pagination.items
+    total = len(query.all())
     return render_template('public/search_results.html',
-                           query=query,
+                           key_word=key_word,
                            results=results,
-                           title='%s的搜索结果' % query)
+                           total=total,
+                           pagination=pagination,
+                           title='%s的搜索结果' % key_word)
 
 
 @public.route('/service')

@@ -1,4 +1,4 @@
-{% extends "public/base.html" %}
+{% extends "cates/base.html" %}
 {% from "bootstrap/pagination.html" import render_pagination %}
 {% block title %}{{ title|safe }}{% endblock %}
 {% block left_content %}
@@ -10,16 +10,10 @@
         </div>
     {% endfor %}
 
-    {% if not results %}
-    <h3>"{{ key_word }}"&nbsp;没有搜索到哦,&nbsp;换个词试试吧!</h3>
-    {% else %}
-    <h3> "{{ key_word }}"的搜索结果 共有 {{ total }} 条:</h3>
-
-    {% for post in results|sort(attribute='created',reverse=True ) %}
+    <h3> 所有分类为 {{ cate }} 的文章  共 {{ total }} 篇:</h3>
+    {% for post in posts|sort(attribute='created',reverse=True ) %}
         {% include 'includes/_posts_summary.html' %}
     {% endfor %}
-
-    {% endif %}
     {% if pagination %}
             {{ render_pagination(pagination) }}
         {% endif %}

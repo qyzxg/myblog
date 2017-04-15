@@ -9,7 +9,7 @@
             </div>
     {% for todo in todos %}
         <ul class="list-group">
-            <li class="list-group-item">
+            <li class="list-group-item" style="padding: 0px;margin: 0px" >
                  <span class="badge">{{ todo.get_status() }}</span>
                 {{ todo.content|striptags|truncate(13,killwords=True)|safe  }}
             </li>
