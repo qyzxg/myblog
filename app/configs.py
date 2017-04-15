@@ -25,7 +25,7 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif', 'webp', 'bmp'])
 BASE_PATH = path.abspath(path.dirname(__file__))
 
 '''text research'''
-WHOOSH_BASE = 'blog'
+WHOOSH_BASE = 'search'
 MAX_SEARCH_RESULTS = 50
 
 CELERY_BROKER_URL = 'redis://localhost:6379/0'

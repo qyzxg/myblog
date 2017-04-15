@@ -15,7 +15,7 @@
         <meta name="revisit-after" content="1 days" >
 
         <link rel="shortcut icon" href="/static/avatar/favicon.ico" type="image/x-icon">
-
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'font-awesome/css/font-awesome.min.css') }}">
         {% include 'includes/_navbar.html' %}
 
         <title>{% block title %}{{ title|safe }}{% endblock %}</title>
@@ -66,7 +66,6 @@
     <script src="{{ url_for('static', filename ='javascripts/jquery-2.2.1.min.js') }}" type="text/javascript"></script>
     <script src="{{ url_for('static', filename ='javascripts/jquery-ui.min.js') }}" type="text/javascript"></script>
     <script src="{{ url_for('static', filename ='javascripts/modernizr.min.js') }}" type="text/javascript"></script>
-    <script src="{{ url_for('static', filename ='javascripts/application-985b892b.js') }}" type="text/javascript"></script>
     <script src="{{ url_for('static', filename ='ckeditor/ckeditor.js') }}" type="text/javascript"></script>
     <script src="{{ url_for('static', filename = 'ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js') }}"></script>
     <script>hljs.initHighlightingOnLoad();</script>

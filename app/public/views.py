@@ -35,7 +35,7 @@ def index():
     posts = pagination.items
     categories = Categories.query.all()
     response = make_response(render_template('public/index.html',
-                                             title='博客首页',
+                                             title='myblog',
                                              posts_=posts_,
                                              posts=posts,
                                              pagination=pagination,
