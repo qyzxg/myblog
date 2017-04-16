@@ -2,25 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63bd6c3e-09d0-45ed-8561-0d52e5b0e3dd" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/templates/cates/flask_posts.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/MAIN_2litqngs4v8qtmme.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/MAIN_4lot0ec6ghrss1wf.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/MAIN_dal8711puetgq58e.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/MAIN_fxw2r7ghzphkouqr.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/MAIN_r9zp2psk7lh3y97o.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/_MAIN_1106.toc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/screenshot/2017-02-17_080528.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/screenshot/2017-02-17_080622.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/screenshot/2017-02-17_080634.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/screenshot/2017-02-17_080642.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/screenshot/2017-02-17_080659.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/screenshot/2017-02-17_080708.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/screenshot/2017-02-17_080715.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/views.py" afterPath="$PROJECT_DIR$/app/admin/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cates/views.py" afterPath="$PROJECT_DIR$/app/cates/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/profile/views.py" afterPath="$PROJECT_DIR$/app/profile/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/public/views.py" afterPath="$PROJECT_DIR$/app/public/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/admin/admin_index.html" afterPath="$PROJECT_DIR$/app/templates/admin/admin_index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/admin/base.html" afterPath="$PROJECT_DIR$/app/templates/admin/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/base.html" afterPath="$PROJECT_DIR$/app/templates/profile/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/base_other.html" afterPath="$PROJECT_DIR$/app/templates/profile/base_other.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/user_index.html" afterPath="$PROJECT_DIR$/app/templates/profile/user_index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/myblog.log" afterPath="$PROJECT_DIR$/logs/myblog.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
     </list>
     <ignored path="todo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -95,16 +84,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="159" column="6" lean-forward="false" selection-start-line="159" selection-start-column="6" selection-end-line="159" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="admin_index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/templates/admin/admin_index.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -144,14 +123,26 @@
       <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+            <state relative-caret-position="289">
+              <caret line="32" column="1" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user_index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="celery_worker.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/celery_worker.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="69">
+              <caret line="3" column="38" lean-forward="true" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="79" />
+              <folding>
+                <element signature="e#123#157#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user_index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/templates/profile/user_index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="184">
@@ -413,7 +404,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
+              <option name="myItemId" value="screenshot" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -428,64 +419,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myblog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myblog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myblog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myblog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="profile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myblog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myblog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -511,11 +444,11 @@
       <recent name="E:\MyProject\myblog\app\templates\tasks" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\MyProject\myblog\screenshot" />
       <recent name="E:\MyProject\myblog\app\static\javascripts" />
       <recent name="E:\MyProject\myblog\search\Post" />
       <recent name="E:\MyProject\myblog\app\static" />
       <recent name="E:\MyProject\myblog\app\templates\cates" />
-      <recent name="E:\MyProject\myblog\app\templates\profile" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -928,9 +861,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24432677" sideWeight="0.49144253" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24432677" sideWeight="0.49144253" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32612312" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32786885" sideWeight="0.5060514" order="7" side_tool="true" content_ui="tabs" />
@@ -1036,13 +968,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/admin/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" column="4" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/auth/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1388,14 +1313,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/profile/user_index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
@@ -1403,6 +1320,24 @@
           <folding>
             <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="32" column="1" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/celery_worker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="38" lean-forward="true" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="79" />
+          <folding>
+            <element signature="e#123#157#0" expanded="true" />
           </folding>
         </state>
       </provider>
