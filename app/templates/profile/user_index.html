@@ -4,6 +4,52 @@
     {{ title }}
 {% endblock %}
 
+{% block scripts %}
+    {{ super() }}
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('pc'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            color: [
+                    '#2179cc'
+                ],
+            backgroundColor: 'rgba(204,184,91,0.7)',
+            title: {
+                text: '{{ m }}月文章统计'
+            },
+            toolbox: {
+                    show: true,
+                    feature: {
+                        dataZoom: {
+                            yAxisIndex: 'none'
+                        },
+                        dataView: {readOnly: false},
+                        magicType: {type: ['line', 'bar']},
+                        restore: {},
+                        saveAsImage: {}
+                    }
+                },
+            tooltip: {},
+            legend: {
+                data:['文章数量']
+            },
+            xAxis: {
+                data: {{ x|tojson }}
+            },
+            yAxis: {},
+            series: [{
+                name: '文章数量',
+                type: 'bar',
+                data: {{ lst|tojson }}
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+{% endblock %}
 
 {% block right_content %}
     {{ super() }}
@@ -54,21 +100,27 @@
                     </tr>
                     </tbody>
                 </table>
+
             </div>
         </div>
     </div>
-    <div>
+    <div id="pc" style="width: 766px;height:300px;float: right"></div>
+    <div style="width: 128px;height: 300px;float: left">
 
-        <p><a href="{{ url_for('public.upload') }}">修改图像</a></p>
-        <p><a href="{{ url_for('auth.reset_confirm_email') }}">修改密码</a></p>
+        <p align="center"><a href="{{ url_for('public.upload') }}">修改图像</a></p>
+        <p align="center"><a href="{{ url_for('auth.reset_confirm_email') }}">修改密码</a></p>
         {% if user.confirmed==0 %}
-            <p><a href="{{ url_for('auth.active') }}">激活账户</a></p>
+            <p align="center"><a href="{{ url_for('auth.active') }}">激活账户</a></p>
         {% endif %}
         {% if user.role==1 %}
-            <p><a href="{{ url_for('admin.admin_index') }}">后台管理</a></p>
+            <p align="center"><a href="{{ url_for('admin.admin_index') }}">后台管理</a></p>
         {% endif %}
     </div>
+
+
+
 {% endblock %}
+
 
 {% block footer %}
     {{ super() }}

@@ -21,6 +21,7 @@ import os
 @public.route('/', methods=['POST', 'GET'])
 def index():
     # 记录cookie
+
     page_index = request.args.get('page', 1, type=int)
 
     query = Post.query.order_by(Post.read_times.desc())

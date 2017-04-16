@@ -9,6 +9,7 @@ import datetime
 from ..models import User, Post, Comment, Todo
 from . import profile
 from .. import db
+from ..admin.views import get_c_month,get_m_days
 
 
 
@@ -24,10 +25,17 @@ def user_index(username):
     if user.id != current_user.id:
         flash('您没有权限访问该页面!')
         return redirect(url_for('public.index'))
-
+    n = get_c_month()
+    b = get_m_days()
+    lst = [
+        Post.query.filter_by(author_id=user.id).filter(Post.created.between('2017-%s-%d 0:0:0' % (n, i), '2017-%s-%d 0:0:0' % (n, (i + 1)))).count()
+        for
+        i in range(1, b)]
+    x = list(range(1, get_m_days()))
+    m = get_c_month()
     return render_template('profile/user_index.html', user=user,
                            title='%s的后台' % user.username,
-                           menu=0)
+                           menu=0,x=x,lst=lst,m=m)
 
 
 @profile.route('/others/<username>', methods=['POST', 'GET'])

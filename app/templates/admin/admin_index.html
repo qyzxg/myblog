@@ -1,5 +1,8 @@
 {% extends 'admin/base.html' %}
 
+{% block head %}
+    {{ super() }}
+{% endblock %}
 {% block head_title %}
     {{ title }}
 {% endblock %}
@@ -11,7 +14,136 @@
 {% endblock %}
 {% block right_content %}
     {{ super() }}
-    <h3>尊敬的超级管理员{{ current_user.username }},欢迎来到后台管理页面!</h3>
+    <div id="pc" style="width: 450px; height:200px; float:left"></div>
+    <div id="uc" style="width: 450px; height:200px; float:right"></div>
+    <div id="cc" style="width: 450px; height:200px; float: left;margin-top: 20px"></div>
+    {% block scripts %}
+        {{ super() }}
+        <script type="text/javascript">
+            var myChart = echarts.init(document.getElementById('pc'));
+
+            // 指定图表的配置项和数据
+            var option = {
+                color: [
+                    '#2179cc'
+                ],
+                backgroundColor: 'rgba(204,184,91,0.7)',
+                title: {
+                    text: '{{ m }}月新增文章数量'
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        dataZoom: {
+                            yAxisIndex: 'none'
+                        },
+                        dataView: {readOnly: false},
+                        magicType: {type: ['line', 'bar']},
+                        restore: {},
+                        saveAsImage: {}
+                    }
+                },
+                tooltip: {},
+                legend: {
+                    data: ['文章数量']
+                },
+                xAxis: {
+                    data: {{ x|tojson }}
+                },
+                yAxis: {},
+                series: [{
+                    name: '文章数量',
+                    type: 'bar',
+                    data: {{ lt_post|tojson }}
+                }]
+            };
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+        </script>
+
+        <script type="text/javascript">
+            var myChart = echarts.init(document.getElementById('uc'));
+
+            // 指定图表的配置项和数据
+            var option = {
+                color: [
+                    '#408829', '#68a54a', '#a9cba2', '#86b379',
+                    '#397b29', '#8abb6f', '#759c6a', '#bfd3b7'
+                ],
+                backgroundColor: 'rgba(204,184,91,0.7)',
+                title: {
+                    text: '{{ m }}月新增用户数量'
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        dataZoom: {
+                            yAxisIndex: 'none'
+                        },
+                        dataView: {readOnly: false},
+                        magicType: {type: ['line', 'bar']},
+                        restore: {},
+                        saveAsImage: {}
+                    }
+                },
+                tooltip: {},
+                legend: {
+                    data: ['用户数量']
+                },
+                xAxis: {
+                    data: {{ x|tojson }}
+                },
+                yAxis: {},
+                series: [{
+                    name: '用户数量',
+                    type: 'line',
+                    data: {{ lt_user|tojson }}
+                }]
+            };
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+        </script>
+
+        <script type="text/javascript">
+            var myChart = echarts.init(document.getElementById('cc'));
+            option = {
+                backgroundColor: 'rgba(204,184,91,0.7)',
+    title : {
+        text: '文章分类',
+        x:'center'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient: 'vertical',
+        left: 'left',
+        data: {{ cat|tojson }}
+    },
+    series : [
+        {
+            name: '文章分类',
+            type: 'pie',
+            radius : '75%',
+            center: ['50%', '55%'],
+
+            data:{{ d|tojson }},
+            itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+};
+            myChart.setOption(option);
+        </script>
+    {% endblock %}
 {% endblock %}
 
 {% block footer %}

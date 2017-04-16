@@ -2,12 +2,56 @@
 # -*- coding:utf-8 -*-
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_required
-
-from .. import db
+import time
+from .. import db,cache
 from . import admin
 from ..models import User, Post, Comment, Categories
 from .forms import NewCategory
+from collections import OrderedDict
 
+
+@cache.memoize(timeout=86400, unless=None)#获取每天文章总数,一天获取一次
+def get_m_post():
+    n = get_c_month()
+    b = get_m_days()
+    lst = [
+        Post.query.filter(Post.created.between('2017-%s-%d 0:0:0' % (n, i), '2017-%s-%d 0:0:0' % (n, (i + 1)))).count()
+        for
+        i in range(1, b)]
+    return lst
+
+
+@cache.memoize(timeout=3600, unless=None)#获取文章分类,一小时一次
+def get_a_cate():
+    lst = [str(a.name) for a in Categories.query.all()]
+    return lst
+
+@cache.memoize(timeout=3600, unless=None)#获取文章分类,一小时一次
+def get_a_cates():
+    lst = [Post.query.filter_by(category=i).count() for i in get_a_cate()]
+    return lst
+
+@cache.memoize(timeout=86400, unless=None)#获取每天用户注册数,一天获取一次
+def get_m_user():
+    n = get_c_month()
+    b = get_m_days()
+    lst = [User.query.filter(
+        User.created_at.between('2017-%s-%d 0:0:0' % (n, i), '2017-%s-%d 0:0:0' % (n, (i + 1)))).count() for
+           i in range(1, b)]
+    return lst
+
+@cache.memoize(timeout=1296000, unless=None)#获取当前月份,15天一次
+def get_c_month():
+    return time.strftime('%m', time.localtime(time.time()))
+
+@cache.memoize(timeout=1296000, unless=None)#获取当前月天数,15天一次
+def get_m_days():
+    n = get_c_month()
+    if n in ['01', '03', '05', '07', '08', '10', '12']:
+        a = 32
+    else:
+        a = 31
+    return a
 
 
 # 管理员后台首页
@@ -19,8 +63,20 @@ def admin_index():
         return render_template('user/user_index.html', user=current_user,
                                title='用户首页')
     else:
+        m = get_c_month()
+        cat = get_a_cate()
+        cats = get_a_cates()
+        c = OrderedDict(zip(cats, cat))
+        d = [{'value': k, 'name': v} for k, v in c.items()]
+        x = list(range(1, get_m_days()))
+        lt_post = get_m_post()
+        lt_user = get_m_user()
         return render_template('admin/admin_index.html', title='管理员后台',
-                               menu=0)
+                               menu=0,
+                               x=x, lt_post=lt_post,
+                               lt_user=lt_user,
+                               m=m, cat=cat, cats=cats, d=d
+                               )
 
 
 # 文章分类管理
@@ -122,7 +178,6 @@ def blog_manage(id):
         return redirect(url_for('admin.blogs_manage'))
 
 
-
 # 评论删除
 @admin.route('/admin/comment_manage/<int:id>/')
 @login_required
@@ -194,5 +249,3 @@ def role_manage(id, role):
         else:
             user.role = 0
         return redirect(url_for('admin.users_manage'))
-
-
