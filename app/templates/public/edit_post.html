@@ -37,8 +37,6 @@
                     {{ form.body(class='ckeditor',placeholder='请输入文章内容,必须大于10个字') }}
                     <script type="text/javascript">
                         CKEDITOR.replace("body", {
-                            filebrowserUploadUrl: '/ckupload/',
-                            filebrowserImageUploadUrl: '/ckupload/',
 
                         });
                     </script>
@@ -61,4 +59,5 @@
 
 {% block footer %}
     {{ super() }}
+
 {% endblock %}

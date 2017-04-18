@@ -32,5 +32,7 @@ flush信息提示完善,可以给刚入门的同学做一个参考,下面简单�
 ![image](https://github.com/qyzxg/myblog/blob/master/screenshot/用户资料页.png)
 ##用户后台首页
 ![image](https://github.com/qyzxg/myblog/blob/master/screenshot/用户后台首页.png)
+##用户消息管理,管理员可以群发消息
+![image](https://github.com/qyzxg/myblog/blob/master/screenshot/站内信.png)
 ##管理员后台首页
 ![image](https://github.com/qyzxg/myblog/blob/master/screenshot/管理员后台首页.png)

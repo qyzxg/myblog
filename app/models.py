@@ -1,24 +1,19 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from flask import url_for
 import datetime
 from jieba.analyse import ChineseAnalyzer
 import re
-
 from . import db, login_manager
 
-
-# app = create_app()
-
 follow = db.Table('followers',
-    db.Column('follower_id', db.Integer, db.ForeignKey('users.id')),
-    db.Column('followed_id', db.Integer, db.ForeignKey('users.id'))
-)
+                  db.Column('follower_id', db.Integer, db.ForeignKey('users.id')),
+                  db.Column('followed_id', db.Integer, db.ForeignKey('users.id'))
+                  )
 
 collect = db.Table('collects',
-    db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
-    db.Column('post_id', db.Integer, db.ForeignKey('posts.id'))
-)
+                   db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
+                   db.Column('post_id', db.Integer, db.ForeignKey('posts.id'))
+                   )
 
 
 class User(UserMixin, db.Model):
@@ -48,6 +43,11 @@ class User(UserMixin, db.Model):
                                secondaryjoin=id == follow.c.followed_id,
                                backref=db.backref('followers', lazy='dynamic'),
                                lazy='dynamic')
+
+    messages_reve = db.relationship('Message', backref='sender', lazy='dynamic',
+                                    primaryjoin='Message.sender_id==User.id')
+    messages_send = db.relationship('Message', backref='sendto', lazy='dynamic',
+                                    primaryjoin='Message.sendto_id==User.id')
 
     def set_password(self, password):
         self.password = generate_password_hash(password)
@@ -90,8 +90,7 @@ class User(UserMixin, db.Model):
         return Post.query.join(collect, (collect.c.post_id == Post.id)).filter(
             collect.c.user_id == self.id).order_by(Post.created.desc())
 
-
-    #关注/取消关注
+    # 关注/取消关注
     def follow(self, user):
         if not self.following(user):
             self.followed.append(user)
@@ -112,6 +111,13 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 
+
+
+    def unconfirmed_messages(self):
+        unconfirmed_messages = Message.query.order_by(Message.created_at.desc()).filter_by(
+            sendto=self).filter_by(
+            confirmed=False).all()
+        return len(unconfirmed_messages)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -194,4 +200,20 @@ class Todo(db.Model):
             return '已完成'
 
 
+class Message(db.Model):
+    __tablename__ = 'messages'
+    id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.String(300))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now())
+    confirmed = db.Column(db.Boolean, default=False)
+    sender_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    sendto_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
+    def __repr__(self):
+        return '<Message %r  from %r sent to %r>' % (self.content, self.sender.username, self.sendto.username)
+
+    def get_status(self):
+        if self.confirmed:
+            return '已读'
+        else:
+            return '未读'

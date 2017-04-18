@@ -7,7 +7,7 @@ import re
 
 @celery.task
 def send_email(to, subject, template):
-    app = create_app()
+    app = create_app('default')
     msg = Message(
         subject,
         recipients=[to],

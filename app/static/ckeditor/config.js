@@ -35,6 +35,7 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
+	config.extraPlugins = 'markdown';
 	config.extraPlugins = 'wordcount';
 	config.wordcount = {
         showParagraphs: false,  // 是否统计段落数

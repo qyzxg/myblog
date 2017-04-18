@@ -15,7 +15,7 @@
 {% block right_content %}
     {{ super() }}
  <form class="input-group" action="{{ url_for('profile.todo_add') }}" method="post">
-        <input class="form-control" id="centent" name="content" type="text">
+        <input class="form-control" id="centent" name="content" type="text" required="required">
     <span class="input-group-btn">
         <button class="btn btn-default" type="submit">添加</button>
     </span>

@@ -74,6 +74,9 @@
                 <a href="{{ url_for('profile.unfollow',username=user.username) }}">
                     <span class="label label-default">取消关注</span>
                 </a>
+                <a href="{{ url_for('profile.send_message') }}">
+                    <span class="label label-primary">发消息给他</span>
+                </a>
             {% endif %}
         {% else %}
 

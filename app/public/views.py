@@ -11,17 +11,17 @@ import time
 import datetime
 import random
 from ..tasks.celery_tasks import get_post_img
-from .. import db,cache
+from .. import db, cache
 from . import public
 from ..models import User, Post, Comment, Categories, Styles, Todo
 from .forms import PostForm, CommentForm, SearchForm
 import os
 
-@cache.cached(timeout=60, key_prefix='view_%s', unless=None)
+
+@cache.cached(timeout=30, key_prefix='view_%s', unless=None)
 @public.route('/', methods=['POST', 'GET'])
 def index():
     # 记录cookie
-
     page_index = request.args.get('page', 1, type=int)
 
     query = Post.query.order_by(Post.read_times.desc())
@@ -87,7 +87,7 @@ def gen_rnd_filename():
 def ckupload():
     """CKEditor file upload"""
     from .. import create_app
-    app = create_app()
+    app = create_app('default')
     error = ''
     url = ''
     callback = request.args.get("CKEditorFuncNum")
@@ -182,22 +182,23 @@ def details(id):
     todos = None
     if current_user.is_authenticated:
         todos = Todo.query.filter_by(user_id=current_user.id, status=0)
-    if form.validate_on_submit():
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            if current_user.is_authenticated:
+                if current_user.confirmed == 1:
+                    comment = Comment(author=current_user,
+                                      body=form.body.data,
+                                      post=post)
+                    db.session.add(comment)
+                    db.session.commit()
+                    post.comment_times += 1
+                    flash('评论发表成功!')
+                    form.body.data=''
+                else:
+                    flash('验证邮箱后才能发表评论哦!')
 
-        if current_user.is_authenticated:
-            if current_user.confirmed == 1:
-                comment = Comment(author=current_user,
-                                  body=form.body.data,
-                                  post=post)
-                db.session.add(comment)
-                db.session.commit()
-                post.comment_times += 1
-                flash('评论发表成功!')
             else:
-                flash('验证邮箱后才能发表评论哦!')
-
-        else:
-            flash('登录后才能评论哦!')
+                flash('登录后才能评论哦!')
     page_index = request.args.get('page', 1, type=int)
     query = Comment.query.filter_by(post_id=id).order_by(Comment.created.desc())
     pagination = query.paginate(page_index, per_page=10, error_out=False)

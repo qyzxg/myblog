@@ -3,15 +3,17 @@
 {% block head %}
     {{ super() }}
 {% endblock %}
+
 {% block head_title %}
     {{ title }}
 {% endblock %}
+
 {% block breadcrumb %}
     <ol class="breadcrumb">
-        <li><a href="{{ url_for('admin.admin_index') }}">后台首页</a></li>
         <li class="active">后台首页</li>
     </ol>
 {% endblock %}
+
 {% block right_content %}
     {{ super() }}
     <div id="pc" style="width: 450px; height:200px; float:left"></div>
@@ -112,7 +114,7 @@
                 backgroundColor: 'rgba(204,184,91,0.7)',
     title : {
         text: '文章分类',
-        x:'center'
+        x:'left'
     },
     tooltip : {
         trigger: 'item',
@@ -120,7 +122,7 @@
     },
     legend: {
         orient: 'vertical',
-        left: 'left',
+        right: 'right',
         data: {{ cat|tojson }}
     },
     series : [
@@ -128,7 +130,7 @@
             name: '文章分类',
             type: 'pie',
             radius : '75%',
-            center: ['50%', '55%'],
+            center: ['50%', '50%'],
 
             data:{{ d|tojson }},
             itemStyle: {

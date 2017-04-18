@@ -45,7 +45,7 @@
     <div class="container">
         <div class="col-md-2">
             <!-- 左侧的菜单 -->
-            <div class="list-group">
+            <div class="list-group" style="text-align: center">
             <a href="{{ url_for('public.edit') }}" class="btn btn-primary">发表新文章</a>
                 <br>
                 <br>
@@ -63,6 +63,9 @@
                 <a href="{{ url_for('admin.new_category') }}"
                    class="list-group-item {% if menu==4 %} active {% endif %}"><span class="glyphicon glyphicon-tags"
                                                                                      aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp分类管理</a>
+                <a href="{{ url_for('admin.messages_manage') }}"
+                   class="list-group-item {% if menu==5 %} active {% endif %}"><span class="glyphicon glyphicon-envelope"
+                                                                                     aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbsp通知管理</a>
 {#                <a href="#" class="list-group-item {% if menu==5 %} active {% endif %}"><span#}
 {#                        class="glyphicon glyphicon-tasks" aria-hidden="true"></span>&nbsp&nbsp&nbsp&nbspToDo管理</a>#}
             </div>

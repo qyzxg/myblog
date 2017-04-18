@@ -3,16 +3,14 @@
 
 from functools import wraps
 from flask_login import current_user
-from flask import flash
+from flask import flash, redirect, url_for, request
 
 
-def admin_permission_requied(view_func):
-    @wraps
-    def wraper(*args, **kwargs):
-        # 查询用户的角色
-        roles = current_user.role
-        if roles == 1 and current_user.is_valid == 1:
-            return view_func(*args, **kwargs)
-        flash('您还没有权限进行该操作')
-
-    return wraper
+def admin_required(f):
+    @wraps(f)
+    def view_function(*args, **kwargs):
+        if not current_user.role == 1:
+            flash('您没有管理员权限!')
+            return redirect(url_for('public.index'))
+        return f(*args, **kwargs)
+    return view_function

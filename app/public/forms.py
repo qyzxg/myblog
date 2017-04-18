@@ -7,6 +7,7 @@ from wtforms.validators import DataRequired, Length
 from flaskckeditor import CKEditor
 from flask_pagedown.fields import PageDownField
 
+
 class PostForm(FlaskForm, CKEditor):
     title = StringField(label="标题", validators=[DataRequired(),
                                                 Length(min=5, max=50, message='标题必须字数在5与20之间!')],

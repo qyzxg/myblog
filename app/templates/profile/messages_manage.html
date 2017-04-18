@@ -1,0 +1,204 @@
+{% extends 'profile/base.html' %}
+{% from "bootstrap/pagination.html" import render_pagination %}
+
+{% block head_title %}
+    {{ title }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="{{ url_for('profile.user_index',username=current_user.username) }}">个人首页</a></li>
+        <li class="active">消息管理</li>
+    </ol>
+{% endblock %}
+
+{% block right_content %}
+    {{ super() }}
+    <h3>发送消息:</h3>
+    <form class="form-inline" action="{{ url_for('profile.send_message') }}" method="post">
+        <div class="form-group">
+            <label class="sr-only" for="username"></label>
+            <div class="input-group">
+                <div class="input-group-addon">用户:</div>
+                {#                <input type="text" class="form-control" id="username" name="username" placeholder="请填入好友用户名">#}
+                <select class="form-control" style="width: 200px" name="sendto">
+                    <option>--请选择好友用户名--</option>
+                    {% for friend in friends %}
+                        <option>{{ friend.username }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="content"></label>
+            <div class="input-group">
+                <div class="input-group-addon">内容:</div>
+                <input type="text" class="form-control" id="content" name="content" placeholder="请输入消息内容,300个字符以内"
+                       style="width: 515px" required="required">
+            </div>
+        </div>
+        <button class="btn btn-default" type="submit">发送</button>
+    </form>
+    <br>
+<h3>消息列表:</h3>
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+        <li role="presentation" class="active"><a href="#sys_messages" aria-controls="home" role="tab" data-toggle="tab"><i
+                class="fa fa-envelope"></i>系统通知<span class="badge" style="color: #ebebeb;font-size: 13px;background-color: #cc2729">{{ n_sy }}</span></a></li>
+        <li role="presentation"><a href="#unread_messages" aria-controls="profile" role="tab" data-toggle="tab"><i
+                class="fa fa-envelope-o"></i>未读消息<span class="badge" style="color: #ebebeb;font-size: 13px;background-color: #15cc0a">{{ n_u }}</span></a></li>
+        <li role="presentation"><a href="#read_messages" aria-controls="messages" role="tab" data-toggle="tab"><i
+                class="fa fa-envelope-open"></i>已读消息<span class="badge" style="color: #ebebeb;font-size: 13px;background-color: #cccc0c">{{ n_c }}</span></a></li>
+        <li role="presentation"><a href="#sended_messages" aria-controls="messages" role="tab" data-toggle="tab"><i
+                class="fa fa-envelope-square"></i>已发消息<span class="badge" style="color: #ebebeb;font-size: 13px;background-color: #0608cc">{{ n_s }}</span></a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content tabs">
+        <div role="tabpanel" class="tab-pane fade in active" id="sys_messages">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover ">
+                    <thead>
+                    <tr>
+                        <th>
+                            <mark>消息内容</mark>
+                        </th>
+                        <th>
+                            <mark>发送时间</mark>
+                        </th>
+                        <th>
+                            <mark>发送者</mark>
+                        </th>
+                        <th>
+                            <mark>消息状态</mark>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for message in sys_messages %}
+                        <tr>
+                            <td style="max-width: 500px"><h5>{{ message.content }}</h5></td>
+                            <td><h5>{{ message.created_at.strftime('%Y-%m-%d %H:%M') }}</h5></td>
+                            <td><h5>{{ message.sender.username }}</h5></td>
+                            <td><h5>{{ message.get_status() }}</h5></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="unread_messages">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover ">
+                    <thead>
+                    <tr>
+                        <th>
+                            <mark>消息内容</mark>
+                        </th>
+                        <th>
+                            <mark>发送时间</mark>
+                        </th>
+                        <th>
+                            <mark>发送者</mark>
+                        </th>
+                        <th>
+                            <mark>消息确认</mark>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for message in unconfirmed_messages %}
+                        <tr>
+                            <td style="max-width: 500px"><h5>{{ message.content }}</h5></td>
+                            <td><h5>{{ message.created_at.strftime('%Y-%m-%d %H:%M') }}</h5></td>
+                            <td><h5>{{ message.sender.username }}</h5></td>
+                            <td><a href="{{ url_for('profile.confirm_message',id=message.id) }}" class="btn btn-primary">确认</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="read_messages">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover ">
+                    <thead>
+                    <tr>
+                        <th>
+                            <mark>消息内容</mark>
+                        </th>
+                        <th>
+                            <mark>发送时间</mark>
+                        </th>
+                        <th>
+                            <mark>发送者</mark>
+                        </th>
+                        <th>
+                            <mark>删除消息</mark>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for message in confirmed_messages %}
+                        <tr>
+                            <td style="max-width: 500px"><h5>{{ message.content }}</h5></td>
+                            <td><h5>{{ message.created_at.strftime('%Y-%m-%d %H:%M') }}</h5></td>
+                            <td><h5>{{ message.sender.username }}</h5></td>
+                            <td><a href="{{ url_for('profile.delete_message',id=message.id) }}" class="btn btn-danger">删除</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="sended_messages">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover ">
+                    <thead>
+                    <tr>
+                        <th>
+                            <mark>消息内容</mark>
+                        </th>
+                        <th>
+                            <mark>发送时间</mark>
+                        </th>
+                        <th>
+                            <mark>发送给</mark>
+                        </th>
+                        <th>
+                            <mark>消息状态</mark>
+                        </th>
+                        <th>
+                            <mark>删除消息</mark>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for message in sended_messages %}
+                        <tr>
+                            <td  style="max-width: 500px"><h5>{{ message.content }}</h5></td>
+                            <td><h5>{{ message.created_at.strftime('%Y-%m-%d %H:%M') }}</h5></td>
+                            <td><h5>{{ message.sendto.username }}</h5></td>
+                            <td><h5>{{ message.get_status() }}</h5></td>
+                            <td><a href="{{ url_for('profile.delete_message',id=message.id) }}" class="btn btn-danger">删除</a></td>
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    {% if pagination %}
+        {{ render_pagination(pagination) }}
+    {% endif %}
+{% endblock %}
+
+
+
+
+{% block footer %}
+    {{ super() }}
+{% endblock %}

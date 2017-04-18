@@ -42,7 +42,9 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated %}
                     <li><a href="{{  url_for('profile.user_index', username = current_user.username)}}"><img src="{{ current_user.avatar }}" class="img-circle" width="21px" height="21px"></a></li>
+                    <li><a href="{{  url_for('profile.messages_manage')}}"><i class="fa fa-envelope"></i>&nbsp;<font color="red" size="3px">{{ current_user.unconfirmed_messages() }}</font>&nbsp;条</a></li>
                     <li><a href="{{  url_for('profile.user_index', username = current_user.username)}}"><i class="fa fa-user-circle"></i>&nbsp;后台</a></li>
+
                     {% if current_user.role ==1 %}
                         <li><a href="{{ url_for('admin.admin_index') }}"><i class="fa fa-user-circle-o"></i>&nbsp;管理</a></li>
                     {% endif %}

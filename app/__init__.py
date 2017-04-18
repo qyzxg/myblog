@@ -6,14 +6,15 @@ from flask_mail import Mail
 import flask_whooshalchemyplus
 from flaskext.markdown import Markdown
 from celery import Celery
-from .configs import CELERY_BROKER_URL, CELERY_RESULT_BACKEND
+from config import Config, config
 from flask_cache import Cache
+
 
 bootstrap = Bootstrap()
 mail = Mail()
 db = SQLAlchemy()
 login_manager = LoginManager()
-celery = Celery(__name__, broker=CELERY_BROKER_URL, backend=CELERY_RESULT_BACKEND)
+celery = Celery(__name__, broker=Config.CELERY_BROKER_URL, backend=Config.CELERY_RESULT_BACKEND)
 cache = Cache(config={'CACHE_TYPE': 'redis',
                       'CACHE_REDIS_HOST': 'localhost',  # Host, default 'localhost'
                       'CACHE_REDIS_PORT': 6379,  # Port, default 6379
@@ -27,9 +28,9 @@ login_manager.needs_refresh_message = '请验证后再登录!'
 login_manager.login_view = 'auth.login'
 
 
-def create_app():
+def create_app(config_name='default'):
     app = Flask(__name__)
-    app.config.from_pyfile('configs.py')
+    app.config.from_object(config[config_name])
     bootstrap.init_app(app)
     mail.init_app(app)
     db.init_app(app)

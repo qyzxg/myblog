@@ -20,7 +20,7 @@
             <tr>
 
                 <th>
-                    <mark>博客ID</mark>
+                    <mark>博客标题</mark>
                 </th>
                 <th>
                     <mark>评论内容</mark>
@@ -37,7 +37,8 @@
             <tbody>
             {% for comment in comments %}
                 <tr>
-                    <td><h5>{{ comment.post_id }}</h5></td>
+                    <td><a href="{{ url_for('public.details', id = comment.post.id) }}"><h5>{{ comment.post.title|truncate(30, True) }}</h5>
+                    </a></td>
                     <td><h5>{{ comment.body|truncate(30, True) }}</h5></td>
                     <td><h5>{{ comment.created.strftime('%Y-%m-%d %H:%M') }}</h5></td>
                     <td><a href="{{ url_for('profile.user_comment_manage',id=comment.id) }}" class="btn btn-danger">删除</a></td>
