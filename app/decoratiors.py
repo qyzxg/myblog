@@ -13,4 +13,5 @@ def admin_required(f):
             flash('您没有管理员权限!')
             return redirect(url_for('public.index'))
         return f(*args, **kwargs)
+
     return view_function

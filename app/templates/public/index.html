@@ -1,15 +1,9 @@
 {% extends 'public/base.html' %}
 {% from "bootstrap/pagination.html" import render_pagination %}
 
-
 {% block title %}{{ title|safe }}{% endblock %}
 
-
-
-
 {% block left_content %}
-
-
     {% for message in get_flashed_messages() %}
         <div class="alert alert-warning">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -18,7 +12,6 @@
     {% endfor %}
 
     <a href="{{ url_for('public.edit') }}" class="btn btn-primary"><span class="icon-edit icon-large"></span>&nbsp;&nbsp;发表新文章</a>
-
     {% for post in posts|sort(attribute='read_times',reverse=True ) %}
         {% include 'includes/_posts_summary.html' %}
     {% endfor %}
@@ -28,21 +21,18 @@
     {% endif %}
 {% endblock %}
 
-
 {% block right_content %}
-{% if current_user.is_anonymous %}
-    <br>
-    <br>
+    {% if current_user.is_anonymous %}
+        <br>
+        <br>
     {% else %}
-    {% include 'includes/_todo_list.html' %}
-{% endif %}
+        {% include 'includes/_todo_list.html' %}
+    {% endif %}
     {% include 'includes/_post_cate.html' %}
     {% include 'includes/_hot_author.html' %}
     {% include 'includes/_hot_posts.html' %}
 
 {% endblock %}
-
-
 
 {% block footer %}
     {{ super() }}

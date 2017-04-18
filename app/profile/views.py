@@ -342,7 +342,7 @@ def send_message():
 @profile.route('/delete_message/<int:id>')
 def delete_message(id):
     message = Message.query.filter_by(id=id).first()
-    if message.confirmed == False:
+    if not message.confirmed:
         flash('对方还没有读过这条消息,不能删除!')
         return redirect(url_for('profile.messages_manage'))
     db.session.delete(message)

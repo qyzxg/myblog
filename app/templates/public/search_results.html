@@ -11,18 +11,18 @@
     {% endfor %}
 
     {% if not results %}
-    <h3>"{{ key_word }}"&nbsp;没有搜索到哦,&nbsp;换个词试试吧!</h3>
+        <h3>"{{ key_word }}"&nbsp;没有搜索到哦,&nbsp;换个词试试吧!</h3>
     {% else %}
-    <h3> "{{ key_word }}"的搜索结果 共有 {{ total }} 条:</h3>
+        <h3> "{{ key_word }}"的搜索结果 共有 {{ total }} 条:</h3>
 
-    {% for post in results|sort(attribute='created',reverse=True ) %}
-        {% include 'includes/_posts_summary.html' %}
-    {% endfor %}
+        {% for post in results|sort(attribute='created',reverse=True ) %}
+            {% include 'includes/_posts_summary.html' %}
+        {% endfor %}
 
     {% endif %}
     {% if pagination %}
-            {{ render_pagination(pagination) }}
-        {% endif %}
+        {{ render_pagination(pagination) }}
+    {% endif %}
 {% endblock %}
 
 {% block footer %}

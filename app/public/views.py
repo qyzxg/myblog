@@ -23,11 +23,8 @@ import os
 def index():
     # 记录cookie
     page_index = request.args.get('page', 1, type=int)
-
     query = Post.query.order_by(Post.read_times.desc())
-
     pagination = query.paginate(page_index, per_page=10, error_out=False)
-
     posts_ = Post.query.order_by(Post.comment_times.desc()).limit(5)
     hot_authors = User.query.order_by(User.post_total.desc()).limit(5)
     todos = None
@@ -46,7 +43,6 @@ def index():
     response.set_cookie(key='user', value='name', expires=time.time() + 3600)
     response.set_cookie(key='pass', value='word', expires=time.time() + 3600)
     return response
-
 
 
 def allowed_file(filename):
@@ -77,7 +73,7 @@ def uploaded_file(filename):
     return send_from_directory(current_app.config['UPLOAD_FOLDER'], filename)
 
 
-#开启ck上传功能
+# 开启ck上传功能
 def gen_rnd_filename():
     filename_prefix = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
     return '%s%s' % (filename_prefix, str(random.randrange(1000, 10000)))
@@ -117,6 +113,7 @@ def ckupload():
     response.headers["Content-Type"] = "text/html"
     return response
 
+
 # 发表/修改文章
 @public.route('/edit/', methods=['POST', 'GET'])
 @public.route('/edit/<int:id>', methods=['POST', 'GET'])
@@ -142,7 +139,7 @@ def edit(id=0):
             db.session.commit()
             post.post_img = post.get_post_img(post)
 
-            #异步获取
+            # 异步获取
             # img = get_post_img.delay(post)
             # post.post_img = img.get()
 
@@ -171,14 +168,12 @@ def edit(id=0):
 @public.route('/post/details/<int:id>', methods=['POST', 'GET'])
 def details(id):
     post = Post.query.get_or_404(id)
-
     post.comment_times = len(post.comments)
     posts_ = Post.query.order_by(Post.comment_times.desc()).limit(5)
     hot_authors = User.query.order_by(User.post_total.desc()).limit(5)
     post.read_times += 1
     categories = Categories.query.all()
     form = CommentForm()
-    # if not current_user.is_authenticated :
     todos = None
     if current_user.is_authenticated:
         todos = Todo.query.filter_by(user_id=current_user.id, status=0)
@@ -193,7 +188,7 @@ def details(id):
                     db.session.commit()
                     post.comment_times += 1
                     flash('评论发表成功!')
-                    form.body.data=''
+                    form.body.data = ''
                 else:
                     flash('验证邮箱后才能发表评论哦!')
 
@@ -218,7 +213,6 @@ def details(id):
 
 @public.route('/hot_posts/')
 def hot_posts():
-    # posts = Post.query.order_by(Post.read_times.desc()).limit(3)
     return render_template('includes/_hot_posts.html')
 
 
@@ -229,7 +223,6 @@ def before_request():
     app = create_app()
     whoosh.whoosh_index(app, Post)
     g.search_form = SearchForm()
-
 
 
 @public.route('/search', methods=['POST', 'GET'])
@@ -265,6 +258,3 @@ def service():
 def about():
     posts_ = Post.query.order_by(Post.comment_times.desc()).limit(5)
     return render_template('public/about.html', title='关于', posts_=posts_)
-
-
-

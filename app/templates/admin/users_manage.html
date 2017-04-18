@@ -3,6 +3,7 @@
 {% block head_title %}
     {{ title }}
 {% endblock %}
+
 <!-- 右侧内容 -->
 {% block breadcrumb %}
     <ol class="breadcrumb">
@@ -10,8 +11,8 @@
         <li class="active">用户管理</li>
     </ol>
 {% endblock %}
+
 {% block right_content %}
-    <!-- 用户管理 -->
     {{ super() }}
     <div class="table-responsive">
         <table class="table table-bordered table-hover ">
@@ -41,7 +42,6 @@
                 <th>
                     <mark>用户删除</mark>
                 </th>
-
             </tr>
             </thead>
             <tbody>
@@ -74,13 +74,12 @@
                     {% endif %}
                     <td><a href="{{ url_for('admin.login_manage',id=user.id,status=0,delete=1) }}"
                            class="btn btn-danger">删除</a></td>
-
                 </tr>
             {% endfor %}
             </tbody>
         </table>
     </div>
-    <!-- // 用户管理 -->
+
     <!-- 分页 -->
     {% if pagination %}
         {{ render_pagination(pagination) }}

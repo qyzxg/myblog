@@ -42,16 +42,14 @@ class RegistForm(FlaskForm):
                         )
     submit = SubmitField(render_kw={'class': "btn btn-info btn-block"})
 
-
-    def validate_username(self,field):
+    def validate_username(self, field):
         from ..models import User
         data = field.data
         if User.query.filter_by(username=data).first():
             raise ValidationError('用户名已存在')
         return data
 
-
-    def validate_email(self,field):
+    def validate_email(self, field):
         from ..models import User
         data = field.data
         if User.query.filter_by(email=data).first():
@@ -73,4 +71,3 @@ class ResetPassword(FlaskForm):
                              render_kw={'class': "form-control", "required": "required"})
     confirm = PasswordField('confirm', validators=[DataRequired(), EqualTo('password', message='两次输入的密码不一样! ')],
                             render_kw={'class': "form-control", "required": "required"})
-

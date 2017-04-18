@@ -67,7 +67,7 @@ def admin_index():
     m = get_c_month()
     cat = get_a_cate()
     cats = get_a_cates()
-    c = {k:v for k,v in itertools.zip_longest(cat,cats)}
+    c = {k: v for k, v in itertools.zip_longest(cat, cats)}
     d = [{'value': v, 'name': k} for k, v in c.items()]
     x = list(range(1, get_m_days()))
     lt_post = get_m_post()
@@ -109,9 +109,9 @@ def users_manage():
     pagination = query.paginate(page_index, per_page=10, error_out=False)
     users = pagination.items
     return render_template('admin/users_manage.html',
-                               users=users,
-                               pagination=pagination,
-                               title='用户管理', menu=1)
+                           users=users,
+                           pagination=pagination,
+                           title='用户管理', menu=1)
 
 
 # 博客管理
@@ -255,7 +255,7 @@ def send_messages():
 @admin_required
 def delete_message(id):
     message = Message.query.filter_by(id=id).first()
-    if message.confirmed == False:
+    if not message.confirmed:
         flash('对方还没有读过这条消息,不能删除!')
         return redirect(url_for('admin.messages_manage'))
     db.session.delete(message)

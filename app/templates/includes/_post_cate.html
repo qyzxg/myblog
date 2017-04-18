@@ -1,16 +1,16 @@
 <div id='article-entry' class="entry-box">
-
-            <div class="article-entry-header">
-                <h4 class="article-entry-title">
-                    文章分类
-                </h4>
-            </div>
-    {% for category in categories %}
-        <ul class="list-group">
-            <li class="list-group-item" style="padding: 0px;margin: 0px">
-{#                 <span class="badge">1</span>#}
-                <a href="{{ url_for('cates.get_cates', cate = category.name) }}">{{ category.name  }}</a>
-            </li>
-        </ul>
-    {% endfor %}
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">文章分类</h3>
+        </div>
+        <div class="panel-body">
+            {% for category in categories %}
+                <ul class="list-group">
+                    <li class="list-group-item" style="padding: 0px;margin: 0px">
+                        <a href="{{ url_for('cates.get_cates', cate = category.name) }}">{{ category.name }}</a>
+                    </li>
+                </ul>
+            {% endfor %}
+        </div>
+    </div>
 </div>

@@ -9,7 +9,6 @@ from celery import Celery
 from config import Config, config
 from flask_cache import Cache
 
-
 bootstrap = Bootstrap()
 mail = Mail()
 db = SQLAlchemy()
@@ -45,7 +44,8 @@ def create_app(config_name='default'):
         from logging.handlers import RotatingFileHandler
 
         file_handler = RotatingFileHandler('logs/myblog.log', 'a', 1 * 1024 * 1024, 10)
-        file_handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
+        file_handler.setFormatter(
+            logging.Formatter('%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
         app.logger.setLevel(logging.INFO)
         file_handler.setLevel(logging.INFO)
         app.logger.addHandler(file_handler)
@@ -74,7 +74,3 @@ def create_app(config_name='default'):
     app.register_blueprint(api, url_prefix='/api/v1.0')
 
     return app
-
-
-
-

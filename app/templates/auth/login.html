@@ -20,8 +20,6 @@
                         <label for="username" class="col-sm-3 control-label"  style="font-size: 15px">用户名：</label>
                         <div class="col-sm-8">
                             <div class="input-group">
-                                {#                <input type="text" class="form-control" name="username" placeholder="请输入用户名">#}
-
                                 {{ form.username }}
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-user"></span>
@@ -33,7 +31,6 @@
                         <label for="password" class="col-sm-3 control-label" style="font-size: 15px">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
                         <div class="col-sm-8">
                             <div class="input-group">
-                                {#                <input type="password" class="form-control" name="password" placeholder="请输入密码（六位以上）">#}
                                 {{ form.password }}
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-lock"></span>
@@ -45,7 +42,6 @@
                         <label for="remember_me" class="col-sm-3 control-label" style="font-size: 15px">记住我：</label>
                         <label for="remember_me" class="col-sm-1 control-label">{{ form.remember_me }}</label>
                         <label class="col-sm-3 control-label" style="font-size: 15px"><a href="{{ url_for('auth.reset_confirm_email') }}">忘记密码?</a></label>
-
                     </div>
                     <br>
                     <div class="row">

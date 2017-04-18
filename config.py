@@ -35,7 +35,7 @@ class Config:
     BASE_PATH = path.abspath(path.dirname(__file__))
 
 
-class DevelopmentConfig(Config):#mysqlconnector
+class DevelopmentConfig(Config):  # mysqlconnector
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:qyzxg@localhost:3306/blog'
 

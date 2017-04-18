@@ -40,16 +40,25 @@
         <button class="btn btn-default" type="submit">发送</button>
     </form>
     <br>
-<h3>消息列表:</h3>
+    <h3>消息列表:</h3>
     <ul class="nav nav-tabs nav-justified" role="tablist">
-        <li role="presentation" class="active"><a href="#sys_messages" aria-controls="home" role="tab" data-toggle="tab"><i
-                class="fa fa-envelope"></i>系统通知<span class="badge" style="color: #ebebeb;font-size: 13px;background-color: #cc2729">{{ n_sy }}</span></a></li>
+        <li role="presentation" class="active"><a href="#sys_messages" aria-controls="home" role="tab"
+                                                  data-toggle="tab"><i
+                class="fa fa-envelope"></i>系统通知<span class="badge"
+                                                     style="color: #ebebeb;font-size: 13px;background-color: #cc2729">{{ n_sy }}</span></a>
+        </li>
         <li role="presentation"><a href="#unread_messages" aria-controls="profile" role="tab" data-toggle="tab"><i
-                class="fa fa-envelope-o"></i>未读消息<span class="badge" style="color: #ebebeb;font-size: 13px;background-color: #15cc0a">{{ n_u }}</span></a></li>
+                class="fa fa-envelope-o"></i>未读消息<span class="badge"
+                                                       style="color: #ebebeb;font-size: 13px;background-color: #15cc0a">{{ n_u }}</span></a>
+        </li>
         <li role="presentation"><a href="#read_messages" aria-controls="messages" role="tab" data-toggle="tab"><i
-                class="fa fa-envelope-open"></i>已读消息<span class="badge" style="color: #ebebeb;font-size: 13px;background-color: #cccc0c">{{ n_c }}</span></a></li>
+                class="fa fa-envelope-open"></i>已读消息<span class="badge"
+                                                          style="color: #ebebeb;font-size: 13px;background-color: #cccc0c">{{ n_c }}</span></a>
+        </li>
         <li role="presentation"><a href="#sended_messages" aria-controls="messages" role="tab" data-toggle="tab"><i
-                class="fa fa-envelope-square"></i>已发消息<span class="badge" style="color: #ebebeb;font-size: 13px;background-color: #0608cc">{{ n_s }}</span></a></li>
+                class="fa fa-envelope-square"></i>已发消息<span class="badge"
+                                                            style="color: #ebebeb;font-size: 13px;background-color: #0608cc">{{ n_s }}</span></a>
+        </li>
     </ul>
     <!-- Tab panes -->
     <div class="tab-content tabs">
@@ -110,7 +119,8 @@
                             <td style="max-width: 500px"><h5>{{ message.content }}</h5></td>
                             <td><h5>{{ message.created_at.strftime('%Y-%m-%d %H:%M') }}</h5></td>
                             <td><h5>{{ message.sender.username }}</h5></td>
-                            <td><a href="{{ url_for('profile.confirm_message',id=message.id) }}" class="btn btn-primary">确认</a></td>
+                            <td><a href="{{ url_for('profile.confirm_message',id=message.id) }}"
+                                   class="btn btn-primary">确认</a></td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -142,7 +152,8 @@
                             <td style="max-width: 500px"><h5>{{ message.content }}</h5></td>
                             <td><h5>{{ message.created_at.strftime('%Y-%m-%d %H:%M') }}</h5></td>
                             <td><h5>{{ message.sender.username }}</h5></td>
-                            <td><a href="{{ url_for('profile.delete_message',id=message.id) }}" class="btn btn-danger">删除</a></td>
+                            <td><a href="{{ url_for('profile.delete_message',id=message.id) }}" class="btn btn-danger">删除</a>
+                            </td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -174,11 +185,12 @@
                     <tbody>
                     {% for message in sended_messages %}
                         <tr>
-                            <td  style="max-width: 500px"><h5>{{ message.content }}</h5></td>
+                            <td style="max-width: 500px"><h5>{{ message.content }}</h5></td>
                             <td><h5>{{ message.created_at.strftime('%Y-%m-%d %H:%M') }}</h5></td>
                             <td><h5>{{ message.sendto.username }}</h5></td>
                             <td><h5>{{ message.get_status() }}</h5></td>
-                            <td><a href="{{ url_for('profile.delete_message',id=message.id) }}" class="btn btn-danger">删除</a></td>
+                            <td><a href="{{ url_for('profile.delete_message',id=message.id) }}" class="btn btn-danger">删除</a>
+                            </td>
 
                         </tr>
                     {% endfor %}
@@ -186,17 +198,12 @@
                 </table>
             </div>
         </div>
-
     </div>
-
-
 
     {% if pagination %}
         {{ render_pagination(pagination) }}
     {% endif %}
 {% endblock %}
-
-
 
 
 {% block footer %}

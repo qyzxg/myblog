@@ -3,16 +3,15 @@
 {% block head_title %}
     {{ title }}
 {% endblock %}
-<!-- 右侧内容 -->
+
 {% block breadcrumb %}
     <ol class="breadcrumb">
         <li><a href="{{ url_for('admin.admin_index') }}">后台首页</a></li>
         <li class="active">通知管理</li>
     </ol>
 {% endblock %}
-
+<!-- 右侧内容 -->
 {% block right_content %}
-    <!-- 用户管理 -->
     {{ super() }}
     <h3>发送通知:</h3>
     <form class="form-inline" action="{{ url_for('admin.send_messages') }}" method="post">

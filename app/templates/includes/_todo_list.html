@@ -1,18 +1,19 @@
-
-    <div id='article-entry' class="entry-box">
-
-            <div class="article-entry-header">
-                <h4 class="article-entry-title">
-
-                    <a href="{{ url_for('profile.user_todos_manage') }} " class="btn btn-info">TODO管理</a>
-                </h4>
-            </div>
-    {% for todo in todos %}
-        <ul class="list-group">
-            <li class="list-group-item" style="padding: 0px;margin: 0px" >
-                 <span class="badge">{{ todo.get_status() }}</span>
-                {{ todo.content|striptags|truncate(13,killwords=True)|safe  }}
-            </li>
-        </ul>
-    {% endfor %}
+<div id='article-entry' class="entry-box">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title"><a href="{{ url_for('profile.user_todos_manage') }}">
+                TODO管理
+            </a></h3>
+        </div>
+        <div class="panel-body">
+            {% for todo in todos %}
+                <ul class="list-group">
+                    <li class="list-group-item" style="padding: 0px;margin: 0px">
+                        <span class="badge">{{ todo.get_status() }}</span>
+                        {{ todo.content|striptags|truncate(13,killwords=True)|safe }}
+                    </li>
+                </ul>
+            {% endfor %}
+        </div>
+    </div>
 </div>

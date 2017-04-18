@@ -15,31 +15,30 @@
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('pc'));
-
         // 指定图表的配置项和数据
         var option = {
             color: [
-                    '#2179cc'
-                ],
+                '#2179cc'
+            ],
             backgroundColor: 'rgba(204,184,91,0.7)',
             title: {
                 text: '{{ m }}月文章统计'
             },
             toolbox: {
-                    show: true,
-                    feature: {
-                        dataZoom: {
-                            yAxisIndex: 'none'
-                        },
-                        dataView: {readOnly: false},
-                        magicType: {type: ['line', 'bar']},
-                        restore: {},
-                        saveAsImage: {}
-                    }
-                },
+                show: true,
+                feature: {
+                    dataZoom: {
+                        yAxisIndex: 'none'
+                    },
+                    dataView: {readOnly: false},
+                    magicType: {type: ['line', 'bar']},
+                    restore: {},
+                    saveAsImage: {}
+                }
+            },
             tooltip: {},
             legend: {
-                data:['文章数量']
+                data: ['文章数量']
             },
             xAxis: {
                 data: {{ x|tojson }}
@@ -68,9 +67,6 @@
                 <table class="table table-bordered table-hover ">
                     <thead>
                     <tr>
-{#                        <th>#}
-{#                            <mark>用户名</mark>#}
-{#                        </th>#}
                         <th>
                             <mark>我的邮箱</mark>
                         </th>
@@ -80,26 +76,19 @@
                         <th>
                             <mark>最后登录</mark>
                         </th>
-{#                        <th>#}
-{#                            <mark>账号状态</mark>#}
-{#                        </th>#}
                         <th>
                             <mark>我的角色</mark>
                         </th>
                         <th>
                             <mark>发帖数量</mark>
                         </th>
-
-
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-{#                        <td><h5>{{ user.username }}</h5></td>#}
                         <td><h5>{{ user.email }}</h5></td>
                         <td><h5>{{ user.created_at.strftime('%Y-%m-%d %H:%M') }}</h5></td>
                         <td><h5>{{ user.last_login.strftime('%Y-%m-%d %H:%M') }}</h5></td>
-{#                        <td><h5>{{ user.get_status() }}</h5></td>#}
                         <td><h5>{{ user.get_roles() }}</h5></td>
                         <td><h5>{{ user.post_total }}</h5></td>
 

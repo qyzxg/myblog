@@ -1,6 +1,7 @@
 {% extends "cates/base.html" %}
 {% from "bootstrap/pagination.html" import render_pagination %}
 {% block title %}{{ title|safe }}{% endblock %}
+
 {% block left_content %}
 
     {% for message in get_flashed_messages() %}
@@ -14,6 +15,7 @@
     {% for post in posts|sort(attribute='created',reverse=True ) %}
         {% include 'includes/_posts_summary.html' %}
     {% endfor %}
+
     {% if pagination %}
             {{ render_pagination(pagination) }}
         {% endif %}

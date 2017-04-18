@@ -41,8 +41,6 @@
                     <th>
                         <mark>管理</mark>
                     </th>
-
-                    {#      <th>操作</th>#}
                 </tr>
                 </thead>
                 <tbody>
@@ -51,15 +49,13 @@
                         <td><a href="{{ url_for('profile.others', username = follower.username) }}">
                             <h5>{{ follower.username }}</h5>
                         </a></td>
-
                         <td><h5>{{ follower.email }}</h5></td>
                         <td><h5>{{ follower.created_at.strftime('%Y-%m-%d %H:%M') }}</h5></td>
-                        <td><h5>{{ follower.last_login.strftime('%Y-%m-%d %H:%M')  }}</h5></td>
+                        <td><h5>{{ follower.last_login.strftime('%Y-%m-%d %H:%M') }}</h5></td>
                         <td><h5>{{ follower.get_roles() }}</h5></td>
                         <td><h5>{{ follower.post_total }}</h5></td>
-
-                        {#                    <td><a href="{{ url_for('.edit',id=post.id) }}" class="btn btn-success">修改</a></td>#}
-                        <td><a href="{{ url_for('profile.user_follower_manage',username=follower.username) }}" class="btn btn-danger">取消</a>
+                        <td><a href="{{ url_for('profile.user_follower_manage',username=follower.username) }}"
+                               class="btn btn-danger">取消</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -67,7 +63,7 @@
             </table>
         </div>
     {% endif %}
-    <!-- // 用户管理 -->
+
     <!-- 分页 -->
     {% if pagination %}
         {{ render_pagination(pagination) }}

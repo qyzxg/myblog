@@ -3,7 +3,6 @@
 {% block head %}
     <head>
         {{ super() }}
-
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
         <meta http-equiv="cache-control" content="no-cache">
@@ -15,19 +14,13 @@
         <meta name="copyright" content="qyzxg">
         <meta name="revisit-after" content="1 days" >
         <link rel="shortcut icon" href="/static/avatar/favicon.ico" type="image/x-icon">
-
         {% include 'includes/_navbar.html' %}
-
         <title>{% block title %}{{ title|safe }}{% endblock %}</title>
     </head>
 {% endblock %}
 
 {% block styles %}
     {{ super() }}
-{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css">#}
-
-{#    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.0/css/font-awesome.min.css" rel="stylesheet"#}
-{#          type="text/css"/>#}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'ckeditor/plugins/codesnippet/lib/highlight/styles/rainbow.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'stylesheets/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'font-awesome/css/font-awesome.min.css') }}">

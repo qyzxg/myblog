@@ -111,13 +111,12 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 
-
-
     def unconfirmed_messages(self):
         unconfirmed_messages = Message.query.order_by(Message.created_at.desc()).filter_by(
             sendto=self).filter_by(
             confirmed=False).all()
         return len(unconfirmed_messages)
+
 
 @login_manager.user_loader
 def load_user(user_id):

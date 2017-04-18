@@ -38,15 +38,14 @@
                 <th>
                     <mark>删除文章</mark>
                 </th>
-                {#      <th>操作</th>#}
             </tr>
             </thead>
             <tbody>
             {% for post in posts %}
                 <tr>
-                    <td><a href="{{ url_for('public.details', id = post.id) }}"><h5>{{ post.title|truncate(22, True) }}</h5>
+                    <td><a href="{{ url_for('public.details', id = post.id) }}">
+                        <h5>{{ post.title|truncate(22, True) }}</h5>
                     </a></td>
-
                     <td><h5>{{ post.created.strftime('%Y-%m-%d %H:%M') }}</h5></td>
                     <td><h5>{{ post.comment_times }}</h5></td>
                     <td><h5>{{ post.read_times }}</h5></td>
@@ -58,7 +57,7 @@
         </table>
     </div>
     {% endif %}
-    <!-- // 用户管理 -->
+
     <!-- 分页 -->
     {% if pagination %}
         {{ render_pagination(pagination) }}

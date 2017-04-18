@@ -51,7 +51,6 @@
                         <label for="confirm" class="col-sm-3 control-label" style="font-size: 15px">确认密码：</label>
                         <div class="col-sm-8">
                             <div class="input-group">
-                                {#                <input type="password" class="form-control" name="chkpwd" placeholder="请确认密码">#}
                                 {{ form.confirm }}
                                 <div class="input-group-addon">
                                     {% for error in form.confirm.errors %}
@@ -66,7 +65,6 @@
                         <label for="email" class="col-sm-3 control-label" style="font-size: 15px">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</label>
                         <div class="col-sm-8">
                             <div class="input-group">
-                                {#                <input type="text" class="form-control" name="email" placeholder="请输入有效邮箱">#}
                                 {{ form.email }}
                                 <div class="input-group-addon">
                                     {% for error in form.email.errors %}

@@ -10,22 +10,17 @@
         </div>
     {% endfor %}
     <div>
-        <p>
-        <h3>{{ user.username }}的资料:</h3></p>
+        <p><h3>{{ user.username }}的资料:</h3></p>
     </div>
     <div class="media">
         <div class="media-left">
             <p><img src="{{ user.avatar }}" width="128px" height="128px" class="img-thumbnail"></p>
-
         </div>
         <div class="media-right">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover ">
                     <thead>
                     <tr>
-                        {#                        <th>#}
-                        {#                            <mark>用户名</mark>#}
-                        {#                        </th>#}
                         <th>
                             <mark>邮箱</mark>
                         </th>
@@ -42,8 +37,6 @@
                         <th>
                             <mark>发帖数量</mark>
                         </th>
-
-
                     </tr>
                     </thead>
                     <tbody>
@@ -105,7 +98,6 @@
                 <th>
                     <mark>所属分类</mark>
                 </th>
-
             </tr>
             </thead>
             <tbody>
