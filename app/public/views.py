@@ -63,9 +63,48 @@ def upload():
             file.save(uploadpath + '_' + str(current_user.id) + '_' + filename)
             current_user.avatar = r'/static/avatar/avatar' + '_' + str(current_user.id) + '_' + filename
             flash('图像修改成功!')
-            return redirect('upload')
+            return redirect(url_for('public.upload'))
         flash('您上传的文件不合法!')
     return render_template('public/upload.html', title='上传图像')
+
+@public.route('/upload/zfb_img', methods=['POST', 'GET'])
+@login_required
+def upload_zfb_img():
+    if request.method == 'POST':
+        file = request.files['file']
+        form = request.form
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            basepath = current_app.config['BASE_PATH']
+            uploadpath = path.join(basepath, current_app.config['ZFB_FOLDER'])
+            file.save(uploadpath + '_' + str(current_user.id) + '_' + filename)
+            current_user.zfb_img = r'/static/zfbimg/zfbimg' + '_' + str(current_user.id) + '_' + filename
+            current_user.zfb_num = form['num']
+            flash('修改成功!')
+            return redirect(url_for('profile.user_reward_manage'))
+        flash('您上传的文件不合法!')
+        return redirect(url_for('public.upload_zfb_img'))
+    return render_template('public/zfbimg_upload.html', title='上传支付宝二维码')
+
+
+@public.route('/upload/wx_img', methods=['POST', 'GET'])
+@login_required
+def upload_wx_img():
+    if request.method == 'POST':
+        file = request.files['file']
+        form = request.form
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            basepath = current_app.config['BASE_PATH']
+            uploadpath = path.join(basepath, current_app.config['WX_FOLDER'])
+            file.save(uploadpath + '_' + str(current_user.id) + '_' + filename)
+            current_user.wx_img = r'/static/wximg/wximg' + '_' + str(current_user.id) + '_' + filename
+            current_user.wx_num = form['num']
+            flash('修改成功!')
+            return redirect(url_for('profile.user_reward_manage'))
+        flash('您上传的文件不合法!')
+        return redirect(url_for('public.upload_wx_img'))
+    return render_template('public/wximg_upload.html', title='上传微信二维码')
 
 
 @public.route('/uploaded_file/<filename>')
@@ -80,6 +119,7 @@ def gen_rnd_filename():
 
 
 @public.route('/ckupload/', methods=['POST'])
+@login_required
 def ckupload():
     """CKEditor file upload"""
     from .. import create_app

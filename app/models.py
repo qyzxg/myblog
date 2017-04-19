@@ -34,6 +34,10 @@ class User(UserMixin, db.Model):
     comments = db.relationship('Comment', backref='author')
     post_total = db.Column(db.Integer, default=0)
     role = db.Column(db.Integer, default=0)
+    zfb_img = db.Column(db.String(200), doc='支付宝二维码', default=r'/static/zfbimg/zfb_300_1.99.png')
+    wx_img = db.Column(db.String(200), doc='微信二维码', default=r'/static/wximg/wx_300_1.99.png')
+    zfb_num = db.Column(db.String(20),doc='支付宝金额',default='1.99')
+    wx_num = db.Column(db.String(20), doc='微信金额', default='1.99')
     collects = db.relationship('Post', secondary=collect, backref=db.backref('collected', lazy='dynamic'),
                                lazy='dynamic')
     todos = db.relationship('Todo', backref='user')

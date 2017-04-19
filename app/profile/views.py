@@ -162,6 +162,14 @@ def user_followers_manage():
                            menu=5)
 
 
+@profile.route('/user/reward_manage')
+@login_required
+def user_reward_manage():
+    user = current_user
+    return render_template('profile/user_reward_manage.html',
+                           user=user,title='打赏管理',meun=7)
+
+
 @profile.route('/user/collect_manage/<int:id>/')
 @login_required
 def user_collect_manage(id):
@@ -243,8 +251,9 @@ def todo_dele(id):
 
 
 # 收藏
-@login_required
+
 @profile.route('/collect/<int:id>')
+@login_required
 def collect(id):
     post = Post.query.get_or_404(id)
     if current_user.is_authenticated:
@@ -261,8 +270,9 @@ def collect(id):
 
 
 # 取消收藏
-@login_required
+
 @profile.route('/uncollect/<int:id>')
+@login_required
 def uncollect(id):
     post = Post.query.get_or_404(id)
     if not current_user.collecting(post):
@@ -274,8 +284,9 @@ def uncollect(id):
 
 
 # 关注
-@login_required
+
 @profile.route('/follow/<username>')
+@login_required
 def follow(username):
     user = User.query.filter_by(username=username).first()
     if user is None:
@@ -294,8 +305,9 @@ def follow(username):
     return redirect(url_for('profile.others', username=username))
 
 
-@login_required
+
 @profile.route('/unfollow/<username>')
+@login_required
 def unfollow(username):
     user = User.query.filter_by(username=username).first()
     if user is None:
@@ -314,8 +326,9 @@ def unfollow(username):
     return redirect(url_for('profile.others', username=username))
 
 
-@login_required
+
 @profile.route('/send_message/', methods=['POST', 'GET'])
+@login_required
 def send_message():
     if request.method == 'POST':
         form = request.form
@@ -338,8 +351,9 @@ def send_message():
     return redirect(url_for('profile.messages_manage'))
 
 
-@login_required
+
 @profile.route('/delete_message/<int:id>')
+@login_required
 def delete_message(id):
     message = Message.query.filter_by(id=id).first()
     if not message.confirmed:
@@ -351,8 +365,9 @@ def delete_message(id):
     return redirect(url_for('profile.messages_manage'))
 
 
-@login_required
+
 @profile.route('/confirm_message/<int:id>')
+@login_required
 def confirm_message(id):
     message = Message.query.filter_by(id=id).first()
     message.confirmed = 1
@@ -360,8 +375,9 @@ def confirm_message(id):
     return redirect(url_for('profile.messages_manage'))
 
 
-@login_required
+
 @profile.route('/messages_manage')
+@login_required
 def messages_manage():
     user = current_user
     friends1 = user.followed_users()

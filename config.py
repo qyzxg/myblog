@@ -31,7 +31,9 @@ class Config:
 
     # 文件上传
     UPLOAD_FOLDER = r'app\static\avatar\avatar'
-    ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif', 'webp', 'bmp'])
+    ZFB_FOLDER = r'app\static\zfbimg\zfbimg'
+    WX_FOLDER = r'app\static\wximg\wximg'
+    ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif', 'JPG'])
     BASE_PATH = path.abspath(path.dirname(__file__))
 
 

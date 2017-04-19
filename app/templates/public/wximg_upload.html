@@ -1,0 +1,26 @@
+{% extends 'public/base.html' %}
+{% block title %}{{ title|safe }}{% endblock %}
+
+{% block content %}
+    <div align="center" style="margin-top: 50px">
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ message }}
+            </div>
+        {% endfor %}
+        <div><h3>您当前的微信二维码是:</h3></div>
+        <div><img src="{{ current_user.wx_img }}" class="img-thumbnail" width="200px" ,height="200px"></div>
+        <form action="" method="post" enctype="multipart/form-data">
+
+            <p><input type="file" name="file"></p>
+            <label for="num"><h4>收款金额(当前为{{ current_user.zfb_num }}):</h4></label>
+            <p><input type="text" name="num"></p>
+            <p><input type="submit" value="提交"></p>
+        </form>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {{ super() }}
+{% endblock %}

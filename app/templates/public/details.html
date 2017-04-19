@@ -34,6 +34,39 @@
     <br>
     {# 收藏 #}
     <div align="right">
+
+        <lebel class="label label-primary" data-toggle="modal" data-target="#myModal">
+            打赏作者
+        </lebel>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+{#                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span#}
+{#                                aria-hidden="true">&times;</span></button>#}
+                        <h4 class="modal-title" id="myModalLabel" align="center">打赏作者:{{ post.author.username }}</h4>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <table width="558px">
+                            <tr>
+                                <td><img src="{{ post.author.zfb_img }}" width="200px"></td>
+                                <td><img src="{{ post.author.wx_img }}" width="200px"></td>
+                            </tr>
+                            <tr>
+                                <td><h4>支付宝打赏￥{{ post.author.zfb_num }}</h4></td>
+                                <td><h4>微信打赏￥{{ post.author.wx_num }}</h4></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         {% if current_user.is_authenticated %}
 
             {% if not current_user.collecting(post) %}
@@ -136,6 +169,7 @@
         {{ render_pagination(pagination) }}
     {% endif %}
 {% endblock %}
+
 {% block right_content %}
     {% if current_user.is_anonymous %}
         <br>
@@ -147,6 +181,8 @@
     {% include 'includes/_hot_author.html' %}
     {% include 'includes/_hot_posts.html' %}
 {% endblock %}
+
+
 
 {% block footer %}
     {{ super() }}
