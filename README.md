@@ -14,24 +14,24 @@ myblog是一个基于flask的开源多用户博客系统,功能基本完整,目�
 - [x] 其他功能,所有celery异步处理电子邮件,获取文章图片,使用redis缓存页面(首页,文章详情页等)和函数(获取图表所需数据的函数)
 
 ### 用到的技术和工具
-Python 3.5.2
-flask 0.12
-mysql 5.7
-CKeditor 4.6
-echarts 3.0
-celery
-redis
-Nginx
-gunicorn
-fabric3
-.........
+* Python 3.5.2
+* flask 0.12
+* mysql 5.7
+* CKeditor 4.6
+* echarts 3.0
+* celery
+* redis
+* Nginx
+* gunicorn
+* fabric3
+* .........
 ### 基本部署方法
 系统:Ubuntu16.04
 主机:亚马逊EC2/阿里云ECS(推荐EC2免费使用1年,速度还可以,比较稳定)
 部署步骤:克隆代码到本地后,修改配置文件(config.py)
-1.远程服务器安装好Python环境/Nginx/gunicorn/redis/mysql
-2.对以上进行配置如Nginx配置:
-    $ sudo vim /etc/nginx/site-avalidable/default
+1. 远程服务器安装好Python环境/Nginx/gunicorn/redis/mysql
+2. 对以上进行配置如Nginx配置:
+        $ sudo vim /etc/nginx/site-avalidable/default
 	```Bash
 			server {
 			listen 80 default_server;
@@ -46,17 +46,17 @@ fabric3
 			}
 		}
 	```
-3.初始化数据库
-4.将本文件拷贝到和myblog同级目录,如:www,创建deploy目录
+3. 初始化数据库
+4. 将本文件拷贝到和myblog同级目录,如:www,创建deploy目录
     目录结构:
-    /www
-        myblog
-          app
-          ...
-        fabfile.py
-        deploy
-5.填写fabric配置信息,在www目录下运行 fab build 打包程序文件,然后运行fab deploy
-6.在myblog目录下运行 gunicorn -w 4 -b 127.0.0.1:8080 run:app 
+   * /www
+       * myblog
+         *  app
+         *   ...
+       *  fabfile.py
+       *  deploy
+5. 填写fabric配置信息,在www目录下运行 fab build 打包程序文件,然后运行fab deploy
+6. 在myblog目录下运行 gunicorn -w 4 -b 127.0.0.1:8080 run:app 
 *注:这只是一个基本部署,还有进程管理等可以自己Google,
 该部署流程要求本地计算机为Linux平台,window需要在cygwin环境下执行*
 

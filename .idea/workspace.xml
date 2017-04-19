@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e3904cda-ea26-489a-9902-20b5baf3e0cc" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/MAIN_69wlf4djenccq173.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/MAIN_czl5zoaoc0erqu6s.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/MAIN_gf3pqyc9w6mea1cs.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/MAIN_qjwzois1wm3q400u.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/_MAIN_1186.toc" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/includes/_hot_author.html" afterPath="$PROJECT_DIR$/app/templates/includes/_hot_author.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/includes/_hot_posts.html" afterPath="$PROJECT_DIR$/app/templates/includes/_hot_posts.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/includes/_post_cate.html" afterPath="$PROJECT_DIR$/app/templates/includes/_post_cate.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/includes/_todo_list.html" afterPath="$PROJECT_DIR$/app/templates/includes/_todo_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.py" afterPath="$PROJECT_DIR$/config.py" />
-    </list>
+    <list default="true" id="e3904cda-ea26-489a-9902-20b5baf3e0cc" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
