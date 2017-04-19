@@ -24,26 +24,12 @@ myblog是一个基于flask的开源多用户博客系统,功能基本完整,目�
 * Nginx
 * gunicorn
 * fabric3
-* .........
 ### 基本部署方法
 系统:Ubuntu16.04
 主机:亚马逊EC2/阿里云ECS(推荐EC2免费使用1年,速度还可以,比较稳定)
 部署步骤:克隆代码到本地后,修改配置文件(config.py)
 1. 远程服务器安装好Python环境/Nginx/gunicorn/redis/mysql
-2. 对以上进行配置如Nginx配置:
-        $ sudo vim /etc/nginx/site-avalidable/default
-```Bash
-server {
-		listen 80 default_server;
-		listen [::]:80 default_server;
-		server_name example.org;
-		location / {
-		proxy_pass http://127.0.0.1:8080;
-		proxy_set_header Host $host;
-		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-			}
-		}
-	```
+2. 对以上进行配置:
 3. 初始化数据库
 4. 将本文件拷贝到和myblog同级目录,如:www,创建deploy目录
     目录结构:
