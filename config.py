@@ -37,7 +37,7 @@ class Config:
 
 class DevelopmentConfig(Config):  # mysqlconnector
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:qyzxg@localhost:3306/blog'
+    SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:qyzxg@localhost:3306/blog'
 
 
 class TestingConfig(Config):

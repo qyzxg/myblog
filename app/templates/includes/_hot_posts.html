@@ -3,9 +3,9 @@
         <div class="panel-heading">
             <h3 class="panel-title">热门文章</h3>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" style="padding: 5px">
             {% for post in posts_ %}
-                <ul class="list-group">
+                <ul class="list-group" style="margin-bottom: 5px">
                     <li class="list-group-item" style="padding: 0px;margin: 0px">
                         <span class="badge">{{ post.comment_times }}</span>
                         <a href="{{ url_for('public.details', id = post.id) }}">{{ post.title|striptags|truncate(15,killwords=True)|safe }}</a>
