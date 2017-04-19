@@ -1,38 +1,85 @@
-#myblog基本介绍
+### Author:qyzxg
+### Email:qyzxg@live.com
 
-这是我的第一个Python web入门项目,使用flask框架,代码简单容易理解,基本功能简单,
-flush信息提示完善,可以给刚入门的同学做一个参考,下面简单介绍下目前实现的功能:
+### 项目介绍
+myblog是一个基于flask的开源多用户博客系统,功能基本完整,目前主要功能如下,代码简单易懂,比较适合作为入门参考:
+- [x] 用户注册登录,邮件激活 
+- [x] 发表(CKeditor,开启文件上传功能),修改博客,发布评论
+- [x] 全文搜索,支持中文搜索
+- [x] 文章收藏,文章分类
+- [x] 用户关注,用户资料页
+- [x] 站内信功能
+- [x] 用户后台,修改图像(本地上传),密码,查看个人信息统计(echarts图表),管理自己的文章,评论,好友,消息等
+- [x] 管理员后台,查看所有统计信息图表,管理所有文章,评论,用户(权限控制),发布系统通知
+- [x] 其他功能,所有celery异步处理电子邮件,获取文章图片,使用redis缓存页面(首页,文章详情页等)和函数(获取图表所需数据的函数)
 
-#用户方面
-用户登录/注册/密码加密/邮箱验证(验证后才能发表文章和评论)
-首页统计文章浏览量和评论数量
-用户可以自定义上传图像
-> 还需完善用户个人资料页,展示相关信息和修改个人资料,
-管理员和普通用户分别用不同页面显示,优化前端布局 已完成
+### 用到的技术和工具
+Python 3.5.2
+flask 0.12
+mysql 5.7
+CKeditor 4.6
+echarts 3.0
+celery
+redis
+Nginx
+gunicorn
+fabric3
+.........
+### 基本部署方法
+系统:Ubuntu16.04
+主机:亚马逊EC2/阿里云ECS(推荐EC2免费使用1年,速度还可以,比较稳定)
+部署步骤:克隆代码到本地后,修改配置文件(config.py)
+1.远程服务器安装好Python环境/Nginx/gunicorn/redis/mysql
+2.对以上进行配置如Nginx配置:
+    $ sudo vim /etc/nginx/site-avalidable/default
+	```Bash
+			server {
+			listen 80 default_server;
+			listen [::]:80 default_server;
+			>这是HOST机器的外部域名，用地址也行
+			server_name example.org;
+			location / {
+				# 这里是指向 gunicorn host 的服务地址
+				proxy_pass http://127.0.0.1:8080;
+				proxy_set_header Host $host;
+				proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			}
+		}
+	```
+3.初始化数据库
+4.将本文件拷贝到和myblog同级目录,如:www,创建deploy目录
+    目录结构:
+    /www
+        myblog
+          app
+          ...
+        fabfile.py
+        deploy
+5.填写fabric配置信息,在www目录下运行 fab build 打包程序文件,然后运行fab deploy
+6.在myblog目录下运行 gunicorn -w 4 -b 127.0.0.1:8080 run:app 
+*注:这只是一个基本部署,还有进程管理等可以自己Google,
+该部署流程要求本地计算机为Linux平台,window需要在cygwin环境下执行*
 
-#文章/评论
-支持markdown格式发表文章,控制文章字数,修改文章
+### 网站demo部署在EC2上
+网址:www.51datas.com
+管理员账号:qyzxg
+密码:abc123
+建议自己注册账号测试,欢迎发布文章
 
-#后台管理
-管理员对可以对所有用户进行管理,包括限制登录,给予和收回管理权限
-删除用户,对文章进行修改好删除,评论删除
+### 网站截图
+#### 首页
+![image](https://github.com/qyzxg/myblog/blob/master/screenshot/2017-02-17_080528.png)
+#### 文章详情页
+![image](https://github.com/qyzxg/myblog/blob/master/screenshot/2017-02-17_080622.png)
+#### 个人资料页
+![image](https://github.com/qyzxg/myblog/blob/master/screenshot/2017-02-17_080634.png)
+#### 更换图像
+![image](https://github.com/qyzxg/myblog/blob/master/screenshot/2017-02-17_080642.png)
+#### 后台用户管理
+![image](https://github.com/qyzxg/myblog/blob/master/screenshot/2017-02-17_080659.png)
+#### 后台文章管理
+![image](https://github.com/qyzxg/myblog/blob/master/screenshot/2017-02-17_080708.png)
+#### 后台评论管理
+![image](https://github.com/qyzxg/myblog/blob/master/screenshot/2017-02-17_080715.png)
 
->后期还会在后台加上统计图表 已完成
 
-使用celery 异步处理,已经redis缓存
-
-已部署在亚马逊EC2上,网址www.51datas.com,欢迎大家光临并提出宝贵意见或建议
-
-#主要部分截图
-##首页
-![image](https://github.com/qyzxg/myblog/blob/master/screenshot/主页.png)
-##文章详情页
-![image](https://github.com/qyzxg/myblog/blob/master/screenshot/文章详情页1.png)
-##用户资料页
-![image](https://github.com/qyzxg/myblog/blob/master/screenshot/用户资料页.png)
-##用户后台首页
-![image](https://github.com/qyzxg/myblog/blob/master/screenshot/用户后台首页.png)
-##用户消息管理,管理员可以群发消息
-![image](https://github.com/qyzxg/myblog/blob/master/screenshot/站内信.png)
-##管理员后台首页
-![image](https://github.com/qyzxg/myblog/blob/master/screenshot/管理员后台首页.png)
