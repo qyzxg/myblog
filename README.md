@@ -32,17 +32,15 @@ myblog是一个基于flask的开源多用户博客系统,功能基本完整,目�
 1. 远程服务器安装好Python环境/Nginx/gunicorn/redis/mysql
 2. 对以上进行配置如Nginx配置:
         $ sudo vim /etc/nginx/site-avalidable/default
-	```Bash
-			server {
-			listen 80 default_server;
-			listen [::]:80 default_server;
-			>这是HOST机器的外部域名，用地址也行
-			server_name example.org;
-			location / {
-				# 这里是指向 gunicorn host 的服务地址
-				proxy_pass http://127.0.0.1:8080;
-				proxy_set_header Host $host;
-				proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+```Bash
+server {
+		listen 80 default_server;
+		listen [::]:80 default_server;
+		server_name example.org;
+		location / {
+		proxy_pass http://127.0.0.1:8080;
+		proxy_set_header Host $host;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 			}
 		}
 	```
@@ -57,14 +55,14 @@ myblog是一个基于flask的开源多用户博客系统,功能基本完整,目�
        *  deploy
 5. 填写fabric配置信息,在www目录下运行 fab build 打包程序文件,然后运行fab deploy
 6. 在myblog目录下运行 gunicorn -w 4 -b 127.0.0.1:8080 run:app 
-*注:这只是一个基本部署,还有进程管理等可以自己Google,
-该部署流程要求本地计算机为Linux平台,window需要在cygwin环境下执行*
+> 注:这只是一个基本部署,还有进程管理等可以自己Google,
+> 该部署流程要求本地计算机为Linux平台,window需要在cygwin环境下执行
 
 ### 网站demo部署在EC2上
-网址:www.51datas.com
-管理员账号:qyzxg
-密码:abc123
-建议自己注册账号测试,欢迎发布文章
+* 网址:www.51datas.com
+* 管理员账号:qyzxg
+* 密码:abc123
+* 建议自己注册账号测试,欢迎发布文章
 
 ### 网站截图
 #### 首页
