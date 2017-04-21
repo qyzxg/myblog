@@ -25,6 +25,7 @@
         <span>&nbsp&nbsp&nbsp&nbsp时间&nbsp&nbsp:{{ post.created }}</span>
         <span>&nbsp&nbsp&nbsp&nbsp分类&nbsp&nbsp:<a
                 href="{{ url_for('cates.get_cates',cate=post.category) }}">{{ post.category }}</a></span>
+    <span>&nbsp&nbsp&nbsp&nbsp字数&nbsp&nbsp:{{ post.body|striptags|wdcount }}</span>
     </div>
     {# 正文 #}
     <hr>

@@ -15,6 +15,25 @@ collect = db.Table('collects',
                    db.Column('post_id', db.Integer, db.ForeignKey('posts.id'))
                    )
 
+tag = db.Table('tag',
+               db.Column('tag_id', db.Integer, db.ForeignKey('tags.id')),
+               db.Column('post_id', db.Integer, db.ForeignKey('posts.id'))
+               )
+
+
+class Tag(db.Model):
+    __tablename__ = 'tags'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(30))
+
+    def __init__(self, name):
+        self.name = name
+    def get_total(self):
+        tag_ = Tag.query.filter_by(name=self.name).first()
+        posts = tag_.posts
+        total = len(posts.all())
+        return total
+
 
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
@@ -143,6 +162,9 @@ class Post(db.Model):
     style = db.Column(db.String(50), default='原创')
     category = db.Column(db.String(50), default='Python')
     post_img = db.Column(db.String(500), doc='文章首页地址', default=r'/static/images/post_default.jpg')
+    tags = db.relationship('Tag', secondary=tag,
+                           backref=db.backref('posts', lazy='dynamic'))
+
 
     def get_post_img(self, post):
         reg = r'<img alt.*?src="(.*?)".*?/>'
@@ -171,6 +193,10 @@ class Categories(db.Model):
     name = db.Column(db.String(50))
     name1 = db.Column(db.String(50))
 
+    def get_total(self):
+        p = Post.query.filter_by(category=self.name).all()
+        total = len(p)
+        return total
 
 class Styles(db.Model):
     id = db.Column(db.Integer, primary_key=True)

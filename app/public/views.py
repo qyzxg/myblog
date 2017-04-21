@@ -13,9 +13,19 @@ import random
 from ..tasks.celery_tasks import get_post_img
 from .. import db, cache
 from . import public
-from ..models import User, Post, Comment, Categories, Styles, Todo
+from ..models import User, Post, Comment, Categories, Styles, Todo,Tag
 from .forms import PostForm, CommentForm, SearchForm
 import os
+
+
+# 定义过滤器
+
+def wdcount(stri):
+    return len(stri)
+
+public.add_app_template_filter(wdcount,name='wdcount')
+
+
 
 
 @cache.cached(timeout=30, key_prefix='view_%s', unless=None)
@@ -32,6 +42,7 @@ def index():
         todos = Todo.query.filter_by(user_id=current_user.id, status=0)
     posts = pagination.items
     categories = Categories.query.all()
+    tags = Tag.query.all()
     response = make_response(render_template('public/index.html',
                                              title='myblog',
                                              posts_=posts_,
@@ -39,7 +50,8 @@ def index():
                                              pagination=pagination,
                                              todos=todos,
                                              hot_authors=hot_authors,
-                                             categories=categories))
+                                             categories=categories,
+                                             tags=tags))
     response.set_cookie(key='user', value='name', expires=time.time() + 3600)
     response.set_cookie(key='pass', value='word', expires=time.time() + 3600)
     return response
@@ -175,6 +187,23 @@ def edit(id=0):
             post.title = form.title.data
             post.style = form.style.data
             post.category = form.category.data
+            alltags=[i.name for i in Tag.query.all()]
+            ptags = [i.name for i in post.tags]
+            l = form.tags.data.split(',')
+            ls = filter(None,l)
+            for i in ls:
+                if i=='':
+                    l.remove(i)
+                if i not in alltags:
+                    tag = Tag(name=i)
+                    db.session.add(tag)
+                    post.tags.append(tag)
+                else:
+                    if i in ptags:
+                        pass
+                    else:
+                        post.tags.append(Tag.query.filter_by(name=i).first())
+
             db.session.add(post)
             db.session.commit()
             post.post_img = post.get_post_img(post)
@@ -193,7 +222,13 @@ def edit(id=0):
     form.body.data = post.body
     form.style.data = post.style
     form.category.data = post.category
-
+    posttags=[]
+    s = ''
+    if post.tags:
+        for i in post.tags:
+            posttags.append(i.name)
+        s = ','.join(posttags)
+    form.tags.data=s
     title = '添加新文章'
     if id > 0:
         title = '编辑文章'

@@ -23,8 +23,9 @@ cache = Cache(config={'CACHE_TYPE': 'redis',
 
 login_manager.session_protection = 'strong'
 login_manager.login_message = '要访问该页面请您登录!'
-login_manager.needs_refresh_message = '请验证后再登录!'
+login_manager.needs_refresh_message = '为保证您的账号安全,请验证后再操作!'
 login_manager.login_view = 'auth.login'
+login_manager.refresh_view = "auth.login"
 
 
 def create_app(config_name='default'):

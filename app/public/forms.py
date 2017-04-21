@@ -14,6 +14,7 @@ class PostForm(FlaskForm, CKEditor):
                         render_kw={"required": "required"})
     style = SelectField('类型', coerce=str)
     category = SelectField('分类', coerce=str)
+    tags = StringField(label='文章标签')
     body = TextAreaField(label="正文", validators=[DataRequired(),
                                                  Length(min=10, message='文章内容必须大于10个字!')],
                          render_kw={"required": "required"})

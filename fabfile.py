@@ -79,9 +79,15 @@ def deploy():
         sudo('mv -f %s .' % _REMOTE_TMP_TAR)
         sudo('tar -xzvf %s' % _TAR_FILE) # 解压
         sudo('rm -f %s' % _TAR_FILE) # 删除压缩包
+        sudo('mv -f /www/migrations .')
 
     with cd('/'):
         sudo('chown -R ubuntu www') #改变权限
+
+    with cd('%s/myblog' % _REMOTE_BASE_DIR):
+        sudo('python3 manage.py db migrate')
+        sudo('python3 manage.py db upgrade')
+        sudo('cp -r migrations ..')
         # 重置软链接:
         # with cd(_REMOTE_BASE_DIR):
         #     sudo('rm -f myblog')

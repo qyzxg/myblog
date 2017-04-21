@@ -40,7 +40,7 @@ def register():
     return render_template('auth/register.html', form=form, title='用户注册')
 
 
-# 注册邮件确认
+#邮件确认
 @auth.route('/confirm/<token>')
 @login_required
 def confirm_email(token):

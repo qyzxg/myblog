@@ -7,6 +7,7 @@
             {% for category in categories %}
                 <ul class="list-group" style="margin-bottom: 5px">
                     <li class="list-group-item" style="padding: 0px;margin: 0px">
+                        <span class="badge">{{ category.get_total() }}</span>
                         <a href="{{ url_for('cates.get_cates', cate = category.name) }}">{{ category.name }}</a>
                     </li>
                 </ul>

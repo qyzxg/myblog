@@ -3,6 +3,7 @@
 
 import os
 from os import path
+import datetime
 
 
 class Config:
@@ -30,11 +31,16 @@ class Config:
     PROPAGATE_EXCEPTIONS = True
 
     # 文件上传
-    UPLOAD_FOLDER = r'app\static\avatar\avatar'
-    ZFB_FOLDER = r'app\static\zfbimg\zfbimg'
-    WX_FOLDER = r'app\static\wximg\wximg'
+    UPLOAD_FOLDER = r'app/static/avatar/avatar'
+    ZFB_FOLDER = r'app/static/zfbimg/zfbimg'
+    WX_FOLDER = r'app/static/wximg/wximg'
     ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif', 'JPG'])
     BASE_PATH = path.abspath(path.dirname(__file__))
+
+    #记住我
+    REMEMBER_COOKIE_DURATION = datetime.timedelta(weeks=1)
+
+    JSON_AS_ASCII = False
 
 
 class DevelopmentConfig(Config):  # mysqlconnector

@@ -3,7 +3,7 @@
 
 from flask import render_template, request
 from . import cates
-from ..models import Post
+from ..models import Post,Tag
 from .. import cache
 
 
@@ -20,3 +20,17 @@ def get_cates(cate):
                            title='所有分类为%s的文章'%cate,total=total,
                            cate=cate,
                            )
+
+
+@cache.cached(timeout=60, key_prefix='view_%s', unless=None)
+@cates.route('/tags/<tag>')
+def get_tags(tag):
+    page_index = request.args.get('page', 1, type=int)
+    tag_ = Tag.query.filter_by(name=tag).first()
+    query = tag_.posts
+    pagination = query.paginate(page_index, per_page=10, error_out=False)
+    posts = pagination.items
+    total = len(query.all())
+    return render_template('cates/get_tags.html',title='标签有%s的文章'%tag,
+                           posts=posts,pagination=pagination,total=total,
+                           tag=tag)

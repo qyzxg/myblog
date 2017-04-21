@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 from flask import render_template, flash, redirect, url_for, request
-from flask_login import current_user, login_required
+from flask_login import current_user, login_required, fresh_login_required
 import time
 from .. import db, cache
 from . import admin
@@ -61,7 +61,7 @@ def get_m_days():
 
 # 管理员后台首页
 @admin.route('/admin')
-@login_required
+@fresh_login_required
 @admin_required
 def admin_index():
     m = get_c_month()

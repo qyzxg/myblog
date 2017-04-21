@@ -1,0 +1,13 @@
+<div id='article-entry' class="entry-box">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">标签云</h3>
+        </div>
+        <div class="panel-body" style="padding: 5px" id="tagcloud">
+            {% for tag in tags %}
+               <span class="label" style="display:inline-block"><a href="{{ url_for('cates.get_tags',tag=tag.name) }}" style="color: rgb(235,235,235)">{{ tag.name }}<span class="badge" style="background-color:rgba(0,0,0,0.3);padding:0px;margin-left: 5px">{{ tag.get_total() }}</span></a></span>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
