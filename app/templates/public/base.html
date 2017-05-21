@@ -12,7 +12,7 @@
         <meta name="robots" content="index">
         <meta name="author" content="qyzxg,qyzxg@live.com">
         <meta name="copyright" content="qyzxg">
-        <meta name="revisit-after" content="1 days" >
+        <meta name="revisit-after" content="1 days">
         <link rel="shortcut icon" href="/static/avatar/favicon.ico" type="image/x-icon">
         {% include 'includes/_navbar.html' %}
         <title>{% block title %}{{ title|safe }}{% endblock %}</title>
@@ -21,9 +21,11 @@
 
 {% block styles %}
     {{ super() }}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'ckeditor/plugins/codesnippet/lib/highlight/styles/rainbow.css') }}">
+    <link rel="stylesheet" type="text/css"
+          href="{{ url_for('static', filename = 'ckeditor/plugins/codesnippet/lib/highlight/styles/rainbow.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'stylesheets/bootstrap.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css"
+          href="{{ url_for('static', filename = 'font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'stylesheets/main.css') }}">
 {% endblock %}
 
@@ -44,11 +46,11 @@
         </div>
     </div>
     <div class="container">
-    <div class="col-md-12">
-    {% block footer %}
-    {% include 'includes/_footer.html' %}
-    {% endblock %}
-    </div>
+        <div class="col-md-12">
+            {% block footer %}
+                {% include 'includes/_footer.html' %}
+            {% endblock %}
+        </div>
     </div>
 
 {% endblock %}

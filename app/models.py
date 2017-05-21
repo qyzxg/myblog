@@ -4,6 +4,8 @@ import datetime
 from jieba.analyse import ChineseAnalyzer
 import re
 from . import db, login_manager
+from flask import current_app, request, url_for
+import time
 
 follow = db.Table('followers',
                   db.Column('follower_id', db.Integer, db.ForeignKey('users.id')),
@@ -28,6 +30,7 @@ class Tag(db.Model):
 
     def __init__(self, name):
         self.name = name
+
     def get_total(self):
         tag_ = Tag.query.filter_by(name=self.name).first()
         posts = tag_.posts
@@ -55,7 +58,7 @@ class User(UserMixin, db.Model):
     role = db.Column(db.Integer, default=0)
     zfb_img = db.Column(db.String(200), doc='支付宝二维码', default=r'/static/zfbimg/zfb_300_1.99.png')
     wx_img = db.Column(db.String(200), doc='微信二维码', default=r'/static/wximg/wx_300_1.99.png')
-    zfb_num = db.Column(db.String(20),doc='支付宝金额',default='1.99')
+    zfb_num = db.Column(db.String(20), doc='支付宝金额', default='1.99')
     wx_num = db.Column(db.String(20), doc='微信金额', default='1.99')
     collects = db.relationship('Post', secondary=collect, backref=db.backref('collected', lazy='dynamic'),
                                lazy='dynamic')
@@ -140,6 +143,21 @@ class User(UserMixin, db.Model):
             confirmed=False).all()
         return len(unconfirmed_messages)
 
+    def to_json(self):
+        json_user = {
+            'url': url_for('api.get_post', id=self.id, _external=True),
+            'username': self.username,
+            'last_login': self.last_login,
+            'posts': url_for('api.get_user_posts', id=self.id, _external=True),
+            'collected_posts': url_for('api.get_user_collected_posts',
+                                       id=self.id, _external=True),
+            'post_total': self.post_total
+        }
+        return json_user
+
+    def __repr__(self):
+        return '<User %r>' % self.username
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -165,7 +183,6 @@ class Post(db.Model):
     tags = db.relationship('Tag', secondary=tag,
                            backref=db.backref('posts', lazy='dynamic'))
 
-
     def get_post_img(self, post):
         reg = r'<img alt.*?src="(.*?)".*?/>'
         img = re.compile(reg)
@@ -175,17 +192,24 @@ class Post(db.Model):
         return self.post_img
 
     def to_json(self):
-        json = {
-            # 'url': url_for('api.get_post', id=self.id, _external=True),
+        json_post = {
+            'url': url_for('api.get_post', id=self.id, _external=True),
+            'title': self.title,
             'body': self.body,
             'created': self.created,
-            # 'author': url_for('api.get_user', id=self.author_id,
-            #                   _external=True),
-            # 'comments': url_for('api.get_post_comments', id=self.id,
-            #                     _external=True),
-            'comment_count': self.comment_times
+            'author': url_for('api.get_user', id=self.author_id,
+                              _external=True),
+            'comments': url_for('api.get_post_comments', id=self.id,
+                                _external=True),
+            'comment_times': self.comment_times
         }
-        return json
+        return json_post
+
+    @staticmethod
+    def from_json(json_post):
+        body = json_post.get('body')
+        title = json_post.get('title')
+        return Post(body=body, title=title)
 
 
 class Categories(db.Model):
@@ -197,6 +221,7 @@ class Categories(db.Model):
         p = Post.query.filter_by(category=self.name).all()
         total = len(p)
         return total
+
 
 class Styles(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -211,6 +236,25 @@ class Comment(db.Model):
     created = db.Column(db.DateTime, index=True, default=datetime.datetime.now())
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    def to_json(self):
+        json_comment = {
+            'url': url_for('api.get_comment', id=self.id, _external=True),
+            'post': url_for('api.get_post', id=self.post_id, _external=True),
+            'body': self.body,
+            'created': self.created,
+            'author': url_for('api.get_user', id=self.author_id,
+                              _external=True),
+        }
+        return json_comment
+
+    @staticmethod
+    def from_json(json_comment):
+        body = json_comment.get('body')
+        return Comment(body=body)
+
+    def __repr__(self):
+        return '<Comment %r,%r >' % (self.body, self.author)
 
 
 class Todo(db.Model):
@@ -246,3 +290,22 @@ class Message(db.Model):
             return '已读'
         else:
             return '未读'
+
+
+# class SystemInfo(db.Model):
+#     pass
+
+
+class LogInfo(db.Model):
+    __tablename__ = 'loginfo'
+    id = db.Column(db.Integer, primary_key=True)
+    ip = db.Column(db.String(50))
+    time_r = db.Column(db.DateTime)
+    status_code = db.Column(db.Integer)
+    length = db.Column(db.Integer)
+    url = db.Column(db.String(200))
+    req_time = db.Column(db.Float)
+    res_time = db.Column(db.Float)
+    time_stamp = db.Column(db.Integer)
+    def __repr__(self):
+        return 'LogInfo %s enter at %r' % (self.ip, self.time_r)

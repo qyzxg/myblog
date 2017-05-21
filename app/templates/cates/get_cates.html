@@ -11,14 +11,14 @@
         </div>
     {% endfor %}
 
-    <h3> 所有分类为 " {{ cate }} " 的文章  共 {{ total }} 篇:</h3>
+    <h3> 所有分类为 " {{ cate }} " 的文章 共 {{ total }} 篇:</h3>
     {% for post in posts|sort(attribute='created',reverse=True ) %}
         {% include 'includes/_posts_summary.html' %}
     {% endfor %}
 
     {% if pagination %}
-            {{ render_pagination(pagination) }}
-        {% endif %}
+        {{ render_pagination(pagination) }}
+    {% endif %}
 {% endblock %}
 
 {% block footer %}

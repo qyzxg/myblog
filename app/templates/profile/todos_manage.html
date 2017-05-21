@@ -14,13 +14,13 @@
 
 {% block right_content %}
     {{ super() }}
- <form class="input-group" action="{{ url_for('profile.todo_add') }}" method="post">
+    <form class="input-group" action="{{ url_for('profile.todo_add') }}" method="post">
         <input class="form-control" id="centent" name="content" type="text" required="required">
-    <span class="input-group-btn">
+        <span class="input-group-btn">
         <button class="btn btn-default" type="submit">添加</button>
     </span>
     </form>
-<br><br>
+    <br><br>
     <h4>TODO列表:</h4>
     <div class="table-responsive">
         <table class="table table-bordered table-hover ">
@@ -55,9 +55,9 @@
 
                     <td>
                         {% if todo.finished %}
-                        <h5>{{ todo.finished.strftime('%Y-%m-%d %H:%M') }}</h5>
+                            <h5>{{ todo.finished.strftime('%Y-%m-%d %H:%M') }}</h5>
                         {% else %}
-                        <h5>赶快去完成吧</h5>
+                            <h5>赶快去完成吧</h5>
                         {% endif %}
                     </td>
                     <td><h5>{{ todo.get_status() }}</h5></td>
@@ -65,15 +65,16 @@
                         <td><a href="{{ url_for('profile.todo_done',id=todo.id) }}" class="btn btn-success">已完成</a></td>
                     {% endif %}
                     {% if todo.status==1 %}
-                        <td><a href="{{ url_for('profile.todo_undone',id=todo.id) }}" class="btn btn-primary">未完成</a></td>
+                        <td><a href="{{ url_for('profile.todo_undone',id=todo.id) }}" class="btn btn-primary">未完成</a>
+                        </td>
                     {% endif %}
-                        <td><a href="{{ url_for('profile.todo_dele',id=todo.id) }}" class="btn btn-danger">删除</a></td>
+                    <td><a href="{{ url_for('profile.todo_dele',id=todo.id) }}" class="btn btn-danger">删除</a></td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
     </div>
-{% if pagination %}
+    {% if pagination %}
         {{ render_pagination(pagination) }}
     {% endif %}
 {% endblock %}

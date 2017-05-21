@@ -13,19 +13,18 @@ import random
 from ..tasks.celery_tasks import get_post_img
 from .. import db, cache
 from . import public
-from ..models import User, Post, Comment, Categories, Styles, Todo,Tag
+from ..models import User, Post, Comment, Categories, Styles, Todo, Tag
 from .forms import PostForm, CommentForm, SearchForm
 import os
-
-
+from werkzeug.contrib.atom import AtomFeed
+from urllib.parse import urljoin
 # 定义过滤器
 
 def wdcount(stri):
     return len(stri)
 
-public.add_app_template_filter(wdcount,name='wdcount')
 
-
+public.add_app_template_filter(wdcount, name='wdcount')
 
 
 @cache.cached(timeout=30, key_prefix='view_%s', unless=None)
@@ -78,6 +77,7 @@ def upload():
             return redirect(url_for('public.upload'))
         flash('您上传的文件不合法!')
     return render_template('public/upload.html', title='上传图像')
+
 
 @public.route('/upload/zfb_img', methods=['POST', 'GET'])
 @login_required
@@ -187,12 +187,12 @@ def edit(id=0):
             post.title = form.title.data
             post.style = form.style.data
             post.category = form.category.data
-            alltags=[i.name for i in Tag.query.all()]
+            alltags = [i.name for i in Tag.query.all()]
             ptags = [i.name for i in post.tags]
             l = form.tags.data.split(',')
-            ls = filter(None,l)
+            ls = filter(None, l)
             for i in ls:
-                if i=='':
+                if i == '':
                     l.remove(i)
                 if i not in alltags:
                     tag = Tag(name=i)
@@ -222,13 +222,13 @@ def edit(id=0):
     form.body.data = post.body
     form.style.data = post.style
     form.category.data = post.category
-    posttags=[]
+    posttags = []
     s = ''
     if post.tags:
         for i in post.tags:
             posttags.append(i.name)
         s = ','.join(posttags)
-    form.tags.data=s
+    form.tags.data = s
     title = '添加新文章'
     if id > 0:
         title = '编辑文章'
@@ -333,3 +333,22 @@ def service():
 def about():
     posts_ = Post.query.order_by(Post.comment_times.desc()).limit(5)
     return render_template('public/about.html', title='关于', posts_=posts_)
+
+def make_external(url):
+    return urljoin(request.url_root, url)
+
+@public.route('/rss')
+def recent_feed():
+    feed = AtomFeed('最近文章',
+                    feed_url=request.url, url=request.url_root)
+    posts = Post.query.order_by(Post.created.desc()) \
+                      .limit(20).all()
+    for post in posts:
+        feed.add(post.title, post.body,
+                 content_type='html',
+                 author=post.author.username,
+                 id=post.id,
+                 updated=post.created,
+                 url = make_external(url_for('public.details', id=post.id))
+                 )
+    return feed.get_response()

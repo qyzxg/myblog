@@ -80,7 +80,7 @@ def user_blogs_manage():
 def user_blog_manage(id):
     post = Post.query.filter_by(id=id).first()
     user = User.query.filter_by(id=post.author_id).first()
-
+    tags = post.tags
     comments = Comment.query.filter_by(post_id=post.id).all()
     if post is None:
         flash('文章不存在!')
@@ -88,6 +88,8 @@ def user_blog_manage(id):
         flash('请登录后再操作!')
     for i in comments:
         db.session.delete(i)
+    for i in tags:
+        post.tags.remove(i)
     db.session.delete(post)
     db.session.commit()
     user.post_total -= 1
@@ -167,7 +169,7 @@ def user_followers_manage():
 def user_reward_manage():
     user = current_user
     return render_template('profile/user_reward_manage.html',
-                           user=user,title='打赏管理',meun=7)
+                           user=user, title='打赏管理', meun=7)
 
 
 @profile.route('/user/collect_manage/<int:id>/')
@@ -305,7 +307,6 @@ def follow(username):
     return redirect(url_for('profile.others', username=username))
 
 
-
 @profile.route('/unfollow/<username>')
 @login_required
 def unfollow(username):
@@ -324,7 +325,6 @@ def unfollow(username):
     db.session.commit()
     flash('取消关注' + user.username + '成功')
     return redirect(url_for('profile.others', username=username))
-
 
 
 @profile.route('/send_message/', methods=['POST', 'GET'])
@@ -351,7 +351,6 @@ def send_message():
     return redirect(url_for('profile.messages_manage'))
 
 
-
 @profile.route('/delete_message/<int:id>')
 @login_required
 def delete_message(id):
@@ -365,7 +364,6 @@ def delete_message(id):
     return redirect(url_for('profile.messages_manage'))
 
 
-
 @profile.route('/confirm_message/<int:id>')
 @login_required
 def confirm_message(id):
@@ -373,7 +371,6 @@ def confirm_message(id):
     message.confirmed = 1
     flash('消息状态更改成功!')
     return redirect(url_for('profile.messages_manage'))
-
 
 
 @profile.route('/messages_manage')

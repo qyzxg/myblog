@@ -28,39 +28,39 @@
     <br>
     <h3>已发通知:</h3>
     <div class="table-responsive">
-                <table class="table table-bordered table-hover ">
-                    <thead>
-                    <tr>
-                        <th>
-                            <mark>消息内容</mark>
-                        </th>
-                        <th>
-                            <mark>发送时间</mark>
-                        </th>
-                        <th>
-                            <mark>发送给</mark>
-                        </th>
-                        <th>
-                            <mark>消息状态</mark>
-                        </th>
-                        <th>
-                            <mark>删除消息</mark>
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for message in sended_messages %}
-                        <tr>
-                            <td style="max-width: 500px"><h5>{{ message.content }}</h5></td>
-                            <td><h5>{{ message.created_at.strftime('%Y-%m-%d %H:%M') }}</h5></td>
-                            <td><h5>{{ message.sendto.username }}</h5></td>
-                            <td><h5>{{ message.get_status() }}</h5></td>
-                            <td><a href="{{ url_for('admin.delete_message',id=message.id) }}" class="btn btn-danger">删除</a></td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+        <table class="table table-bordered table-hover ">
+            <thead>
+            <tr>
+                <th>
+                    <mark>消息内容</mark>
+                </th>
+                <th>
+                    <mark>发送时间</mark>
+                </th>
+                <th>
+                    <mark>发送给</mark>
+                </th>
+                <th>
+                    <mark>消息状态</mark>
+                </th>
+                <th>
+                    <mark>删除消息</mark>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for message in sended_messages %}
+                <tr>
+                    <td style="max-width: 500px"><h5>{{ message.content }}</h5></td>
+                    <td><h5>{{ message.created_at.strftime('%Y-%m-%d %H:%M') }}</h5></td>
+                    <td><h5>{{ message.sendto.username }}</h5></td>
+                    <td><h5>{{ message.get_status() }}</h5></td>
+                    <td><a href="{{ url_for('admin.delete_message',id=message.id) }}" class="btn btn-danger">删除</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
     {% if pagination %}
         {{ render_pagination(pagination) }}
     {% endif %}

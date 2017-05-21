@@ -18,38 +18,38 @@
                 <div class='panel-body'>
                     <form class="form-horizontal" method="post">
                         {{ form.csrf_token }}
-                            {{ form.title(class='form-control', placeholder='请输入标题,字数在5--50之间', type='text') }}
+                        {{ form.title(class='form-control', placeholder='请输入标题,字数在5--50之间', type='text') }}
 
-                            <p><span>{% for error in form.title.errors %}
+                        <p><span>{% for error in form.title.errors %}
+                            <span style="color: #feff14;">{{ error }}</span>
+                        {% endfor %}</span></p>
+                        <div class="row" style="margin-bottom: 10px">
+                            <div class="col-xs-3">
+                                {{ form.style(class="form-control",placeholder='请选择文章类型') }}
+                            </div>
+                            <div class="col-xs-3">
+                                {{ form.category(class="form-control",placeholder='请选择文章种类') }}
+                            </div>
+                            <div class="col-xs-6">
+                                {{ form.tags(class="form-control",placeholder='请填入文章标签,标签之间以英文逗号隔开') }}
+                            </div>
+                        </div>
+
+
+                        {{ form.body(class='ckeditor',placeholder='请输入文章内容,必须大于10个字') }}
+                        <script type="text/javascript">
+                            CKEDITOR.replace("body", {});
+                        </script>
+
+                        <br>
+                        <div class="col-md-9 ">
+                            {% for error in form.body.errors %}
                                 <span style="color: #feff14;">{{ error }}</span>
-                            {% endfor %}</span></p>
-                            <div class="row" style="margin-bottom: 10px">
-                                <div class="col-xs-3">
-                                    {{ form.style(class="form-control",placeholder='请选择文章类型') }}
-                                </div>
-                                <div class="col-xs-3">
-                                    {{ form.category(class="form-control",placeholder='请选择文章种类') }}
-                                </div>
-                                <div class="col-xs-6">
-                                    {{ form.tags(class="form-control",placeholder='请填入文章标签,标签之间以英文逗号隔开') }}
-                                </div>
-                            </div>
-
-
-                            {{ form.body(class='ckeditor',placeholder='请输入文章内容,必须大于10个字') }}
-                            <script type="text/javascript">
-                                CKEDITOR.replace("body", {});
-                            </script>
-
-                            <br>
-                            <div class="col-md-9 ">
-                                {% for error in form.body.errors %}
-                                    <span style="color: #feff14;">{{ error }}</span>
-                                {% endfor %}
-                            </div>
-                            <div class="col-md-3 ">
-                                {{ form.submit(class="btn btn-info btn-block ") }}
-                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 ">
+                            {{ form.submit(class="btn btn-info btn-block ") }}
+                        </div>
                     </form>
                 </div>
             </div>

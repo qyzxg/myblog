@@ -22,7 +22,7 @@
     <br>
     <form action="" method="post">
         {{ form.csrf_token }}
-        {{ form.name }}
+        {{ form.name(placeholder='请输入文章分类') }}
         {{ form.submit }}
     </form>
     {% for error in form.name.errors %}

@@ -12,9 +12,10 @@
         <meta name="robots" content="index">
         <meta name="author" content="qyzxg,qyzxg@live.com">
         <meta name="copyright" content="qyzxg">
-        <meta name="revisit-after" content="1 days" >
+        <meta name="revisit-after" content="1 days">
         <link rel="shortcut icon" href="/static/avatar/favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'font-awesome/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" type="text/css"
+              href="{{ url_for('static', filename = 'font-awesome/css/font-awesome.min.css') }}">
         {% include 'includes/_navbar.html' %}
 
         <title>{% block title %}{{ title|safe }}{% endblock %}</title>
@@ -25,7 +26,8 @@
     {{ super() }}
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.0/css/font-awesome.min.css" rel="stylesheet"
           type="text/css"/>
-    <link rel="stylesheet" href="{{ url_for('static', filename = 'ckeditor/plugins/codesnippet/lib/highlight/styles/rainbow.css') }}">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename = 'ckeditor/plugins/codesnippet/lib/highlight/styles/rainbow.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename = 'stylesheets/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename = 'stylesheets/main.css') }}">
 {% endblock %}
@@ -47,11 +49,11 @@
         </div>
     </div>
     <div class="container">
-    <div class="col-md-12">
-    {% block footer %}
-    {% include 'includes/_footer.html' %}
-    {% endblock %}
-    </div>
+        <div class="col-md-12">
+            {% block footer %}
+                {% include 'includes/_footer.html' %}
+            {% endblock %}
+        </div>
     </div>
 
 {% endblock %}

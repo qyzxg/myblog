@@ -17,10 +17,10 @@
                 </div>
                 <div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1 register">
                     <div class="form-group">
-                        <label for="username" class="col-sm-3 control-label"  style="font-size: 15px">用户名：</label>
+                        <label for="username" class="col-sm-3 control-label" style="font-size: 15px">用户名：</label>
                         <div class="col-sm-8">
                             <div class="input-group">
-                                {{ form.username }}
+                                {{ form.username(placeholder='请输入用户名') }}
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-user"></span>
                                 </div>
@@ -31,7 +31,7 @@
                         <label for="password" class="col-sm-3 control-label" style="font-size: 15px">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
                         <div class="col-sm-8">
                             <div class="input-group">
-                                {{ form.password }}
+                                {{ form.password(placeholder='请输入密码') }}
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-lock"></span>
                                 </div>
@@ -41,7 +41,8 @@
                     <div class="form-group ">
                         <label for="remember_me" class="col-sm-3 control-label" style="font-size: 15px">记住我：</label>
                         <label for="remember_me" class="col-sm-1 control-label">{{ form.remember_me }}</label>
-                        <label class="col-sm-3 control-label" style="font-size: 15px"><a href="{{ url_for('auth.reset_confirm_email') }}">忘记密码?</a></label>
+                        <label class="col-sm-3 control-label" style="font-size: 15px"><a
+                                href="{{ url_for('auth.reset_confirm_email') }}">忘记密码?</a></label>
                     </div>
                     <br>
                     <div class="row">

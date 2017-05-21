@@ -16,9 +16,12 @@
 
 {% block right_content %}
     {{ super() }}
+    <div id="ser" style="width: 920px; height:300px; float:left;margin-bottom:20px"></div>
     <div id="pc" style="width: 450px; height:200px; float:left"></div>
     <div id="uc" style="width: 450px; height:200px; float:right"></div>
-    <div id="cc" style="width: 450px; height:200px; float: left;margin-top: 20px"></div>
+    <div id="cc" style="width: 450px; height:200px; float:left;margin-top: 20px"></div>
+    <div id="upv" style="width: 450px; height:200px; float:right;margin-top: 20px"></div>
+
     {% block scripts %}
         {{ super() }}
         <script type="text/javascript">
@@ -111,39 +114,387 @@
             var myChart = echarts.init(document.getElementById('cc'));
             option = {
                 backgroundColor: 'rgba(204,184,91,0.7)',
-    title : {
-        text: '文章分类',
-        x:'left'
-    },
-    tooltip : {
-        trigger: 'item',
-        formatter: "{a} <br/>{b} : {c} ({d}%)"
-    },
-    legend: {
-        orient: 'vertical',
-        right: 'right',
-        data: {{ cat|tojson }}
-    },
-    series : [
-        {
-            name: '文章分类',
-            type: 'pie',
-            radius : '75%',
-            center: ['50%', '50%'],
+                title: {
+                    text: '文章分类',
+                    x: 'left'
+                },
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                legend: {
+                    orient: 'vertical',
+                    right: 'right',
+                    data: {{ cat|tojson }}
+                },
+                series: [
+                    {
+                        name: '文章分类',
+                        type: 'pie',
+                        radius: '75%',
+                        center: ['50%', '50%'],
 
-            data:{{ d|tojson }},
-            itemStyle: {
-                emphasis: {
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-                }
-            }
-        }
-    ]
-};
+                        data:{{ d|tojson }},
+                        itemStyle: {
+                            emphasis: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        }
+                    }
+                ]
+            };
             myChart.setOption(option);
         </script>
+
+        <script type="text/javascript">
+            var myChart = echarts.init(document.getElementById('upv'));
+            // 指定图表的配置项和数据
+            var option = {
+                backgroundColor: 'rgba(204,184,91,0.7)',
+                title: {
+                    text: 'PV/UV统计',
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data: ['PV', 'UV']
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        dataZoom: {
+                            yAxisIndex: 'none'
+                        },
+                        dataView: {readOnly: false},
+                        magicType: {type: ['line', 'bar']},
+                        restore: {},
+                        saveAsImage: {}
+                    }
+                },
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: {{ x|tojson }}
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLabel: {
+                        formatter: '{value}'
+                    }
+                },
+                dataZoom: [{
+                    type: 'inside',
+                    startValue: {{ day }}-5,
+                    endValue: {{ day }},
+                }, {
+                    startValue: 0,
+                    endValue: {{ days }},
+                    {#                    handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',#}
+                    {#                    handleSize: '80%',#}
+                    {#                    handleStyle: {#}
+                    {#                        color: '#fff',#}
+                    {#                        shadowBlur: 3,#}
+                    {#                        shadowColor: 'rgba(0, 0, 0, 0.6)',#}
+                    {#                        shadowOffsetX: 2,#}
+                    {#                        shadowOffsetY: 2#}
+                    {#                    }#}
+                }],
+                series: [
+                    {
+                        name: 'PV',
+                        type: 'line',
+                        data: {{ pv|tojson }},
+                        markPoint: {
+                            data: [
+                                {type: 'max', name: '最大值'},
+                                {type: 'min', name: '最小值'}
+                            ]
+                        },
+                        markLine: {
+                            data: [
+                                {type: 'average', name: '平均值'}
+                            ]
+                        }
+                    },
+                    {
+                        name: 'UV',
+                        type: 'line',
+                        data: {{ uv|tojson }},
+                        markPoint: {
+                            data: [
+                                {name: '月最低', value: -2, xAxis: 1, yAxis: -1.5}
+                            ]
+                        },
+                        markLine: {
+                            data: [
+                                {type: 'average', name: '平均值'},
+                                [{
+                                    symbol: 'none',
+                                    x: '90%',
+                                    yAxis: 'max'
+                                }, {
+                                    symbol: 'circle',
+                                    label: {
+                                        normal: {
+                                            position: 'start',
+                                            formatter: '最大值'
+                                        }
+                                    },
+                                    type: 'max',
+                                    name: '最高点'
+                                }]
+                            ]
+                        }
+                    }
+                ]
+            };
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+        </script>
+
+        <script type="text/javascript">
+            var myChart = echarts.init(document.getElementById('ser'));
+            // 指定图表的配置项和数据
+            var option = {
+                backgroundColor: 'rgba(204,184,91,0.7)',
+                tooltip: {
+                    formatter: "{a} <br/>{c} {b}"
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        restore: {show: true},
+                        saveAsImage: {show: true},
+                        dataView: {readOnly: false}
+                    }
+                },
+                series: [
+                    {
+                        name: 'CPU使用率',
+                        center: ['50%', '50%'],
+                        type: 'gauge',
+                        z: 3,
+                        min: 0,
+                        max: 100,
+                        splitNumber: 10,
+                        radius: '80%',
+                        axisLine: {            // 坐标轴线
+                            lineStyle: {       // 属性lineStyle控制线条样式
+                                width: 10
+                            }
+                        },
+                        axisTick: {            // 坐标轴小标记
+                            length: 15,        // 属性length控制线长
+                            lineStyle: {       // 属性lineStyle控制线条样式
+                                color: 'auto'
+                            }
+                        },
+                        splitLine: {           // 分隔线
+                            length: 20,         // 属性length控制线长
+                            lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                                color: 'auto'
+                            }
+                        },
+                        title: {
+                            textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                fontWeight: 'bolder',
+                                fontSize: 20,
+                                fontStyle: 'italic'
+                            }
+                        },
+                        detail: {
+                            textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                fontWeight: 'bolder'
+                            }
+                        },
+                        data: [{value: 5, name: 'cpu/%'}]
+                    },
+                    {
+                        name: '内存使用率',
+                        type: 'gauge',
+                        center: ['20%', '55%'],    // 默认全局居中
+                        radius: '60%',
+                        min: 0,
+                        max: 100,
+                        endAngle: 45,
+                        splitNumber: 10,
+                        axisLine: {            // 坐标轴线
+                            lineStyle: {       // 属性lineStyle控制线条样式
+                                width: 8
+                            }
+                        },
+                        axisTick: {            // 坐标轴小标记
+                            length: 12,        // 属性length控制线长
+                            lineStyle: {       // 属性lineStyle控制线条样式
+                                color: 'auto'
+                            }
+                        },
+                        splitLine: {           // 分隔线
+                            length: 20,         // 属性length控制线长
+                            lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                                color: 'auto'
+                            }
+                        },
+                        pointer: {
+                            width: 5
+                        },
+                        title: {
+                            offsetCenter: [0, '-30%'],       // x, y，单位px
+                        },
+                        detail: {
+                            textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                fontWeight: 'bolder'
+                            }
+                        },
+                        data: [{value: 40, name: '内存/%'}]
+                    },
+                    {
+                        name: '硬盘',
+                        type: 'gauge',
+                        center: ['77%', '50%'],    // 默认全局居中
+                        radius: '60%',
+                        min: 0,
+                        max: 10000,
+                        startAngle: 135,
+                        endAngle: 45,
+                        splitNumber: 10,
+                        axisLine: {            // 坐标轴线
+                            lineStyle: {       // 属性lineStyle控制线条样式
+                                width: 8
+                            }
+                        },
+                        axisTick: {            // 坐标轴小标记
+                            splitNumber: 5,
+                            length: 10,        // 属性length控制线长
+                            lineStyle: {       // 属性lineStyle控制线条样式
+                                color: 'auto'
+                            }
+                        },
+                        axisLabel: {
+                            formatter: function (v) {
+                                switch (v + '') {
+                                    case '0' :
+                                        return 'E';
+                                    case '5000' :
+                                        return '硬盘';
+                                    case '10000' :
+                                        return 'F';
+                                }
+                            }
+                        },
+                        splitLine: {           // 分隔线
+                            length: 15,         // 属性length控制线长
+                            lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                                color: 'auto'
+                            }
+                        },
+                        pointer: {
+                            width: 2
+                        },
+                        title: {
+                            show: false
+                        },
+                        detail: {
+                            show: false
+                        },
+                        data: [{value: 0.5, name: 'Kb'}]
+                    },
+                    {
+                        name: '网络',
+                        type: 'gauge',
+                        center: ['77%', '50%'],    // 默认全局居中
+                        radius: '60%',
+                        min: 0,
+                        max: 10000,
+                        startAngle: 315,
+                        endAngle: 225,
+                        splitNumber: 10,
+                        axisLine: {            // 坐标轴线
+                            lineStyle: {       // 属性lineStyle控制线条样式
+                                width: 8
+                            }
+                        },
+                        axisTick: {            // 坐标轴小标记
+                            show: false
+                        },
+                        axisLabel: {
+                            formatter: function (v) {
+                                switch (v + '') {
+                                    case '0' :
+                                        return 'H';
+                                    case '5000' :
+                                        return '网络';
+                                    case '10000' :
+                                        return 'C';
+                                }
+                            }
+                        },
+                        splitLine: {           // 分隔线
+                            length: 15,         // 属性length控制线长
+                            lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                                color: 'auto'
+                            }
+                        },
+                        pointer: {
+                            width: 2
+                        },
+                        title: {
+                            show: false
+                        },
+                        detail: {
+                            textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                fontWeight: 'bolder'
+                            },
+                        },
+                        data: [{value: 0.5, name: 'Kb'}]
+                    }
+                ]
+            };
+
+            timeTicket = setInterval(function () {
+                $.ajax({
+                    type:'GET',
+                    url:'admin/get_server_info',
+                    dataType:'json',
+                    success:function (json) {
+                        server_info = eval(json)
+                    }
+
+                    });
+                option.series[0].data[0].value = (server_info.cpu).toFixed(2) - 0;
+                option.series[1].data[0].value = (server_info.memory).toFixed(2) - 0;
+                option.series[2].data[0].value = (server_info.disk).toFixed(2) - 0;
+                option.series[3].data[0].value = (server_info.network).toFixed(2) - 0;
+                myChart.setOption(option, true);
+            }, 2000);
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+        </script>
+{#        <script>#}
+{##}
+{#            timeTicket = setInterval(function () {#}
+{#                $.ajax({#}
+{#                    type: 'GET',#}
+{#                    url: '/admin/get_server_info',#}
+{#                    dataType: 'json',#}
+{#                    success: function (json) {#}
+{#                        server_info = eval(json);#}
+{#                    }#}
+{#                });#}
+{#                option.series[0].data[0].value = (server_info.cpu).toFixed(2) - 0;#}
+{#                option.series[1].data[0].value = (server_info.memory).toFixed(2) - 0;#}
+{#                option.series[2].data[0].value = (server_info.network).toFixed(2) - 0;#}
+{#                option.series[3].data[0].value = (server_info.disk).toFixed(2) - 0;#}
+{#                myChart.setOption(option, true);#}
+{#            }, 2000);#}
+{##}
+{#        </script>#}
+
     {% endblock %}
 {% endblock %}
 

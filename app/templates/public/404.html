@@ -1,12 +1,15 @@
-{% extends 'public/base.html' %}
+{#{% extends 'public/base.html' %}#}
 
-{% block left_content %}
-    <div><h3>您访问的页面去火星了,<a href="{{ url_for('public.index') }}">返回首页</a></h3></div>
-{% endblock %}
-{% block right_content %}
-    <h3>hello</h3>
-{% endblock %}
+{#{% block left_content %}#}
+{#    <div><h3>您访问的页面去火星了,<a href="{{ url_for('public.index') }}">返回首页</a></h3></div>#}
+{#{% endblock %}#}
+{#{% block right_content %}#}
+{#    <h3>hello</h3>#}
+{#{% endblock %}#}
 
-{% block footer %}
-    {{ super() }}
+{% block scripts %}
+    <script type="text/javascript" src="//qzonestyle.gtimg.cn/qzone/hybrid/app/404/search_children.js" charset="utf-8" homePageUrl="http://www.51datas.com" homePageName="回到我的主页"></script>
 {% endblock %}
+{#{% block footer %}#}
+{#    {{ super() }}#}
+{#{% endblock %}#}

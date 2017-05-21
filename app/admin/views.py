@@ -1,14 +1,15 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request,jsonify
 from flask_login import current_user, login_required, fresh_login_required
 import time
 from .. import db, cache
 from . import admin
-from ..models import User, Post, Comment, Categories, Message
-from ..decoratiors import admin_required
+from ..models import User, Post, Comment, Categories, Message, LogInfo
+from ..decorators import admin_required
 from .forms import NewCategory
 import itertools
+import psutil
 
 
 @cache.memoize(timeout=60, unless=None)  # 获取每天文章总数,一分钟获取一次
@@ -44,9 +45,34 @@ def get_m_user():
     return lst
 
 
+@cache.memoize(timeout=300, unless=None)  # 获取每天pv数,5分钟获取一次
+def get_m_pv():
+    n = get_c_month()
+    b = get_m_days()
+    lst = [LogInfo.query.filter(
+        LogInfo.time_r.between('2017-%s-%d 0:0:0' % (n, i), '2017-%s-%d 0:0:0' % (n, (i + 1)))).count() for
+           i in range(1, b)]
+    return lst
+
+
+@cache.memoize(timeout=300, unless=None)  # 获取每天uv数,5分钟获取一次
+def get_m_uv():
+    n = get_c_month()
+    b = get_m_days()
+    lst = [len(set(LogInfo.query.with_entities(LogInfo.ip).filter(
+        LogInfo.time_r.between('2017-%s-%d 0:0:0' % (n, i), '2017-%s-%d 0:0:0' % (n, (i + 1)))))) for
+        i in range(1, b)]
+    return lst
+
+
 @cache.memoize(timeout=86400, unless=None)  # 获取当前月份,1天一次
 def get_c_month():
     return time.strftime('%m', time.localtime(time.time()))
+
+
+@cache.memoize(timeout=86400, unless=None)  # 获取当前日,1天一次
+def get_day():
+    return time.strftime('%d', time.localtime(time.time()))
 
 
 @cache.memoize(timeout=86400, unless=None)  # 获取当前月天数,1天一次
@@ -59,6 +85,23 @@ def get_m_days():
     return a
 
 
+@admin.route('/admin/get_server_info')
+@fresh_login_required
+@admin_required
+def get_server_info():
+    cpu = psutil.cpu_percent(interval=1)
+    memory = float(psutil.virtual_memory().used) / float(psutil.virtual_memory().total) * 100.0
+    last_disk = psutil.disk_io_counters(perdisk=False).read_bytes + psutil.disk_io_counters(perdisk=False).write_bytes
+    last_network = psutil.net_io_counters().bytes_sent + psutil.net_io_counters().packets_recv
+    time.sleep(1)
+    disk = (psutil.disk_io_counters(perdisk=False).read_bytes + psutil.disk_io_counters(
+        perdisk=False).write_bytes - last_disk) / 1024
+    network = (psutil.net_io_counters().bytes_sent + psutil.net_io_counters().packets_recv - last_network) / 1024
+
+    server_info = {'cpu': int(cpu), 'memory': int(memory), 'disk': int(disk), 'network': int(network)}
+    return jsonify(server_info)
+
+
 # 管理员后台首页
 @admin.route('/admin')
 @fresh_login_required
@@ -67,16 +110,22 @@ def admin_index():
     m = get_c_month()
     cat = get_a_cate()
     cats = get_a_cates()
+    day = int(get_day())
+    pv = get_m_pv()
+    uv = get_m_uv()
+    days = get_m_days()
     c = {k: v for k, v in itertools.zip_longest(cat, cats)}
     d = [{'value': v, 'name': k} for k, v in c.items()]
-    x = list(range(1, get_m_days()))
+    x = list(range(1, days))
     lt_post = get_m_post()
     lt_user = get_m_user()
+
     return render_template('admin/admin_index.html', title='管理员后台',
                            menu=0,
                            x=x, lt_post=lt_post,
                            lt_user=lt_user,
-                           m=m, cat=cat, cats=cats, d=d
+                           m=m, cat=cat, cats=cats, d=d,
+                           pv=pv, uv=uv, day=day, days=days
                            )
 
 
@@ -155,10 +204,13 @@ def blog_manage(id):
     user = User.query.filter_by(id=post.author_id).first()
     user.post_total -= 1
     comments = Comment.query.filter_by(post_id=post.id).all()
+    tags = post.tags
     if post is None:
         flash('文章不存在!')
     for i in comments:
         db.session.delete(i)
+    for i in tags:
+        post.tags.remove(i)
     db.session.delete(post)
     db.session.commit()
     user.post_total -= 1

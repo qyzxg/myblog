@@ -16,9 +16,12 @@ class Config:
     # 邮件
     MAIL_SERVER = 'smtp.sina.com'
     MAIL_PORT = 25
-    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
-    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER')
+    # MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    # MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+    # MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER')
+    MAIL_DEFAULT_SENDER = 'qyzxg1314@sina.com'
+    MAIL_USERNAME = 'qyzxg1314@sina.com'
+    MAIL_PASSWORD = '852000qyzxg'
     SECURITY_PASSWORD_SALT = 'GPXYdKtqLDhpvr60yVwz'
 
     # 缓存和异步
@@ -39,8 +42,7 @@ class Config:
 
     #记住我
     REMEMBER_COOKIE_DURATION = datetime.timedelta(weeks=1)
-
-    JSON_AS_ASCII = False
+    # JSON_AS_ASCII = False
 
 
 class DevelopmentConfig(Config):  # mysqlconnector

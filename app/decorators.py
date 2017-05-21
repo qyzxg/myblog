@@ -11,7 +11,8 @@ def admin_required(f):
     def view_function(*args, **kwargs):
         if not current_user.role == 1:
             flash('您没有管理员权限!')
-            return redirect(url_for('public.index'))
+            next_url = request.args.get('next')
+            print(next_url)
+            return redirect(next_url or url_for('public.index'))
         return f(*args, **kwargs)
-
     return view_function

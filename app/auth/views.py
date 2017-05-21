@@ -34,13 +34,14 @@ def register():
         html = render_template('auth/email_register.html', confirm_url=confirm_url)
         subject = u"[noreply][51datas]账号注册邮件"
         send_email(user.email, subject, html)  # send_email.delay() 异步
+        user = db.session.merge(user)
         login_user(user, remember=True)
         flash('注册成功,请登录您的邮箱按照提示激活账户')
         return redirect(url_for('public.index'))
     return render_template('auth/register.html', form=form, title='用户注册')
 
 
-#邮件确认
+# 邮件确认
 @auth.route('/confirm/<token>')
 @login_required
 def confirm_email(token):
