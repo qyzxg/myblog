@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e3904cda-ea26-489a-9902-20b5baf3e0cc" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/screenshot/主页.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/screenshot/文章详情页1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/screenshot/用户后台首页.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/screenshot/用户资料页.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/screenshot/站内信.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/screenshot/管理员后台首页.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/screenshot/用户管理.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/screenshot/超级管理员首页.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -463,10 +459,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1370" height="744" extended-state="1" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1370" height="744" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28473282" sideWeight="0.48688525" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28473282" sideWeight="0.48688525" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.4969743" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5030257" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
