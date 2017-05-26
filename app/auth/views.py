@@ -3,7 +3,7 @@
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, login_required, logout_user
 import datetime
-
+import requests
 from . import auth
 from .. import db
 from .forms import LoginForm, RegistForm, AuthEmail, ResetPassword
@@ -93,7 +93,18 @@ def login():
             return redirect(url_for('auth.login'))
         login_user(user, remember=form.remember_me.data)
         user.last_login = datetime.datetime.now()
-        flash('欢迎回来,%s' % current_user.username)
+        try:
+            ip_addr = request.headers['X-real-ip']
+        except:
+            ip_addr = request.remote_addr
+        url = requests.get('http://ip.taobao.com/service/getIpInfo.php?ip=%s' % ip_addr)
+        data = url.json()
+        user.ip_addr = ip_addr
+        user.area = data['data']['area']
+        user.region = data['data']['region']
+        user.city = data['data']['city']
+        user.county = data['data']['county']
+        flash('欢迎回来,%s' % user.username)
         next_url = request.args.get('next')
         return redirect(next_url or url_for('public.index'))
     return render_template('auth/login.html', form=form, title='用户登录')

@@ -20,9 +20,12 @@
             color: [
                 '#2179cc'
             ],
-            backgroundColor: 'rgba(204,184,91,0.7)',
+            backgroundColor: '#1c3050',
             title: {
-                text: '{{ m }}月文章统计'
+                text: '{{ m }}月文章统计',
+                textStyle: {
+                    color: '#EBEBE3'
+                },
             },
             toolbox: {
                 show: true,
@@ -38,15 +41,53 @@
             },
             tooltip: {},
             legend: {
-                data: ['文章数量']
+                data: ['文章数量'],
+                textStyle: {
+                    color: 'white'
+                },
             },
             xAxis: {
-                data: {{ x|tojson }}
+                data: {{ x|tojson }},
+                nameTextStyle: {
+                    color: 'white'
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: 'white' //坐标轴线颜色
+                    }
+                }
             },
-            yAxis: {},
+            yAxis: {
+                nameTextStyle: {
+                    color: 'white'
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: 'white' //坐标轴线颜色
+                    }
+                }
+            },
+            dataZoom: [{
+                type: 'inside',
+                type: 'slider',
+                dataBackground: {
+                    lineStyle: {
+                        color: 'rgba(187,128,1,0.8)'
+                    },
+                    areaStyle: {
+                        color: 'rgba(187,128,1,0.5)'
+                    }
+                },
+                startValue: {{ day }}-5,
+                endValue: {{ day }},
+            }, {
+                startValue: 0,
+                endValue: {{ days }},
+            }],
             series: [{
                 name: '文章数量',
                 type: 'bar',
+                smooth: true,
                 data: {{ lst|tojson }}
             }]
         };
@@ -77,10 +118,13 @@
                             <mark>最后登录</mark>
                         </th>
                         <th>
+                            <mark>登录位置</mark>
+                        </th>
+                        <th>
                             <mark>我的角色</mark>
                         </th>
                         <th>
-                            <mark>发帖数量</mark>
+                            <mark>文章数量</mark>
                         </th>
                     </tr>
                     </thead>
@@ -89,8 +133,9 @@
                         <td><h5>{{ user.email }}</h5></td>
                         <td><h5>{{ user.created_at.strftime('%Y-%m-%d %H:%M') }}</h5></td>
                         <td><h5>{{ user.last_login.strftime('%Y-%m-%d %H:%M') }}</h5></td>
+                        <td><h5>{{ user.city|default('未知',true) }}</h5></td>
                         <td><h5>{{ user.get_roles() }}</h5></td>
-                        <td><h5>{{ user.post_total }}</h5></td>
+                        <td><h5>{{ user.post_total|default('0',true) }}</h5></td>
 
                     </tr>
                     </tbody>
@@ -99,7 +144,7 @@
             </div>
         </div>
     </div>
-    <div id="pc" style="width: 766px;height:300px;float: right"></div>
+    <div id="pc" style="width: 766px; height:300px; border: solid 1px; float: right"></div>
     <div style="width: 128px;height: 300px;float: left">
 
         <p align="center"><a href="{{ url_for('public.upload') }}">修改图像</a></p>
@@ -111,9 +156,6 @@
             <p align="center"><a href="{{ url_for('admin.admin_index') }}">后台管理</a></p>
         {% endif %}
     </div>
-
-
-
 {% endblock %}
 
 

@@ -1,5 +1,4 @@
 {% extends 'profile/base.html' %}
-{% from "bootstrap/pagination.html" import render_pagination %}
 
 {% block head_title %}
     {{ title }}
@@ -64,7 +63,7 @@
     <div class="tab-content tabs">
         <div role="tabpanel" class="tab-pane fade in active" id="sys_messages">
             <div class="table-responsive">
-                <table class="table table-bordered table-hover ">
+                <table class="table table-bordered table-hover " id="sys_messages_t">
                     <thead>
                     <tr>
                         <th>
@@ -96,7 +95,7 @@
         </div>
         <div role="tabpanel" class="tab-pane fade" id="unread_messages">
             <div class="table-responsive">
-                <table class="table table-bordered table-hover ">
+                <table class="table table-bordered table-hover " id="unread_messages_t">
                     <thead>
                     <tr>
                         <th>
@@ -129,7 +128,7 @@
         </div>
         <div role="tabpanel" class="tab-pane fade" id="read_messages">
             <div class="table-responsive">
-                <table class="table table-bordered table-hover ">
+                <table class="table table-bordered table-hover " id="read_messages_t">
                     <thead>
                     <tr>
                         <th>
@@ -162,7 +161,7 @@
         </div>
         <div role="tabpanel" class="tab-pane fade" id="sended_messages">
             <div class="table-responsive">
-                <table class="table table-bordered table-hover ">
+                <table class="table table-bordered table-hover " id="sended_messages_t">
                     <thead>
                     <tr>
                         <th>
@@ -199,10 +198,11 @@
             </div>
         </div>
     </div>
-
-    {% if pagination %}
-        {{ render_pagination(pagination) }}
-    {% endif %}
+    {% block scripts %}
+        {{ super() }}
+        <script src="{{ url_for('static', filename ='javascripts/users.js') }}"
+                type="text/javascript"></script>
+    {% endblock %}
 {% endblock %}
 
 

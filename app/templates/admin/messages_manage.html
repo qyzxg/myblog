@@ -1,5 +1,5 @@
 {% extends 'admin/base.html' %}
-{% from "bootstrap/pagination.html" import render_pagination %}
+
 {% block head_title %}
     {{ title }}
 {% endblock %}
@@ -28,7 +28,10 @@
     <br>
     <h3>已发通知:</h3>
     <div class="table-responsive">
-        <table class="table table-bordered table-hover ">
+        <div class="" style="float:right;">
+            搜索：<input type="text" id="esearch" placeholder="请输入关键词">
+        </div>
+        <table class="table table-bordered table-hover " id="msg_t">
             <thead>
             <tr>
                 <th>
@@ -61,9 +64,12 @@
             </tbody>
         </table>
     </div>
-    {% if pagination %}
-        {{ render_pagination(pagination) }}
-    {% endif %}
+
+    {% block scripts %}
+        {{ super() }}
+        <script src="{{ url_for('static', filename ='javascripts/admin.js') }}"
+                type="text/javascript"></script>
+    {% endblock %}
 {% endblock %}
 
 

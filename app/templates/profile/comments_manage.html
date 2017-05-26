@@ -1,5 +1,5 @@
 {% extends 'profile/base.html' %}
-{% from "bootstrap/pagination.html" import render_pagination %}
+
 {% block head_title %}
     {{ title }}
 {% endblock %}
@@ -15,7 +15,10 @@
         <div><p>您还没有发表评论哦!</p><a href="{{ url_for('public.index') }}">先去首页看看文章吧!</a></div>
     {% else %}
         <div class="table-responsive">
-            <table class="table table-bordered table-hover ">
+            <div class="" style="float:right;">
+                搜索：<input type="text" id="dsearch" placeholder="请输入关键词">
+            </div>
+            <table class="table table-bordered table-hover " id="stable">
                 <thead>
                 <tr>
                     <th>
@@ -48,11 +51,11 @@
             </table>
         </div>
     {% endif %}
-    <!-- 分页 -->
-    {% if pagination %}
-        {{ render_pagination(pagination) }}
-    {% endif %}
-    <!-- // 分页 -->
+    {% block scripts %}
+        {{ super() }}
+        <script src="{{ url_for('static', filename ='javascripts/users.js') }}"
+                type="text/javascript"></script>
+    {% endblock %}
 {% endblock %}
 
 {% block footer %}

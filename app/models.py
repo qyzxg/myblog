@@ -51,6 +51,11 @@ class User(UserMixin, db.Model):
     confirmed_on = db.Column(db.DateTime, nullable=True)
     created_at = db.Column(db.DateTime)
     updated_at = db.Column(db.DateTime)
+    ip_addr = db.Column(db.String(50), doc='IP地址')
+    area = db.Column(db.String(30), doc='地区')
+    region = db.Column(db.String(30), doc='省份')
+    city = db.Column(db.String(30), doc='城市')
+    county = db.Column(db.String(30), doc='区县')
     last_login = db.Column(db.DateTime, doc='最后登录时间')
     posts = db.relationship('Post', backref='author')
     comments = db.relationship('Comment', backref='author')
@@ -155,6 +160,21 @@ class User(UserMixin, db.Model):
         }
         return json_user
 
+    def del_comments(self):
+        comments = Comment.query.filter_by(author_id=self.id).all()
+        if comments:
+            for comment in comments:
+                db.session.delete(comment)
+                db.session.commit()
+
+    def del_todos(self):
+        todos = Todo.query.filter_by(user_id=self.id).all()
+        if todos:
+            for todo in todos:
+                db.session.delete(todo)
+                db.session.commit()
+
+
     def __repr__(self):
         return '<User %r>' % self.username
 
@@ -210,6 +230,19 @@ class Post(db.Model):
         body = json_post.get('body')
         title = json_post.get('title')
         return Post(body=body, title=title)
+
+    def del_comments(self):
+        comments = Comment.query.filter_by(post_id=self.id).all()
+        if comments:
+            for i in comments:
+                db.session.delete(i)
+                db.session.commit()
+
+    def del_tags(self):
+        tags = self.tags
+        if tags:
+            for i in tags:
+                self.tags.remove(i)
 
 
 class Categories(db.Model):
@@ -307,5 +340,6 @@ class LogInfo(db.Model):
     req_time = db.Column(db.Float)
     res_time = db.Column(db.Float)
     time_stamp = db.Column(db.Integer)
+
     def __repr__(self):
         return 'LogInfo %s enter at %r' % (self.ip, self.time_r)

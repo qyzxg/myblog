@@ -9,7 +9,7 @@ import datetime
 from ..models import User, Post, Comment, Todo, Message
 from . import profile
 from .. import db
-from ..admin.views import get_c_month, get_m_days
+from ..admin.views import get_c_month, get_m_days, get_day
 
 
 # 用户资料页
@@ -25,52 +25,42 @@ def user_index(username):
         flash('您没有权限访问该页面!')
         return redirect(url_for('public.index'))
     n = get_c_month()
-    b = get_m_days()
+    days = get_m_days()
     lst = [
         Post.query.filter_by(author_id=user.id).filter(
             Post.created.between('2017-%s-%d 0:0:0' % (n, i), '2017-%s-%d 0:0:0' % (n, (i + 1)))).count()
         for
-        i in range(1, b)]
-    x = list(range(1, get_m_days()))
+        i in range(1, days)]
+    x = list(range(1, days))
     m = get_c_month()
+    day = get_day()
     return render_template('profile/user_index.html', user=user,
                            title='%s的后台' % user.username,
-                           menu=0, x=x, lst=lst, m=m)
+                           menu=0, x=x, lst=lst, m=m, day=day, days=days)
 
 
 @profile.route('/others/<username>', methods=['POST', 'GET'])
 def others(username):
-    page_index = request.args.get('page', 1, type=int)
     posts_ = Post.query.order_by(Post.comment_times.desc()).limit(5)
     user = User.query.filter_by(username=username).first()
     if not user:
         flash('不存在用户：' + username + '！')
         return redirect(url_for('public.index'))
     else:
-        query = Post.query.filter_by(author_id=user.id)
-        pagination = query.paginate(page_index, per_page=10, error_out=False)
-        posts = pagination.items
+        posts = Post.query.filter_by(author_id=user.id)
 
     return render_template('profile/others.html', user=user, posts=posts,
                            title='%s的资料' % user.username,
-                           pagination=pagination, posts_=posts_,
+                           posts_=posts_,
                            menu=0)
 
 
 @profile.route('/user/blogs_manage', methods=['POST', 'GET'])
 @login_required
 def user_blogs_manage():
-    page_index = request.args.get('page', 1, type=int)
-
-    query = Post.query.filter_by(author_id=current_user.id)
-
-    pagination = query.paginate(page_index, per_page=10, error_out=False)
-
-    posts = pagination.items
-
+    posts = Post.query.filter_by(author_id=current_user.id)
     return render_template('profile/blogs_manage.html',
                            posts=posts,
-                           pagination=pagination,
                            title='博客管理',
                            menu=1)
 
@@ -80,16 +70,12 @@ def user_blogs_manage():
 def user_blog_manage(id):
     post = Post.query.filter_by(id=id).first()
     user = User.query.filter_by(id=post.author_id).first()
-    tags = post.tags
-    comments = Comment.query.filter_by(post_id=post.id).all()
     if post is None:
         flash('文章不存在!')
     if not current_user.is_authenticated:
         flash('请登录后再操作!')
-    for i in comments:
-        db.session.delete(i)
-    for i in tags:
-        post.tags.remove(i)
+    post.del_comments()
+    post.del_tags()
     db.session.delete(post)
     db.session.commit()
     user.post_total -= 1
@@ -100,17 +86,9 @@ def user_blog_manage(id):
 @profile.route('/user/comments_manage', methods=['POST', 'GET'])
 @login_required
 def user_comments_manage():
-    page_index = request.args.get('page', 1, type=int)
-
-    query = Comment.query.filter_by(author_id=current_user.id)
-
-    pagination = query.paginate(page_index, per_page=10, error_out=False)
-
-    comments = pagination.items
-
+    comments = Comment.query.filter_by(author_id=current_user.id)
     return render_template('profile/comments_manage.html',
                            comments=comments,
-                           pagination=pagination,
                            title='评论管理',
                            menu=3)
 
@@ -132,17 +110,10 @@ def user_comment_manage(id):
 @profile.route('/user/collects_manage', methods=['POST', 'GET'])
 @login_required
 def user_collects_manage():
-    page_index = request.args.get('page', 1, type=int)
     user = current_user
-    query = user.collected_posts()
-
-    pagination = query.paginate(page_index, per_page=10, error_out=False)
-
-    posts = pagination.items
-
+    posts = user.collected_posts()
     return render_template('profile/collects_manage.html',
                            posts=posts,
-                           pagination=pagination,
                            title='收藏管理',
                            menu=2)
 
@@ -150,16 +121,10 @@ def user_collects_manage():
 @profile.route('/user/followers_manage', methods=['POST', 'GET'])
 @login_required
 def user_followers_manage():
-    page_index = request.args.get('page', 1, type=int)
     user = current_user
-    query = user.followed_users()
-    pagination = query.paginate(page_index, per_page=10, error_out=False)
-
-    followers = pagination.items
-
+    followers = user.followed_users()
     return render_template('profile/followers_manage.html',
                            followers=followers,
-                           pagination=pagination,
                            title='好友管理',
                            menu=5)
 
@@ -193,12 +158,9 @@ def user_follower_manage(username):
 @profile.route('/user/todos_manage', methods=['POST', 'GET'])
 @login_required
 def user_todos_manage():
-    page_index = request.args.get('page', 1, type=int)
-    query = Todo.query.filter_by(user_id=current_user.id).order_by(Todo.created.desc())
-    pagination = query.paginate(page_index, per_page=10, error_out=False)
-    todos = pagination.items
+    todos = Todo.query.filter_by(user_id=current_user.id).order_by(Todo.created.desc())
     return render_template('profile/todos_manage.html', todos=todos,
-                           title='TODO管理', menu=4, pagination=pagination, )
+                           title='TODO管理', menu=4)
 
 
 @profile.route('/user/todo_add', methods=['POST', 'GET'])
@@ -395,7 +357,7 @@ def messages_manage():
     n_c = len(confirmed_messages)
     n_s = len(sended_messages)
     n_sy = len(sys_messages)
-    return render_template('profile/messages_manage.html', menu=6, title='好友管理', friends=friends,
+    return render_template('profile/messages_manage.html', menu=6, title='消息管理', friends=friends,
                            unconfirmed_messages=unconfirmed_messages,
                            confirmed_messages=confirmed_messages,
                            sended_messages=sended_messages,

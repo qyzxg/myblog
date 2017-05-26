@@ -15,12 +15,38 @@
 {% endblock %}
 
 {% block right_content %}
-    {{ super() }}
-    <div id="ser" style="width: 920px; height:300px; float:left;margin-bottom:20px"></div>
-    <div id="pc" style="width: 450px; height:200px; float:left"></div>
-    <div id="uc" style="width: 450px; height:200px; float:right"></div>
-    <div id="cc" style="width: 450px; height:200px; float:left;margin-top: 20px"></div>
-    <div id="upv" style="width: 450px; height:200px; float:right;margin-top: 20px"></div>
+
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+        <li role="presentation" class="active"><a href="#ser" aria-controls="home" role="tab"
+                                                  data-toggle="tab"><i class="fa fa-area-chart"></i>硬件监控</a>
+        </li>
+        <li role="presentation"><a href="#upv" aria-controls="profile" role="tab" data-toggle="tab"><i
+                class="fa fa-line-chart"></i>PV/UV统计</a>
+        </li>
+        <li role="presentation"><a href="#reg" aria-controls="messages" role="tab" data-toggle="tab"><i
+                class="fa fa-bar-chart"></i>用户分布</a>
+        </li>
+        <li role="presentation"><a href="#art" aria-controls="messages" role="tab" data-toggle="tab"><i
+                class="fa fa-pie-chart "></i>博客统计</a>
+        </li>
+    </ul>
+
+    <div class="tab-content tabs">
+        <div id="ser" role="tabpanel" class="tab-pane fade in active"
+             style="width: 920px; height:400px; border: solid 1px; float:left;margin-top:20px"></div>
+        <div id="upv" role="tabpanel" class="tab-pane fade in active"
+             style="width: 920px; height:400px; border: solid 1px; float:right;margin-top: 20px"></div>
+        <div id="reg" role="tabpanel" class="tab-pane fade in active"
+             style="width: 920px; height:400px; border: solid 1px; float:left;margin-top:20px"></div>
+        <div id='art' role="tabpanel" class="tab-pane fade in active">
+            <div id="pc" style="width: 450px; height:220px; border: solid 1px; float:left;margin-top: 20px"></div>
+            <div id="uc" style="width: 450px; height:220px; border: solid 1px; float:right;margin-top: 20px"></div>
+            <div id="cc" style="width: 450px; height:220px; border: solid 1px; float:left;margin-top: 20px"></div>
+        </div>
+    </div>
+
+
+
 
     {% block scripts %}
         {{ super() }}
@@ -31,9 +57,13 @@
                 color: [
                     '#2179cc'
                 ],
-                backgroundColor: 'rgba(204,184,91,0.7)',
+                backgroundColor: '#1c3050',
                 title: {
-                    text: '{{ m }}月新增文章数量'
+                    text: '{{ m }}月新增文章数量',
+                    textStyle: {
+                        color: '#EBEBE3'
+                    },
+
                 },
                 toolbox: {
                     show: true,
@@ -47,19 +77,59 @@
                         saveAsImage: {}
                     }
                 },
+
                 tooltip: {},
                 legend: {
-                    data: ['文章数量']
+                    data: ['文章数量'],
+                    textStyle: {
+                        color: 'white'
+                    },
                 },
                 xAxis: {
-                    data: {{ x|tojson }}
+                    data: {{ x|tojson }},
+                    nameTextStyle: {
+                        color: 'white'
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: 'white' //坐标轴线颜色
+                        }
+                    }
                 },
-                yAxis: {},
+                yAxis: {
+                    nameTextStyle: {
+                        color: 'white'
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: 'white' //坐标轴线颜色
+                        }
+                    }
+                },
+                dataZoom: [{
+                    type: 'inside',
+                    type: 'slider',
+                    dataBackground: {
+                        lineStyle: {
+                            color: 'rgba(187,128,1,0.8)'
+                        },
+                        areaStyle: {
+                            color: 'rgba(187,128,1,0.5)'
+                        }
+                    },
+                    startValue: {{ day }}-5,
+                    endValue: {{ day }},
+                }, {
+                    startValue: 0,
+                    endValue: {{ days }},
+                }],
                 series: [{
                     name: '文章数量',
                     type: 'bar',
+                    smooth: true,
                     data: {{ lt_post|tojson }}
                 }]
+
             };
 
             // 使用刚指定的配置项和数据显示图表。
@@ -75,9 +145,12 @@
                     '#408829', '#68a54a', '#a9cba2', '#86b379',
                     '#397b29', '#8abb6f', '#759c6a', '#bfd3b7'
                 ],
-                backgroundColor: 'rgba(204,184,91,0.7)',
+                backgroundColor: '#1c3050',
                 title: {
-                    text: '{{ m }}月新增用户数量'
+                    text: '{{ m }}月新增用户数量',
+                    textStyle: {
+                        color: '#EBEBE3'
+                    },
                 },
                 toolbox: {
                     show: true,
@@ -93,15 +166,53 @@
                 },
                 tooltip: {},
                 legend: {
-                    data: ['用户数量']
+                    data: ['用户数量'],
+                    textStyle: {
+                        color: 'white'
+                    },
                 },
                 xAxis: {
-                    data: {{ x|tojson }}
+                    data: {{ x|tojson }},
+                    nameTextStyle: {
+                        color: 'white'
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: 'white' //坐标轴线颜色
+                        }
+                    }
                 },
-                yAxis: {},
+                yAxis: {
+                    nameTextStyle: {
+                        color: 'white'
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: 'white' //坐标轴线颜色
+                        }
+                    }
+                },
+                dataZoom: [{
+                    type: 'inside',
+                    type: 'slider',
+                    dataBackground: {
+                        lineStyle: {
+                            color: 'rgba(187,128,1,0.8)'
+                        },
+                        areaStyle: {
+                            color: 'rgba(187,128,1,0.5)'
+                        }
+                    },
+                    startValue: {{ day }}-5,
+                    endValue: {{ day }},
+                }, {
+                    startValue: 0,
+                    endValue: {{ days }},
+                }],
                 series: [{
                     name: '用户数量',
                     type: 'line',
+                    smooth: true,
                     data: {{ lt_user|tojson }}
                 }]
             };
@@ -113,9 +224,12 @@
         <script type="text/javascript">
             var myChart = echarts.init(document.getElementById('cc'));
             option = {
-                backgroundColor: 'rgba(204,184,91,0.7)',
+                backgroundColor: '#1c3050',
                 title: {
                     text: '文章分类',
+                    textStyle: {
+                        color: '#EBEBE3'
+                    },
                     x: 'left'
                 },
                 tooltip: {
@@ -125,7 +239,10 @@
                 legend: {
                     orient: 'vertical',
                     right: 'right',
-                    data: {{ cat|tojson }}
+                    data: {{ cat|tojson }},
+                    textStyle: {
+                        color: 'white'
+                    },
                 },
                 series: [
                     {
@@ -133,14 +250,14 @@
                         type: 'pie',
                         radius: '75%',
                         center: ['50%', '50%'],
-
                         data:{{ d|tojson }},
                         itemStyle: {
                             emphasis: {
                                 shadowBlur: 10,
                                 shadowOffsetX: 0,
                                 shadowColor: 'rgba(0, 0, 0, 0.5)'
-                            }
+                            },
+
                         }
                     }
                 ]
@@ -152,15 +269,21 @@
             var myChart = echarts.init(document.getElementById('upv'));
             // 指定图表的配置项和数据
             var option = {
-                backgroundColor: 'rgba(204,184,91,0.7)',
+                backgroundColor: '#1c3050',
                 title: {
-                    text: 'PV/UV统计',
+                    text: '{{ m }}月PV/UV统计',
+                    textStyle: {
+                        color: '#EBEBE3'
+                    },
                 },
                 tooltip: {
                     trigger: 'axis'
                 },
                 legend: {
-                    data: ['PV', 'UV']
+                    data: ['PV', 'UV'],
+                    textStyle: {
+                        color: 'white'
+                    },
                 },
                 toolbox: {
                     show: true,
@@ -177,35 +300,51 @@
                 xAxis: {
                     type: 'category',
                     boundaryGap: false,
-                    data: {{ x|tojson }}
+                    data: {{ x|tojson }},
+                    nameTextStyle: {
+                        color: 'white'
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: 'white' //坐标轴线颜色
+                        }
+                    }
                 },
                 yAxis: {
                     type: 'value',
                     axisLabel: {
                         formatter: '{value}'
+                    },
+                    nameTextStyle: {
+                        color: 'white'
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: 'white' //坐标轴线颜色
+                        }
                     }
                 },
                 dataZoom: [{
-                    type: 'inside',
+                    type: 'slider',
+                    dataBackground: {
+                        lineStyle: {
+                            color: 'rgba(187,128,1,0.8)'
+                        },
+                        areaStyle: {
+                            color: 'rgba(187,128,1,0.5)'
+                        }
+                    },
                     startValue: {{ day }}-5,
                     endValue: {{ day }},
                 }, {
                     startValue: 0,
                     endValue: {{ days }},
-                    {#                    handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',#}
-                    {#                    handleSize: '80%',#}
-                    {#                    handleStyle: {#}
-                    {#                        color: '#fff',#}
-                    {#                        shadowBlur: 3,#}
-                    {#                        shadowColor: 'rgba(0, 0, 0, 0.6)',#}
-                    {#                        shadowOffsetX: 2,#}
-                    {#                        shadowOffsetY: 2#}
-                    {#                    }#}
                 }],
                 series: [
                     {
                         name: 'PV',
                         type: 'line',
+                        smooth: true,
                         data: {{ pv|tojson }},
                         markPoint: {
                             data: [
@@ -222,11 +361,22 @@
                     {
                         name: 'UV',
                         type: 'line',
+                        smooth: true,
                         data: {{ uv|tojson }},
                         markPoint: {
                             data: [
                                 {name: '月最低', value: -2, xAxis: 1, yAxis: -1.5}
                             ]
+                        },
+                        lineStyle: {
+                            normal: {
+                                color: '#22b219'
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: '#22b219'
+                            }
                         },
                         markLine: {
                             data: [
@@ -257,10 +407,384 @@
         </script>
 
         <script type="text/javascript">
+            var mapChart = echarts.init(document.getElementById('reg'));
+            mapChart.showLoading({
+                text: '正在加载中...',
+                color: '#c23531',
+                textColor: '#000',
+                maskColor: 'rgba(255, 255, 255, 0.5)',
+                zlevel: 0
+            });
+            var geoCoordMap = {
+                '海门市': [121.15, 31.89],
+                '鄂尔多斯市': [109.781327, 39.608266],
+                '招远市': [120.38, 37.35],
+                '舟山市': [122.207216, 29.985295],
+                '齐齐哈尔市': [123.97, 47.33],
+                '盐城市': [120.13, 33.38],
+                '赤峰市': [118.87, 42.28],
+                '青岛市': [120.33, 36.07],
+                '乳山市': [121.52, 36.89],
+                '金昌市': [102.188043, 38.520089],
+                '泉州市': [118.58, 24.93],
+                '莱西市': [120.53, 36.86],
+                '日照市': [119.46, 35.42],
+                '胶南市': [119.97, 35.88],
+                '南通市': [121.05, 32.08],
+                '拉萨市': [91.11, 29.97],
+                '云浮市': [112.02, 22.93],
+                '梅州市': [116.1, 24.55],
+                '文登市': [122.05, 37.2],
+                '上海': [121.48, 31.22],
+                '攀枝花市': [101.718637, 26.582347],
+                '威海市': [122.1, 37.5],
+                '承德市': [117.93, 40.97],
+                '厦门市': [118.1, 24.46],
+                '汕尾市': [115.375279, 22.786211],
+                '潮州市': [116.63, 23.68],
+                '丹东市': [124.37, 40.13],
+                '太仓市': [121.1, 31.45],
+                '曲靖市': [103.79, 25.51],
+                '烟台市': [121.39, 37.52],
+                '福州市': [119.3, 26.08],
+                '瓦房店市': [121.979603, 39.627114],
+                '即墨市': [120.45, 36.38],
+                '抚顺市': [123.97, 41.97],
+                '玉溪市': [102.52, 24.35],
+                '张家口市': [114.87, 40.82],
+                '阳泉市': [113.57, 37.85],
+                '莱州市': [119.942327, 37.177017],
+                '湖州市': [120.1, 30.86],
+                '汕头市': [116.69, 23.39],
+                '昆山市': [120.95, 31.39],
+                '宁波市': [121.56, 29.86],
+                '湛江市': [110.359377, 21.270708],
+                '揭阳市': [116.35, 23.55],
+                '荣成市': [122.41, 37.16],
+                '连云港市': [119.16, 34.59],
+                '葫芦岛市': [120.836932, 40.711052],
+                '常熟市': [120.74, 31.64],
+                '东莞市': [113.75, 23.04],
+                '河源市': [114.68, 23.73],
+                '淮安市': [119.15, 33.5],
+                '泰州市': [119.9, 32.49],
+                '南宁市': [108.33, 22.84],
+                '营口市': [122.18, 40.65],
+                '惠州市': [114.4, 23.09],
+                '江阴市': [120.26, 31.91],
+                '蓬莱市': [120.75, 37.8],
+                '韶关市': [113.62, 24.84],
+                '嘉峪关市': [98.289152, 39.77313],
+                '广州市': [113.23, 23.16],
+                '延安市': [109.47, 36.6],
+                '太原市': [112.53, 37.87],
+                '清远市': [113.01, 23.7],
+                '中山市': [113.38, 22.52],
+                '昆明市': [102.73, 25.04],
+                '寿光市': [118.73, 36.86],
+                '盘锦市': [122.070714, 41.119997],
+                '长治市': [113.08, 36.18],
+                '深圳市': [114.07, 22.62],
+                '珠海市': [113.52, 22.3],
+                '宿迁市': [118.3, 33.96],
+                '咸阳市': [108.72, 34.36],
+                '铜川市': [109.11, 35.09],
+                '平度市': [119.97, 36.77],
+                '佛山市': [113.11, 23.05],
+                '海口市': [110.35, 20.02],
+                '江门市': [113.06, 22.61],
+                '章丘市': [117.53, 36.72],
+                '肇庆市': [112.44, 23.05],
+                '大连市': [121.62, 38.92],
+                '临汾市': [111.5, 36.08],
+                '吴江市': [120.63, 31.16],
+                '石嘴山市': [106.39, 39.04],
+                '沈阳市': [123.38, 41.8],
+                '苏州市': [120.62, 31.32],
+                '茂名市': [110.88, 21.68],
+                '嘉兴市': [120.76, 30.77],
+                '长春市': [125.35, 43.88],
+                '胶州市': [120.03336, 36.264622],
+                '银川市': [106.27, 38.47],
+                '张家港市': [120.555821, 31.875428],
+                '三门峡市': [111.19, 34.76],
+                '锦州市': [121.15, 41.13],
+                '南昌市': [115.89, 28.68],
+                '柳州市': [109.4, 24.33],
+                '三亚市': [109.511909, 18.252847],
+                '自贡市': [104.778442, 29.33903],
+                '吉林市': [126.57, 43.87],
+                '阳江市': [111.95, 21.85],
+                '泸州市': [105.39, 28.91],
+                '西宁市': [101.74, 36.56],
+                '宜宾市': [104.56, 29.77],
+                '呼和浩特市': [111.65, 40.82],
+                '成都市': [104.06, 30.67],
+                '大同市': [113.3, 40.12],
+                '镇江市': [119.44, 32.2],
+                '桂林市': [110.28, 25.29],
+                '张家界市': [110.479191, 29.117096],
+                '宜兴市': [119.82, 31.36],
+                '北海市': [109.12, 21.49],
+                '西安市': [108.95, 34.27],
+                '金坛市': [119.56, 31.74],
+                '东营市': [118.49, 37.46],
+                '牡丹江市': [129.58, 44.6],
+                '遵义市': [106.9, 27.7],
+                '绍兴市': [120.58, 30.01],
+                '扬州市': [119.42, 32.39],
+                '常州市': [119.95, 31.79],
+                '潍坊市': [119.1, 36.62],
+                '重庆市': [106.54, 29.59],
+                '台州市': [121.420757, 28.656386],
+                '南京市': [118.78, 32.04],
+                '滨州市': [118.03, 37.36],
+                '贵阳市': [106.71, 26.57],
+                '无锡市': [120.29, 31.59],
+                '本溪市': [123.73, 41.3],
+                '克拉玛依市': [84.77, 45.59],
+                '渭南市': [109.5, 34.52],
+                '马鞍山市': [118.48, 31.56],
+                '宝鸡市': [107.15, 34.38],
+                '焦作市': [113.21, 35.24],
+                '句容市': [119.16, 31.95],
+                '北京市': [116.46, 39.92],
+                '徐州市': [117.2, 34.26],
+                '衡水市': [115.72, 37.72],
+                '包头市': [110, 40.58],
+                '绵阳市': [104.73, 31.48],
+                '乌鲁木齐市': [87.68, 43.77],
+                '枣庄市': [117.57, 34.86],
+                '杭州市': [120.19, 30.26],
+                '淄博市': [118.05, 36.78],
+                '鞍山市': [122.85, 41.12],
+                '溧阳市': [119.48, 31.43],
+                '库尔勒市': [86.06, 41.68],
+                '安阳市': [114.35, 36.1],
+                '开封市': [114.35, 34.79],
+                '济南市': [117, 36.65],
+                '德阳市': [104.37, 31.13],
+                '温州市': [120.65, 28.01],
+                '九江市': [115.97, 29.71],
+                '邯郸市': [114.47, 36.6],
+                '临安市': [119.72, 30.23],
+                '兰州市': [103.73, 36.03],
+                '沧州市': [116.83, 38.33],
+                '临沂市': [118.35, 35.05],
+                '南充市': [106.110698, 30.837793],
+                '天津市': [117.2, 39.13],
+                '富阳市': [119.95, 30.07],
+                '泰安市': [117.13, 36.18],
+                '诸暨市': [120.23, 29.71],
+                '郑州市': [113.65, 34.76],
+                '哈尔滨市': [126.63, 45.75],
+                '聊城市': [115.97, 36.45],
+                '芜湖市': [118.38, 31.33],
+                '唐山市': [118.02, 39.63],
+                '平顶山市': [113.29, 33.75],
+                '邢台市': [114.48, 37.05],
+                '德州市': [116.29, 37.45],
+                '济宁市': [116.59, 35.38],
+                '荆州市': [112.239741, 30.335165],
+                '宜昌市': [111.3, 30.7],
+                '义乌市': [120.06, 29.32],
+                '丽水市': [119.92, 28.45],
+                '洛阳市': [112.44, 34.7],
+                '秦皇岛市': [119.57, 39.95],
+                '株洲市': [113.16, 27.83],
+                '石家庄市': [114.48, 38.03],
+                '莱芜市': [117.67, 36.19],
+                '常德市': [111.69, 29.05],
+                '保定市': [115.48, 38.85],
+                '湘潭市': [112.91, 27.87],
+                '金华市': [119.64, 29.12],
+                '岳阳市': [113.09, 29.37],
+                '长沙市': [113, 28.21],
+                '衢州市': [118.88, 28.97],
+                '廊坊市': [116.7, 39.53],
+                '菏泽市': [115.480656, 35.23375],
+                '合肥市': [117.27, 31.86],
+                '武汉市': [114.31, 30.52],
+                '大庆市': [125.03, 46.58]
+            };
+
+            var convertData = function (data) {
+                var res = [];
+                for (var i = 0; i < data.length; i++) {
+                    var geoCoord = geoCoordMap[data[i].name];
+                    if (geoCoord) {
+                        res.push({
+                            name: data[i].name,
+                            value: geoCoord.concat(data[i].value)
+                        });
+                    }
+                }
+                return res;
+            };
+
+            option = {
+                backgroundColor: '#1c3050',
+                title: {
+                    text: '用户全国分布',
+                    subtext: '用户分布',
+                    sublink: 'http://www.51datas.com',
+                    left: 'center',
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+                tooltip: {
+                    trigger: 'item'
+                },
+                visualMap: {
+                    min: 0,
+                    max: 500,
+                    calculable: true,
+                    inRange: {
+                        color: ['#50a3ba', '#eac736', '#d94e5d']
+                    },
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+                legend: {
+                    orient: 'vertical',
+                    y: 'bottom',
+                    x: 'right',
+                    data: ['用户分布'],
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+                geo: {
+                    map: 'china',
+                    label: {
+                        emphasis: {
+                            show: false
+                        }
+                    },
+                    roam: true,
+                    itemStyle: {
+                        normal: {
+                            areaColor: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: '#c2c2c2' // 0% 处的颜色
+                                }, {
+                                    offset: 1, color: '#3f3f3f' // 100% 处的颜色
+                                }],
+                                globalCoord: false // 缺省为 false
+                            },
+                            borderColor: '#f6f6f6'
+                        },
+                        emphasis: {
+                            areaColor: '#bb890d'
+                        }
+                    }
+                },
+                series: [
+                    {
+                        name: '用户分布',
+                        type: 'scatter',
+                        coordinateSystem: 'geo',
+                        data: [],
+                        symbolSize: function (val) {
+                            return val[2] / 8;
+                        },
+                        label: {
+                            normal: {
+                                formatter: '{b}',
+                                position: 'right',
+                                show: false
+                            },
+                            emphasis: {
+                                show: true
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: '#ddb926'
+                            }
+                        }
+                    },
+                    {
+                        name: 'Top 5',
+                        type: 'effectScatter',
+                        coordinateSystem: 'geo',
+                        data: [],
+                        symbolSize: function (val) {
+                            return val[2] / 7;
+                        },
+                        showEffectOn: 'render',
+                        rippleEffect: {
+                            brushType: 'stroke'
+                        },
+                        hoverAnimation: true,
+                        label: {
+                            normal: {
+                                formatter: '{b}',
+                                position: 'right',
+                                show: true
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: '#f4e925',
+                                shadowBlur: 10,
+                                shadowColor: '#333'
+                            }
+                        },
+                        zlevel: 1
+                    }
+                ]
+            };
+            $.get('admin/get_user_city').done(function (data) {
+                mapChart.hideLoading();
+                // 填入数据
+                mapChart.setOption({
+                    series: [{
+                        // 根据名字对应到相应的系列
+                        name: '用户分布',
+                        data: convertData(data)
+                    },
+                        {
+                            // 根据名字对应到相应的系列
+                            name: 'top5',
+                            data: convertData(data.sort(function (a, b) {
+                                return b.value - a.value;
+                            }).slice(0, 6)),
+                        }
+
+                    ]
+                });
+            });
+
+            mapChart.setOption(option);
+        </script>
+
+        <script type="text/javascript">
             var myChart = echarts.init(document.getElementById('ser'));
+            myChart.showLoading({
+                    text: '正在加载中...',
+                    color: '#c23531',
+                    textColor: '#000',
+                    maskColor: 'rgba(255, 255, 255, 0.5)',
+                    zlevel: 0
+                }
+            );
             // 指定图表的配置项和数据
             var option = {
-                backgroundColor: 'rgba(204,184,91,0.7)',
+                backgroundColor: '#1c3050',
+                title: {
+                    text: '服务器监控',
+                    textStyle: {
+                        color: '#EBEBE3'
+                    },
+                },
                 tooltip: {
                     formatter: "{a} <br/>{c} {b}"
                 },
@@ -274,7 +798,7 @@
                 },
                 series: [
                     {
-                        name: 'CPU使用率',
+                        name: '内存使用率',
                         center: ['50%', '50%'],
                         type: 'gauge',
                         z: 3,
@@ -284,26 +808,33 @@
                         radius: '80%',
                         axisLine: {            // 坐标轴线
                             lineStyle: {       // 属性lineStyle控制线条样式
-                                width: 10
+                                width: 20,
+                                color: [
+                                    [0.2, '#14d60d'],
+                                    [0.4, '#7be96f'],
+                                    [0.6, '#DDBD4D'],
+                                    [0.8, '#bb8001'],
+                                    [1, '#E43F3D']
+                                ]
                             }
                         },
-                        axisTick: {            // 坐标轴小标记
-                            length: 15,        // 属性length控制线长
+                        axisTick: {// 坐标轴小标记
+                            show: false,
+                            length: 0,        // 属性length控制线长
                             lineStyle: {       // 属性lineStyle控制线条样式
                                 color: 'auto'
                             }
                         },
                         splitLine: {           // 分隔线
-                            length: 20,         // 属性length控制线长
+                            length: 25,         // 属性length控制线长
                             lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
                                 color: 'auto'
                             }
                         },
                         title: {
                             textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                                fontWeight: 'bolder',
                                 fontSize: 20,
-                                fontStyle: 'italic'
+                                color: '#e4e4e4'
                             }
                         },
                         detail: {
@@ -311,10 +842,10 @@
                                 fontWeight: 'bolder'
                             }
                         },
-                        data: [{value: 5, name: 'cpu/%'}]
+                        data: [{value: 40, name: 'M-%'}]
                     },
                     {
-                        name: '内存使用率',
+                        name: 'CPU使用率',
                         type: 'gauge',
                         center: ['20%', '55%'],    // 默认全局居中
                         radius: '60%',
@@ -324,7 +855,14 @@
                         splitNumber: 10,
                         axisLine: {            // 坐标轴线
                             lineStyle: {       // 属性lineStyle控制线条样式
-                                width: 8
+                                width: 15,
+                                color: [
+                                    [0.2, '#89d669'],
+                                    [0.4, '#c9d6c4'],
+                                    [0.6, '#dd9b9e'],
+                                    [0.8, '#bb3292'],
+                                    [1, '#E43F3D']
+                                ]
                             }
                         },
                         axisTick: {            // 坐标轴小标记
@@ -344,18 +882,22 @@
                         },
                         title: {
                             offsetCenter: [0, '-30%'],       // x, y，单位px
+                            textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                color: '#e4e4e4'
+                            }
                         },
                         detail: {
                             textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                                fontWeight: 'bolder'
+                                fontWeight: 'bolder',
+                                fontSize: 24
                             }
                         },
-                        data: [{value: 40, name: '内存/%'}]
+                        data: [{value: 8, name: 'C-%'}]
                     },
                     {
-                        name: '硬盘',
+                        name: '硬盘IO流量',
                         type: 'gauge',
-                        center: ['77%', '50%'],    // 默认全局居中
+                        center: ['82%', '50%'],    // 默认全局居中
                         radius: '60%',
                         min: 0,
                         max: 10000,
@@ -364,7 +906,12 @@
                         splitNumber: 10,
                         axisLine: {            // 坐标轴线
                             lineStyle: {       // 属性lineStyle控制线条样式
-                                width: 8
+                                width: 12,
+                                color: [
+                                    [0.2, '#23d613'],
+                                    [0.8, '#bb8001'],
+                                    [1, '#E43F3D']
+                                ]
                             }
                         },
                         axisTick: {            // 坐标轴小标记
@@ -380,42 +927,51 @@
                                     case '0' :
                                         return 'E';
                                     case '5000' :
-                                        return '硬盘';
+                                        return 'D-K/s';
                                     case '10000' :
                                         return 'F';
                                 }
                             }
                         },
                         splitLine: {           // 分隔线
-                            length: 15,         // 属性length控制线长
+                            length: 16,         // 属性length控制线长
                             lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
                                 color: 'auto'
                             }
                         },
                         pointer: {
-                            width: 2
+                            width: 3
                         },
                         title: {
                             show: false
                         },
                         detail: {
-                            show: false
+                            offsetCenter: [0, '-40%'],
+                            textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                fontWeight: 'bolder',
+                                fontSize: 18
+                            },
                         },
                         data: [{value: 0.5, name: 'Kb'}]
                     },
                     {
-                        name: '网络',
+                        name: '网络IO流量',
                         type: 'gauge',
-                        center: ['77%', '50%'],    // 默认全局居中
+                        center: ['82%', '50%'],    // 默认全局居中
                         radius: '60%',
                         min: 0,
-                        max: 10000,
+                        max: 1000,
                         startAngle: 315,
                         endAngle: 225,
                         splitNumber: 10,
                         axisLine: {            // 坐标轴线
                             lineStyle: {       // 属性lineStyle控制线条样式
-                                width: 8
+                                width: 12,
+                                color: [
+                                    [0.2, '#23d613'],
+                                    [0.8, '#bb8001'],
+                                    [1, '#E43F3D']
+                                ]
                             }
                         },
                         axisTick: {            // 坐标轴小标记
@@ -426,28 +982,30 @@
                                 switch (v + '') {
                                     case '0' :
                                         return 'H';
-                                    case '5000' :
-                                        return '网络';
-                                    case '10000' :
+                                    case '500' :
+                                        return 'N-K/s';
+                                    case '1000' :
                                         return 'C';
                                 }
                             }
                         },
                         splitLine: {           // 分隔线
-                            length: 15,         // 属性length控制线长
+                            length: 16,         // 属性length控制线长
                             lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
                                 color: 'auto'
                             }
                         },
                         pointer: {
-                            width: 2
+                            width: 3
                         },
                         title: {
                             show: false
                         },
                         detail: {
+
                             textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                                fontWeight: 'bolder'
+                                fontWeight: 'bolder',
+                                fontSize: 18
                             },
                         },
                         data: [{value: 0.5, name: 'Kb'}]
@@ -456,17 +1014,20 @@
             };
 
             timeTicket = setInterval(function () {
+
                 $.ajax({
-                    type:'GET',
-                    url:'admin/get_server_info',
-                    dataType:'json',
-                    success:function (json) {
-                        server_info = eval(json)
+                    type: 'GET',
+                    url: 'admin/get_server_info',
+                    dataType: 'json',
+                    success: function (json) {
+                        server_info = eval(json);
+                        myChart.hideLoading();
                     }
 
-                    });
-                option.series[0].data[0].value = (server_info.cpu).toFixed(2) - 0;
-                option.series[1].data[0].value = (server_info.memory).toFixed(2) - 0;
+                });
+
+                option.series[0].data[0].value = (server_info.memory).toFixed(2) - 0;
+                option.series[1].data[0].value = (server_info.cpu).toFixed(2) - 0;
                 option.series[2].data[0].value = (server_info.disk).toFixed(2) - 0;
                 option.series[3].data[0].value = (server_info.network).toFixed(2) - 0;
                 myChart.setOption(option, true);
@@ -475,25 +1036,7 @@
             // 使用刚指定的配置项和数据显示图表。
             myChart.setOption(option);
         </script>
-{#        <script>#}
-{##}
-{#            timeTicket = setInterval(function () {#}
-{#                $.ajax({#}
-{#                    type: 'GET',#}
-{#                    url: '/admin/get_server_info',#}
-{#                    dataType: 'json',#}
-{#                    success: function (json) {#}
-{#                        server_info = eval(json);#}
-{#                    }#}
-{#                });#}
-{#                option.series[0].data[0].value = (server_info.cpu).toFixed(2) - 0;#}
-{#                option.series[1].data[0].value = (server_info.memory).toFixed(2) - 0;#}
-{#                option.series[2].data[0].value = (server_info.network).toFixed(2) - 0;#}
-{#                option.series[3].data[0].value = (server_info.disk).toFixed(2) - 0;#}
-{#                myChart.setOption(option, true);#}
-{#            }, 2000);#}
-{##}
-{#        </script>#}
+
 
     {% endblock %}
 {% endblock %}

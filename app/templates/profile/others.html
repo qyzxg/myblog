@@ -1,5 +1,4 @@
 {% extends 'profile/base_other.html' %}
-{% from "bootstrap/pagination.html" import render_pagination %}
 
 {% block title %}{{ title|safe }}{% endblock %}
 {% block left_content %}
@@ -31,12 +30,11 @@
                         <th>
                             <mark>最后登录</mark>
                         </th>
-
                         <th>
-                            <mark>角色</mark>
+                            <mark>他的角色</mark>
                         </th>
                         <th>
-                            <mark>发帖数量</mark>
+                            <mark>文章数量</mark>
                         </th>
                     </tr>
                     </thead>
@@ -47,9 +45,8 @@
                         <td><h5>{{ user.email }}</h5></td>
                         <td><h5>{{ user.created_at.strftime('%Y-%m-%d %H:%M') }}</h5></td>
                         <td><h5>{{ user.last_login.strftime('%Y-%m-%d %H:%M') }}</h5></td>
-
                         <td><h5>{{ user.get_roles() }}</h5></td>
-                        <td><h5>{{ user.post_total }}</h5></td>
+                        <td><h5>{{ user.post_total|default('0',true) }}</h5></td>
 
                     </tr>
 
@@ -81,7 +78,10 @@
         <h3>{{ user.username }}发表的文章:</h3></p>
     </div>
     <div class="table-responsive">
-        <table class="table table-bordered table-hover ">
+        <div class="" style="float:right;">
+            搜索：<input type="text" id="dsearch" placeholder="请输入关键词">
+        </div>
+        <table class="table table-bordered table-hover " id="stable">
             <thead>
             <tr>
                 <th>
@@ -110,17 +110,19 @@
                         </a>
                     </td>
                     <td><h5>{{ post.created.strftime('%Y-%m-%d %H:%M') }}</h5></td>
-                    <td><h5>{{ post.read_times }}</h5></td>
-                    <td><h5>{{ post.comment_times }}</h5></td>
+                    <td><h5>{{ post.read_times|default('0',true) }}</h5></td>
+                    <td><h5>{{ post.comment_times|default('0',true) }}</h5></td>
                     <td><h5>{{ post.category }}</h5></td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
     </div>
-    {% if pagination %}
-        {{ render_pagination(pagination) }}
-    {% endif %}
+    {% block scripts %}
+        {{ super() }}
+        <script src="{{ url_for('static', filename ='javascripts/users.js') }}"
+                type="text/javascript"></script>
+    {% endblock %}
 {% endblock %}
 {% block right_content %}
     {% include 'includes/_hot_posts.html' %}

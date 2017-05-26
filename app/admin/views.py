@@ -1,7 +1,8 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
-from flask import render_template, flash, redirect, url_for, request,jsonify
+from flask import render_template, flash, redirect, url_for, request, jsonify
 from flask_login import current_user, login_required, fresh_login_required
+from sqlalchemy import func
 import time
 from .. import db, cache
 from . import admin
@@ -102,7 +103,17 @@ def get_server_info():
     return jsonify(server_info)
 
 
+@admin.route('/admin/get_user_city')
+@fresh_login_required
+@admin_required
+def get_user_city():
+    reg = db.session.query(User.city, func.count(User.city)).group_by(User.city).all()
+    city = list(map(lambda lst: {'name': lst[0], 'value': lst[1]}, reg))
+    return jsonify(city)
+
+
 # 管理员后台首页
+
 @admin.route('/admin')
 @fresh_login_required
 @admin_required
@@ -119,13 +130,12 @@ def admin_index():
     x = list(range(1, days))
     lt_post = get_m_post()
     lt_user = get_m_user()
-
     return render_template('admin/admin_index.html', title='管理员后台',
                            menu=0,
                            x=x, lt_post=lt_post,
                            lt_user=lt_user,
                            m=m, cat=cat, cats=cats, d=d,
-                           pv=pv, uv=uv, day=day, days=days
+                           pv=pv, uv=uv, day=day, days=days,
                            )
 
 
@@ -153,13 +163,9 @@ def new_category():
 @login_required
 @admin_required
 def users_manage():
-    page_index = request.args.get('page', 1, type=int)
-    query = User.query.order_by(User.post_total.desc())
-    pagination = query.paginate(page_index, per_page=10, error_out=False)
-    users = pagination.items
+    users = User.query.order_by(User.post_total.desc())
     return render_template('admin/users_manage.html',
                            users=users,
-                           pagination=pagination,
                            title='用户管理', menu=1)
 
 
@@ -168,15 +174,87 @@ def users_manage():
 @login_required
 @admin_required
 def blogs_manage():
-    page_index = request.args.get('page', 1, type=int)
-    query = Post.query.order_by(Post.read_times.desc())
-    pagination = query.paginate(page_index, per_page=10, error_out=False)
-    posts = pagination.items
+    posts = Post.query.order_by(Post.read_times.desc())
     return render_template('admin/blogs_manage.html',
                            posts=posts,
-                           pagination=pagination,
                            title='博客管理',
                            menu=2)
+
+
+@admin.route('/admin/blogs_delete', methods=['POST', 'GET'])
+@login_required
+@admin_required
+def blogs_delete():
+    if request.method == 'POST':
+        try:
+            id_str = request.form.get('id')
+        except:
+            pass
+
+        id_lst = id_str.split("#")[:-1]
+        print(id_lst)
+        for i in id_lst:
+            post = Post.query.filter_by(id=str(i)).first()
+            if not post:
+                pass
+            else:
+                post.del_comments()
+                post.del_tags()
+                db.session.delete(post)
+                db.session.commit()
+        flash('%d篇文章删除成功!'% len(id_lst))
+        return "OK"
+    return "ERROR"
+
+@admin.route('/admin/users_delete', methods=['POST', 'GET'])
+@login_required
+@admin_required
+def users_delete():
+    if request.method == 'POST':
+        try:
+            id_str = request.form.get('id')
+            print(id_str)
+        except:
+            pass
+        id_lst = id_str.split("#")[:-1]
+        for i in id_lst:
+            user = User.query.filter_by(id=str(i)).first()
+            if not user:
+                pass
+            else:
+                user.del_comments()
+                user.del_todos()
+                posts = Post.query.filter_by(author_id=user.id).all()
+                for post in posts:
+                    post.del_comments()
+                    post.del_tags()
+                    db.session.delete(post)
+                db.session.delete(user)
+                db.session.commit()
+        flash('%d个用户删除成功!'% len(id_lst))
+        return "OK"
+    return "ERROR"
+
+@admin.route('/admin/comments_delete', methods=['POST', 'GET'])
+@login_required
+@admin_required
+def comments_delete():
+    if request.method == 'POST':
+        try:
+            id_str = request.form.get('id')
+        except:
+            pass
+        id_lst = id_str.split("#")[:-1]
+        for i in id_lst:
+            comment = Comment.query.filter_by(id=str(i)).first()
+            if not comment:
+                pass
+            else:
+                db.session.delete(comment)
+                db.session.commit()
+        flash('%d条评论删除成功!'% len(id_lst))
+        return "OK"
+    return "ERROR"
 
 
 # 评论管理
@@ -184,13 +262,9 @@ def blogs_manage():
 @login_required
 @admin_required
 def comments_manage():
-    page_index = request.args.get('page', 1, type=int)
-    query = Comment.query.order_by(Comment.created.desc())
-    pagination = query.paginate(page_index, per_page=10, error_out=False)
-    comments = pagination.items
+    comments = Comment.query.order_by(Comment.created.desc())
     return render_template('admin/comments_manage.html',
                            comments=comments,
-                           pagination=pagination,
                            title='评论管理',
                            menu=3)
 
@@ -203,14 +277,10 @@ def blog_manage(id):
     post = Post.query.filter_by(id=id).first()
     user = User.query.filter_by(id=post.author_id).first()
     user.post_total -= 1
-    comments = Comment.query.filter_by(post_id=post.id).all()
-    tags = post.tags
     if post is None:
         flash('文章不存在!')
-    for i in comments:
-        db.session.delete(i)
-    for i in tags:
-        post.tags.remove(i)
+    post.del_comments()
+    post.del_tags()
     db.session.delete(post)
     db.session.commit()
     user.post_total -= 1
@@ -239,7 +309,6 @@ def comment_manage(id):
 def login_manage(id, status, delete):
     user = User.query.filter_by(id=id, is_valid=1).first()
     posts = Post.query.filter_by(author_id=user.id).all()
-    comments = Comment.query.filter_by(author_id=user.id).all()
     if user is None:
         flash('用户不存在!')
     if int(status) == 1:
@@ -248,10 +317,11 @@ def login_manage(id, status, delete):
         user.status = 0
     if int(delete) == 1:
         # 同时删除该用户的文章和评论
-        for i in comments:
-            db.session.delete(i)
-        for j in posts:
-            db.session.delete(j)
+        user.del_comments()
+        for post in posts:
+            post.del_comments()
+            post.del_tags()
+            db.session.delete(post)
         db.session.delete(user)
         db.session.commit()
         flash('用户删除成功!')
@@ -277,12 +347,9 @@ def role_manage(id, role):
 @login_required
 @admin_required
 def messages_manage():
-    page_index = request.args.get('page', 1, type=int)
-    query = Message.query.order_by(Message.created_at.desc()).filter_by(sender=current_user)
-    pagination = query.paginate(page_index, per_page=10, error_out=False)
-    sended_messages = pagination.items
+    sended_messages = Message.query.order_by(Message.created_at.desc()).filter_by(sender=current_user)
     return render_template('admin/messages_manage.html', sended_messages=sended_messages,
-                           title='通知管理', menu=5, pagination=pagination)
+                           title='通知管理', menu=5)
 
 
 @admin.route('/admin/send_messages', methods=['POST', 'GET'])

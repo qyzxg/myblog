@@ -1,5 +1,5 @@
 {% extends 'profile/base.html' %}
-{% from "bootstrap/pagination.html" import render_pagination %}
+
 {% block head_title %}
     {{ title }}
     <title>博客管理</title>
@@ -16,7 +16,10 @@
         <div><p>您还没有发表文章哦!</p><a href="{{ url_for('public.edit') }}">去发表一篇试试吧!</a></div>
     {% else %}
         <div class="table-responsive">
-            <table class="table table-bordered table-hover ">
+            <div class="" style="float:right;">
+                搜索：<input type="text" id="dsearch" placeholder="请输入关键词">
+            </div>
+            <table class="table table-bordered table-hover " id='stable'>
                 <thead>
                 <tr>
                     <th>
@@ -47,8 +50,8 @@
                             <h5>{{ post.title|truncate(22, True) }}</h5>
                         </a></td>
                         <td><h5>{{ post.created.strftime('%Y-%m-%d %H:%M') }}</h5></td>
-                        <td><h5>{{ post.comment_times }}</h5></td>
-                        <td><h5>{{ post.read_times }}</h5></td>
+                        <td><h5>{{ post.comment_times|default('0',true) }}</h5></td>
+                        <td><h5>{{ post.read_times|default('0',true) }}</h5></td>
                         <td><a href="{{ url_for('public.edit',id=post.id) }}" class="btn btn-success">修改</a></td>
                         <td><a href="{{ url_for('profile.user_blog_manage',id=post.id) }}" class="btn btn-danger">删除</a>
                         </td>
@@ -59,11 +62,12 @@
         </div>
     {% endif %}
 
-    <!-- 分页 -->
-    {% if pagination %}
-        {{ render_pagination(pagination) }}
-    {% endif %}
-    <!-- // 分页 -->
+
+    {% block scripts %}
+        {{ super() }}
+        <script src="{{ url_for('static', filename ='javascripts/users.js') }}"
+                type="text/javascript"></script>
+    {% endblock %}
 {% endblock %}
 
 {% block footer %}

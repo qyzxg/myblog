@@ -1,5 +1,5 @@
 {% extends 'admin/base.html' %}
-{% from "bootstrap/pagination.html" import render_pagination %}
+
 {% block head_title %}
     {{ title }}
     <title>博客管理</title>
@@ -12,38 +12,87 @@
 {% endblock %}
 {% block right_content %}
     {{ super() }}
+    <ul class="showul"
+        style="display:none;list-style: none;  position:absolute; left:600px; top:100px;z-index:9999; background-color:#2B3E50; border:1px solid #ccc; width:120px;">
+        <li>
+            <input type="checkbox" class="toggle-vis" data-column="2"/>
+            标题
+        </li>
+        <li>
+            <input type="checkbox" class="toggle-vis" data-column="3"/>
+            作者
+        </li>
+        <li>
+            <input type="checkbox" class="toggle-vis" data-column="4"/>
+            时间
+        </li>
+        <li>
+            <input type="checkbox" class="toggle-vis" data-column="5"/>
+            评论
+        </li>
+        <li>
+            <input type="checkbox" class="toggle-vis" data-column="6"/>
+            阅读
+        </li>
+        <li>
+            <input type="checkbox" class="toggle-vis" data-column="7"/>
+            修改
+        </li>
+        <li>
+            <input type="checkbox" class="toggle-vis" data-column="8"/>
+            删除
+        </li>
+    </ul>
+
     <div class="table-responsive">
-        <table class="table table-bordered table-hover ">
+
+        {% include 'includes/_modal.html' %}
+
+        <div class="" style="float:right;">
+            <a class="btn btn-danger btn-sm" onclick='check()' id="dels">批量删除</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="btn btn-primary btn-sm" id="hids">隐藏字段</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span id="temp_check_value" hidden="hidden"></span>
+            搜索：<input type="text" id="dsearch" placeholder="请输入关键词">
+        </div>
+        <table class="table table-bordered table-hover " id='stable'>
             <thead>
             <tr>
                 <th>
-                    <mark>文章标题</mark>
+                    <mark>序号</mark>
                 </th>
                 <th>
-                    <mark>文章作者</mark>
+                    <mark>全选<input type="checkbox" id="checkAll"></mark>
                 </th>
                 <th>
-                    <mark>发布时间</mark>
+                    <mark>标题</mark>
                 </th>
                 <th>
-                    <mark>评论数量</mark>
+                    <mark>作者</mark>
                 </th>
                 <th>
-                    <mark>阅读数量</mark>
+                    <mark>时间</mark>
                 </th>
                 <th>
-                    <mark>修改文章</mark>
+                    <mark>评论</mark>
                 </th>
                 <th>
-                    <mark>删除文章</mark>
+                    <mark>阅读</mark>
+                </th>
+                <th>
+                    <mark>修改</mark>
+                </th>
+                <th>
+                    <mark>删除</mark>
                 </th>
             </tr>
             </thead>
             <tbody>
             {% for post in posts %}
                 <tr>
+                    <td></td>
+                    <td><input type="checkbox" name="checkList" class="on_check" value="{{ post.id }}"></td>
                     <td><a href="{{ url_for('public.details', id = post.id) }}">
-                        <h5>{{ post.title|truncate(22, True) }}</h5>
+                        <h5>{{ post.title|truncate(15, True) }}</h5>
                     </a></td>
                     <td>
                         {% if current_user.id == post.author_id %}
@@ -55,8 +104,8 @@
                         {% endif %}
                     </td>
                     <td><h5>{{ post.created.strftime('%Y-%m-%d %H:%M') }}</h5></td>
-                    <td><h5>{{ post.comment_times }}</h5></td>
-                    <td><h5>{{ post.read_times }}</h5></td>
+                    <td><h5>{{ post.comment_times|default('0',true) }}</h5></td>
+                    <td><h5>{{ post.read_times|default('0',true) }}</h5></td>
                     <td><a href="{{ url_for('public.edit',id=post.id) }}" class="btn btn-success">修改</a></td>
                     <td><a href="{{ url_for('admin.blog_manage',id=post.id) }}" class="btn btn-danger">删除</a></td>
                 </tr>
@@ -64,11 +113,53 @@
             </tbody>
         </table>
     </div>
-    <!-- 分页 -->
-    {% if pagination %}
-        {{ render_pagination(pagination) }}
-    {% endif %}
-    <!-- // 分页 -->
+
+    {% block scripts %}
+        {{ super() }}
+        <script src="{{ url_for('static', filename ='javascripts/admin.js') }}"
+                type="text/javascript"></script>
+
+        <script type="text/javascript">
+            function check() {
+                var chk_value = [];
+                $('input[name="checkList"]:checked').each(function () {
+                    chk_value.push($(this).val() + "#");
+                });
+                if (chk_value.length == 0) {
+                    $('#selec_nothing').modal({
+                        keyboard: true
+                    });
+                } else {
+                    //把要删除的文章 id#id#id# 字符串写入temp_check_value标签 待提供后台
+                    $('#temp_check_value').html(chk_value).appendTo("body")
+                    $('#delet_all').modal({
+                        keyboard: true
+                    });
+
+                }
+            };
+
+            //文章管理 提交文章id字符串 , 删除已选文章
+            $(document).ready(function () {
+                $("#s_delet_all").click(function () {
+                    var v = document.getElementById('temp_check_value').innerHTML
+                    $.post("/admin/blogs_delete", {
+                            id: v
+                        },
+                        function (data, status) {
+                            if (data == "OK") {
+                                location.reload(location.href)
+                            } else {
+                                alert("未知错误 , 请重试");
+                                location.reload(location.href);
+                            }
+                        });
+
+                });
+                return false
+            });
+        </script>
+    {% endblock %}
 {% endblock %}
 
 {% block footer %}

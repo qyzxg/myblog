@@ -1,5 +1,5 @@
 {% extends 'profile/base.html' %}
-{% from "bootstrap/pagination.html" import render_pagination %}
+
 {% block head_title %}
     {{ title }}
     <title>收藏管理</title>
@@ -16,7 +16,10 @@
         <div><p>您还没有收藏哦!</p><a href="{{ url_for('public.index') }}">去首页看看吧!</a></div>
     {% else %}
         <div class="table-responsive">
-            <table class="table table-bordered table-hover ">
+            <div class="" style="float:right;">
+                搜索：<input type="text" id="dsearch" placeholder="请输入关键词">
+            </div>
+            <table class="table table-bordered table-hover " id='stable'>
                 <thead>
                 <tr>
                     <th>
@@ -44,8 +47,8 @@
                             <h5>{{ post.title|truncate(22, True) }}</h5>
                         </a></td>
                         <td><h5>{{ post.created.strftime('%Y-%m-%d %H:%M') }}</h5></td>
-                        <td><h5>{{ post.comment_times }}</h5></td>
-                        <td><h5>{{ post.read_times }}</h5></td>
+                        <td><h5>{{ post.comment_times|default('0',true) }}</h5></td>
+                        <td><h5>{{ post.read_times|default('0',true) }}</h5></td>
                         <td><a href="{{ url_for('profile.user_collect_manage',id=post.id) }}"
                                class="btn btn-danger">取消</a></td>
                     </tr>
@@ -55,11 +58,11 @@
         </div>
     {% endif %}
 
-    <!-- 分页 -->
-    {% if pagination %}
-        {{ render_pagination(pagination) }}
-    {% endif %}
-    <!-- // 分页 -->
+    {% block scripts %}
+        {{ super() }}
+        <script src="{{ url_for('static', filename ='javascripts/users.js') }}"
+                type="text/javascript"></script>
+    {% endblock %}
 {% endblock %}
 
 {% block footer %}

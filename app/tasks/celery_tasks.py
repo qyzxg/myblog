@@ -82,8 +82,8 @@ class Scheduler(object):
 
 
 class ReadLog():
-    def __init__(self, logfile=r'/var/log/nginx/access.log',
-                 seekfile=r'/var/log/nginx/access.seek'):
+    def __init__(self, logfile=r'E:\MyProject\deploy\access.log',
+                 seekfile=r'E:\MyProject\deploy\access.seek'):
         self.logfile = logfile
         self.seekfile = seekfile
 
