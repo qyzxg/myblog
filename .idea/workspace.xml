@@ -2,35 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e3904cda-ea26-489a-9902-20b5baf3e0cc" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/javascripts/echarts.common.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/javascripts/echarts.coon.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/MAIN_apfywzb2967vv2oi.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/MAIN_c39ztpx2g884cbb5.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/MAIN_ecdz01xo12dr6cxm.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/MAIN_q7wwtxqqkb0i2ncg.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/_MAIN_1467.toc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/screenshot/主页.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/screenshot/文章详情页1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/screenshot/用户后台首页.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/screenshot/用户资料页.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/screenshot/站内信.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/screenshot/管理员后台首页.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/views.py" afterPath="$PROJECT_DIR$/app/admin/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/auth/views.py" afterPath="$PROJECT_DIR$/app/auth/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models.py" afterPath="$PROJECT_DIR$/app/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/profile/views.py" afterPath="$PROJECT_DIR$/app/profile/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/tasks/celery_tasks.py" afterPath="$PROJECT_DIR$/app/tasks/celery_tasks.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/admin/admin_index.html" afterPath="$PROJECT_DIR$/app/templates/admin/admin_index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/admin/base.html" afterPath="$PROJECT_DIR$/app/templates/admin/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/admin/blogs_manage.html" afterPath="$PROJECT_DIR$/app/templates/admin/blogs_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/admin/comments_manage.html" afterPath="$PROJECT_DIR$/app/templates/admin/comments_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/admin/messages_manage.html" afterPath="$PROJECT_DIR$/app/templates/admin/messages_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/admin/users_manage.html" afterPath="$PROJECT_DIR$/app/templates/admin/users_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/base.html" afterPath="$PROJECT_DIR$/app/templates/profile/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/base_other.html" afterPath="$PROJECT_DIR$/app/templates/profile/base_other.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/blogs_manage.html" afterPath="$PROJECT_DIR$/app/templates/profile/blogs_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/collects_manage.html" afterPath="$PROJECT_DIR$/app/templates/profile/collects_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/comments_manage.html" afterPath="$PROJECT_DIR$/app/templates/profile/comments_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/followers_manage.html" afterPath="$PROJECT_DIR$/app/templates/profile/followers_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/messages_manage.html" afterPath="$PROJECT_DIR$/app/templates/profile/messages_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/others.html" afterPath="$PROJECT_DIR$/app/templates/profile/others.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/todos_manage.html" afterPath="$PROJECT_DIR$/app/templates/profile/todos_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/user_index.html" afterPath="$PROJECT_DIR$/app/templates/profile/user_index.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -211,6 +189,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="screenshot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myblog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myblog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -252,10 +244,10 @@
       <recent name="E:\MyProject\myblog\app\templates\admin" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\MyProject\myblog\screenshot" />
       <recent name="E:\MyProject\myblog\app\static\javascripts" />
       <recent name="E:\MyProject\myblog\app\static\stylesheets" />
       <recent name="E:\MyProject\myblog\app\static\upload\reward_img" />
-      <recent name="E:\MyProject\myblog\screenshot" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -472,6 +464,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1370" height="744" extended-state="1" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28473282" sideWeight="0.48688525" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.4969743" order="10" side_tool="false" content_ui="tabs" />
@@ -479,7 +472,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23934427" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23934427" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16721311" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22671756" sideWeight="0.51311475" order="2" side_tool="true" content_ui="tabs" />
@@ -528,13 +521,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../GUI/calculator/Dialog_calculator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/public/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7590">
@@ -895,6 +881,17 @@
         <state relative-caret-position="23">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-1173">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
