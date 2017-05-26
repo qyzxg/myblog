@@ -74,8 +74,8 @@ myblog是一个基于flask的开源多用户博客系统,功能基本完整,目�
 ![image](https://github.com/qyzxg/myblog/blob/master/screenshot/站内搜索.png)
 #### 个人博客管理
 ![image](https://github.com/qyzxg/myblog/blob/master/screenshot/个人博客管理.png)
-#### 超级管理员首页
-![image](https://github.com/qyzxg/myblog/blob/master/screenshot/超级管理员首页.png)
+#### 管理员首页
+![image](https://github.com/qyzxg/myblog/blob/master/screenshot/管理员首页.png)
 #### 用户管理
 ![image](https://github.com/qyzxg/myblog/blob/master/screenshot/用户管理.png)
 #### 个人博客管理
