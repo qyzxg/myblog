@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e3904cda-ea26-489a-9902-20b5baf3e0cc" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/screenshot/用户管理.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/screenshot/超级管理员首页.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
