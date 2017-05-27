@@ -1,0 +1,24 @@
+
+        {% for comment in comments|sort(attribute='created',reverse=True ) %}
+            <div id='article-entry' class="entry-box">
+                <div class="media media-left">
+
+                    <img class="media-object img-circle" src="{{ comment.author.avatar }}" class="img-circle"
+                         width="32px" height="32px">
+
+                </div>
+                <div class="media media-body">
+                    <span>
+                        {% if current_user.id == comment.author_id %}
+                            <a href="{{ url_for('profile.user_index', username = comment.author.username) }}">{{ comment.author.username }}&nbsp;</a>
+                        {% else %}
+                            <a href="{{ url_for('profile.others', username = comment.author.username) }}">{{ comment.author.username }}&nbsp;</a>
+                        {% endif %}
+                    </span>
+                    <small> @ {{ comment.created.strftime('%Y-%m-%d %H:%M') }}&nbsp;:</small>
+                    <span>{{ comment.body }}</span>
+
+                </div>
+            </div>
+
+        {% endfor %}

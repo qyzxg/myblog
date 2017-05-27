@@ -116,11 +116,12 @@
     <h3>发表评论:</h3>
     {# 发表评论 #}
     <div>
-        <form action="" method="post" class="form-horizontal" name="send">
+        <form action="" method="post" class="form-horizontal" name="send" id="post_comment">
             {{ form.csrf_token }}
-            <div class="form-group">
+            <div class="form-group" id="comment_value">
                 {{ form.body(only_input=True,rows=1,class="form-control",placeholder='请输入评论内容,不少于5个字符') }}
             </div>
+            <input type="text" id="post_id" value="{{ post.id }}" style="display:none;"/>
             <div>
                 <div class="col-md-9">
                     {% for error in form.body.errors %}
@@ -128,7 +129,7 @@
                     {% endfor %}
                 </div>
                 <div class="col-md-3">
-                    <button type="submit" class="btn btn-info btn-block"><b><span
+                    <button type="button" class="btn btn-info btn-block" id="post_b"><b><span
                             class="glyphicon glyphicon-pencil"></span>&nbsp&nbsp发表&nbsp&nbsp</b>
                     </button>
                 </div>
@@ -141,30 +142,8 @@
     <br>
     <br>
     <h3>评论列表({{ post.comment_times }}):</h3>
-    <div>
-        {% for comment in comments|sort(attribute='created',reverse=True ) %}
-            <div id='article-entry' class="entry-box">
-                <div class="media media-left">
-
-                    <img class="media-object img-circle" src="{{ comment.author.avatar }}" class="img-circle"
-                         width="32px" height="32px">
-
-                </div>
-                <div class="media media-body">
-                    <span>
-                        {% if current_user.id == comment.author_id %}
-                            <a href="{{ url_for('profile.user_index', username = comment.author.username) }}">{{ comment.author.username }}&nbsp;</a>
-                        {% else %}
-                            <a href="{{ url_for('profile.others', username = comment.author.username) }}">{{ comment.author.username }}&nbsp;</a>
-                        {% endif %}
-                    </span>
-                    <small> @ {{ comment.created.strftime('%Y-%m-%d %H:%M') }}&nbsp;:</small>
-                    <span>{{ comment.body }}</span>
-
-                </div>
-            </div>
-
-        {% endfor %}
+    <div id='comments_list'>
+   {% include 'includes/_comments_list.html' %}
     </div>
     {% if pagination %}
         {{ render_pagination(pagination) }}
@@ -184,6 +163,41 @@
 {% endblock %}
 
 
+{% block scripts %}
+    {{ super() }}
+    <script>
+        $(function () {
+            $('#post_b').click(function () {
+                frm = $('#post_comment')
+                $.ajax({
+                    url: frm.attr('action'),
+                    type: frm.attr('method'),
+                    dataType: 'json',
+                    data: frm.serialize(),
+                    success: function (data) {
+                        var lstComments = $("#comments_list");
+                        var post_id = $("#post_id").val()
+                        $.ajax({
+                            type: "post",  //提交方式
+                            dataType: "text", //数据类型
+                            url: "/get_comments", //请求url
+                            data: {
+                                'post_id': post_id
+                            },
+                            success: function (data) { //提交成功的回调函数
+                                if (data.length > 0) {
+                                    lstComments.html(data);
+
+                                }
+                            }
+                        });
+                        {#                        $("#flask-pagedown-body").val("");#}
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}
 
 {% block footer %}
     {{ super() }}

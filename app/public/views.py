@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 
 from flask import render_template, make_response, flash, redirect, \
-    url_for, request, send_from_directory, g, current_app
+    url_for, request, send_from_directory, g, current_app,json
 from flask_login import current_user, login_required
 from werkzeug.utils import secure_filename
 import flask_whooshalchemyplus as whoosh
@@ -257,13 +257,14 @@ def details(id):
             if current_user.is_authenticated:
                 if current_user.confirmed == 1:
                     comment = Comment(author=current_user,
-                                      body=form.body.data,
+                                      body=request.form.get('body'),
                                       post=post)
                     db.session.add(comment)
                     db.session.commit()
                     post.comment_times += 1
-                    flash('评论发表成功!')
                     form.body.data = ''
+                    result = {"status": "success"}
+                    return json.dumps(result)
                 else:
                     flash('验证邮箱后才能发表评论哦!')
 
@@ -286,7 +287,20 @@ def details(id):
                            )
 
 
-@public.route('/hot_posts/')
+@public.route('/get_comments',methods=['POST', 'GET'])
+def get_comments():
+    if request.method == "POST":
+        try:
+            post_id = request.form.get('post_id')
+        except:
+            pass
+        comments = Comment.query.filter_by(post_id=int(post_id)).order_by(Comment.created.desc())
+        flash('ok')
+        return render_template('includes/_comments_list.html',comments=comments)
+
+
+
+@public.route('/hot_posts')
 def hot_posts():
     return render_template('includes/_hot_posts.html')
 
