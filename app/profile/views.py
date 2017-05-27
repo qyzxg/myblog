@@ -41,13 +41,13 @@ def user_index(username):
 
 @profile.route('/others/<username>', methods=['POST', 'GET'])
 def others(username):
-    posts_ = Post.query.order_by(Post.comment_times.desc()).limit(5)
+    posts_ = Post.query.filter(Post.is_public==1).order_by(Post.comment_times.desc()).limit(5)
     user = User.query.filter_by(username=username).first()
     if not user:
         flash('不存在用户：' + username + '！')
         return redirect(url_for('public.index'))
     else:
-        posts = Post.query.filter_by(author_id=user.id)
+        posts = Post.query.filter(Post.is_public==1).filter_by(author_id=user.id)
 
     return render_template('profile/others.html', user=user, posts=posts,
                            title='%s的资料' % user.username,
@@ -82,6 +82,17 @@ def user_blog_manage(id):
     flash('文章删除成功!')
     return redirect(url_for('profile.user_blogs_manage'))
 
+@profile.route('/user/public_manage/<int:id>/<int:public>')
+@login_required
+def user_public_manage(id,public):
+    post = Post.query.filter_by(id=id).first()
+    if not post:
+        flash('文章不存在')
+    if int(public)==1:
+        post.is_public=1
+    else:
+        post.is_public=0
+    return redirect(url_for('profile.user_blogs_manage'))
 
 @profile.route('/user/comments_manage', methods=['POST', 'GET'])
 @login_required

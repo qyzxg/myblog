@@ -1,11 +1,7 @@
 {% extends 'public/base.html' %}
 {% block title %}{{ title|safe }}{% endblock %}
 
-{% block scripts %}
-    {{ super() }}
 
-
-{% endblock %}
 
 {% block content %}
     <!-- Content -->
@@ -42,12 +38,16 @@
                         </script>
 
                         <br>
-                        <div class="col-md-9 ">
+                        <div class="col-md-7 ">
                             {% for error in form.body.errors %}
                                 <span style="color: #feff14;">{{ error }}</span>
                             {% endfor %}
                         </div>
+                        <div class="col-md-2 ">
+                            是否公开:{{ form.is_public }}
+                        </div>
                         <div class="col-md-3 ">
+
                             {{ form.submit(class="btn btn-info btn-block ") }}
                         </div>
                     </form>
@@ -56,6 +56,7 @@
         </div>
     </div>
 {% endblock %}
+
 
 {% block footer %}
     {{ super() }}

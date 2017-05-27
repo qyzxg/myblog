@@ -23,23 +23,30 @@
                 <thead>
                 <tr>
                     <th>
-                        <mark>文章标题</mark>
+                        <mark>标题</mark>
                     </th>
 
                     <th>
-                        <mark>发布时间</mark>
+                        <mark>时间</mark>
                     </th>
                     <th>
-                        <mark>评论数量</mark>
+                        <mark>评论</mark>
                     </th>
                     <th>
-                        <mark>阅读数量</mark>
+                        <mark>阅读</mark>
                     </th>
                     <th>
-                        <mark>修改文章</mark>
+                        <mark>公开</mark>
                     </th>
                     <th>
-                        <mark>删除文章</mark>
+                        <mark>状态</mark>
+                    </th>
+
+                    <th>
+                        <mark>修改</mark>
+                    </th>
+                    <th>
+                        <mark>删除</mark>
                     </th>
                 </tr>
                 </thead>
@@ -52,6 +59,16 @@
                         <td><h5>{{ post.created.strftime('%Y-%m-%d %H:%M') }}</h5></td>
                         <td><h5>{{ post.comment_times|default('0',true) }}</h5></td>
                         <td><h5>{{ post.read_times|default('0',true) }}</h5></td>
+                        <td><h5>{{ post.get_public()|default('未知',true) }}</h5></td>
+                        {% if post.is_public == 0 %}
+                            <td><a href="{{ url_for('profile.user_public_manage',id=post.id,public=1) }}"
+                                   class="btn btn-primary">公开</a>
+                            </td>
+                        {% else %}
+                            <td><a href="{{ url_for('profile.user_public_manage',id=post.id,public=0) }}"
+                                   class="btn btn-info">隐藏</a>
+                            </td>
+                        {% endif %}
                         <td><a href="{{ url_for('public.edit',id=post.id) }}" class="btn btn-success">修改</a></td>
                         <td><a href="{{ url_for('profile.user_blog_manage',id=post.id) }}" class="btn btn-danger">删除</a>
                         </td>

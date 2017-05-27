@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, TextAreaField, SelectField
+from wtforms import StringField, SubmitField, TextAreaField, SelectField,BooleanField
 from wtforms.validators import DataRequired, Length
 from flaskckeditor import CKEditor
 from flask_pagedown.fields import PageDownField
@@ -18,6 +18,7 @@ class PostForm(FlaskForm, CKEditor):
     body = TextAreaField(label="正文", validators=[DataRequired(),
                                                  Length(min=10, message='文章内容必须大于10个字!')],
                          render_kw={"required": "required"})
+    is_public = BooleanField(label='是否公开',render_kw={'checked':'checked'})
     submit = SubmitField(label='发表', render_kw={'class': "btn btn-info btn-block"})
 
 

@@ -32,9 +32,9 @@ public.add_app_template_filter(wdcount, name='wdcount')
 def index():
     # 记录cookie
     page_index = request.args.get('page', 1, type=int)
-    query = Post.query.order_by(Post.read_times.desc())
+    query = Post.query.filter(Post.is_public == 1).order_by(Post.read_times.desc())
     pagination = query.paginate(page_index, per_page=10, error_out=False)
-    posts_ = Post.query.order_by(Post.comment_times.desc()).limit(5)
+    posts_ = Post.query.filter(Post.is_public == 1).order_by(Post.comment_times.desc()).limit(5)
     hot_authors = User.query.order_by(User.post_total.desc()).limit(5)
     todos = None
     if current_user.is_authenticated:
@@ -187,6 +187,7 @@ def edit(id=0):
             post.title = form.title.data
             post.style = form.style.data
             post.category = form.category.data
+            post.is_public = form.is_public.data
             alltags = [i.name for i in Tag.query.all()]
             ptags = [i.name for i in post.tags]
             l = form.tags.data.split(',')
@@ -222,6 +223,9 @@ def edit(id=0):
     form.body.data = post.body
     form.style.data = post.style
     form.category.data = post.category
+    if not post.is_public:
+        form.is_public.render_kw = ''
+    print(post.is_public)
     posttags = []
     s = ''
     if post.tags:
@@ -244,7 +248,7 @@ def edit(id=0):
 def details(id):
     post = Post.query.get_or_404(id)
     post.comment_times = len(post.comments)
-    posts_ = Post.query.order_by(Post.comment_times.desc()).limit(5)
+    posts_ = Post.query.filter(Post.is_public==1).order_by(Post.comment_times.desc()).limit(5)
     hot_authors = User.query.order_by(User.post_total.desc()).limit(5)
     post.read_times += 1
     categories = Categories.query.all()
@@ -325,7 +329,7 @@ def search():
 def search_results(key_word):
     page_index = request.args.get('page', 1, type=int)
 
-    query = Post.query.whoosh_search(key_word, current_app.config['MAX_SEARCH_RESULTS'])
+    query = Post.query.whoosh_search(key_word, current_app.config['MAX_SEARCH_RESULTS']).filter(Post.is_public==1)
     pagination = query.paginate(page_index, per_page=10, error_out=False)
     results = pagination.items
     total = len(query.all())
@@ -339,13 +343,13 @@ def search_results(key_word):
 
 @public.route('/service')
 def service():
-    posts_ = Post.query.order_by(Post.comment_times.desc()).limit(5)
+    posts_ = Post.query.filter(Post.is_public==1).order_by(Post.comment_times.desc()).limit(5)
     return render_template('public/service.html', title='服务', posts_=posts_)
 
 
 @public.route('/about')
 def about():
-    posts_ = Post.query.order_by(Post.comment_times.desc()).limit(5)
+    posts_ = Post.query.filter(Post.is_public==1).order_by(Post.comment_times.desc()).limit(5)
     return render_template('public/about.html', title='关于', posts_=posts_)
 
 def make_external(url):
@@ -355,7 +359,7 @@ def make_external(url):
 def recent_feed():
     feed = AtomFeed('最近文章',
                     feed_url=request.url, url=request.url_root)
-    posts = Post.query.order_by(Post.created.desc()) \
+    posts = Post.query.filter(Post.is_public==1).order_by(Post.created.desc()) \
                       .limit(20).all()
     for post in posts:
         feed.add(post.title, post.body,

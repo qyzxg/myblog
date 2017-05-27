@@ -199,9 +199,16 @@ class Post(db.Model):
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     style = db.Column(db.String(50), default='原创')
     category = db.Column(db.String(50), default='Python')
+    is_public = db.Column(db.Boolean, default=True)
     post_img = db.Column(db.String(500), doc='文章首页地址', default=r'/static/images/post_default.jpg')
     tags = db.relationship('Tag', secondary=tag,
                            backref=db.backref('posts', lazy='dynamic'))
+
+    def get_public(self):
+        if self.is_public:
+            return '公开'
+        else:
+            return '隐藏'
 
     def get_post_img(self, post):
         reg = r'<img alt.*?src="(.*?)".*?/>'
@@ -243,6 +250,7 @@ class Post(db.Model):
         if tags:
             for i in tags:
                 self.tags.remove(i)
+
 
 
 class Categories(db.Model):
