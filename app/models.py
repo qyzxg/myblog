@@ -52,6 +52,7 @@ class User(UserMixin, db.Model):
     created_at = db.Column(db.DateTime)
     updated_at = db.Column(db.DateTime)
     ip_addr = db.Column(db.String(50), doc='IP地址')
+    country = db.Column(db.String(30), doc='国家')
     area = db.Column(db.String(30), doc='地区')
     region = db.Column(db.String(30), doc='省份')
     city = db.Column(db.String(30), doc='城市')

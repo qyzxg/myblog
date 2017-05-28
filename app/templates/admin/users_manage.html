@@ -80,7 +80,10 @@
                     <mark>最后登录</mark>
                 </th>
                 <th>
-                    <mark>位置</mark>
+                    <mark>国家</mark>
+                </th>
+                <th>
+                    <mark>城市</mark>
                 </th>
                 <th>
                     <mark>状态</mark>
@@ -115,6 +118,7 @@
                     </td>
                     <td><h5>{{ user.email }}</h5></td>
                     <td><h5>{{ user.last_login.strftime('%Y-%m-%d %H:%M') }}</h5></td>
+                    <td><h5>{{ user.country|default('未知',true) }}</h5></td>
                     <td><h5>{{ user.city|default('未知',true) }}</h5></td>
                     <td><h5>{{ user.get_status() }}</h5></td>
                     <td><h5>{{ user.get_roles() }}</h5></td>

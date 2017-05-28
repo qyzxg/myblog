@@ -100,6 +100,7 @@ def login():
         url = requests.get('http://ip.taobao.com/service/getIpInfo.php?ip=%s' % ip_addr)
         data = url.json()
         user.ip_addr = ip_addr
+        user.country = data['data']['country']
         user.area = data['data']['area']
         user.region = data['data']['region']
         user.city = data['data']['city']
