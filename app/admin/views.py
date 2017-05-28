@@ -308,23 +308,24 @@ def comment_manage(id):
 @admin_required
 def login_manage(id, status, delete):
     user = User.query.filter_by(id=id, is_valid=1).first()
-    posts = Post.query.filter_by(author_id=user.id).all()
     if user is None:
         flash('用户不存在!')
-    if int(status) == 1:
-        user.status = 1
     else:
-        user.status = 0
-    if int(delete) == 1:
-        # 同时删除该用户的文章和评论
-        user.del_comments()
-        for post in posts:
-            post.del_comments()
-            post.del_tags()
-            db.session.delete(post)
-        db.session.delete(user)
-        db.session.commit()
-        flash('用户删除成功!')
+        posts = Post.query.filter_by(author_id=user.id).all()
+        if int(status) == 1:
+            user.status = 1
+        else:
+            user.status = 0
+        if int(delete) == 1:
+            # 同时删除该用户的文章和评论
+            user.del_comments()
+            for post in posts:
+                post.del_comments()
+                post.del_tags()
+                db.session.delete(post)
+            db.session.delete(user)
+            db.session.commit()
+            flash('用户删除成功!')
     return redirect(url_for('admin.users_manage'))
 
 
@@ -336,10 +337,11 @@ def role_manage(id, role):
     user = User.query.filter_by(id=id, is_valid=1).first()
     if user is None:
         flash('用户不存在!')
-    if int(role) == 1:
-        user.role = 1
     else:
-        user.role = 0
+        if int(role) == 1:
+            user.role = 1
+        else:
+            user.role = 0
     return redirect(url_for('admin.users_manage'))
 
 
