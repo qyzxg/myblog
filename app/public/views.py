@@ -181,8 +181,10 @@ def ckupload():
 @login_required
 def edit(id=0):
     form = PostForm()
-    form.style.choices = [(str(a.name1), str(a.name)) for a in Styles.query.all()]
-    form.category.choices = [(str(a.name1), str(a.name)) for a in Categories.query.all()]
+    s = [('--请选择文章来源--', '--请选择文章来源--')]
+    form.style.choices = s+[(str(a.name1), str(a.name)) for a in Styles.query.all()]
+    c = [('--请选择文章分类--', '--请选择文章分类--')]
+    form.category.choices = c+[(str(a.name1), str(a.name)) for a in Categories.query.all()]
     if id == 0:
         post = Post(author_id=current_user.id)
     else:
@@ -213,7 +215,9 @@ def edit(id=0):
                         pass
                     else:
                         post.tags.append(Tag.query.filter_by(name=i.strip()).first())
-
+            if post.style =='--请选择文章来源--' or post.category == '--请选择文章分类--':
+                flash('请选择文章来源和分类')
+                return redirect(url_for('public.edit'))
             db.session.add(post)
             db.session.commit()
             post.post_img = post.get_post_img(post)
