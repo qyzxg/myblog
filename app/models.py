@@ -33,7 +33,7 @@ class Tag(db.Model):
 
     def get_total(self):
         tag_ = Tag.query.filter_by(name=self.name).first()
-        posts = tag_.posts
+        posts = tag_.posts.filter(Post.is_public==1)
         total = len(posts.all())
         return total
 
@@ -259,7 +259,7 @@ class Categories(db.Model):
     name1 = db.Column(db.String(50))
 
     def get_total(self):
-        p = Post.query.filter_by(category=self.name).all()
+        p = Post.query.filter(Post.is_public==1).filter_by(category=self.name).all()
         total = len(p)
         return total
 

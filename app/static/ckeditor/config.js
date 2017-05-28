@@ -35,6 +35,8 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
+	// config.embed_provider = '//iframe.ly/api/oembed?url={url}&maxwidth=800px&callback={callback}&api_key=[05cba6e3f911c4eb1dce41]';
+	// config.autoEmbed_widget = 'customEmbed';
 	config.extraPlugins = 'markdown';
 	config.extraPlugins = 'wordcount';
 	config.wordcount = {

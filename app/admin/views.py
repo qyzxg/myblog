@@ -148,8 +148,8 @@ def new_category():
     form = NewCategory()
     if form.validate_on_submit():
         category = Categories(
-            name=form.name.data,
-            name1=form.name.data
+            name=form.name.data.strip(),
+            name1=form.name.data.strip()
         )
         db.session.add(category)
         db.session.commit()

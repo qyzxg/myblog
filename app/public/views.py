@@ -18,8 +18,17 @@ from .forms import PostForm, CommentForm, SearchForm
 import os
 from werkzeug.contrib.atom import AtomFeed
 from urllib.parse import urljoin
-# 定义过滤器
 
+# 搜索
+@public.before_app_request
+def before_request():
+    from .. import create_app
+    app = create_app()
+    whoosh.whoosh_index(app, Post)
+    g.search_form = SearchForm()
+
+
+# 定义过滤器
 def wdcount(stri):
     return len(stri)
 
@@ -179,12 +188,12 @@ def edit(id=0):
     else:
         post = Post.query.get_or_404(id)
     user = User.query.filter_by(id=current_user.id).first()
-    if Post.query.filter_by(author_id=current_user.id):
-        user.post_total = len(Post.query.filter_by(author_id=current_user.id).all())
+    if Post.query.filter(Post.is_public==1).filter_by(author_id=current_user.id):
+        user.post_total = len(Post.query.filter(Post.is_public==1).filter_by(author_id=current_user.id).all())
     if user.confirmed == 1:
         if form.validate_on_submit():
             post.body = form.body.data
-            post.title = form.title.data
+            post.title = form.title.data.strip()
             post.style = form.style.data
             post.category = form.category.data
             post.is_public = form.is_public.data
@@ -195,15 +204,15 @@ def edit(id=0):
             for i in ls:
                 if i == '':
                     l.remove(i)
-                if i not in alltags:
-                    tag = Tag(name=i)
+                if i.strip() not in alltags:
+                    tag = Tag(name=i.strip())
                     db.session.add(tag)
                     post.tags.append(tag)
                 else:
-                    if i in ptags:
+                    if i.strip() in ptags:
                         pass
                     else:
-                        post.tags.append(Tag.query.filter_by(name=i).first())
+                        post.tags.append(Tag.query.filter_by(name=i.strip()).first())
 
             db.session.add(post)
             db.session.commit()
@@ -223,9 +232,10 @@ def edit(id=0):
     form.body.data = post.body
     form.style.data = post.style
     form.category.data = post.category
-    if not post.is_public:
-        form.is_public.render_kw = ''
-    print(post.is_public)
+    # if not post.is_public:
+    #     form.is_public.render_kw = ''
+    # else:
+    #     form.is_public.render_kw = {'checked':'checked'}
     posttags = []
     s = ''
     if post.tags:
@@ -299,7 +309,6 @@ def get_comments():
         except:
             pass
         comments = Comment.query.filter_by(post_id=int(post_id)).order_by(Comment.created.desc())
-        flash('ok')
         return render_template('includes/_comments_list.html',comments=comments)
 
 

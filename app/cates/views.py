@@ -14,7 +14,7 @@ def get_cates(cate):
     query = Post.query.filter(Post.is_public==1).order_by(Post.read_times.desc()).filter_by(category=cate)
     pagination = query.paginate(page_index, per_page=10, error_out=False)
     posts = pagination.items
-    total = len(Post.query.filter_by(category=cate).all())
+    total = len(Post.query.filter(Post.is_public==1).filter_by(category=cate).all())
     return render_template('cates/get_cates.html',
                            posts=posts, pagination=pagination,
                            title='所有分类为%s的文章' % cate, total=total,
