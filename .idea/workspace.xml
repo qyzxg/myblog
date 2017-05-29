@@ -2,8 +2,373 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e3904cda-ea26-489a-9902-20b5baf3e0cc" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/views.py" afterPath="$PROJECT_DIR$/app/admin/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/admin/users_manage.html" afterPath="$PROJECT_DIR$/app/templates/admin/users_manage.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/CHANGES.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/LICENSE.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/adapters/jquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/build-config.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/ckeditor.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/config.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/contents.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/lang/en.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/lang/zh-cn.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/a11yhelp.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/_translationstatus.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/af.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/ar.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/az.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/bg.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/ca.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/cs.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/cy.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/da.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/de-ch.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/de.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/el.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/en-gb.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/en.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/eo.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/es.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/et.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/eu.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/fa.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/fi.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/fo.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/fr-ca.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/fr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/gl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/gu.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/he.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/hi.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/hr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/hu.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/id.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/it.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/ja.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/km.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/ko.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/ku.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/lt.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/lv.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/mk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/mn.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/nb.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/nl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/no.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/oc.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/pl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/pt-br.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/pt.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/ro.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/ru.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/si.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/sk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/sl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/sq.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/sr-latn.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/sr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/sv.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/th.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/tr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/tt.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/ug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/uk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/vi.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/zh-cn.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/a11yhelp/dialogs/lang/zh.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/about/dialogs/about.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/about/dialogs/hidpi/logo_ckeditor.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/about/dialogs/logo_ckeditor.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/clipboard/dialogs/paste.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/dialogs/codesnippet.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/CHANGES.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/README.ru.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/arta.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/ascetic.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-dune.dark.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-dune.light.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-forest.dark.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-forest.light.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-heath.dark.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-heath.light.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-lakeside.dark.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-lakeside.light.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-seaside.dark.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-seaside.light.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/brown_paper.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/brown_papersq.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/dark.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/default.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/docco.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/far.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/foundation.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/github.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/googlecode.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/idea.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/ir_black.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/magula.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/mono-blue.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/monokai.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/monokai_sublime.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/obsidian.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/paraiso.dark.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/paraiso.light.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/pojoaque.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/pojoaque.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/railscasts.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/rainbow.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/school_book.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/school_book.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/solarized_dark.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/solarized_light.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/sunburst.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/tomorrow-night-blue.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/tomorrow-night-bright.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/tomorrow-night-eighties.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/tomorrow-night.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/tomorrow.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/vs.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/xcode.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/codesnippet/lib/highlight/styles/zenburn.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/dialog/dialogDefinition.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/embedbase/dialogs/embedbase.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/icons.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/icons_hidpi.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/image/dialogs/image.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/image/images/noimage.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/image2/dialogs/image2.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageresize/LICENSE.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/imageresize/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/link/dialogs/anchor.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/link/dialogs/link.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/link/images/anchor.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/link/images/hidpi/anchor.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/magicline/images/hidpi/icon-rtl.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/magicline/images/hidpi/icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/magicline/images/icon-rtl.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/magicline/images/icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/markdown/css/codemirror.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/markdown/icons/hidpi/markdown.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/markdown/icons/markdown.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/markdown/js/codemirror-gfm-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/markdown/js/marked.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/markdown/js/to-markdown.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/markdown/plugin.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/pastefromword/filter/default.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/scayt/CHANGELOG.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/scayt/LICENSE.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/scayt/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/scayt/dialogs/options.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/scayt/dialogs/toolbar.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/scayt/skins/moono-lisa/scayt.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/_translationstatus.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/af.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/ar.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/az.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/bg.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/ca.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/cs.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/cy.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/da.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/de-ch.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/de.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/el.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/en-gb.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/en.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/eo.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/es.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/et.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/eu.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/fa.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/fi.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/fr-ca.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/fr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/gl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/he.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/hr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/hu.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/id.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/it.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/ja.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/km.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/ko.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/ku.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/lt.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/lv.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/nb.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/nl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/no.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/oc.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/pl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/pt-br.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/pt.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/ru.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/si.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/sk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/sl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/sq.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/sv.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/th.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/tr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/tt.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/ug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/uk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/vi.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/zh-cn.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/lang/zh.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/specialchar/dialogs/specialchar.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/table/dialogs/table.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/tabletools/dialogs/tableCell.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/widget/images/handle.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/css/wordcount.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/ar.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/ca.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/da.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/de.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/el.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/en.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/es.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/eu.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/fa.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/fi.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/fr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/he.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/hr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/hu.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/it.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/ja.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/nl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/no.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/pl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/pt-br.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/pt.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/ru.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/sk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/sv.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/tr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/lang/zh-cn.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/plugin.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/samples/wordcount.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wordcount/samples/wordcountWithMaxCount.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wsc/LICENSE.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wsc/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wsc/dialogs/ciframe.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wsc/dialogs/tmpFrameset.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wsc/dialogs/wsc.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wsc/dialogs/wsc.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wsc/dialogs/wsc_ie.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/plugins/wsc/skins/moono-lisa/wsc.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/css/samples.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/img/github-top.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/img/header-bg.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/img/header-separator.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/img/logo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/img/navigation-tip.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/js/sample.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/js/sf.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/ajax.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/api.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/appendto.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/assets/inlineall/logo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/assets/outputxhtml/outputxhtml.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/assets/posteddata.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/assets/sample.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/assets/uilanguages/languages.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/codesnippet/codesnippet.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/datafiltering.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/dialog/assets/my_dialog.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/dialog/dialog.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/divreplace.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/enterkey/enterkey.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/htmlwriter/assets/outputforflash/outputforflash.fla" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/htmlwriter/assets/outputforflash/outputforflash.swf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/htmlwriter/assets/outputforflash/swfobject.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/htmlwriter/outputforflash.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/htmlwriter/outputhtml.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/image2/assets/image1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/image2/assets/image2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/image2/image2.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/inlineall.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/inlinebycode.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/inlinetextarea.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/jquery.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/magicline/magicline.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/readonly.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/replacebyclass.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/replacebycode.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/sample.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/sample.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/sample_posteddata.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/tabindex.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/tableresize/tableresize.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/toolbar/toolbar.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/uicolor.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/uilanguages.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/wysiwygarea/fullpage.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/old/xhtmlstyle.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/css/fontello.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/font/LICENSE.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/font/config.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/font/fontello.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/font/fontello.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/font/fontello.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/font/fontello.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/js/abstracttoolbarmodifier.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/js/fulltoolbareditor.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/js/toolbarmodifier.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/js/toolbartextmodifier.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/lib/codemirror/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/lib/codemirror/codemirror.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/lib/codemirror/codemirror.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/lib/codemirror/javascript.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/lib/codemirror/show-hint.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/samples/toolbarconfigurator/lib/codemirror/show-hint.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/dialog.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/dialog_ie.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/dialog_ie8.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/dialog_iequirks.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/editor.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/editor_gecko.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/editor_ie.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/editor_ie8.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/editor_iequirks.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/icons.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/icons_hidpi.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/images/arrow.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/images/close.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/images/hidpi/close.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/images/hidpi/lock-open.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/images/hidpi/lock.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/images/hidpi/refresh.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/images/lock-open.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/images/lock.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/images/refresh.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/images/spinner.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/skins/moono-lisa/readme.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/ckeditor/styles.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/images/post_default.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/wximg/wx_300_1.99.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/zfbimg/zfb_300_1.99.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/MAIN_j9reebq54gm5cxtt.seg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/MAIN_ohedjjan708n3ex1.seg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/MAIN_ra1xvebtgztbxeg7.seg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/_MAIN_1865.toc" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models.py" afterPath="$PROJECT_DIR$/app/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/public/forms.py" afterPath="$PROJECT_DIR$/app/public/forms.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/public/views.py" afterPath="$PROJECT_DIR$/app/public/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/auth/base.html" afterPath="$PROJECT_DIR$/app/templates/auth/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/cates/base.html" afterPath="$PROJECT_DIR$/app/templates/cates/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/base_other.html" afterPath="$PROJECT_DIR$/app/templates/profile/base_other.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/public/base.html" afterPath="$PROJECT_DIR$/app/templates/public/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/public/edit_post.html" afterPath="$PROJECT_DIR$/app/templates/public/edit_post.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,7 +378,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/myblog$run.coverage" NAME="run Coverage Results" MODIFIED="1495983844795" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/myblog$run.coverage" NAME="run Coverage Results" MODIFIED="1496078028203" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -30,107 +395,101 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models.py">
+      <file leaf-file-name="get_cates.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/cates/get_cates.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-362">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/auth/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="56" column="119" lean-forward="false" selection-start-line="56" selection-start-column="119" selection-end-line="56" selection-end-column="119" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="email_active.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/auth/email_active.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="50" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="53" />
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin_index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/admin/admin_index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3588">
-              <caret line="418" column="20" lean-forward="false" selection-start-line="418" selection-start-column="20" selection-end-line="418" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="run.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/run.py">
+      <file leaf-file-name="email_register.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/auth/email_register.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/admin/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="339" column="9" lean-forward="false" selection-start-line="339" selection-start-column="9" selection-end-line="339" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manage.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/manage.py">
+      <file leaf-file-name="email_reset.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/auth/email_reset.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="16" column="16" lean-forward="true" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fabfile.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../fabfile.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="590">
-              <caret line="108" column="13" lean-forward="false" selection-start-line="108" selection-start-column="13" selection-end-line="108" selection-end-column="13" />
-              <folding>
-                <element signature="e#42#55#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="celery_tasks.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/tasks/celery_tasks.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2547">
+            <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/__init__.py">
+      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/auth/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-690">
+            <state relative-caret-position="-1328">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="users_manage.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="register.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/auth/register.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2064">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="auth_email.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/auth/auth_email.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-684">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="users_manage.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/templates/admin/users_manage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
+            <state relative-caret-position="-2294">
               <caret line="81" column="18" lean-forward="false" selection-start-line="81" selection-start-column="18" selection-end-line="83" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/admin/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2139">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -152,6 +511,21 @@
       <find>massage</find>
       <find>code</find>
       <find>posts</find>
+      <find>img</find>
+      <find>src</find>
+      <find>alt</find>
+      <find>minWidth</find>
+      <find>this.imageElement.setAttribute</find>
+      <find>media_url_resolver</find>
+      <find>media</find>
+      <find>video</find>
+      <find>url</find>
+      <find>image</find>
+      <find>width</find>
+      <find>gen_rnd_filename</find>
+      <find>Please select an image to upload.</find>
+      <find>token</find>
+      <find>insert</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -160,22 +534,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/api_0_1/users.py" />
-        <option value="$PROJECT_DIR$/app/api_0_1/posts.py" />
-        <option value="$PROJECT_DIR$/app/api_0_1/comments.py" />
-        <option value="$PROJECT_DIR$/app/decorators.py" />
-        <option value="$PROJECT_DIR$/app/tasks/celery_tasks.py" />
-        <option value="$USER_HOME$/t_log.py" />
-        <option value="$PROJECT_DIR$/app/static/javascripts/monitor.js" />
-        <option value="$PROJECT_DIR$/app/__init__.py" />
-        <option value="$PROJECT_DIR$/run.py" />
-        <option value="$USER_HOME$/log.py" />
         <option value="$PROJECT_DIR$/app/templates/admin/base.html" />
         <option value="$PROJECT_DIR$/app/static/json/chinese.json" />
         <option value="$PROJECT_DIR$/app/templates/includes/_modl.html" />
         <option value="$PROJECT_DIR$/app/templates/includes/_modal.html" />
         <option value="$PROJECT_DIR$/app/templates/profile/base.html" />
-        <option value="$PROJECT_DIR$/app/templates/profile/base_other.html" />
         <option value="$PROJECT_DIR$/app/static/javascripts/users.js" />
         <option value="$PROJECT_DIR$/app/templates/admin/comments_manage.html" />
         <option value="$PROJECT_DIR$/app/templates/profile/collects_manage.html" />
@@ -194,23 +557,34 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/app/templates/public/details.html" />
         <option value="$PROJECT_DIR$/app/templates/auth/login.html" />
-        <option value="$PROJECT_DIR$/app/templates/public/base.html" />
         <option value="$PROJECT_DIR$/app/templates/includes/_navbar.html" />
         <option value="$PROJECT_DIR$/app/templates/profile/blogs_manage.html" />
         <option value="$PROJECT_DIR$/app/profile/views.py" />
         <option value="$PROJECT_DIR$/app/templates/admin/blogs_manage.html" />
         <option value="$PROJECT_DIR$/app/cates/views.py" />
-        <option value="$PROJECT_DIR$/app/static/ckeditor/config.js" />
         <option value="$PROJECT_DIR$/app/templates/admin/admin_index.html" />
-        <option value="$PROJECT_DIR$/app/templates/public/edit_post.html" />
-        <option value="$PROJECT_DIR$/app/public/forms.py" />
-        <option value="$PROJECT_DIR$/app/public/views.py" />
-        <option value="$PROJECT_DIR$/app/models.py" />
         <option value="$PROJECT_DIR$/app/auth/views.py" />
         <option value="$PROJECT_DIR$/../fabfile.py" />
         <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/app/templates/admin/users_manage.html" />
         <option value="$PROJECT_DIR$/app/admin/views.py" />
+        <option value="$PROJECT_DIR$/app/static/ckeditor/config.js" />
+        <option value="$PROJECT_DIR$/app/templates/includes/_posts_summary.html" />
+        <option value="$PROJECT_DIR$/app/static/stylesheets/main.css" />
+        <option value="$PROJECT_DIR$/app/static/tinymce/langs/zh_CN.js" />
+        <option value="$PROJECT_DIR$/app/static/tinymce/plugins/imageupload/plugin.min.js" />
+        <option value="$PROJECT_DIR$/app/static/tinymce/plugins/media/plugin.min.js" />
+        <option value="$PROJECT_DIR$/app/static/tinymce/plugins/codesample/css/prism.css" />
+        <option value="$PROJECT_DIR$/app/static/javascripts/tinymce_setup.js" />
+        <option value="$PROJECT_DIR$/app/static/tinymce/plugins/codesample/plugin.min.js" />
+        <option value="$PROJECT_DIR$/app/public/views.py" />
+        <option value="$PROJECT_DIR$/app/models.py" />
+        <option value="$PROJECT_DIR$/app/public/forms.py" />
+        <option value="$PROJECT_DIR$/app/templates/public/edit_post.html" />
+        <option value="$PROJECT_DIR$/app/templates/public/base.html" />
+        <option value="$PROJECT_DIR$/app/templates/profile/base_other.html" />
+        <option value="$PROJECT_DIR$/app/templates/cates/base.html" />
+        <option value="$PROJECT_DIR$/app/templates/auth/base.html" />
       </list>
     </option>
   </component>
@@ -243,7 +617,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -266,20 +640,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="screenshot" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myblog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myblog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -299,186 +659,12 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myblog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myblog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="profile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myblog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myblog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myblog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myblog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myblog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myblog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tasks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myblog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myblog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myblog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myblog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="profile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myblog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myblog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myblog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myblog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="auth" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myblog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myblog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -488,18 +674,19 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../test" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\MyProject\myblog\app\static\javascripts" />
+      <recent name="E:\MyProject\myblog\app\static" />
+      <recent name="E:\MyProject\myblog\app\static\ckeditor\plugins\image\dialogs" />
+      <recent name="E:\MyProject\myblog\app\static\avatar" />
+      <recent name="E:\MyProject\myblog\app\static\stylesheets" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\MyProject\myblog\app\static\tinymce\js\tinymce\plugins\codesample" />
       <recent name="E:\MyProject\myblog\app\static\wximg" />
       <recent name="E:\MyProject\myblog\app\static\zfbimg" />
       <recent name="E:\MyProject\myblog\app\templates\profile" />
       <recent name="E:\MyProject\myblog\app\templates\admin" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\MyProject\myblog\app\static\avatar" />
-      <recent name="E:\MyProject\myblog\app\static\stylesheets" />
-      <recent name="E:\MyProject\myblog\app\static\javascripts" />
-      <recent name="E:\MyProject\myblog\screenshot" />
-      <recent name="E:\MyProject\myblog\app\static\upload\reward_img" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -716,26 +903,25 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1370" height="744" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25648856" sideWeight="0.48688525" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.4969743" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5030257" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35573772" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3065574" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16393442" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24427481" sideWeight="0.48688525" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16721311" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22671756" sideWeight="0.51311475" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -747,9 +933,9 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17868853" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11311475" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16721311" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25267175" sideWeight="0.48688525" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24427481" sideWeight="0.48688525" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -773,346 +959,39 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/static/javascripts/users.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="11" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="11" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/admin/comments_manage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="31" lean-forward="false" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/profile/todos_manage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="33" lean-forward="false" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/profile/messages_manage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-966">
-          <caret line="0" column="33" lean-forward="false" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/profile/user_reward_manage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-583">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/profile/user_index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3611">
-          <caret line="157" column="10" lean-forward="false" selection-start-line="157" selection-start-column="10" selection-end-line="157" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/javascripts/admin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="78" column="23" lean-forward="true" selection-start-line="78" selection-start-column="23" selection-end-line="78" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/admin/messages_manage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="30" column="43" lean-forward="true" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/profile/followers_manage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/profile/comments_manage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/profile/collects_manage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/screenshot/管理员首页.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/auth/auth_email.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/auth/email_active.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="58" lean-forward="false" selection-start-line="2" selection-start-column="58" selection-end-line="2" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/auth/email_register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="58" lean-forward="false" selection-start-line="3" selection-start-column="58" selection-end-line="3" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/auth/email_reset.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/includes/_comments_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="276">
-            <caret line="15" column="15" lean-forward="false" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/token.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="15" column="35" lean-forward="false" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/auth/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="17" column="38" lean-forward="true" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/auth/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="48" column="72" lean-forward="true" selection-start-line="48" selection-start-column="72" selection-end-line="48" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files/Anaconda3/Lib/site-packages/wtforms/fields/core.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5934">
-          <caret line="703" column="20" lean-forward="true" selection-start-line="703" selection-start-column="20" selection-end-line="703" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/profile/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/avatar/favicon.ico">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/public/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1119">
-          <caret line="65" column="126" lean-forward="false" selection-start-line="65" selection-start-column="126" selection-end-line="65" selection-end-column="126" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/includes/_navbar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="11" column="78" lean-forward="false" selection-start-line="11" selection-start-column="78" selection-end-line="11" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/admin/blogs_manage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-115">
-          <caret line="109" column="80" lean-forward="false" selection-start-line="109" selection-start-column="80" selection-end-line="109" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/profile/blogs_manage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="61" column="77" lean-forward="false" selection-start-line="61" selection-start-column="24" selection-end-line="61" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/ckeditor/plugins/embedbase/dialogs/embedbase.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/ckeditor/plugins/link/images/anchor.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/ckeditor/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="41" column="24" lean-forward="false" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/includes/_tags.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/includes/_post_cate.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/profile/others.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="13" column="10" lean-forward="true" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/public/details.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="11" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="10" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/public/edit_post.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="15" column="28" lean-forward="false" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/profile/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5857">
-          <caret line="49" column="13" lean-forward="false" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/public/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="12" column="83" lean-forward="false" selection-start-line="12" selection-start-column="83" selection-end-line="12" selection-end-column="83" />
-          <folding>
-            <element signature="e#42#73#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/public/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="219" column="55" lean-forward="false" selection-start-line="219" selection-start-column="55" selection-end-line="219" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/cates/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="19" column="24" lean-forward="false" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/auth/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="183">
           <caret line="102" column="44" lean-forward="false" selection-start-line="102" selection-start-column="44" selection-end-line="102" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../fabfile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="590">
+        <state relative-caret-position="2438">
           <caret line="108" column="13" lean-forward="false" selection-start-line="108" selection-start-column="13" selection-end-line="108" selection-end-column="13" />
-          <folding>
-            <element signature="e#42#55#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/tasks/celery_tasks.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2547">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-690">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models.py">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="50" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="53" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/admin/admin_index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3588">
+        <state relative-caret-position="9614">
           <caret line="418" column="20" lean-forward="false" selection-start-line="418" selection-start-column="20" selection-end-line="418" selection-end-column="20" />
           <folding />
         </state>
@@ -1123,33 +1002,393 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/ckeditor/plugins/image/dialogs/image.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/ckeditor/plugins/image2/dialogs/image2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="170" lean-forward="false" selection-start-line="9" selection-start-column="162" selection-end-line="9" selection-end-column="170" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/ckeditor/plugins/image/dialogs/image.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-183">
+          <caret line="13" column="441" lean-forward="false" selection-start-line="13" selection-start-column="411" selection-end-line="13" selection-end-column="441" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/includes/_posts_summary.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="60" column="6" lean-forward="false" selection-start-line="60" selection-start-column="6" selection-end-line="60" selection-end-column="6" />
+          <folding>
+            <element signature="e#209#215#0#HTML" expanded="false" />
+            <element signature="e#215#221#0#HTML" expanded="false" />
+            <element signature="n#style#0;n#img#0;n#a#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
+            <element signature="e#1623#1629#1#HTML" expanded="false" />
+            <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="e#1883#1889#0#HTML" expanded="false" />
+            <element signature="e#1945#1951#1#HTML" expanded="false" />
+            <element signature="e#2145#2151#0#HTML" expanded="false" />
+            <element signature="e#2207#2213#1#HTML" expanded="false" />
+            <element signature="e#2312#2318#0#HTML" expanded="false" />
+            <element signature="e#2354#2360#1#HTML" expanded="false" />
+            <element signature="e#2444#2450#0#HTML" expanded="false" />
+            <element signature="e#2491#2497#1#HTML" expanded="false" />
+            <element signature="e#2628#2634#1#HTML" expanded="false" />
+            <element signature="e#2833#2839#1#HTML" expanded="false" />
+            <element signature="e#3019#3025#0#HTML" expanded="false" />
+            <element signature="e#3025#3031#0#HTML" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/stylesheets/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="75" column="19" lean-forward="false" selection-start-line="75" selection-start-column="19" selection-end-line="75" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="16" column="16" lean-forward="true" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+        <state relative-caret-position="368">
+          <caret line="16" column="16" lean-forward="false" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
           <folding>
-            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#0#32#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/admin/users_manage.html">
+    <entry file="file://$PROJECT_DIR$/app/static/tinymce/js/tinymce/plugins/codesample/css/prism.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="81" column="18" lean-forward="false" selection-start-line="81" selection-start-column="18" selection-end-line="83" selection-end-column="23" />
+        <state relative-caret-position="-2360">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/tinymce/plugins/nonbreaking/plugin.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="70" lean-forward="false" selection-start-line="0" selection-start-column="70" selection-end-line="0" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/tinymce/tinymce.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-30">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/ckeditor/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="38" column="64" lean-forward="true" selection-start-line="38" selection-start-column="64" selection-end-line="38" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/tinymce/plugins/imageupload/jquery.iframe-post-form.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1845">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/tinymce/plugins/imageupload/uncompressed/plugin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="48" column="23" lean-forward="true" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/admin/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
+        <state relative-caret-position="23">
           <caret line="339" column="9" lean-forward="false" selection-start-line="339" selection-start-column="9" selection-end-line="339" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/tinymce/langs/zh_CN.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="215" column="47" lean-forward="false" selection-start-line="215" selection-start-column="47" selection-end-line="215" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/tinymce/plugins/imageupload/plugin.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="53" column="70" lean-forward="false" selection-start-line="53" selection-start-column="70" selection-end-line="53" selection-end-column="70" />
+          <folding>
+            <marker date="1496059314026" expanded="true" signature="1896:1909" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/tinymce/plugins/media/plugin.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="0" column="8247" lean-forward="true" selection-start-line="0" selection-start-column="8247" selection-end-line="0" selection-end-column="8250" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/public/wximg_upload.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/tinymce/plugins/codesample/css/prism.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/javascripts/tinymce_setup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="29" column="32" lean-forward="false" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/tinymce/plugins/codesample/plugin.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="0" column="17777" lean-forward="false" selection-start-line="0" selection-start-column="17777" selection-end-line="0" selection-end-column="17783" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-414">
+          <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Anaconda3/Lib/site-packages/qiniu/services/storage/uploader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1955">
+          <caret line="11" column="4" lean-forward="false" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/public/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3645">
+          <caret line="59" column="51" lean-forward="false" selection-start-line="59" selection-start-column="51" selection-end-line="59" selection-end-column="51" />
+          <folding>
+            <element signature="e#42#174#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="205" column="71" lean-forward="false" selection-start-line="205" selection-start-column="71" selection-end-line="205" selection-end-column="71" />
+          <folding>
+            <element signature="e#0#73#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/public/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="51" lean-forward="false" selection-start-line="5" selection-start-column="51" selection-end-line="5" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/public/edit_post.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="22" lean-forward="true" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/public/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="61" column="119" lean-forward="false" selection-start-line="61" selection-start-column="119" selection-end-line="61" selection-end-column="119" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/profile/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="28" column="55" lean-forward="false" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/profile/base_other.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="46" column="17" lean-forward="false" selection-start-line="46" selection-start-column="17" selection-end-line="46" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/includes/_navbar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-431">
+          <caret line="10" column="60" lean-forward="true" selection-start-line="10" selection-start-column="60" selection-end-line="10" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/includes/_modal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/includes/_field.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/includes/_comments_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/cates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="27" column="27" lean-forward="false" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/cates/get_cates.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-362">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/auth/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="56" column="119" lean-forward="false" selection-start-line="56" selection-start-column="119" selection-end-line="56" selection-end-column="119" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/auth/email_active.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/auth/email_register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/auth/email_reset.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/auth/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1328">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/auth/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2064">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/auth/auth_email.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-684">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/admin/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2139">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/admin/users_manage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2294">
+          <caret line="81" column="18" lean-forward="false" selection-start-line="81" selection-start-column="18" selection-end-line="83" selection-end-column="23" />
           <folding />
         </state>
       </provider>

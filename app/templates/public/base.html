@@ -21,11 +21,11 @@
 
 {% block styles %}
     {{ super() }}
-    <link rel="stylesheet" type="text/css"
-          href="{{ url_for('static', filename = 'ckeditor/plugins/codesnippet/lib/highlight/styles/rainbow.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'stylesheets/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css"
           href="{{ url_for('static', filename = 'font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css"
+          href="{{ url_for('static', filename='tinymce/plugins/codesample/css/prism.css') }}">
      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'stylesheets/main.css') }}">
 {% endblock %}
 
@@ -60,11 +60,7 @@
 {% block scripts %}
     {{ super() }}
     <script src="{{ url_for('static', filename ='javascripts/jquery-2.2.1.min.js') }}" type="text/javascript"></script>
-    <script src="{{ url_for('static', filename ='javascripts/jquery-ui.min.js') }}" type="text/javascript"></script>
-    <script src="{{ url_for('static', filename ='javascripts/modernizr.min.js') }}" type="text/javascript"></script>
-    <script src="{{ url_for('static', filename ='ckeditor/ckeditor.js') }}" type="text/javascript"></script>
-    <script src="{{ url_for('static', filename = 'ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js') }}"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="{{ url_for('static', filename ='tinymce/plugins/codesample/prism.js') }}" type="text/javascript"></script>
 
 {% endblock %}
 

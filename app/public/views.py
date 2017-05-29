@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 
 from flask import render_template, make_response, flash, redirect, \
-    url_for, request, send_from_directory, g, current_app,json
+    url_for, request, send_from_directory, g, current_app, json
 from flask_login import current_user, login_required
 from werkzeug.utils import secure_filename
 import flask_whooshalchemyplus as whoosh
@@ -18,6 +18,8 @@ from .forms import PostForm, CommentForm, SearchForm
 import os
 from werkzeug.contrib.atom import AtomFeed
 from urllib.parse import urljoin
+from qiniu import Auth, put_file, put_data
+
 
 # 搜索
 @public.before_app_request
@@ -34,6 +36,28 @@ def wdcount(stri):
 
 
 public.add_app_template_filter(wdcount, name='wdcount')
+
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1] in current_app.config['ALLOWED_EXTENSIONS']
+
+
+class UploadToQiniu():
+    def __init__(self, domian_name, file, expire=3600):
+        self.access_key = 'iDfXDpVa4pxFW4tyqkJK8dPkeSeRPlEsGZN7qnST'
+        self.secret_key = 'iT3Z4r_z23zauKlyAsTCj51t6WOtJWbADhPKn2O6'
+        self.bucket_name = 'myblog'
+        self.domian_name = domian_name
+        self.file = file
+        self.expire = expire
+
+    def upload(self):
+        user = current_user
+        k = str(int(time.time())) + '_' + str(user.id) + '_' + self.file.filename
+        q = Auth(self.access_key, self.secret_key)
+        token = q.upload_token(self.bucket_name, k, self.expire)
+        return put_data(token, k, self.file.read())
 
 
 @cache.cached(timeout=30, key_prefix='view_%s', unless=None)
@@ -65,23 +89,18 @@ def index():
     return response
 
 
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1] in current_app.config['ALLOWED_EXTENSIONS']
-
-
-# 文件上传
+# 上传图像
 @public.route('/upload/', methods=['POST', 'GET'])
 @login_required
 def upload():
     if request.method == 'POST':
         file = request.files['file']
         if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            basepath = current_app.config['BASE_PATH']
-            uploadpath = path.join(basepath, current_app.config['UPLOAD_FOLDER'])
-            file.save(uploadpath + '_' + str(current_user.id) + '_' + filename)
-            current_user.avatar = r'/static/avatar/avatar' + '_' + str(current_user.id) + '_' + filename
+            domian_name = 'http://oooy4cly3.bkt.clouddn.com'
+            u = UploadToQiniu(domian_name, file)
+            ret, info = u.upload()
+            key = ret['key']
+            current_user.avatar = domian_name + '/' + key
             flash('图像修改成功!')
             return redirect(url_for('public.upload'))
         flash('您上传的文件不合法!')
@@ -93,18 +112,17 @@ def upload():
 def upload_zfb_img():
     if request.method == 'POST':
         file = request.files['file']
-        form = request.form
         if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            basepath = current_app.config['BASE_PATH']
-            uploadpath = path.join(basepath, current_app.config['ZFB_FOLDER'])
-            file.save(uploadpath + '_' + str(current_user.id) + '_' + filename)
-            current_user.zfb_img = r'/static/zfbimg/zfbimg' + '_' + str(current_user.id) + '_' + filename
+            form = request.form
+            domian_name = 'http://oooy4cly3.bkt.clouddn.com'
+            u = UploadToQiniu(domian_name, file)
+            ret, info = u.upload()
+            key = ret['key']
+            current_user.zfb_img = domian_name + '/' + key
             current_user.zfb_num = form['num']
-            flash('修改成功!')
-            return redirect(url_for('profile.user_reward_manage'))
+            flash('支付宝二维码上传成功!')
+            return redirect(url_for('public.upload_zfb_img'))
         flash('您上传的文件不合法!')
-        return redirect(url_for('public.upload_zfb_img'))
     return render_template('public/zfbimg_upload.html', title='上传支付宝二维码')
 
 
@@ -113,66 +131,35 @@ def upload_zfb_img():
 def upload_wx_img():
     if request.method == 'POST':
         file = request.files['file']
-        form = request.form
         if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            basepath = current_app.config['BASE_PATH']
-            uploadpath = path.join(basepath, current_app.config['WX_FOLDER'])
-            file.save(uploadpath + '_' + str(current_user.id) + '_' + filename)
-            current_user.wx_img = r'/static/wximg/wximg' + '_' + str(current_user.id) + '_' + filename
+            form = request.form
+            domian_name = 'http://oooy4cly3.bkt.clouddn.com'
+            u = UploadToQiniu(domian_name, file)
+            ret, info = u.upload()
+            key = ret['key']
+            current_user.wx_img = domian_name + '/' + key
             current_user.wx_num = form['num']
-            flash('修改成功!')
-            return redirect(url_for('profile.user_reward_manage'))
+            flash('微信二维码上传成功!')
+            return redirect(url_for('public.upload_wx_img'))
         flash('您上传的文件不合法!')
-        return redirect(url_for('public.upload_wx_img'))
     return render_template('public/wximg_upload.html', title='上传微信二维码')
 
 
-@public.route('/uploaded_file/<filename>')
-def uploaded_file(filename):
-    return send_from_directory(current_app.config['UPLOAD_FOLDER'], filename)
-
-
-# 开启ck上传功能
-def gen_rnd_filename():
-    filename_prefix = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
-    return '%s%s' % (filename_prefix, str(random.randrange(1000, 10000)))
-
-
-@public.route('/ckupload/', methods=['POST'])
+# 文章图片上传
+@public.route('/edit/qiniu_upload/', methods=['POST', 'GET'])
 @login_required
-def ckupload():
-    """CKEditor file upload"""
-    from .. import create_app
-    app = create_app('default')
-    error = ''
-    url = ''
-    callback = request.args.get("CKEditorFuncNum")
-    if request.method == 'POST' and 'upload' in request.files:
-        fileobj = request.files['upload']
-        fname, fext = os.path.splitext(fileobj.filename)
-        rnd_name = '%s%s' % (gen_rnd_filename(), fext)
-        filepath = os.path.join(app.static_folder, 'upload', rnd_name)
-        # 检查路径是否存在，不存在则创建
-        dirname = os.path.dirname(filepath)
-        if not os.path.exists(dirname):
-            try:
-                os.makedirs(dirname)
-            except:
-                error = 'ERROR_CREATE_DIR'
-        elif not os.access(dirname, os.W_OK):
-            error = 'ERROR_DIR_NOT_WRITEABLE'
-        if not error:
-            fileobj.save(filepath)
-            url = url_for('static', filename='%s/%s' % ('upload', rnd_name))
-    else:
-        error = 'post error'
-    res = """<script type="text/javascript">
-  window.parent.CKEDITOR.tools.callFunction(%s, '%s', '%s');
-</script>""" % (callback, url, error)
-    response = make_response(res)
-    response.headers["Content-Type"] = "text/html"
-    return response
+def qiniu_upload():
+    if request.method == 'POST':
+        file = request.files['file']
+        if file and allowed_file(file.filename):
+            domian_name = 'http://oooy4cly3.bkt.clouddn.com'
+            u = UploadToQiniu(domian_name, file)
+            ret, info = u.upload()
+            key = ret['key']
+            return '{"error":false,"path":"' + domian_name + '/' + key + '"}'
+        else:
+            flash('您上传的文件不合法')
+            return redirect(url_for('public.edit'))
 
 
 # 发表/修改文章
@@ -182,16 +169,16 @@ def ckupload():
 def edit(id=0):
     form = PostForm()
     s = [('--请选择文章来源--', '--请选择文章来源--')]
-    form.style.choices = s+[(str(a.name1), str(a.name)) for a in Styles.query.all()]
+    form.style.choices = s + [(str(a.name1), str(a.name)) for a in Styles.query.all()]
     c = [('--请选择文章分类--', '--请选择文章分类--')]
-    form.category.choices = c+[(str(a.name1), str(a.name)) for a in Categories.query.all()]
+    form.category.choices = c + [(str(a.name1), str(a.name)) for a in Categories.query.all()]
     if id == 0:
         post = Post(author_id=current_user.id)
     else:
         post = Post.query.get_or_404(id)
     user = User.query.filter_by(id=current_user.id).first()
-    if Post.query.filter(Post.is_public==1).filter_by(author_id=current_user.id):
-        user.post_total = len(Post.query.filter(Post.is_public==1).filter_by(author_id=current_user.id).all())
+    if Post.query.filter(Post.is_public == 1).filter_by(author_id=current_user.id):
+        user.post_total = len(Post.query.filter(Post.is_public == 1).filter_by(author_id=current_user.id).all())
     if user.confirmed == 1:
         if form.validate_on_submit():
             post.body = form.body.data
@@ -215,7 +202,7 @@ def edit(id=0):
                         pass
                     else:
                         post.tags.append(Tag.query.filter_by(name=i.strip()).first())
-            if post.style =='--请选择文章来源--' or post.category == '--请选择文章分类--':
+            if post.style == '--请选择文章来源--' or post.category == '--请选择文章分类--':
                 flash('请选择文章来源和分类')
                 return redirect(url_for('public.edit'))
             db.session.add(post)
@@ -262,7 +249,7 @@ def edit(id=0):
 def details(id):
     post = Post.query.get_or_404(id)
     post.comment_times = len(post.comments)
-    posts_ = Post.query.filter(Post.is_public==1).order_by(Post.comment_times.desc()).limit(5)
+    posts_ = Post.query.filter(Post.is_public == 1).order_by(Post.comment_times.desc()).limit(5)
     hot_authors = User.query.order_by(User.post_total.desc()).limit(5)
     post.read_times += 1
     categories = Categories.query.all()
@@ -305,7 +292,7 @@ def details(id):
                            )
 
 
-@public.route('/get_comments',methods=['POST', 'GET'])
+@public.route('/get_comments', methods=['POST', 'GET'])
 def get_comments():
     if request.method == "POST":
         try:
@@ -313,8 +300,7 @@ def get_comments():
         except:
             pass
         comments = Comment.query.filter_by(post_id=int(post_id)).order_by(Comment.created.desc())
-        return render_template('includes/_comments_list.html',comments=comments)
-
+        return render_template('includes/_comments_list.html', comments=comments)
 
 
 @public.route('/hot_posts')
@@ -342,7 +328,7 @@ def search():
 def search_results(key_word):
     page_index = request.args.get('page', 1, type=int)
 
-    query = Post.query.whoosh_search(key_word, current_app.config['MAX_SEARCH_RESULTS']).filter(Post.is_public==1)
+    query = Post.query.whoosh_search(key_word, current_app.config['MAX_SEARCH_RESULTS']).filter(Post.is_public == 1)
     pagination = query.paginate(page_index, per_page=10, error_out=False)
     results = pagination.items
     total = len(query.all())
@@ -356,30 +342,32 @@ def search_results(key_word):
 
 @public.route('/service')
 def service():
-    posts_ = Post.query.filter(Post.is_public==1).order_by(Post.comment_times.desc()).limit(5)
+    posts_ = Post.query.filter(Post.is_public == 1).order_by(Post.comment_times.desc()).limit(5)
     return render_template('public/service.html', title='服务', posts_=posts_)
 
 
 @public.route('/about')
 def about():
-    posts_ = Post.query.filter(Post.is_public==1).order_by(Post.comment_times.desc()).limit(5)
+    posts_ = Post.query.filter(Post.is_public == 1).order_by(Post.comment_times.desc()).limit(5)
     return render_template('public/about.html', title='关于', posts_=posts_)
+
 
 def make_external(url):
     return urljoin(request.url_root, url)
+
 
 @public.route('/rss')
 def recent_feed():
     feed = AtomFeed('最近文章',
                     feed_url=request.url, url=request.url_root)
-    posts = Post.query.filter(Post.is_public==1).order_by(Post.created.desc()) \
-                      .limit(20).all()
+    posts = Post.query.filter(Post.is_public == 1).order_by(Post.created.desc()) \
+        .limit(20).all()
     for post in posts:
         feed.add(post.title, post.body,
                  content_type='html',
                  author=post.author.username,
                  id=post.id,
                  updated=post.created,
-                 url = make_external(url_for('public.details', id=post.id))
+                 url=make_external(url_for('public.details', id=post.id))
                  )
     return feed.get_response()

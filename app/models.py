@@ -44,7 +44,7 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(128), unique=True, nullable=False, doc='用户名')
     password = db.Column(db.String(200), unique=False, nullable=False, doc='密码')
     email = db.Column(db.String(200), unique=True, nullable=False, doc='邮箱')
-    avatar = db.Column(db.String(200), doc='个人头像地址', default=r'/static/avatar/default_avatar.png')
+    avatar = db.Column(db.String(200), doc='个人头像地址', default=r'http://oooy4cly3.bkt.clouddn.com/default_avatar.jpg')
     status = db.Column(db.Integer, default=1, doc='用户的状态')
     is_valid = db.Column(db.Boolean, default=True)
     confirmed = db.Column(db.Boolean, nullable=False, default=False)
@@ -62,8 +62,8 @@ class User(UserMixin, db.Model):
     comments = db.relationship('Comment', backref='author')
     post_total = db.Column(db.Integer, default=0)
     role = db.Column(db.Integer, default=0)
-    zfb_img = db.Column(db.String(200), doc='支付宝二维码', default=r'/static/zfbimg/zfb_300_1.99.png')
-    wx_img = db.Column(db.String(200), doc='微信二维码', default=r'/static/wximg/wx_300_1.99.png')
+    zfb_img = db.Column(db.String(200), doc='支付宝二维码', default=r'http://oooy4cly3.bkt.clouddn.com/default_zfb_300_1.99.png')
+    wx_img = db.Column(db.String(200), doc='微信二维码', default=r'http://oooy4cly3.bkt.clouddn.com/default_wx_300_1.99.png')
     zfb_num = db.Column(db.String(20), doc='支付宝金额', default='1.99')
     wx_num = db.Column(db.String(20), doc='微信金额', default='1.99')
     collects = db.relationship('Post', secondary=collect, backref=db.backref('collected', lazy='dynamic'),
@@ -201,10 +201,9 @@ class Post(db.Model):
     style = db.Column(db.String(50), default='原创')
     category = db.Column(db.String(50), default='Python')
     is_public = db.Column(db.Boolean, default=True)
-    post_img = db.Column(db.String(500), doc='文章首页地址', default=r'/static/images/post_default.jpg')
+    post_img = db.Column(db.String(500), doc='文章首页地址', default=r'http://oooy4cly3.bkt.clouddn.com/default_post_img.jpg')
     tags = db.relationship('Tag', secondary=tag,
                            backref=db.backref('posts', lazy='dynamic'))
-
     def get_public(self):
         if self.is_public:
             return '公开'

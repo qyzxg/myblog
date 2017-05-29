@@ -27,8 +27,6 @@
     {{ super() }}
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.0/css/font-awesome.min.css" rel="stylesheet"
           type="text/css"/>
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename = 'ckeditor/plugins/codesnippet/lib/highlight/styles/rainbow.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename = 'stylesheets/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename = 'stylesheets/main.css') }}">
 {% endblock %}
@@ -57,10 +55,6 @@
 {% block scripts %}
     {{ super() }}
     <script src="{{ url_for('static', filename ='javascripts/jquery-2.2.1.min.js') }}" type="text/javascript"></script>
-    <script src="{{ url_for('static', filename ='javascripts/jquery-ui.min.js') }}" type="text/javascript"></script>
-    <script src="{{ url_for('static', filename ='javascripts/modernizr.min.js') }}" type="text/javascript"></script>
-    <script src="{{ url_for('static', filename ='ckeditor/ckeditor.js') }}" type="text/javascript"></script>
-    <script src="{{ url_for('static', filename = 'ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js') }}"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 {% endblock %}
 

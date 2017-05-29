@@ -4,11 +4,10 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, TextAreaField, SelectField,BooleanField
 from wtforms.validators import DataRequired, Length
-from flaskckeditor import CKEditor
 from flask_pagedown.fields import PageDownField
 
 
-class PostForm(FlaskForm, CKEditor):
+class PostForm(FlaskForm):
     title = StringField(label="标题", validators=[DataRequired(message='标题字数必须在5与60之间!'),
                                                 Length(min=5, max=60, message='标题字数必须在5与60之间!')],
                         render_kw={"required": "required"})

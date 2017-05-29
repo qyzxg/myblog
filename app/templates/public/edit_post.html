@@ -1,8 +1,6 @@
 {% extends 'public/base.html' %}
 {% block title %}{{ title|safe }}{% endblock %}
 
-
-
 {% block content %}
     <!-- Content -->
     <div id='content'>
@@ -38,10 +36,7 @@
                         </div>
 
 
-                        {{ form.body(class='ckeditor',placeholder='请输入文章内容,必须大于10个字') }}
-                        <script type="text/javascript">
-                            CKEDITOR.replace("body", {});
-                        </script>
+                        {{ form.body(placeholder='请输入文章内容,必须大于10个字') }}
 
                         <br>
                         <div class="col-md-7 ">
@@ -61,6 +56,16 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+
+
+    <script src="{{ url_for('static', filename ='tinymce/tinymce.min.js') }}"
+            type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='tinymce/plugins/codesample/plugin.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='javascripts/tinymce_setup.js') }}"></script>
 {% endblock %}
 
 
