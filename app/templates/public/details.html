@@ -113,7 +113,32 @@
             </a>
         {% endif %}
     </div>
-    <h3>发表评论:</h3>
+
+    {# 上一篇/下一篇#}
+    <div style="margin-top: 30px">
+        <span>
+        <span style="float: left">
+            {% if pre_post %}
+                <a href="{{ url_for('public.details',id=pre_post.id) }}">{{ pre_post.title|default('没有了',true) }}</a>
+            {% else %}
+                没有了
+            {% endif %}
+            <span class="label label-success"><i class="fa fa-arrow-left" aria-hidden="true"></i>上一篇</span>
+        </span>
+        <span style="float: right">
+            <span class="label label-success">下一篇<i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+            {% if next_post %}
+                <a href="{{ url_for('public.details',id=next_post.id) }}">{{ next_post.title|truncate(20,killwords=True) }}</a>
+            {% else %}
+                没有了
+            {% endif %}
+        </span>
+        </span>
+    </div>
+    <br>
+    <div style="margin-top:30px">
+        <h3>发表评论:</h3>
+    </div>
     {# 发表评论 #}
     <div>
         <form action="" method="post" class="form-horizontal" name="send" id="post_comment">
@@ -143,7 +168,7 @@
     <br>
     <h3>评论列表({{ post.comment_times }}):</h3>
     <div id='comments_list'>
-   {% include 'includes/_comments_list.html' %}
+        {% include 'includes/_comments_list.html' %}
     </div>
     {% if pagination %}
         {{ render_pagination(pagination) }}

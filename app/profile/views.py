@@ -13,7 +13,7 @@ from ..admin.views import get_c_month, get_m_days, get_day
 
 
 # 用户资料页
-@profile.route('/user/<username>', methods=['POST', 'GET'])
+@profile.route('/user/<username>/', methods=['POST', 'GET'])
 @login_required
 def user_index(username):
     user = User.query.filter_by(username=username).first()
@@ -39,7 +39,7 @@ def user_index(username):
                            menu=0, x=x, lst=lst, m=m, day=day, days=days)
 
 
-@profile.route('/others/<username>', methods=['POST', 'GET'])
+@profile.route('/others/<username>/', methods=['POST', 'GET'])
 def others(username):
     posts_ = Post.query.filter(Post.is_public==1).order_by(Post.comment_times.desc()).limit(5)
     user = User.query.filter_by(username=username).first()
@@ -55,7 +55,7 @@ def others(username):
                            menu=0)
 
 
-@profile.route('/user/blogs_manage', methods=['POST', 'GET'])
+@profile.route('/user/blogs_manage/', methods=['POST', 'GET'])
 @login_required
 def user_blogs_manage():
     posts = Post.query.filter_by(author_id=current_user.id)
@@ -82,7 +82,7 @@ def user_blog_manage(id):
     flash('文章删除成功!')
     return redirect(url_for('profile.user_blogs_manage'))
 
-@profile.route('/user/public_manage/<int:id>/<int:public>')
+@profile.route('/user/public_manage/<int:id>/<int:public>/')
 @login_required
 def user_public_manage(id,public):
     post = Post.query.filter_by(id=id).first()
@@ -94,7 +94,7 @@ def user_public_manage(id,public):
         post.is_public=0
     return redirect(url_for('profile.user_blogs_manage'))
 
-@profile.route('/user/comments_manage', methods=['POST', 'GET'])
+@profile.route('/user/comments_manage/', methods=['POST', 'GET'])
 @login_required
 def user_comments_manage():
     comments = Comment.query.filter_by(author_id=current_user.id)
@@ -118,7 +118,7 @@ def user_comment_manage(id):
     return redirect(url_for('profile.user_comments_manage'))
 
 
-@profile.route('/user/collects_manage', methods=['POST', 'GET'])
+@profile.route('/user/collects_manage/', methods=['POST', 'GET'])
 @login_required
 def user_collects_manage():
     user = current_user
@@ -129,7 +129,7 @@ def user_collects_manage():
                            menu=2)
 
 
-@profile.route('/user/followers_manage', methods=['POST', 'GET'])
+@profile.route('/user/followers_manage/', methods=['POST', 'GET'])
 @login_required
 def user_followers_manage():
     user = current_user
@@ -140,7 +140,7 @@ def user_followers_manage():
                            menu=5)
 
 
-@profile.route('/user/reward_manage')
+@profile.route('/user/reward_manage/')
 @login_required
 def user_reward_manage():
     user = current_user
@@ -157,7 +157,7 @@ def user_collect_manage(id):
     return redirect(url_for('profile.user_collects_manage'))
 
 
-@profile.route('/user/follow_manage/<username>')
+@profile.route('/user/follow_manage/<username>/')
 @login_required
 def user_follower_manage(username):
     user = User.query.filter_by(username=username).first()
@@ -166,7 +166,7 @@ def user_follower_manage(username):
     return redirect(url_for('profile.user_followers_manage'))
 
 
-@profile.route('/user/todos_manage', methods=['POST', 'GET'])
+@profile.route('/user/todos_manage/', methods=['POST', 'GET'])
 @login_required
 def user_todos_manage():
     todos = Todo.query.filter_by(user_id=current_user.id).order_by(Todo.created.desc())
@@ -174,7 +174,7 @@ def user_todos_manage():
                            title='TODO管理', menu=4)
 
 
-@profile.route('/user/todo_add', methods=['POST', 'GET'])
+@profile.route('/user/todo_add/', methods=['POST', 'GET'])
 @login_required
 def todo_add():
     if request.method == "POST":
@@ -191,7 +191,7 @@ def todo_add():
         return redirect(url_for('profile.user_todos_manage'))
 
 
-@profile.route('/user/todo_add/<int:id>')
+@profile.route('/user/todo_add/<int:id>/')
 @login_required
 def todo_done(id):
     todo = Todo.query.get_or_404(id)
@@ -203,7 +203,7 @@ def todo_done(id):
     return redirect(url_for('profile.user_todos_manage'))
 
 
-@profile.route('/user/todo_undone/<int:id>')
+@profile.route('/user/todo_undone/<int:id>/')
 @login_required
 def todo_undone(id):
     todo = Todo.query.get_or_404(id)
@@ -215,7 +215,7 @@ def todo_undone(id):
     return redirect(url_for('profile.user_todos_manage'))
 
 
-@profile.route('/user/todo_dele/<int:id>')
+@profile.route('/user/todo_dele/<int:id>/')
 @login_required
 def todo_dele(id):
     todo = Todo.query.get_or_404(id)
@@ -227,7 +227,7 @@ def todo_dele(id):
 
 # 收藏
 
-@profile.route('/collect/<int:id>')
+@profile.route('/collect/<int:id>/')
 @login_required
 def collect(id):
     post = Post.query.get_or_404(id)
@@ -246,7 +246,7 @@ def collect(id):
 
 # 取消收藏
 
-@profile.route('/uncollect/<int:id>')
+@profile.route('/uncollect/<int:id>/')
 @login_required
 def uncollect(id):
     post = Post.query.get_or_404(id)
@@ -260,7 +260,7 @@ def uncollect(id):
 
 # 关注
 
-@profile.route('/follow/<username>')
+@profile.route('/follow/<username>/')
 @login_required
 def follow(username):
     user = User.query.filter_by(username=username).first()
@@ -280,7 +280,7 @@ def follow(username):
     return redirect(url_for('profile.others', username=username))
 
 
-@profile.route('/unfollow/<username>')
+@profile.route('/unfollow/<username>/')
 @login_required
 def unfollow(username):
     user = User.query.filter_by(username=username).first()
@@ -324,7 +324,7 @@ def send_message():
     return redirect(url_for('profile.messages_manage'))
 
 
-@profile.route('/delete_message/<int:id>')
+@profile.route('/delete_message/<int:id>/')
 @login_required
 def delete_message(id):
     message = Message.query.filter_by(id=id).first()
@@ -337,7 +337,7 @@ def delete_message(id):
     return redirect(url_for('profile.messages_manage'))
 
 
-@profile.route('/confirm_message/<int:id>')
+@profile.route('/confirm_message/<int:id>/')
 @login_required
 def confirm_message(id):
     message = Message.query.filter_by(id=id).first()
@@ -346,7 +346,7 @@ def confirm_message(id):
     return redirect(url_for('profile.messages_manage'))
 
 
-@profile.route('/messages_manage')
+@profile.route('/messages_manage/')
 @login_required
 def messages_manage():
     user = current_user

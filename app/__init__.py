@@ -1,3 +1,8 @@
+import warnings
+from flask.exthook import ExtDeprecationWarning
+
+warnings.simplefilter('ignore', ExtDeprecationWarning)
+
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
@@ -51,7 +56,7 @@ def create_app(config_name='default'):
         file_handler.setLevel(logging.INFO)
         app.logger.addHandler(file_handler)
         app.logger.info(u'程序启动:')
-        # app.logger.debug(u'调试信息:')
+        app.logger.debug(u'调试信息:')
         # app.logger.warning(u'警告信息:')
         # app.logger.error(u'错误信息:')
         # app.logger.critical(u'严重错误:')

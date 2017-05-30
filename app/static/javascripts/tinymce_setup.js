@@ -21,7 +21,7 @@ tinymce.init({
      codesample fontsizeselect fullscreen',
 
 
-    imageupload_url: '/edit/qiniu_upload/',
+    imageupload_url: '/edit/upload_postimg/',
     imagetools_cors_hosts: ['51datas.com', 'oooy4cly3.bkt.clouddn.com'],
     fontsize_formats: '10pt 12pt 14pt 18pt 24pt 36pt',
     nonbreaking_force_tab: true,

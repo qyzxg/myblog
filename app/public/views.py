@@ -44,17 +44,19 @@ def allowed_file(filename):
 
 
 class UploadToQiniu():
-    def __init__(self, domian_name, file, expire=3600):
+    def __init__(self, domian_name, bucket_name, file, expire=3600):
         self.access_key = 'iDfXDpVa4pxFW4tyqkJK8dPkeSeRPlEsGZN7qnST'
         self.secret_key = 'iT3Z4r_z23zauKlyAsTCj51t6WOtJWbADhPKn2O6'
-        self.bucket_name = 'myblog'
+        self.bucket_name = bucket_name
         self.domian_name = domian_name
         self.file = file
         self.expire = expire
 
     def upload(self):
         user = current_user
-        k = str(int(time.time())) + '_' + str(user.id) + '_' + self.file.filename
+        ext = self.file.filename.split('.')[-1]
+        time_ = str(time.time()).replace('.', '')
+        k = time_ + '_' + str(user.id) + '.' + ext
         q = Auth(self.access_key, self.secret_key)
         token = q.upload_token(self.bucket_name, k, self.expire)
         return put_data(token, k, self.file.read())
@@ -76,7 +78,7 @@ def index():
     categories = Categories.query.all()
     tags = Tag.query.all()
     response = make_response(render_template('public/index.html',
-                                             title='myblog',
+                                             title='PyData',
                                              posts_=posts_,
                                              posts=posts,
                                              pagination=pagination,
@@ -90,70 +92,74 @@ def index():
 
 
 # 上传图像
-@public.route('/upload/', methods=['POST', 'GET'])
+@public.route('/upload_avatar/', methods=['POST', 'GET'])
 @login_required
-def upload():
+def upload_avatar():
     if request.method == 'POST':
         file = request.files['file']
         if file and allowed_file(file.filename):
-            domian_name = 'http://oooy4cly3.bkt.clouddn.com'
-            u = UploadToQiniu(domian_name, file)
+            domian_name = 'http://oqqu0qp5g.bkt.clouddn.com'
+            bucket_name = 'avatar'
+            u = UploadToQiniu(domian_name, bucket_name, file)
             ret, info = u.upload()
             key = ret['key']
             current_user.avatar = domian_name + '/' + key
             flash('图像修改成功!')
-            return redirect(url_for('public.upload'))
+            return redirect(url_for('public.upload_avatar'))
         flash('您上传的文件不合法!')
-    return render_template('public/upload.html', title='上传图像')
+    return render_template('public/upload_avatar.html', title='上传图像')
 
 
-@public.route('/upload/zfb_img', methods=['POST', 'GET'])
+@public.route('/upload_zfbimg/', methods=['POST', 'GET'])
 @login_required
-def upload_zfb_img():
+def upload_zfbimg():
     if request.method == 'POST':
         file = request.files['file']
         if file and allowed_file(file.filename):
             form = request.form
-            domian_name = 'http://oooy4cly3.bkt.clouddn.com'
-            u = UploadToQiniu(domian_name, file)
+            domian_name = 'http://oqquasfn4.bkt.clouddn.com'
+            bucket_name = 'zfbimg'
+            u = UploadToQiniu(domian_name, bucket_name, file)
             ret, info = u.upload()
             key = ret['key']
             current_user.zfb_img = domian_name + '/' + key
             current_user.zfb_num = form['num']
             flash('支付宝二维码上传成功!')
-            return redirect(url_for('public.upload_zfb_img'))
+            return redirect(url_for('public.upload_zfbimg'))
         flash('您上传的文件不合法!')
-    return render_template('public/zfbimg_upload.html', title='上传支付宝二维码')
+    return render_template('public/upload_zfbimg.html', title='上传支付宝二维码')
 
 
-@public.route('/upload/wx_img', methods=['POST', 'GET'])
+@public.route('/upload_wximg/', methods=['POST', 'GET'])
 @login_required
-def upload_wx_img():
+def upload_wximg():
     if request.method == 'POST':
         file = request.files['file']
         if file and allowed_file(file.filename):
             form = request.form
-            domian_name = 'http://oooy4cly3.bkt.clouddn.com'
-            u = UploadToQiniu(domian_name, file)
+            domian_name = 'http://oqqur6lkr.bkt.clouddn.com'
+            bucket_name = 'wximg'
+            u = UploadToQiniu(domian_name, bucket_name, file)
             ret, info = u.upload()
             key = ret['key']
             current_user.wx_img = domian_name + '/' + key
             current_user.wx_num = form['num']
             flash('微信二维码上传成功!')
-            return redirect(url_for('public.upload_wx_img'))
+            return redirect(url_for('public.upload_wximg'))
         flash('您上传的文件不合法!')
-    return render_template('public/wximg_upload.html', title='上传微信二维码')
+    return render_template('public/upload_wximg.html', title='上传微信二维码')
 
 
 # 文章图片上传
-@public.route('/edit/qiniu_upload/', methods=['POST', 'GET'])
+@public.route('/edit/upload_postimg/', methods=['POST', 'GET'])
 @login_required
-def qiniu_upload():
+def upload_postimg():
     if request.method == 'POST':
         file = request.files['file']
         if file and allowed_file(file.filename):
-            domian_name = 'http://oooy4cly3.bkt.clouddn.com'
-            u = UploadToQiniu(domian_name, file)
+            domian_name = 'http://oqquiobc2.bkt.clouddn.com'
+            bucket_name = 'postimg'
+            u = UploadToQiniu(domian_name, bucket_name, file)
             ret, info = u.upload()
             key = ret['key']
             return '{"error":false,"path":"' + domian_name + '/' + key + '"}'
@@ -164,7 +170,7 @@ def qiniu_upload():
 
 # 发表/修改文章
 @public.route('/edit/', methods=['POST', 'GET'])
-@public.route('/edit/<int:id>', methods=['POST', 'GET'])
+@public.route('/edit/<int:id>/', methods=['POST', 'GET'])
 @login_required
 def edit(id=0):
     form = PostForm()
@@ -186,6 +192,7 @@ def edit(id=0):
             post.style = form.style.data
             post.category = form.category.data
             post.is_public = form.is_public.data
+
             alltags = [i.name for i in Tag.query.all()]
             ptags = [i.name for i in post.tags]
             l = form.tags.data.split(',')
@@ -275,6 +282,17 @@ def details(id):
 
             else:
                 flash('登录后才能评论哦!')
+    pre_p = Post.query.filter(Post.id < id).order_by(Post.id.desc()).limit(1).all()
+    next_p = Post.query.filter(Post.id > id).order_by(Post.id).limit(1).all()
+    if pre_p:
+        pre_post=pre_p[0]
+    else:
+        pre_post=None
+    if next_p:
+        next_post = next_p[0]
+    else:
+        next_post=None
+
     page_index = request.args.get('page', 1, type=int)
     query = Comment.query.filter_by(post_id=id).order_by(Comment.created.desc())
     pagination = query.paginate(page_index, per_page=10, error_out=False)
@@ -288,7 +306,8 @@ def details(id):
                            pagination=pagination,
                            comments=comments,
                            categories=categories,
-                           hot_authors=hot_authors
+                           hot_authors=hot_authors,
+                           pre_post=pre_post, next_post=next_post
                            )
 
 
@@ -303,7 +322,7 @@ def get_comments():
         return render_template('includes/_comments_list.html', comments=comments)
 
 
-@public.route('/hot_posts')
+@public.route('/hot_posts/')
 def hot_posts():
     return render_template('includes/_hot_posts.html')
 
@@ -317,14 +336,14 @@ def before_request():
     g.search_form = SearchForm()
 
 
-@public.route('/search', methods=['POST', 'GET'])
+@public.route('/search/', methods=['POST', 'GET'])
 def search():
     if not g.search_form.validate_on_submit():
         return redirect(url_for('public.index'))
     return redirect(url_for('public.search_results', key_word=g.search_form.search.data))
 
 
-@public.route('/search_results/<key_word>', methods=['POST', 'GET'])
+@public.route('/search_results/<key_word>/', methods=['POST', 'GET'])
 def search_results(key_word):
     page_index = request.args.get('page', 1, type=int)
 
@@ -340,13 +359,13 @@ def search_results(key_word):
                            title='%s的搜索结果' % key_word)
 
 
-@public.route('/service')
+@public.route('/service/')
 def service():
     posts_ = Post.query.filter(Post.is_public == 1).order_by(Post.comment_times.desc()).limit(5)
     return render_template('public/service.html', title='服务', posts_=posts_)
 
 
-@public.route('/about')
+@public.route('/about/')
 def about():
     posts_ = Post.query.filter(Post.is_public == 1).order_by(Post.comment_times.desc()).limit(5)
     return render_template('public/about.html', title='关于', posts_=posts_)
@@ -356,7 +375,7 @@ def make_external(url):
     return urljoin(request.url_root, url)
 
 
-@public.route('/rss')
+@public.route('/rss/')
 def recent_feed():
     feed = AtomFeed('最近文章',
                     feed_url=request.url, url=request.url_root)

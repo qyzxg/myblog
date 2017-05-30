@@ -147,7 +147,7 @@
     <div id="pc" style="width: 766px; height:300px; border: solid 1px; float: right"></div>
     <div style="width: 128px;height: 300px;float: left">
 
-        <p align="center"><a href="{{ url_for('public.upload') }}">修改图像</a></p>
+        <p align="center"><a href="{{ url_for('public.upload_avatar') }}">修改图像</a></p>
         <p align="center"><a href="{{ url_for('auth.reset_confirm_email') }}">修改密码</a></p>
         {% if user.confirmed==0 %}
             <p align="center"><a href="{{ url_for('auth.active') }}">激活账户</a></p>

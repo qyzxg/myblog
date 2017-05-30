@@ -8,7 +8,7 @@ from .. import cache
 
 
 @cache.cached(timeout=60, key_prefix='view_%s', unless=None)
-@cates.route('/posts/<cate>')
+@cates.route('/posts/<cate>/')
 def get_cates(cate):
     page_index = request.args.get('page', 1, type=int)
     query = Post.query.filter(Post.is_public==1).order_by(Post.read_times.desc()).filter_by(category=cate)
@@ -23,7 +23,7 @@ def get_cates(cate):
 
 
 @cache.cached(timeout=60, key_prefix='view_%s', unless=None)
-@cates.route('/tags/<tag>')
+@cates.route('/tags/<tag>/')
 def get_tags(tag):
     page_index = request.args.get('page', 1, type=int)
     tag_ = Tag.query.filter_by(name=tag).first()

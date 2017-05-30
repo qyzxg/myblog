@@ -13,7 +13,7 @@ from ..models import User
 
 
 # 用户注册
-@auth.route('/register', methods=['POST', 'GET'])
+@auth.route('/register/', methods=['POST', 'GET'])
 def register():
     form = RegistForm()
     if form.validate_on_submit():
@@ -42,7 +42,7 @@ def register():
 
 
 # 邮件确认
-@auth.route('/confirm/<token>')
+@auth.route('/confirm/<token>/')
 @login_required
 def confirm_email(token):
     try:
@@ -62,7 +62,7 @@ def confirm_email(token):
 
 
 # 发送激活邮件
-@auth.route('/active', methods=['POST', 'GET'])
+@auth.route('/active/', methods=['POST', 'GET'])
 @login_required
 def active():
     user = current_user
@@ -76,7 +76,7 @@ def active():
 
 
 # 用户登录
-@auth.route('/login', methods=['POST', 'GET'])
+@auth.route('/login/', methods=['POST', 'GET'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
@@ -112,7 +112,7 @@ def login():
 
 
 # 用户登出
-@auth.route('/logout')
+@auth.route('/logout/')
 @login_required
 def logout():
     logout_user()
@@ -121,7 +121,7 @@ def logout():
 
 
 # 重置密码邮箱确认
-@auth.route('/reset/confirm_email', methods=["GET", "POST"])
+@auth.route('/reset/confirm_email/', methods=["GET", "POST"])
 def reset_confirm_email():
     form = AuthEmail()
     if form.validate_on_submit():
@@ -141,7 +141,7 @@ def reset_confirm_email():
 
 
 # 重置密码
-@auth.route('/reset/reset_password/<token>', methods=["GET", "POST"])
+@auth.route('/reset/reset_password/<token>/', methods=["GET", "POST"])
 def reset_password(token):
     try:
         email = confirm_token(token)

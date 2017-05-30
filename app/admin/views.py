@@ -140,7 +140,7 @@ def admin_index():
 
 
 # 文章分类管理
-@admin.route('/admin/new_category', methods=['POST', 'GET'])
+@admin.route('/admin/new_category/', methods=['POST', 'GET'])
 @login_required
 @admin_required
 def new_category():
@@ -159,7 +159,7 @@ def new_category():
 
 
 # 用户管理
-@admin.route('/admin/users_manage', methods=['POST', 'GET'])
+@admin.route('/admin/users_manage/', methods=['POST', 'GET'])
 @login_required
 @admin_required
 def users_manage():
@@ -192,7 +192,6 @@ def blogs_delete():
             pass
 
         id_lst = id_str.split("#")[:-1]
-        print(id_lst)
         for i in id_lst:
             post = Post.query.filter_by(id=str(i)).first()
             if not post:
@@ -213,7 +212,6 @@ def users_delete():
     if request.method == 'POST':
         try:
             id_str = request.form.get('id')
-            print(id_str)
         except:
             pass
         id_lst = id_str.split("#")[:-1]
@@ -303,11 +301,11 @@ def comment_manage(id):
 
 
 # 用户登录管理
-@admin.route('/admin/login_manage/<int:id>/<int:status>/<int:delete>')
+@admin.route('/admin/login_manage/<int:id>/<int:status>/<int:delete>/')
 @login_required
 @admin_required
 def login_manage(id, status, delete):
-    user = User.query.filter_by(id=id, is_valid=1).first()
+    user = User.query.filter_by(id=id).first()
     if user is None:
         flash('用户不存在!')
     else:
@@ -334,7 +332,7 @@ def login_manage(id, status, delete):
 @login_required
 @admin_required
 def role_manage(id, role):
-    user = User.query.filter_by(id=id, is_valid=1).first()
+    user = User.query.filter_by(id=id).first()
     if user is None:
         flash('用户不存在!')
     else:
@@ -345,7 +343,7 @@ def role_manage(id, role):
     return redirect(url_for('admin.users_manage'))
 
 
-@admin.route('/admin/messages_manage')
+@admin.route('/admin/messages_manage/')
 @login_required
 @admin_required
 def messages_manage():
@@ -354,7 +352,7 @@ def messages_manage():
                            title='通知管理', menu=5)
 
 
-@admin.route('/admin/send_messages', methods=['POST', 'GET'])
+@admin.route('/admin/send_messages/', methods=['POST', 'GET'])
 @login_required
 @admin_required
 def send_messages():
@@ -371,7 +369,7 @@ def send_messages():
     return redirect(url_for('admin.messages_manage'))
 
 
-@admin.route('/admin/delete_messages<int:id>', methods=['POST', 'GET'])
+@admin.route('/admin/delete_messages/<int:id>/', methods=['POST', 'GET'])
 @login_required
 @admin_required
 def delete_message(id):
