@@ -85,16 +85,9 @@
             </tbody>
         </table>
     </div>
-    <!-- 分页 -->
-    {#    {% if pagination %}#}
-    {#        {{ render_pagination(pagination) }}#}
-    {#    {% endif %}#}
-    <!-- // 分页 -->
+
     {% block scripts %}
         {{ super() }}
-        <script src="{{ url_for('static', filename ='javascripts/admin.js') }}"
-                type="text/javascript"></script>
-
         <script type="text/javascript">
             function check() {
                 var chk_value = [];

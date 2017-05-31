@@ -12,14 +12,16 @@
         </div>
     {% endfor %}
 
-    <h3> 标签有 " {{ tag }} " 的文章  共 {{ total }} 篇:</h3>
+    <h3> 标签有 " {{ tag }} " 的文章 共 {{ total }} 篇:</h3>
     {% for post in posts|sort(attribute='created',reverse=True ) %}
         {% include 'includes/_posts_summary.html' %}
     {% endfor %}
 
     {% if pagination %}
+        <div style="float: right">
             {{ render_pagination(pagination) }}
-        {% endif %}
+        </div>
+    {% endif %}
 {% endblock %}
 
 {% block footer %}

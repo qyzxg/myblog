@@ -17,7 +17,9 @@
     {% endfor %}
 
     {% if pagination %}
-        {{ render_pagination(pagination) }}
+        <div style="float: right">
+            {{ render_pagination(pagination) }}
+        </div>
     {% endif %}
 {% endblock %}
 

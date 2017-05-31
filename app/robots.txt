@@ -1,0 +1,12 @@
+# robots.txt 
+User-agent: *
+Disallow: 
+Disallow: /user
+Disallow: /admin
+Disallow: /auth/confirm_email
+Disallow: /auth/active
+Disallow: /auth/confirm
+Disallow: /auth/logout
+Disallow: /auth/reset
+Disallow: /others
+# Sitemap: http://www.51datas.com/sitemap.xml

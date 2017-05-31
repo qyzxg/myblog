@@ -22,7 +22,7 @@ class PostForm(FlaskForm):
 
 
 class CommentForm(FlaskForm):
-    body = PageDownField(label='评论', validators=[DataRequired(message='评论内容必须大于5个字!'),
+    body = TextAreaField(label='评论', validators=[DataRequired(message='评论内容必须大于5个字!'),
                                                  Length(min=5, message='评论内容必须大于5个字!')],
                          render_kw={"required": "required"})
     submit = SubmitField(render_kw={'class': "btn btn-info btn-block"})

@@ -265,23 +265,22 @@ def details(id):
     if current_user.is_authenticated:
         todos = Todo.query.filter_by(user_id=current_user.id, status=0)
     if request.method == 'POST':
-        if form.validate_on_submit():
-            if current_user.is_authenticated:
-                if current_user.confirmed == 1:
-                    comment = Comment(author=current_user,
-                                      body=request.form.get('body'),
+        if current_user.is_authenticated:
+            if current_user.confirmed == 1:
+                comment = Comment(author=current_user,
+                                      body=request.form['body'],
                                       post=post)
-                    db.session.add(comment)
-                    db.session.commit()
-                    post.comment_times += 1
-                    form.body.data = ''
-                    result = {"status": "success"}
-                    return json.dumps(result)
-                else:
-                    flash('验证邮箱后才能发表评论哦!')
-
+                db.session.add(comment)
+                db.session.commit()
+                post.comment_times += 1
+                form.body.data = ''
+                result = {"status": "success"}
+                return json.dumps(result)
             else:
-                flash('登录后才能评论哦!')
+                flash('验证邮箱后才能发表评论哦!')
+
+        else:
+            flash('登录后才能评论哦!')
     pre_p = Post.query.filter(Post.id < id).order_by(Post.id.desc()).limit(1).all()
     next_p = Post.query.filter(Post.id > id).order_by(Post.id).limit(1).all()
     if pre_p:
