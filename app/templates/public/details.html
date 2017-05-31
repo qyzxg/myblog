@@ -237,7 +237,7 @@
                                 },
                                 success: function (data) { //提交成功的回调函数
                                     if (data.length > 0) {
-                                        lstComments.html(data);
+                                        lstComments.html(data);//把返回的页面加载
                                         document.getElementById("error").innerHTML = "";
                                         tinymce.get('body').setContent('');
                                     }

@@ -296,6 +296,13 @@ class Comment(db.Model):
     def __repr__(self):
         return '<Comment %r,%r >' % (self.body, self.author)
 
+class Reply(db.Model):
+    __tablename__ = 'replies'
+    id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.String(1000))
+    creat_at = db.Column(db.DateTime, index=True, default=datetime.datetime.now())
+    comment_id = db.Column(db.Integer, db.ForeignKey('comments.id'))
+    author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
 class Todo(db.Model):
     __tablename__ = 'todos'

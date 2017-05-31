@@ -13,8 +13,8 @@ import random
 from ..tasks.celery_tasks import get_post_img
 from .. import db, cache
 from . import public
-from ..models import User, Post, Comment, Categories, Styles, Todo, Tag
-from .forms import PostForm, CommentForm, SearchForm
+from ..models import User, Post, Comment, Categories, Styles, Todo, Tag, Reply
+from .forms import PostForm, CommentForm, SearchForm, ReplyForm
 import os
 from werkzeug.contrib.atom import AtomFeed
 from urllib.parse import urljoin
@@ -261,6 +261,7 @@ def details(id):
     post.read_times += 1
     categories = Categories.query.all()
     form = CommentForm()
+    rform = ReplyForm
     todos = None
     if current_user.is_authenticated:
         todos = Todo.query.filter_by(user_id=current_user.id, status=0)
@@ -299,6 +300,7 @@ def details(id):
     return render_template('public/details.html',
                            title=post.title,
                            form=form,
+                           rform=rform,
                            post=post,
                            posts_=posts_,
                            todos=todos,

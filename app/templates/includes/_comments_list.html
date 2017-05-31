@@ -1,13 +1,12 @@
+{% for comment in comments|sort(attribute='created',reverse=True ) %}
+    <div id='article-entry' class="entry-box">
+        <div class="media media-left">
 
-        {% for comment in comments|sort(attribute='created',reverse=True ) %}
-            <div id='article-entry' class="entry-box">
-                <div class="media media-left">
+            <img class="media-object" src="{{ comment.author.avatar }}" style="border-radius: 5px"
+                 width="32px" height="32px">
 
-                    <img class="media-object img-circle" src="{{ comment.author.avatar }}" class="img-circle"
-                         width="32px" height="32px">
-
-                </div>
-                <div class="media media-body">
+        </div>
+        <div class="media media-body">
                     <span>
                         {% if current_user.id == comment.author_id %}
                             <a href="{{ url_for('profile.user_index', username = comment.author.username) }}">{{ comment.author.username }}&nbsp;</a>
@@ -15,9 +14,9 @@
                             <a href="{{ url_for('profile.others', username = comment.author.username) }}">{{ comment.author.username }}&nbsp;</a>
                         {% endif %}
                     </span>
-                    <small> @ {{ comment.created.strftime('%Y-%m-%d %H:%M') }}&nbsp;:</small>
-                </div>
-            <div>{{ comment.body|safe }}</div>
-            </div>
+            <small> @ {{ comment.created.strftime('%Y-%m-%d %H:%M') }}&nbsp;:</small>
+        </div>
+        <div style="margin-bottom: 5px">{{ comment.body|safe }}</div>
+    </div>
 
-        {% endfor %}
+{% endfor %}

@@ -2,97 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e3904cda-ea26-489a-9902-20b5baf3e0cc" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/media/plugin.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/static/tinymce/skins/lightgray/skin.ie7.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/MAIN_0k24wmokqgrqr1w2.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/MAIN_ehcnve7qe8ac8adq.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/MAIN_x6grciqx37w1cq0s.seg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/_MAIN_2196.toc" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/skins/lightgray/fonts/tinymce.eot" afterPath="$PROJECT_DIR$/app/static/tinymce/skins/lightgray/fonts/tinymce.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/skins/lightgray/fonts/tinymce.ttf" afterPath="$PROJECT_DIR$/app/static/tinymce/skins/lightgray/fonts/tinymce.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/skins/lightgray/fonts/tinymce.woff" afterPath="$PROJECT_DIR$/app/static/tinymce/skins/lightgray/fonts/tinymce.woff" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/MAIN_0lvd3xhemsh3tsan.seg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/MAIN_102sr997g002ysqe.seg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/MAIN_bhpuvpagjv7ifmsc.seg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/search/Post/_MAIN_2498.toc" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/__init__.py" afterPath="$PROJECT_DIR$/app/__init__.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models.py" afterPath="$PROJECT_DIR$/app/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/public/forms.py" afterPath="$PROJECT_DIR$/app/public/forms.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/public/views.py" afterPath="$PROJECT_DIR$/app/public/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/stylesheets/main.css" afterPath="$PROJECT_DIR$/app/static/stylesheets/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/jquery.tinymce.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/jquery.tinymce.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/langs/zh_CN.js" afterPath="$PROJECT_DIR$/app/static/tinymce/langs/zh_CN.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/license.txt" afterPath="$PROJECT_DIR$/app/static/tinymce/license.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/advlist/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/advlist/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/anchor/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/anchor/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/autolink/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/autolink/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/autoresize/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/autoresize/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/autosave/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/autosave/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/bbcode/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/bbcode/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/charmap/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/charmap/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/code/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/code/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/codesample/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/codesample/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/colorpicker/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/colorpicker/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/contextmenu/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/contextmenu/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/directionality/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/directionality/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/emoticons/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/emoticons/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/fullpage/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/fullpage/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/fullscreen/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/fullscreen/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/hr/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/hr/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/image/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/image/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/imagetools/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/imagetools/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/importcss/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/importcss/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/insertdatetime/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/insertdatetime/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/legacyoutput/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/legacyoutput/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/link/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/link/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/lists/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/lists/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/nonbreaking/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/nonbreaking/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/noneditable/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/noneditable/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/pagebreak/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/pagebreak/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/paste/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/paste/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/preview/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/preview/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/print/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/print/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/save/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/save/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/searchreplace/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/searchreplace/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/spellchecker/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/spellchecker/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/tabfocus/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/tabfocus/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/table/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/table/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/template/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/template/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/textcolor/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/textcolor/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/textpattern/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/textpattern/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/visualblocks/css/visualblocks.css" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/visualblocks/css/visualblocks.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/visualblocks/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/visualblocks/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/visualchars/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/visualchars/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/plugins/wordcount/plugin.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/plugins/wordcount/plugin.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/skins/lightgray/content.inline.min.css" afterPath="$PROJECT_DIR$/app/static/tinymce/skins/lightgray/content.inline.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/skins/lightgray/content.min.css" afterPath="$PROJECT_DIR$/app/static/tinymce/skins/lightgray/content.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/skins/lightgray/fonts/tinymce-small.svg" afterPath="$PROJECT_DIR$/app/static/tinymce/skins/lightgray/fonts/tinymce-small.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/skins/lightgray/fonts/tinymce.svg" afterPath="$PROJECT_DIR$/app/static/tinymce/skins/lightgray/fonts/tinymce.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/skins/lightgray/skin.min.css" afterPath="$PROJECT_DIR$/app/static/tinymce/skins/lightgray/skin.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/themes/modern/theme.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/themes/modern/theme.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/tinymce/tinymce.min.js" afterPath="$PROJECT_DIR$/app/static/tinymce/tinymce.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/admin/base.html" afterPath="$PROJECT_DIR$/app/templates/admin/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/admin/blogs_manage.html" afterPath="$PROJECT_DIR$/app/templates/admin/blogs_manage.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/admin/comments_manage.html" afterPath="$PROJECT_DIR$/app/templates/admin/comments_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/admin/messages_manage.html" afterPath="$PROJECT_DIR$/app/templates/admin/messages_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/admin/users_manage.html" afterPath="$PROJECT_DIR$/app/templates/admin/users_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/cates/get_cates.html" afterPath="$PROJECT_DIR$/app/templates/cates/get_cates.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/cates/get_tags.html" afterPath="$PROJECT_DIR$/app/templates/cates/get_tags.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/includes/_comments_list.html" afterPath="$PROJECT_DIR$/app/templates/includes/_comments_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/base.html" afterPath="$PROJECT_DIR$/app/templates/profile/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/base_other.html" afterPath="$PROJECT_DIR$/app/templates/profile/base_other.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/blogs_manage.html" afterPath="$PROJECT_DIR$/app/templates/profile/blogs_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/collects_manage.html" afterPath="$PROJECT_DIR$/app/templates/profile/collects_manage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/includes/_navbar.html" afterPath="$PROJECT_DIR$/app/templates/includes/_navbar.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/includes/_posts_summary.html" afterPath="$PROJECT_DIR$/app/templates/includes/_posts_summary.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/comments_manage.html" afterPath="$PROJECT_DIR$/app/templates/profile/comments_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/followers_manage.html" afterPath="$PROJECT_DIR$/app/templates/profile/followers_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/messages_manage.html" afterPath="$PROJECT_DIR$/app/templates/profile/messages_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/others.html" afterPath="$PROJECT_DIR$/app/templates/profile/others.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/profile/todos_manage.html" afterPath="$PROJECT_DIR$/app/templates/profile/todos_manage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/public/base.html" afterPath="$PROJECT_DIR$/app/templates/public/base.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/public/details.html" afterPath="$PROJECT_DIR$/app/templates/public/details.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/public/edit_post.html" afterPath="$PROJECT_DIR$/app/templates/public/edit_post.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/public/index.html" afterPath="$PROJECT_DIR$/app/templates/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/public/search_results.html" afterPath="$PROJECT_DIR$/app/templates/public/search_results.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/static/javascripts/admin.js" afterPath="$PROJECT_DIR$/app/static/javascripts/admin_tables.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/static/javascripts/tinymce_setup.js" afterPath="$PROJECT_DIR$/app/static/tinymce/tinymce_setup.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/static/javascripts/users.js" afterPath="$PROJECT_DIR$/app/static/javascripts/user_tables.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -102,7 +25,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/myblog$run.coverage" NAME="run Coverage Results" MODIFIED="1496232799956" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/myblog$run.coverage" NAME="run Coverage Results" MODIFIED="1496245676661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -122,58 +45,18 @@
       <file leaf-file-name="details.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/templates/public/details.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="687">
-              <caret line="181" column="23" lean-forward="true" selection-start-line="181" selection-start-column="23" selection-end-line="181" selection-end-column="23" />
+            <state relative-caret-position="2017">
+              <caret line="235" column="54" lean-forward="true" selection-start-line="235" selection-start-column="54" selection-end-line="235" selection-end-column="54" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_comments_list.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/templates/includes/_comments_list.html">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="19" column="32" lean-forward="false" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="messages_manage.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/admin/messages_manage.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1288">
-              <caret line="68" column="21" lean-forward="false" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base_other.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/profile/base_other.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="49" column="48" lean-forward="false" selection-start-line="49" selection-start-column="48" selection-end-line="49" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="blogs_manage.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/profile/blogs_manage.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1909">
-              <caret line="83" column="21" lean-forward="false" selection-start-line="83" selection-start-column="21" selection-end-line="83" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="collects_manage.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/profile/collects_manage.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1334">
-              <caret line="61" column="21" lean-forward="false" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
+            <state relative-caret-position="227">
+              <caret line="302" column="12" lean-forward="false" selection-start-line="302" selection-start-column="12" selection-end-line="302" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -182,7 +65,7 @@
       <file leaf-file-name="tinymce_setup_inlite.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/static/tinymce/tinymce_setup_inlite.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
+            <state relative-caret-position="-26">
               <caret line="28" column="75" lean-forward="false" selection-start-line="27" selection-start-column="7" selection-end-line="28" selection-end-column="75" />
               <folding>
                 <element signature="e#0#41#0" expanded="false" />
@@ -191,36 +74,64 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="myblog.log" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/logs/myblog.log">
+      <file leaf-file-name="blogs_manage.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/profile/blogs_manage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="11" column="49" lean-forward="true" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
+            <state relative-caret-position="664">
+              <caret line="83" column="21" lean-forward="false" selection-start-line="83" selection-start-column="21" selection-end-line="83" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="run.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/run.py">
+      <file leaf-file-name="admin_tables.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/static/javascripts/admin_tables.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="-1656">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_navbar.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/includes/_navbar.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="48" column="88" lean-forward="false" selection-start-line="48" selection-start-column="88" selection-end-line="48" selection-end-column="88" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#3145#3151#1#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/__init__.py">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/auth/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="59" column="8" lean-forward="false" selection-start-line="59" selection-start-column="8" selection-end-line="61" selection-end-column="37" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-1932">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="comments_manage.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/templates/admin/comments_manage.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="79" column="44" lean-forward="true" selection-start-line="79" selection-start-column="43" selection-end-line="79" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="comments_manage.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/profile/comments_manage.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="92">
+              <caret line="43" column="48" lean-forward="true" selection-start-line="43" selection-start-column="48" selection-end-line="43" selection-end-column="48" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -265,6 +176,7 @@
       <find>content</find>
       <find>getcontent</find>
       <find>get</find>
+      <find>post_id</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -276,7 +188,6 @@
         <option value="$PROJECT_DIR$/app/static/tinymce/plugins/codesample/css/prism.css" />
         <option value="$PROJECT_DIR$/app/templates/auth/base.html" />
         <option value="$PROJECT_DIR$/app/templates/cates/base.html" />
-        <option value="$PROJECT_DIR$/app/templates/includes/_navbar.html" />
         <option value="$PROJECT_DIR$/app/templates/public/upload_wximg.html" />
         <option value="$PROJECT_DIR$/app/templates/profile/user_index.html" />
         <option value="$PROJECT_DIR$/app/templates/profile/user_reward_manage.html" />
@@ -291,15 +202,12 @@
         <option value="$PROJECT_DIR$/app/cates/views.py" />
         <option value="$PROJECT_DIR$/app/profile/views.py" />
         <option value="$PROJECT_DIR$/app/admin/views.py" />
-        <option value="$PROJECT_DIR$/app/templates/includes/_posts_summary.html" />
-        <option value="$PROJECT_DIR$/app/models.py" />
         <option value="$PROJECT_DIR$/app/templates/admin/base.html" />
         <option value="$PROJECT_DIR$/app/templates/admin/blogs_manage.html" />
         <option value="$PROJECT_DIR$/app/templates/admin/users_manage.html" />
         <option value="$PROJECT_DIR$/app/templates/admin/messages_manage.html" />
         <option value="$PROJECT_DIR$/app/templates/profile/base_other.html" />
         <option value="$PROJECT_DIR$/app/templates/profile/base.html" />
-        <option value="$PROJECT_DIR$/app/templates/profile/comments_manage.html" />
         <option value="$PROJECT_DIR$/app/templates/profile/followers_manage.html" />
         <option value="$PROJECT_DIR$/app/templates/profile/collects_manage.html" />
         <option value="$PROJECT_DIR$/app/templates/profile/blogs_manage.html" />
@@ -308,22 +216,26 @@
         <option value="$PROJECT_DIR$/app/templates/profile/others.html" />
         <option value="$PROJECT_DIR$/app/static/tinymce/langs/zh_CN.js" />
         <option value="$PROJECT_DIR$/app/static/tinymce/plugins/codesample/plugin.min.js" />
-        <option value="$PROJECT_DIR$/app/public/forms.py" />
         <option value="$PROJECT_DIR$/app/static/tinymce/tinymce_setup.js" />
-        <option value="$PROJECT_DIR$/app/public/views.py" />
         <option value="$PROJECT_DIR$/app/templates/public/edit_post.html" />
         <option value="$PROJECT_DIR$/app/templates/public/base.html" />
         <option value="$PROJECT_DIR$/app/static/tinymce/tinymce.min.js" />
         <option value="$PROJECT_DIR$/app/static/stylesheets/main.css" />
-        <option value="$PROJECT_DIR$/app/templates/public/details.html" />
         <option value="$PROJECT_DIR$/app/templates/public/index.html" />
         <option value="$PROJECT_DIR$/app/templates/public/search_results.html" />
         <option value="$PROJECT_DIR$/app/templates/cates/get_tags.html" />
         <option value="$PROJECT_DIR$/app/templates/cates/get_cates.html" />
-        <option value="$PROJECT_DIR$/app/templates/admin/comments_manage.html" />
         <option value="$PROJECT_DIR$/app/static/tinymce/tinymce_setup_inlite.js" />
         <option value="$PROJECT_DIR$/app/__init__.py" />
+        <option value="$PROJECT_DIR$/app/templates/public/details.html" />
+        <option value="$PROJECT_DIR$/app/models.py" />
+        <option value="$PROJECT_DIR$/app/public/forms.py" />
+        <option value="$PROJECT_DIR$/app/public/views.py" />
+        <option value="$PROJECT_DIR$/app/templates/includes/_navbar.html" />
+        <option value="$PROJECT_DIR$/app/templates/includes/_posts_summary.html" />
         <option value="$PROJECT_DIR$/app/templates/includes/_comments_list.html" />
+        <option value="$PROJECT_DIR$/app/templates/admin/comments_manage.html" />
+        <option value="$PROJECT_DIR$/app/templates/profile/comments_manage.html" />
       </list>
     </option>
   </component>
@@ -410,10 +322,6 @@
               <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -430,6 +338,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="profile" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -452,6 +364,104 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="includes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myblog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myblog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myblog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myblog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myblog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myblog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javascripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myblog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myblog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myblog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myblog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="auth" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -698,15 +708,16 @@
     <frame x="-8" y="0" width="1378" height="744" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28528073" sideWeight="0.48688525" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.4969743" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3295082" sideWeight="0.4969743" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5030257" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24590164" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24590164" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35737705" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28528073" sideWeight="0.48688525" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16393442" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22671756" sideWeight="0.51311475" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -715,7 +726,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -753,27 +763,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/templates/auth/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="16" column="84" lean-forward="false" selection-start-line="16" selection-start-column="84" selection-end-line="16" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/auth/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-30">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/auth/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-30">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/auth/reset_password.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-30">
@@ -808,6 +797,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-30">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -815,21 +805,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-431">
           <caret line="4980" column="32" lean-forward="false" selection-start-line="4980" selection-start-column="32" selection-end-line="4980" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/includes/_posts_summary.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="22" column="67" lean-forward="true" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-359">
-          <caret line="319" column="52" lean-forward="false" selection-start-line="319" selection-start-column="52" selection-end-line="319" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -849,14 +824,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/javascripts/admin_tables.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1563">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/profile/user_reward_manage.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -869,14 +836,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="107">
           <caret line="70" column="21" lean-forward="false" selection-start-line="70" selection-start-column="21" selection-end-line="70" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/profile/comments_manage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="54" column="21" lean-forward="false" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -937,14 +896,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/public/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-368">
-          <caret line="266" column="32" lean-forward="false" selection-start-line="266" selection-start-column="32" selection-end-line="266" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/profile/others.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1625">
@@ -965,14 +916,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="65" column="44" lean-forward="false" selection-start-line="65" selection-start-column="44" selection-end-line="65" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/public/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="12" column="31" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1024,7 +967,7 @@
         <state relative-caret-position="227">
           <caret line="25" column="14" lean-forward="false" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
           <folding>
-            <element signature="e#771#791#0#HTML" expanded="true" />
+            <element signature="e#771#791#0#HTML" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1034,7 +977,7 @@
         <state relative-caret-position="158">
           <caret line="22" column="14" lean-forward="false" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
           <folding>
-            <element signature="e#636#656#0#HTML" expanded="true" />
+            <element signature="e#636#656#0#HTML" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1044,7 +987,7 @@
         <state relative-caret-position="158">
           <caret line="21" column="14" lean-forward="false" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
           <folding>
-            <element signature="e#638#658#0#HTML" expanded="true" />
+            <element signature="e#638#658#0#HTML" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1061,14 +1004,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-506">
           <caret line="47" column="48" lean-forward="false" selection-start-line="47" selection-start-column="48" selection-end-line="47" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/admin/comments_manage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1097,14 +1032,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/profile/blogs_manage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1909">
-          <caret line="83" column="21" lean-forward="false" selection-start-line="83" selection-start-column="21" selection-end-line="83" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/profile/collects_manage.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1334">
@@ -1113,22 +1040,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/tinymce/tinymce_setup_inlite.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="28" column="75" lean-forward="false" selection-start-line="27" selection-start-column="7" selection-end-line="28" selection-end-column="75" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/run.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1138,7 +1055,7 @@
         <state relative-caret-position="115">
           <caret line="59" column="8" lean-forward="false" selection-start-line="59" selection-start-column="8" selection-end-line="61" selection-end-column="37" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1153,16 +1070,127 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/public/details.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="687">
-          <caret line="181" column="23" lean-forward="true" selection-start-line="181" selection-start-column="23" selection-end-line="181" selection-end-column="23" />
+        <state relative-caret-position="2017">
+          <caret line="235" column="54" lean-forward="true" selection-start-line="235" selection-start-column="54" selection-end-line="235" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/public/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="30" column="32" lean-forward="false" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
+          <folding>
+            <element signature="e#42#73#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/auth/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1932">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/includes/_comments_list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="19" column="32" lean-forward="false" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+        <state relative-caret-position="92">
+          <caret line="4" column="36" lean-forward="false" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/auth/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-138">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/public/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="308" column="45" lean-forward="true" selection-start-line="308" selection-start-column="45" selection-end-line="308" selection-end-column="45" />
+          <folding>
+            <element signature="e#42#174#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="302" column="12" lean-forward="false" selection-start-line="302" selection-start-column="12" selection-end-line="302" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/tinymce/tinymce_setup_inlite.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-26">
+          <caret line="28" column="75" lean-forward="false" selection-start-line="27" selection-start-column="7" selection-end-line="28" selection-end-column="75" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/profile/blogs_manage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="664">
+          <caret line="83" column="21" lean-forward="false" selection-start-line="83" selection-start-column="21" selection-end-line="83" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/javascripts/admin_tables.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1656">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/includes/_posts_summary.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-62">
+          <caret line="16" column="48" lean-forward="false" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#1;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/includes/_navbar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="48" column="88" lean-forward="false" selection-start-line="48" selection-start-column="88" selection-end-line="48" selection-end-column="88" />
+          <folding>
+            <element signature="e#3145#3151#1#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/profile/comments_manage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="43" column="48" lean-forward="true" selection-start-line="43" selection-start-column="48" selection-end-line="43" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/admin/comments_manage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="79" column="44" lean-forward="true" selection-start-line="79" selection-start-column="43" selection-end-line="79" selection-end-column="53" />
           <folding />
         </state>
       </provider>

@@ -77,7 +77,7 @@
                     <td><a href="{{ url_for('public.details', id = comment.post.id) }}">
                         <h5>{{ comment.post.title|truncate(30, True) }}</h5>
                     </a></td>
-                    <td><h5>{{ comment.body|truncate(30, True) }}</h5></td>
+                    <td><h5>{{ comment.body|striptags|truncate(30, True) }}</h5></td>
                     <td><h5>{{ comment.created.strftime('%Y-%m-%d %H:%M') }}</h5></td>
                     <td><a href="{{ url_for('admin.comment_manage',id=comment.id) }}" class="btn btn-danger">删除</a></td>
                 </tr>

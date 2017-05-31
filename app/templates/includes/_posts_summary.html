@@ -9,12 +9,12 @@
             <div class="media-left">
                 {% if current_user.id == post.author_id %}
                     <a href="{{ url_for('profile.user_index', username = post.author.username) }}">
-                        <img class="media-object img-circle" width="32px" height="32px"
+                        <img class="media-object" width="32px" height="32px" style="border-radius: 5px"
                              src="{{ post.author.avatar }}">
                     </a>
                 {% else %}
                     <a href="{{ url_for('profile.others', username = post.author.username) }}">
-                        <img class="media-object img-circle" width="32px" height="32px"
+                        <img class="media-object" width="32px" height="32px" style="border-radius: 5px"
                              src="{{ post.author.avatar }}">
                     </a>
                 {% endif %}
