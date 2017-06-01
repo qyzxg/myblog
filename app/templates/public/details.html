@@ -77,6 +77,7 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         {% if current_user.is_authenticated %}
             <span id='login_status' style="display: none">1</span>
+            <span id='get_post_id' style="display: none">{{ post.id }}</span>
 
             {% if not current_user.collecting(post) %}
                 <a href="{{ url_for('profile.collect',id=post.id) }}">

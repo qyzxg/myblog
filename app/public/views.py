@@ -266,11 +266,11 @@ def details(id):
     if current_user.is_authenticated:
         todos = Todo.query.filter_by(user_id=current_user.id, status=0)
     if request.method == 'POST':
-        if current_user.is_authenticated:
-            if current_user.confirmed == 1:
+        if current_user.confirmed == 1:
+            if request.form:
                 comment = Comment(author=current_user,
-                                      body=request.form['body'],
-                                      post=post)
+                                  body=request.form['body'],
+                                  post=post)
                 db.session.add(comment)
                 db.session.commit()
                 post.comment_times += 1
@@ -278,20 +278,19 @@ def details(id):
                 result = {"status": "success"}
                 return json.dumps(result)
             else:
-                flash('验证邮箱后才能发表评论哦!')
-
+                pass
         else:
-            flash('登录后才能评论哦!')
+            flash('验证邮箱后才能发表评论哦!')
     pre_p = Post.query.filter(Post.id < id).order_by(Post.id.desc()).limit(1).all()
     next_p = Post.query.filter(Post.id > id).order_by(Post.id).limit(1).all()
     if pre_p:
-        pre_post=pre_p[0]
+        pre_post = pre_p[0]
     else:
-        pre_post=None
+        pre_post = None
     if next_p:
         next_post = next_p[0]
     else:
-        next_post=None
+        next_post = None
 
     page_index = request.args.get('page', 1, type=int)
     query = Comment.query.filter_by(post_id=id).order_by(Comment.created.desc())
@@ -321,6 +320,38 @@ def get_comments():
             pass
         comments = Comment.query.filter_by(post_id=int(post_id)).order_by(Comment.created.desc())
         return render_template('includes/_comments_list.html', comments=comments)
+
+
+@public.route('/get_replies', methods=['POST', 'GET'])
+def get_replies():
+    if request.method == "POST":
+        try:
+            com_id = request.form.get('com_id')
+        except:
+            pass
+        comment = Comment.query.filter_by(id=int(com_id)).first()
+        return render_template('includes/_reply_list.html', comment=comment)
+
+
+@public.route('/add_reply', methods=['POST', 'GET'])
+def add_reply():
+    if request.method == "POST":
+        if current_user.is_authenticated:
+            com_id = request.form['com_id']
+            reply_content = request.form['reply_content']
+            reply = Reply(
+                body=reply_content,
+                comment_id=com_id,
+                author_id=current_user.id,
+                created=datetime.datetime.now()
+            )
+            db.session.add(reply)
+            db.session.commit()
+            result = {"status": "success"}
+            return json.dumps(result)
+        else:
+            error = {'error': 'error'}
+            return json.dumps(error)
 
 
 @public.route('/hot_posts/')

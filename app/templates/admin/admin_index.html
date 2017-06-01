@@ -624,6 +624,9 @@
 
             option = {
                 backgroundColor: '#1c3050',
+{#                color: [#}
+{#                    '#dd4444', '#fec42c', '#80F1BE'#}
+{#                ],#}
                 title: {
                     text: '用户全国分布',
                     subtext: '用户分布',
@@ -638,10 +641,10 @@
                 },
                 visualMap: {
                     min: 0,
-                    max: 500,
+                    max: 50,
                     calculable: true,
                     inRange: {
-                        color: ['#50a3ba', '#eac736', '#d94e5d']
+                        color: ['#6FBA68', '#eac736', '#D92013']
                     },
                     textStyle: {
                         color: '#fff'
@@ -693,7 +696,7 @@
                         coordinateSystem: 'geo',
                         data: [],
                         symbolSize: function (val) {
-                            return val[2] / 8;
+                            return val[2];
                         },
                         label: {
                             normal: {
@@ -717,7 +720,7 @@
                         coordinateSystem: 'geo',
                         data: [],
                         symbolSize: function (val) {
-                            return val[2] / 7;
+                            return val[2];
                         },
                         showEffectOn: 'render',
                         rippleEffect: {

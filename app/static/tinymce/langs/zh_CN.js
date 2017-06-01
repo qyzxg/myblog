@@ -223,5 +223,7 @@ tinymce.addI18n('zh_CN', {
     "Invert": "\u5e95\u7247",
     "Image Upload": "\u4e0a\u4f20\u56fe\u7247",
     "Language": "\u8bed\u8a00",
+    "Open link": "\u6253\u5f00\u94fe\u63a5",
+
 
 });

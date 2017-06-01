@@ -61,6 +61,7 @@ class User(UserMixin, db.Model):
     comments = db.relationship('Comment', backref='author')
     post_total = db.Column(db.Integer, default=0)
     role = db.Column(db.Integer, default=0)
+    replies = db.relationship('Reply', backref='author')
     zfb_img = db.Column(db.String(200), doc='支付宝二维码', default=r'http://oqquasfn4.bkt.clouddn.com/default_zfb.png')
     wx_img = db.Column(db.String(200), doc='微信二维码', default=r'http://oqqur6lkr.bkt.clouddn.com/default_wx.png')
     zfb_num = db.Column(db.String(20), doc='支付宝金额', default='1.99')
@@ -276,6 +277,7 @@ class Comment(db.Model):
     created = db.Column(db.DateTime, index=True, default=datetime.datetime.now())
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    replies = db.relationship('Reply', backref='comment')
 
     def to_json(self):
         json_comment = {
@@ -287,6 +289,9 @@ class Comment(db.Model):
                               _external=True),
         }
         return json_comment
+
+    def get_all_reply(self):
+        return Reply.query.filter_by(comment_id=self.id).order_by(Reply.created.desc())
 
     @staticmethod
     def from_json(json_comment):
@@ -300,9 +305,11 @@ class Reply(db.Model):
     __tablename__ = 'replies'
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(1000))
-    creat_at = db.Column(db.DateTime, index=True, default=datetime.datetime.now())
+    created = db.Column(db.DateTime, index=True, default=datetime.datetime.now())
     comment_id = db.Column(db.Integer, db.ForeignKey('comments.id'))
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+
 
 class Todo(db.Model):
     __tablename__ = 'todos'

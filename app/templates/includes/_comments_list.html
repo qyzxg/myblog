@@ -1,5 +1,5 @@
 {% for comment in comments|sort(attribute='created',reverse=True ) %}
-    <div id='article-entry' class="entry-box">
+    <div id='article-entry' class="entry-box-comment">
         <div class="media media-left">
 
             <img class="media-object" src="{{ comment.author.avatar }}" style="border-radius: 5px"
@@ -15,8 +15,48 @@
                         {% endif %}
                     </span>
             <small> @ {{ comment.created.strftime('%Y-%m-%d %H:%M') }}&nbsp;:</small>
+            <a class="btn btn-default btn-xs" id="com_{{ comment.id }}" role="button" data-toggle="collapse"
+               href="#rep_{{ comment.id }}" aria-expanded="false"
+               aria-controls="rep_{{ comment.id }} " style="float: right">
+                回复
+            </a>
         </div>
         <div style="margin-bottom: 5px">{{ comment.body|safe }}</div>
-    </div>
 
+    </div>
+    <div class="collapse" id="rep_{{ comment.id }}">
+        <div class="well" style="padding: 5px;margin: 5px">
+
+            <input type="text" id="inp_{{ comment.id }}" class="form-control" style="display: inline;width: 91%">
+            <button type="button" id="btn_{{ comment.id }}" onclick="$.ajax({
+                    url: '/add_reply',
+                    type: 'post',
+                    dataType: 'json',
+                    data:{'com_id':{{ comment.id }},'reply_content':$('#inp_{{ comment.id }}').val() } ,
+                    success: function (data){
+                    $.ajax({
+                    type: 'post',  //提交方式
+                    dataType: 'text', //数据类型
+                    url: '/get_replies', //请求url
+                    data: {
+                    'com_id': {{ comment.id }}
+                    },
+                    success: function (data) { //提交成功的回调函数
+                    if (data.length > 0) {
+                    $('#rpl_{{ comment.id }}').html(data);//把返回的页面加载
+                    $('#inp_{{ comment.id }}').val('');
+                    }
+                    }
+                    });
+                    }
+                    });" value="{{ comment.id }}" class="btn btn-info" style="margin-left: 3px">回复
+            </button>
+
+        </div>
+    </div>
+    <div id='rpl_{{ comment.id }}'>
+        {% include 'includes/_reply_list.html' %}
+    </div>
 {% endfor %}
+
+
