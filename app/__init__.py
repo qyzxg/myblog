@@ -13,12 +13,16 @@ from flaskext.markdown import Markdown
 from celery import Celery
 from config import Config, config
 from flask_cache import Cache
+# from celeryconfig import CeleryConfig
 
 bootstrap = Bootstrap()
 mail = Mail()
 db = SQLAlchemy()
 login_manager = LoginManager()
+
 celery = Celery(__name__, broker=Config.CELERY_BROKER_URL, backend=Config.CELERY_RESULT_BACKEND)
+celery.conf.update(Config.CELERYBEAT_SCHEDULE)
+
 cache = Cache(config={'CACHE_TYPE': 'redis',
                       'CACHE_REDIS_HOST': 'localhost',  # Host, default 'localhost'
                       'CACHE_REDIS_PORT': 6379,  # Port, default 6379

@@ -24,10 +24,10 @@
         <div style="margin-bottom: 5px">{{ comment.body|safe }}</div>
 
     </div>
-    <div class="collapse" id="rep_{{ comment.id }}">
-        <div class="well" style="padding: 5px;margin: 5px">
+    <div class="collapse" id="rep_{{ comment.id }}" >
+        <div class="well" style="padding: 5px;margin: 5px;text-align: center">
 
-            <input type="text" id="inp_{{ comment.id }}" class="form-control" style="display: inline;width: 91%">
+            <input type="text" id="inp_{{ comment.id }}" class="form-control" style="display: inline;width: 70%">
             <button type="button" id="btn_{{ comment.id }}" onclick="$.ajax({
                     url: '/add_reply',
                     type: 'post',

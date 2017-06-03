@@ -4,6 +4,7 @@
 {% block title %}{{ title|safe }}{% endblock %}
 
 {% block left_content %}
+    <div>
     {% for message in get_flashed_messages() %}
         <div class="alert alert-warning">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -15,14 +16,15 @@
     {% for post in posts|sort(attribute='read_times',reverse=True ) %}
         {% include 'includes/_posts_summary.html' %}
     {% endfor %}
+    </div>
 
     {% if pagination %}
-        <div style="float: right">
+        <div  style="text-align: right">
         {{ render_pagination(pagination) }}
         </div>
     {% endif %}
 {% endblock %}
-
+<br>
 {% block right_content %}
     {% if current_user.is_anonymous %}
         <br>

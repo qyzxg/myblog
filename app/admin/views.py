@@ -11,9 +11,10 @@ from ..decorators import admin_required
 from .forms import NewCategory
 import itertools
 import psutil
+from ..tasks.celery_tasks import send_email
 
 
-@cache.memoize(timeout=60, unless=None)  # 获取每天文章总数,一分钟获取一次
+@cache.memoize(timeout=300, unless=None)  # 获取每天文章总数,5分钟获取1次
 def get_m_post():
     n = get_c_month()
     b = get_m_days()
@@ -24,13 +25,13 @@ def get_m_post():
     return lst
 
 
-@cache.memoize(timeout=60, unless=None)  # 获取文章分类,一分钟一次
+@cache.memoize(timeout=3600, unless=None)  # 获取文章分类,1小时1次
 def get_a_cate():
     lst = [str(a.name) for a in Categories.query.all()]
     return lst
 
 
-@cache.memoize(timeout=60, unless=None)  # 获取文章分类,一分钟一次
+@cache.memoize(timeout=3600, unless=None)  # 获取每类文章数量,1小时1次
 def get_a_cates():
     lst = [Post.query.filter_by(category=i).count() for i in get_a_cate()]
     return lst
@@ -46,7 +47,7 @@ def get_m_user():
     return lst
 
 
-@cache.memoize(timeout=300, unless=None)  # 获取每天pv数,5分钟获取一次
+@cache.memoize(timeout=600, unless=None)  # 获取每天pv数,10分钟获取一次
 def get_m_pv():
     n = get_c_month()
     b = get_m_days()
@@ -56,7 +57,7 @@ def get_m_pv():
     return lst
 
 
-@cache.memoize(timeout=300, unless=None)  # 获取每天uv数,5分钟获取一次
+@cache.memoize(timeout=600, unless=None)  # 获取每天uv数,10分钟获取一次
 def get_m_uv():
     n = get_c_month()
     b = get_m_days()
@@ -201,9 +202,10 @@ def blogs_delete():
                 post.del_tags()
                 db.session.delete(post)
                 db.session.commit()
-        flash('%d篇文章删除成功!'% len(id_lst))
+        flash('%d篇文章删除成功!' % len(id_lst))
         return "OK"
     return "ERROR"
+
 
 @admin.route('/admin/users_delete', methods=['POST', 'GET'])
 @login_required
@@ -222,6 +224,8 @@ def users_delete():
             else:
                 user.del_comments()
                 user.del_todos()
+                user.delete_r_message()
+                user.delete_s_message()
                 posts = Post.query.filter_by(author_id=user.id).all()
                 for post in posts:
                     post.del_comments()
@@ -229,9 +233,10 @@ def users_delete():
                     db.session.delete(post)
                 db.session.delete(user)
                 db.session.commit()
-        flash('%d个用户删除成功!'% len(id_lst))
+        flash('%d个用户删除成功!' % len(id_lst))
         return "OK"
     return "ERROR"
+
 
 @admin.route('/admin/comments_delete', methods=['POST', 'GET'])
 @login_required
@@ -248,9 +253,10 @@ def comments_delete():
             if not comment:
                 pass
             else:
+                comment.delete_all_reply()
                 db.session.delete(comment)
                 db.session.commit()
-        flash('%d条评论删除成功!'% len(id_lst))
+        flash('%d条评论删除成功!' % len(id_lst))
         return "OK"
     return "ERROR"
 
@@ -294,6 +300,7 @@ def comment_manage(id):
     comment = Comment.query.filter_by(id=id).first()
     if comment is None:
         flash('评论不存在!')
+    comment.delete_all_reply()
     db.session.delete(comment)
     db.session.commit()
     flash('评论删除成功!')
@@ -317,6 +324,8 @@ def login_manage(id, status, delete):
         if int(delete) == 1:
             # 同时删除该用户的文章和评论
             user.del_comments()
+            user.delete_r_message()
+            user.delete_s_message()
             for post in posts:
                 post.del_comments()
                 post.del_tags()
@@ -347,8 +356,9 @@ def role_manage(id, role):
 @login_required
 @admin_required
 def messages_manage():
+    users = User.query.all()
     sended_messages = Message.query.order_by(Message.created_at.desc()).filter_by(sender=current_user)
-    return render_template('admin/messages_manage.html', sended_messages=sended_messages,
+    return render_template('admin/messages_manage.html', sended_messages=sended_messages,users=users,
                            title='通知管理', menu=5)
 
 
@@ -358,14 +368,40 @@ def messages_manage():
 def send_messages():
     users = User.query.all()
     form = request.form
+    cates = form['cate']
     content = form['content']
-    for user in users:
+    if cates == '系统全体':
+        for user in users:
+            message = Message(content=content,
+                              sender=current_user,
+                              sendto=user)
+            db.session.add(message)
+        db.session.commit()
+        flash('全体通知发送成功')
+    elif cates == '邮件全体':
+        for user in users:
+            subject = u"[noreply][51datas]通知邮件"
+            html = render_template('admin/email_notice.html', user=user, content=content)
+            send_email.delay(user.email, subject, html)
+            message = Message(content=content,
+                              sender=current_user,
+                              sendto=user,
+                              cate=2)
+            db.session.add(message)
+        db.session.commit()
+        flash('发送全体邮件/通知成功')
+    else:
+        user = User.query.filter_by(username=cates).first()
+        subject = u"[noreply][51datas]通知邮件"
+        html = render_template('admin/email_notice.html', user=user, content=content)
+        send_email.delay(user.email, subject, html)
         message = Message(content=content,
                           sender=current_user,
-                          sendto=user)
+                          sendto=user,
+                          cate=2)
         db.session.add(message)
-    db.session.commit()
-    flash('通知发送成功')
+        db.session.commit()
+        flash('发送邮件/通知成功')
     return redirect(url_for('admin.messages_manage'))
 
 

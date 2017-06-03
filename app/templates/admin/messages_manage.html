@@ -16,11 +16,25 @@
     <h3>发送通知:</h3>
     <form class="form-inline" action="{{ url_for('admin.send_messages') }}" method="post">
         <div class="form-group">
+            <label class="sr-only" for="cate"></label>
+            <div class="input-group">
+                <div class="input-group-addon">类型:</div>
+                {#                <input type="text" class="form-control" id="username" name="username" placeholder="请填入好友用户名">#}
+                <select class="form-control" style="width: 120px" name="cate">
+                    <option>系统全体</option>
+                    <option>邮件全体</option>
+                    {% for user in users %}
+                        <option>{{ user.username }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
             <label class="sr-only" for="content"></label>
             <div class="input-group">
                 <div class="input-group-addon">内容:</div>
                 <input type="text" class="form-control" id="content" name="content" placeholder="请输入通知内容,300个字符以内"
-                       style="width: 785px">
+                       style="width: 595px">
             </div>
         </div>
         <button class="btn btn-default" type="submit">发送</button>
@@ -47,6 +61,9 @@
                     <mark>消息状态</mark>
                 </th>
                 <th>
+                    <mark>消息类别</mark>
+                </th>
+                <th>
                     <mark>删除消息</mark>
                 </th>
             </tr>
@@ -58,6 +75,7 @@
                     <td><h5>{{ message.created_at.strftime('%Y-%m-%d %H:%M') }}</h5></td>
                     <td><h5>{{ message.sendto.username }}</h5></td>
                     <td><h5>{{ message.get_status() }}</h5></td>
+                    <td><h5>{{ message.get_cate() }}</h5></td>
                     <td><a href="{{ url_for('admin.delete_message',id=message.id) }}" class="btn btn-danger">删除</a></td>
                 </tr>
             {% endfor %}

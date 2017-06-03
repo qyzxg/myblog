@@ -136,9 +136,13 @@ class User(UserMixin, db.Model):
     def following(self, user):
         return self.followed.filter(follow.c.followed_id == user.id).count() > 0
 
-    def followed_users(self):
+    def followed_users(self): #自己关注的用户
         return User.query.join(follow, (follow.c.followed_id == User.id)).filter(
-            follow.c.follower_id == self.id).order_by(User.post_total.desc())
+            follow.c.follower_id == self.id).order_by(User.post_total.desc()).all()
+
+    def follower_users(self): #关注自己的用户
+        return User.query.join(follow, (follow.c.follower_id == User.id)).filter(
+            follow.c.followed_id == self.id).order_by(User.post_total.desc()).all()
 
     def __repr__(self):
         return '<User %r>' % self.username
@@ -165,8 +169,10 @@ class User(UserMixin, db.Model):
         comments = Comment.query.filter_by(author_id=self.id).all()
         if comments:
             for comment in comments:
+                for reply in comment.get_all_reply():
+                    db.session.delete(reply)
                 db.session.delete(comment)
-                db.session.commit()
+            db.session.commit()
 
     def del_todos(self):
         todos = Todo.query.filter_by(user_id=self.id).all()
@@ -175,6 +181,18 @@ class User(UserMixin, db.Model):
                 db.session.delete(todo)
                 db.session.commit()
 
+
+    def delete_s_message(self):
+        messages = Message.query.filter_by(sender=self).all()
+        for message in messages:
+            db.session.delete(message)
+            db.session.commit()
+
+    def delete_r_message(self):
+        messages = Message.query.filter_by(sendto=self).all()
+        for message in messages:
+            db.session.delete(message)
+            db.session.commit()
 
     def __repr__(self):
         return '<User %r>' % self.username
@@ -210,13 +228,13 @@ class Post(db.Model):
         else:
             return '隐藏'
 
-    def get_post_img(self, post):
-        reg = r'<img src="(.*?)".*?/>'
-        img = re.compile(reg)
-        img_list = img.findall(post.body)
-        if img_list:
-            self.post_img = ''.join(img_list[0])
-        return self.post_img
+    # def get_post_img(self, post):
+    #     reg = r'<img src="(.*?)".*?/>'
+    #     img = re.compile(reg)
+    #     img_list = img.findall(post.body)
+    #     if img_list:
+    #         self.post_img = ''.join(img_list[0])
+    #     return self.post_img
 
     def to_json(self):
         json_post = {
@@ -241,9 +259,12 @@ class Post(db.Model):
     def del_comments(self):
         comments = Comment.query.filter_by(post_id=self.id).all()
         if comments:
-            for i in comments:
-                db.session.delete(i)
-                db.session.commit()
+            for comment in comments:
+                db.session.delete(comment)
+                for reply in comment.get_all_reply():
+                    db.session.delete(reply)
+
+            db.session.commit()
 
     def del_tags(self):
         tags = self.tags
@@ -293,6 +314,12 @@ class Comment(db.Model):
     def get_all_reply(self):
         return Reply.query.filter_by(comment_id=self.id).order_by(Reply.created.desc())
 
+    def delete_all_reply(self):
+        replies = Reply.query.filter_by(comment_id=self.id).all()
+        for reply in replies:
+            db.session.delete(reply)
+            db.session.commit()
+
     @staticmethod
     def from_json(json_comment):
         body = json_comment.get('body')
@@ -335,9 +362,17 @@ class Message(db.Model):
     confirmed = db.Column(db.Boolean, default=False)
     sender_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     sendto_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-
+    cate = db.Column(db.Integer,default=1)
     def __repr__(self):
         return '<Message %r  from %r sent to %r>' % (self.content, self.sender.username, self.sendto.username)
+
+    def get_cate(self):
+        if self.cate == '1':
+            return '通知'
+        elif self.cate == '2':
+            return '邮/通'
+        else:
+            return '未知'
 
     def get_status(self):
         if self.confirmed:

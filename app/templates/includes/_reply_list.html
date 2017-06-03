@@ -2,9 +2,9 @@
     <div id='article-entry' class="entry-box-reply">
                     <span>
                         {% if current_user.id == reply.author_id %}
-                            <a href="{{ url_for('profile.user_index', username = reply.author.username) }}">{{ comment.author.username }}&nbsp;回复:</a>
+                            <a href="{{ url_for('profile.user_index', username = reply.author.username) }}">{{ reply.author.username }}&nbsp;回复:</a>
                         {% else %}
-                            <a href="{{ url_for('profile.others', username = reply.author.username) }}">{{ comment.author.username }}&nbsp;回复:</a>
+                            <a href="{{ url_for('profile.others', username = reply.author.username) }}">{{ reply.author.username }}&nbsp;回复:</a>
                         {% endif %}
                         <small> @ {{ reply.created.strftime('%Y-%m-%d %H:%M') }}&nbsp;:</small>
                         {{ reply.body|safe }}

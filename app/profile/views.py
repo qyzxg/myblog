@@ -112,6 +112,7 @@ def user_comment_manage(id):
         flash('评论不存在!')
     if not current_user.is_authenticated:
         flash('请登录后再操作!')
+    comment.delete_all_reply()
     db.session.delete(comment)
     db.session.commit()
     flash('评论删除成功!')
@@ -133,9 +134,13 @@ def user_collects_manage():
 @login_required
 def user_followers_manage():
     user = current_user
-    followers = user.followed_users()
+    followeds = user.followed_users() #自己关注的
+    followers = user.follower_users() #关注自己的
+    friends = [i for i in followeds if i in followers]
     return render_template('profile/followers_manage.html',
                            followers=followers,
+                           followeds=followeds,
+                           friends=friends,
                            title='好友管理',
                            menu=5)
 
@@ -350,13 +355,11 @@ def confirm_message(id):
 @login_required
 def messages_manage():
     user = current_user
-    friends1 = user.followed_users()
     managers = User.query.filter_by(role=1).all()
-    users = User.query.all()
-    if current_user.role == 1:
-        friends = users
-    else:
-        friends = list(managers) + list(friends1)
+    followeds = user.followed_users()  # 自己关注的
+    followers = user.follower_users()  # 关注自己的
+    friends1 = [i for i in followeds if i in followers]
+    friends = list(managers) + list(friends1)
     unconfirmed_messages = Message.query.order_by(Message.created_at.desc()).filter_by(sendto=current_user).filter_by(
         confirmed=False).all()
     confirmed_messages = Message.query.order_by(Message.created_at.desc()).filter_by(sendto=current_user).filter_by(

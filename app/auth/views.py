@@ -33,7 +33,8 @@ def register():
         confirm_url = url_for('auth.confirm_email', token=token, _external=True)
         html = render_template('auth/email_register.html', confirm_url=confirm_url)
         subject = u"[noreply][51datas]账号注册邮件"
-        send_email(user.email, subject, html)  # send_email.delay() 异步
+        # send_email(user.email, subject, html)
+        send_email.delay(user.email, subject, html) #异步
         user = db.session.merge(user)
         login_user(user, remember=True)
         flash('注册成功,请登录您的邮箱按照提示激活账户')
@@ -70,7 +71,8 @@ def active():
     confirm_url = url_for('auth.confirm_email', token=token, _external=True)
     html = render_template('auth/email_active.html', confirm_url=confirm_url)
     subject = u"[noreply][51datas]账号激活邮件"
-    send_email(user.email, subject, html)  # send_email.delay() 异步
+    # send_email(user.email, subject, html)  # send_email.delay() 异步
+    send_email.delay(user.email, subject, html)  # 异步
     flash('激活邮件已发送至您的邮箱!')
     return redirect(url_for('profile.user_index', username=user.username))
 
@@ -125,7 +127,8 @@ def logout():
 def reset_confirm_email():
     form = AuthEmail()
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
+        uemail = form.email.data
+        user = User.query.filter_by(email=uemail).first()
         if not user:
             flash('该邮箱还没有注册!')
             return redirect(url_for('auth.reset_confirm_email'))
@@ -134,7 +137,8 @@ def reset_confirm_email():
             token = generate_confirmation_token(user.email)
             confirm_url = url_for('auth.reset_password', token=token, _external=True)
             html = render_template('auth/email_reset.html', confirm_url=confirm_url)
-            send_email(user.email, subject, html)  # send_email.delay() 异步
+            # send_email(user.email, subject, html)  # send_email.delay() 异步
+            send_email.delay(user.email, subject, html)  # 异步
             flash('验证邮件已发送至您的邮箱!')
             return redirect(url_for('public.index'))
     return render_template('auth/auth_email.html', form=form, title='邮箱验证')

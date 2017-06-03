@@ -14,7 +14,7 @@ from ..tasks.celery_tasks import get_post_img
 from .. import db, cache
 from . import public
 from ..models import User, Post, Comment, Categories, Styles, Todo, Tag, Reply
-from .forms import PostForm, CommentForm, SearchForm, ReplyForm
+from .forms import PostForm, CommentForm, SearchForm
 import os
 from werkzeug.contrib.atom import AtomFeed
 from urllib.parse import urljoin
@@ -212,14 +212,13 @@ def edit(id=0):
             if post.style == '--请选择文章来源--' or post.category == '--请选择文章分类--':
                 flash('请选择文章来源和分类')
                 return redirect(url_for('public.edit'))
+            img_url = get_post_img.delay(post).get()
+            if img_url:
+                post.post_img = img_url
+            else:
+                pass
             db.session.add(post)
             db.session.commit()
-            post.post_img = post.get_post_img(post)
-
-            # 异步获取
-            # img = get_post_img.delay(post)
-            # post.post_img = img.get()
-
             user.post_total += 1
             flash('文章发表成功!')
             return redirect(url_for('public.details', id=post.id))
@@ -261,7 +260,6 @@ def details(id):
     post.read_times += 1
     categories = Categories.query.all()
     form = CommentForm()
-    rform = ReplyForm
     todos = None
     if current_user.is_authenticated:
         todos = Todo.query.filter_by(user_id=current_user.id, status=0)
@@ -299,7 +297,6 @@ def details(id):
     return render_template('public/details.html',
                            title=post.title,
                            form=form,
-                           rform=rform,
                            post=post,
                            posts_=posts_,
                            todos=todos,
@@ -422,3 +419,5 @@ def recent_feed():
                  url=make_external(url_for('public.details', id=post.id))
                  )
     return feed.get_response()
+
+

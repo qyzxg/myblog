@@ -27,12 +27,6 @@ class CommentForm(FlaskForm):
                          render_kw={"required": "required"})
     submit = SubmitField(render_kw={'class': "btn btn-info btn-block"})
 
-class ReplyForm(FlaskForm):
-    body = StringField(label='回复', validators=[DataRequired(message='评论内容必须大于5个字!'),
-                                                 Length(min=5, message='评论内容必须大于5个字!')],
-                         render_kw={"required": "required"})
-    submit = SubmitField(render_kw={'class': "btn btn-info btn-block"})
-
 
 class SearchForm(FlaskForm):
     search = StringField(label='search', validators=[DataRequired("请输入一个关键词")])

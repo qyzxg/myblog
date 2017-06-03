@@ -4,6 +4,7 @@
 import os
 from os import path
 import datetime
+from datetime import timedelta
 
 
 class Config:
@@ -28,6 +29,29 @@ class Config:
     CELERY_BROKER_URL = 'redis://localhost:6379/0'
     CELERY_RESULT_BACKEND = 'redis://localhost:6379/1'
 
+    # 定时任务
+    CELERYBEAT_SCHEDULE = {
+        # 'every-minute': {
+        #     'task': 'printnum',
+        #     # 'schedule': crontab(minute='*/1'),
+        #     # 'args': (1,2),
+        #     'schedule': timedelta(seconds=5)
+        # },
+        # 'every-minute-hahaha': {
+        #     'task': 'hahaha',
+        #     # 'schedule': crontab(minute='*/1'),
+        #     # 'args': (1,2),
+        #     'schedule': timedelta(seconds=5)
+        # },
+        'write_info': {
+            'task': 'write_info',
+            # 'schedule': crontab(minute='*/1'),
+            # 'args': (r'E:\MyProject\deploy\access.log',r'E:\MyProject\deploy\access.seek'),
+            'args': (r'/var/log/nginx/access.log', r'/var/log/nginx/access.txt'),
+            'schedule': timedelta(seconds=60)
+        },
+    }
+
     # 搜索
     WHOOSH_BASE = 'search'
     MAX_SEARCH_RESULTS = 50
@@ -40,7 +64,7 @@ class Config:
     ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif', 'JPG'])
     BASE_PATH = path.abspath(path.dirname(__file__))
 
-    #记住我
+    # 记住我
     REMEMBER_COOKIE_DURATION = datetime.timedelta(weeks=1)
     # JSON_AS_ASCII = False
 
