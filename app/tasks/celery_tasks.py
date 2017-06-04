@@ -6,7 +6,7 @@ from flask_mail import Message
 import re
 from threading import Thread, Timer
 from time import sleep
-from ..models import LogInfo
+from ..models import LogInfo, Post
 import datetime
 import subprocess
 import signal
@@ -25,7 +25,6 @@ def send_email(to, subject, template):
     )
     with app.app_context():
         mail.send(msg)
-
 
 
 # def send_async_email(app, msg):
@@ -137,7 +136,7 @@ def get_post_img(post):
 
 
 @celery.task(name='write_info')
-def write_info(logfile,seekfile):
+def write_info(logfile, seekfile):
     app = create_app('default')
     file_seek = read_seek(seekfile)
     with open(logfile, 'r', encoding='utf-8') as file:
@@ -184,3 +183,12 @@ def read_seek(seekfile):
         if result:
             return int(result)
         return 0
+
+
+@celery.task(name='sort_score')
+def sort_score():
+    app = create_app('default')
+    with app.app_context():
+        posts = Post.query.all()
+        for post in posts:
+            post.sort_score = post.cal_sort_score()

@@ -22,9 +22,6 @@
                     <thead>
                     <tr>
                         <th>
-                            <mark>邮箱</mark>
-                        </th>
-                        <th>
                             <mark>注册时间</mark>
                         </th>
                         <th>
@@ -42,7 +39,6 @@
 
                     <tr>
                         {#                        <td><h5>{{ user.username }}</h5></td>#}
-                        <td><h5>{{ user.email }}</h5></td>
                         <td><h5>{{ user.created_at.strftime('%Y-%m-%d %H:%M') }}</h5></td>
                         <td><h5>{{ user.last_login.strftime('%Y-%m-%d %H:%M') }}</h5></td>
                         <td><h5>{{ user.get_roles() }}</h5></td>

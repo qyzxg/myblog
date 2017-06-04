@@ -53,11 +53,8 @@
                             <mark>角色</mark>
                         </th>
                         <th>
-                            <mark>发帖数量</mark>
+                            <mark>文章数量</mark>
                         </th>
-                        {#                    <th>#}
-                        {#                        <mark>管理</mark>#}
-                        {#                    </th>#}
                     </tr>
                     </thead>
                     <tbody>
@@ -71,9 +68,6 @@
                             <td><h5>{{ friend.last_login.strftime('%Y-%m-%d %H:%M') }}</h5></td>
                             <td><h5>{{ friend.get_roles() }}</h5></td>
                             <td><h5>{{ friend.post_total }}</h5></td>
-                            {#                        <td><a href="{{ url_for('profile.user_follower_manage',username=followed.username) }}"#}
-                            {#                               class="btn btn-danger">取消</a>#}
-                            {#                        </td>#}
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -90,10 +84,6 @@
                         <th>
                             <mark>用户名</mark>
                         </th>
-
-                        <th>
-                            <mark>邮箱</mark>
-                        </th>
                         <th>
                             <mark>注册时间</mark>
                         </th>
@@ -104,7 +94,7 @@
                             <mark>角色</mark>
                         </th>
                         <th>
-                            <mark>发帖数量</mark>
+                            <mark>文章数量</mark>
                         </th>
                         {#                    <th>#}
                         {#                        <mark>管理</mark>#}
@@ -117,14 +107,10 @@
                             <td><a href="{{ url_for('profile.others', username = follower.username) }}">
                                 <h5>{{ follower.username }}</h5>
                             </a></td>
-                            <td><h5>{{ follower.email }}</h5></td>
                             <td><h5>{{ follower.created_at.strftime('%Y-%m-%d %H:%M') }}</h5></td>
                             <td><h5>{{ follower.last_login.strftime('%Y-%m-%d %H:%M') }}</h5></td>
                             <td><h5>{{ follower.get_roles() }}</h5></td>
                             <td><h5>{{ follower.post_total }}</h5></td>
-                            {#                        <td><a href="{{ url_for('profile.user_follower_manage',username=followed.username) }}"#}
-                            {#                               class="btn btn-danger">取消</a>#}
-                            {#                        </td>#}
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -141,10 +127,6 @@
                         <th>
                             <mark>用户名</mark>
                         </th>
-
-                        <th>
-                            <mark>邮箱</mark>
-                        </th>
                         <th>
                             <mark>注册时间</mark>
                         </th>
@@ -155,7 +137,7 @@
                             <mark>角色</mark>
                         </th>
                         <th>
-                            <mark>发帖数量</mark>
+                            <mark>文章数量</mark>
                         </th>
                         <th>
                             <mark>管理</mark>
@@ -168,7 +150,6 @@
                             <td><a href="{{ url_for('profile.others', username = followed.username) }}">
                                 <h5>{{ followed.username }}</h5>
                             </a></td>
-                            <td><h5>{{ followed.email }}</h5></td>
                             <td><h5>{{ followed.created_at.strftime('%Y-%m-%d %H:%M') }}</h5></td>
                             <td><h5>{{ followed.last_login.strftime('%Y-%m-%d %H:%M') }}</h5></td>
                             <td><h5>{{ followed.get_roles() }}</h5></td>

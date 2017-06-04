@@ -12,51 +12,60 @@
 {% endblock %}
 {% block right_content %}
     {{ super() }}
-    {% if not posts %}
-        <div><p>您还没有收藏哦!</p><a href="{{ url_for('public.index') }}">去首页看看吧!</a></div>
-    {% else %}
-        <div class="table-responsive">
-            <div class="" style="float:right;">
-                搜索：<input type="text" id="dsearch" placeholder="请输入关键词">
-            </div>
-            <table class="table table-bordered table-hover " id='stable'>
-                <thead>
-                <tr>
-                    <th>
-                        <mark>文章标题</mark>
-                    </th>
-
-                    <th>
-                        <mark>发布时间</mark>
-                    </th>
-                    <th>
-                        <mark>评论数量</mark>
-                    </th>
-                    <th>
-                        <mark>阅读数量</mark>
-                    </th>
-                    <th>
-                        <mark>取消收藏</mark>
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for post in posts %}
-                    <tr>
-                        <td><a href="{{ url_for('public.details', id = post.id) }}">
-                            <h5>{{ post.title|truncate(22, True) }}</h5>
-                        </a></td>
-                        <td><h5>{{ post.created.strftime('%Y-%m-%d %H:%M') }}</h5></td>
-                        <td><h5>{{ post.comment_times|default('0',true) }}</h5></td>
-                        <td><h5>{{ post.read_times|default('0',true) }}</h5></td>
-                        <td><a href="{{ url_for('profile.user_collect_manage',id=post.id) }}"
-                               class="btn btn-danger">取消</a></td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+    <h3>我收藏的文章:</h3>
+    <div class="table-responsive">
+        <div class="" style="float:right;">
+            搜索：<input type="text" id="dsearch" placeholder="请输入关键词">
         </div>
-    {% endif %}
+        <table class="table table-bordered table-hover " id='stable'>
+            <thead>
+            <tr>
+                <th>
+                    <mark>文章标题</mark>
+                </th>
+                <th>
+                    <mark>文章作者</mark>
+                </th>
+
+                <th>
+                    <mark>发布时间</mark>
+                </th>
+                <th>
+                    <mark>评论数量</mark>
+                </th>
+                <th>
+                    <mark>阅读数量</mark>
+                </th>
+                <th>
+                    <mark>取消收藏</mark>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for post in posts %}
+                <tr>
+                    <td><a href="{{ url_for('public.details', id = post.id) }}">
+                        <h5>{{ post.title|truncate(22, True) }}</h5>
+                    </a></td>
+                    <td>
+                        {% if current_user.id == post.author.id %}
+                            <a href="{{ url_for('profile.user_index', username = post.author.username) }}">
+                                <h5>{{ post.author.username }}</h5></a>
+                        {% else %}
+                            <a href="{{ url_for('profile.others',username=post.author.username) }}">
+                                <h5>{{ post.author.username }}</h5></a>
+                        {% endif %}
+                    </td>
+                    <td><h5>{{ post.created.strftime('%Y-%m-%d %H:%M') }}</h5></td>
+                    <td><h5>{{ post.comment_times|default('0',true) }}</h5></td>
+                    <td><h5>{{ post.read_times|default('0',true) }}</h5></td>
+                    <td><a href="{{ url_for('profile.user_collect_manage',id=post.id) }}"
+                           class="btn btn-danger">取消</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
     {% block scripts %}
         {{ super() }}

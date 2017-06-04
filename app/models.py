@@ -6,6 +6,7 @@ import re
 from . import db, login_manager
 from flask import current_app, request, url_for
 import time
+import math
 
 follow = db.Table('followers',
                   db.Column('follower_id', db.Integer, db.ForeignKey('users.id')),
@@ -33,7 +34,7 @@ class Tag(db.Model):
 
     def get_total(self):
         tag_ = Tag.query.filter_by(name=self.name).first()
-        posts = tag_.posts.filter(Post.is_public==1)
+        posts = tag_.posts.filter(Post.is_public == 1)
         total = len(posts.all())
         return total
 
@@ -47,9 +48,9 @@ class User(UserMixin, db.Model):
     avatar = db.Column(db.String(200), doc='个人头像地址', default=r'http://oqqu0qp5g.bkt.clouddn.com/default_avatar.jpg')
     status = db.Column(db.Integer, default=1, doc='用户的状态')
     confirmed = db.Column(db.Boolean, nullable=False, default=False)
-    confirmed_on = db.Column(db.DateTime, nullable=True,index=True,)
-    created_at = db.Column(db.DateTime,index=True)
-    updated_at = db.Column(db.DateTime,index=True)
+    confirmed_on = db.Column(db.DateTime, nullable=True, index=True, )
+    created_at = db.Column(db.DateTime, index=True)
+    updated_at = db.Column(db.DateTime, index=True)
     ip_addr = db.Column(db.String(50), doc='IP地址')
     country = db.Column(db.String(30), doc='国家')
     area = db.Column(db.String(30), doc='地区')
@@ -136,11 +137,11 @@ class User(UserMixin, db.Model):
     def following(self, user):
         return self.followed.filter(follow.c.followed_id == user.id).count() > 0
 
-    def followed_users(self): #自己关注的用户
+    def followed_users(self):  # 自己关注的用户
         return User.query.join(follow, (follow.c.followed_id == User.id)).filter(
             follow.c.follower_id == self.id).order_by(User.post_total.desc()).all()
 
-    def follower_users(self): #关注自己的用户
+    def follower_users(self):  # 关注自己的用户
         return User.query.join(follow, (follow.c.follower_id == User.id)).filter(
             follow.c.followed_id == self.id).order_by(User.post_total.desc()).all()
 
@@ -181,7 +182,6 @@ class User(UserMixin, db.Model):
                 db.session.delete(todo)
                 db.session.commit()
 
-
     def delete_s_message(self):
         messages = Message.query.filter_by(sender=self).all()
         for message in messages:
@@ -219,22 +219,16 @@ class Post(db.Model):
     style = db.Column(db.String(50), default='原创')
     category = db.Column(db.String(50), default='Python')
     is_public = db.Column(db.Boolean, default=True)
+    sort_score = db.Column(db.Float,default=0)
     post_img = db.Column(db.String(500), doc='文章首页地址', default=r'http://oqquiobc2.bkt.clouddn.com/default_post_img.jpg')
     tags = db.relationship('Tag', secondary=tag,
                            backref=db.backref('posts', lazy='dynamic'))
+
     def get_public(self):
         if self.is_public:
             return '公开'
         else:
             return '隐藏'
-
-    # def get_post_img(self, post):
-    #     reg = r'<img src="(.*?)".*?/>'
-    #     img = re.compile(reg)
-    #     img_list = img.findall(post.body)
-    #     if img_list:
-    #         self.post_img = ''.join(img_list[0])
-    #     return self.post_img
 
     def to_json(self):
         json_post = {
@@ -272,6 +266,15 @@ class Post(db.Model):
             for i in tags:
                 self.tags.remove(i)
 
+    def get_col_times(self):
+        return Post.query.join(collect, (collect.c.post_id == Post.id)).filter(
+            collect.c.post_id == self.id).count()
+
+    def cal_sort_score(self):
+        s = (self.created - datetime.datetime(2017, 4, 29, 23, 59, 59, 999999)).total_seconds()
+        t = math.log(int(s), 2)
+        score = round((self.read_times + self.get_col_times() * 5 + self.comment_times * 3 + t * 6) / 15, 6)
+        return score
 
 
 class Categories(db.Model):
@@ -280,7 +283,7 @@ class Categories(db.Model):
     name1 = db.Column(db.String(50))
 
     def get_total(self):
-        p = Post.query.filter(Post.is_public==1).filter_by(category=self.name).all()
+        p = Post.query.filter(Post.is_public == 1).filter_by(category=self.name).all()
         total = len(p)
         return total
 
@@ -328,6 +331,7 @@ class Comment(db.Model):
     def __repr__(self):
         return '<Comment %r,%r >' % (self.body, self.author)
 
+
 class Reply(db.Model):
     __tablename__ = 'replies'
     id = db.Column(db.Integer, primary_key=True)
@@ -335,7 +339,6 @@ class Reply(db.Model):
     created = db.Column(db.DateTime, index=True, default=datetime.datetime.now())
     comment_id = db.Column(db.Integer, db.ForeignKey('comments.id'))
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-
 
 
 class Todo(db.Model):
@@ -357,19 +360,20 @@ class Todo(db.Model):
 class Message(db.Model):
     __tablename__ = 'messages'
     id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.String(300))
+    content = db.Column(db.String(3000))
     created_at = db.Column(db.DateTime, index=True, default=datetime.datetime.now())
     confirmed = db.Column(db.Boolean, default=False)
     sender_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     sendto_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    cate = db.Column(db.Integer,default=1)
+    cate = db.Column(db.Integer, default=1)
+
     def __repr__(self):
         return '<Message %r  from %r sent to %r>' % (self.content, self.sender.username, self.sendto.username)
 
     def get_cate(self):
-        if self.cate == '1':
+        if self.cate == 1:
             return '通知'
-        elif self.cate == '2':
+        elif self.cate == 2:
             return '邮/通'
         else:
             return '未知'

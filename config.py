@@ -31,25 +31,17 @@ class Config:
 
     # 定时任务
     CELERYBEAT_SCHEDULE = {
-        # 'every-minute': {
-        #     'task': 'printnum',
-        #     # 'schedule': crontab(minute='*/1'),
-        #     # 'args': (1,2),
-        #     'schedule': timedelta(seconds=5)
-        # },
-        # 'every-minute-hahaha': {
-        #     'task': 'hahaha',
-        #     # 'schedule': crontab(minute='*/1'),
-        #     # 'args': (1,2),
-        #     'schedule': timedelta(seconds=5)
-        # },
         'write_info': {
             'task': 'write_info',
             # 'schedule': crontab(minute='*/1'),
-            # 'args': (r'E:\MyProject\deploy\access.log',r'E:\MyProject\deploy\access.seek'),
+            # 'args': (r'E:\MyProject\deploy\access.log', r'E:\MyProject\deploy\access.seek'),
             'args': (r'/var/log/nginx/access.log', r'/var/log/nginx/access.txt'),
-            'schedule': timedelta(seconds=60)
+            'schedule': timedelta(seconds=300)
         },
+        'sort_score': {
+            'task': 'sort_score',
+            'schedule': timedelta(seconds=600)
+        }
     }
 
     # 搜索

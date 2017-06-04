@@ -89,6 +89,9 @@
                     <mark>状态</mark>
                 </th>
                 <th>
+                    <mark>文章</mark>
+                </th>
+                <th>
                     <mark>角色</mark>
                 </th>
                 <th>
@@ -117,10 +120,11 @@
                         {% endif %}
                     </td>
                     <td><h5>{{ user.email }}</h5></td>
-                    <td><h5>{{ user.last_login.strftime('%Y-%m-%d %H:%M') }}</h5></td>
+                    <td><h5>{{ user.last_login.strftime('%y-%m-%d') }}</h5></td>
 {#                    <td><h5>{{ user.country|default('未知',true) }}</h5></td>#}
                     <td><h5>{{ user.city|default('未知',true) }}</h5></td>
                     <td><h5>{{ user.get_status() }}</h5></td>
+                    <td><h5>{{ user.post_total }}</h5></td>
                     <td><h5>{{ user.get_roles() }}</h5></td>
                     {% if user.status == 1 %}
                         <td><a href="{{ url_for('admin.login_manage',id=user.id,status=0,delete=0) }}"

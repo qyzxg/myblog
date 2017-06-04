@@ -116,7 +116,7 @@ def get_user_city():
 # 管理员后台首页
 
 @admin.route('/admin')
-@fresh_login_required
+# @fresh_login_required
 @admin_required
 def admin_index():
     m = get_c_month()

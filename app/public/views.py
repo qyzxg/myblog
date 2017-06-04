@@ -69,7 +69,7 @@ def index():
     page_index = request.args.get('page', 1, type=int)
     query = Post.query.filter(Post.is_public == 1).order_by(Post.read_times.desc())
     pagination = query.paginate(page_index, per_page=10, error_out=False)
-    posts_ = Post.query.filter(Post.is_public == 1).order_by(Post.comment_times.desc()).limit(5)
+    posts_ = Post.query.filter(Post.is_public == 1).order_by(Post.sort_score.desc()).limit(5)
     hot_authors = User.query.order_by(User.post_total.desc()).limit(5)
     todos = None
     if current_user.is_authenticated:
@@ -229,10 +229,6 @@ def edit(id=0):
     form.body.data = post.body
     form.style.data = post.style
     form.category.data = post.category
-    # if not post.is_public:
-    #     form.is_public.render_kw = ''
-    # else:
-    #     form.is_public.render_kw = {'checked':'checked'}
     posttags = []
     s = ''
     if post.tags:

@@ -7,6 +7,10 @@ $(document).ready(function () {
     var table = $('#stable').DataTable({
         retrieve: true,
         dom: 'ltip',
+        scrollY: "520px",
+        scrollCollapse: true,
+        lengthMenu: [[10, 50, 100, 1000,-1 ],[10, 50, 100, 1000,'所有']],
+        deferRender: true,
         language: {
             url: '/static/json/chinese.json'
         },
@@ -77,7 +81,11 @@ $(document).ready(function () {
 $(document).ready(function () {
     var table1 = $('#msg_t').DataTable({
         retrieve: true,
-        "dom": 'ltip',
+        deferRender: true,
+        scrollY: "520px",
+        scrollCollapse: true,
+        lengthMenu: [[10, 50, 100, 1000,-1 ],[10, 50, 100, 1000,'所有']],
+        dom: 'ltip',
         language: {
             url: '/static/json/chinese.json'
         },

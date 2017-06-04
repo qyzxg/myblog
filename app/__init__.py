@@ -21,7 +21,13 @@ db = SQLAlchemy()
 login_manager = LoginManager()
 
 celery = Celery(__name__, broker=Config.CELERY_BROKER_URL, backend=Config.CELERY_RESULT_BACKEND)
-celery.conf.update(Config.CELERYBEAT_SCHEDULE)
+celery.conf.update(Config.CELERYBEAT_SCHEDULE,
+                   CELERY_TIMEZONE='Asia/Shanghai',
+                   CELERY_ENABLE_UTC=True,
+                   CELERYD_LOG_FILE=r'/var/log/celery/worker.log',
+                   CELERYBEAT_LOG_FILE=r'/var/log/celery/beat.log',
+                   CELERY_ACCEPT_CONTENT=['pickle', 'json', 'msgpack', 'yaml']
+                   )
 
 cache = Cache(config={'CACHE_TYPE': 'redis',
                       'CACHE_REDIS_HOST': 'localhost',  # Host, default 'localhost'
