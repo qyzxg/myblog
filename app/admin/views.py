@@ -4,6 +4,7 @@ from flask import render_template, flash, redirect, url_for, request, jsonify
 from flask_login import current_user, login_required, fresh_login_required
 from sqlalchemy import func
 import time
+import datetime
 from .. import db, cache
 from . import admin
 from ..models import User, Post, Comment, Categories, Message, LogInfo
@@ -374,7 +375,8 @@ def send_messages():
         for user in users:
             message = Message(content=content,
                               sender=current_user,
-                              sendto=user)
+                              sendto=user,
+                              created_at=datetime.datetime.now())
             db.session.add(message)
         db.session.commit()
         flash('全体通知发送成功')
@@ -386,6 +388,7 @@ def send_messages():
             message = Message(content=content,
                               sender=current_user,
                               sendto=user,
+                              created_at=datetime.datetime.now(),
                               cate=2)
             db.session.add(message)
         db.session.commit()
@@ -398,6 +401,7 @@ def send_messages():
         message = Message(content=content,
                           sender=current_user,
                           sendto=user,
+                          created_at=datetime.datetime.now(),
                           cate=2)
         db.session.add(message)
         db.session.commit()

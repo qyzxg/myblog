@@ -219,7 +219,7 @@ class Post(db.Model):
     style = db.Column(db.String(50), default='原创')
     category = db.Column(db.String(50), default='Python')
     is_public = db.Column(db.Boolean, default=True)
-    sort_score = db.Column(db.Float,default=0)
+    sort_score = db.Column(db.Float, default=0)
     post_img = db.Column(db.String(500), doc='文章首页地址', default=r'http://oqquiobc2.bkt.clouddn.com/default_post_img.jpg')
     tags = db.relationship('Tag', secondary=tag,
                            backref=db.backref('posts', lazy='dynamic'))
@@ -271,10 +271,12 @@ class Post(db.Model):
             collect.c.post_id == self.id).count()
 
     def cal_sort_score(self):
-        s = (self.created - datetime.datetime(2017, 4, 29, 23, 59, 59, 999999)).total_seconds()
-        t = math.log(int(s), 2)
-        score = round((self.read_times + self.get_col_times() * 5 + self.comment_times * 3 + t * 6) / 15, 6)
-        return score
+        s = (datetime.datetime.now() - self.created).total_seconds()
+        t = int(s / 600)
+        score = (self.read_times * pow(2, 2) +
+                 self.get_col_times() * pow(3.6, 2) +
+                 self.comment_times * pow(2.9, 2) + 100) / pow(t + 2, 1.2)
+        return round(score, 5)
 
 
 class Categories(db.Model):
@@ -361,7 +363,7 @@ class Message(db.Model):
     __tablename__ = 'messages'
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(3000))
-    created_at = db.Column(db.DateTime, index=True, default=datetime.datetime.now())
+    created_at = db.Column(db.DateTime, index=True)
     confirmed = db.Column(db.Boolean, default=False)
     sender_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     sendto_id = db.Column(db.Integer, db.ForeignKey('users.id'))

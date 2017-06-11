@@ -67,9 +67,9 @@ class UploadToQiniu():
 def index():
     # 记录cookie
     page_index = request.args.get('page', 1, type=int)
-    query = Post.query.filter(Post.is_public == 1).order_by(Post.read_times.desc())
+    query = Post.query.filter(Post.is_public == 1).order_by(Post.sort_score.desc())
     pagination = query.paginate(page_index, per_page=10, error_out=False)
-    posts_ = Post.query.filter(Post.is_public == 1).order_by(Post.sort_score.desc()).limit(5)
+    posts_ = Post.query.filter(Post.is_public == 1).order_by(Post.read_times.desc()).limit(5)
     hot_authors = User.query.order_by(User.post_total.desc()).limit(5)
     todos = None
     if current_user.is_authenticated:
@@ -86,8 +86,6 @@ def index():
                                              hot_authors=hot_authors,
                                              categories=categories,
                                              tags=tags))
-    response.set_cookie(key='user', value='name', expires=time.time() + 3600)
-    response.set_cookie(key='pass', value='word', expires=time.time() + 3600)
     return response
 
 
@@ -192,6 +190,7 @@ def edit(id=0):
             post.style = form.style.data
             post.category = form.category.data
             post.is_public = form.is_public.data
+            post.created=datetime.datetime.now()
 
             alltags = [i.name for i in Tag.query.all()]
             ptags = [i.name for i in post.tags]
@@ -264,7 +263,8 @@ def details(id):
             if request.form:
                 comment = Comment(author=current_user,
                                   body=request.form['body'],
-                                  post=post)
+                                  post=post,
+                                  created=datetime.datetime.now())
                 db.session.add(comment)
                 db.session.commit()
                 post.comment_times += 1

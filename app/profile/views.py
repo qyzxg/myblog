@@ -322,7 +322,8 @@ def send_message():
 
         message = Message(content=content,
                           sender=current_user,
-                          sendto=user)
+                          sendto=user,
+                          created_at=datetime.datetime.now())
         db.session.add(message)
         db.session.commit()
         flash('消息发送成功!')

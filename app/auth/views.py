@@ -156,6 +156,7 @@ def reset_password(token):
         user = User.query.filter_by(email=email).first()
         user.password = form.password.data
         user.set_password(form.data['password'])
+        user.updated_at=datetime.datetime.now()
         db.session.add(user)
         db.session.commit()
         logout_user()

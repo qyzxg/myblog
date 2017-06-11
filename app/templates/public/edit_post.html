@@ -45,11 +45,14 @@
                             {% endfor %}
                         </div>
                         <div class="col-md-2 ">
-                            是否公开:{{ form.is_public }}
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-info active">
+                                    是否公开{{ form.is_public }}
+                                </label>
+                            </div>
                         </div>
                         <div class="col-md-3 ">
-
-                            {{ form.submit(class="btn btn-info btn-block ") }}
+                            {{ form.submit(class="btn btn-primary btn-block ") }}
                         </div>
                     </form>
                 </div>

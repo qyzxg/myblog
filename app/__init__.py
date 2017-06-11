@@ -11,23 +11,16 @@ from flask_mail import Mail
 import flask_whooshalchemyplus
 from flaskext.markdown import Markdown
 from celery import Celery
-from config import Config, config
+from config import config
 from flask_cache import Cache
-# from celeryconfig import CeleryConfig
 
 bootstrap = Bootstrap()
 mail = Mail()
 db = SQLAlchemy()
 login_manager = LoginManager()
 
-celery = Celery(__name__, broker=Config.CELERY_BROKER_URL, backend=Config.CELERY_RESULT_BACKEND)
-celery.conf.update(Config.CELERYBEAT_SCHEDULE,
-                   CELERY_TIMEZONE='Asia/Shanghai',
-                   CELERY_ENABLE_UTC=True,
-                   CELERYD_LOG_FILE=r'/var/log/celery/worker.log',
-                   CELERYBEAT_LOG_FILE=r'/var/log/celery/beat.log',
-                   CELERY_ACCEPT_CONTENT=['pickle', 'json', 'msgpack', 'yaml']
-                   )
+celery = Celery(__name__)
+celery.config_from_object('celeryconfig')
 
 cache = Cache(config={'CACHE_TYPE': 'redis',
                       'CACHE_REDIS_HOST': 'localhost',  # Host, default 'localhost'
@@ -53,7 +46,6 @@ def create_app(config_name='default'):
     login_manager.init_app(app)
     Markdown(app)
     flask_whooshalchemyplus.init_app(app)
-    celery.conf.update(app.config)
 
     if not app.debug:
         import logging

@@ -5,7 +5,7 @@
         </div>
         <div class="panel-body" style="padding: 5px" id="tagcloud">
             {% for tag in tags %}
-                {% if tag.get_total()>0 %}
+                {% if tag.get_total()>2 %}
                     <span class="label" style="display:inline-block"><a
                             href="{{ url_for('cates.get_tags',tag=tag.name) }}"
                             style="color: rgb(235,235,235)">{{ tag.name }}<span class="badge"
