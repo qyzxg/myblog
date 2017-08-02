@@ -2,23 +2,19 @@
 # -*- coding:utf-8 -*-
 
 from flask import render_template, make_response, flash, redirect, \
-    url_for, request, send_from_directory, g, current_app, json
+    url_for, request, g, current_app, json
 from flask_login import current_user, login_required
-from werkzeug.utils import secure_filename
 import flask_whooshalchemyplus as whoosh
-from os import path
 import time
 import datetime
-import random
 from ..tasks.celery_tasks import get_post_img
 from .. import db, cache
 from . import public
 from ..models import User, Post, Comment, Categories, Styles, Todo, Tag, Reply
 from .forms import PostForm, CommentForm, SearchForm
-import os
 from werkzeug.contrib.atom import AtomFeed
 from urllib.parse import urljoin
-from qiniu import Auth, put_file, put_data
+from qiniu import Auth, put_data
 
 
 # 搜索

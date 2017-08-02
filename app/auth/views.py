@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, \
+    session, send_file
 from flask_login import current_user, login_user, login_required, logout_user
 import datetime
 import requests
@@ -10,6 +11,20 @@ from .forms import LoginForm, RegistForm, AuthEmail, ResetPassword
 from ..token import generate_confirmation_token, confirm_token
 from ..tasks.celery_tasks import send_email
 from ..models import User
+from .g_validate import generate_verify_image
+import io
+from app import redis_store
+
+
+# 获取验证码
+@auth.route('/get_validate/')
+def get_validate():
+    image, text = generate_verify_image()
+    byte_io = io.BytesIO()
+    image.save(byte_io, 'PNG')
+    byte_io.seek(0)
+    session['code_text'] = text
+    return send_file(byte_io, mimetype='image/png')
 
 
 # 用户注册
@@ -27,6 +42,9 @@ def register():
             confirmed=False
         )
         user.set_password(form.data['password'])
+        # if 'code_text' in session and form['validate'].lower() != session['code_text'].lower():
+        #     flash(u'验证码错误！')
+        #     return redirect(url_for('auth.register'))
         db.session.add(user)
         db.session.commit()
         token = generate_confirmation_token(user.email)
@@ -34,7 +52,7 @@ def register():
         html = render_template('auth/email_register.html', confirm_url=confirm_url)
         subject = u"[noreply][51datas]账号注册邮件"
         # send_email(user.email, subject, html)
-        send_email.delay(user.email, subject, html) #异步
+        send_email.delay(user.email, subject, html)  # 异步
         user = db.session.merge(user)
         login_user(user, remember=True)
         flash('注册成功,请登录您的邮箱按照提示激活账户')
@@ -82,19 +100,23 @@ def active():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        data = form.data
+        form_data = form.data
         user = form.get_user()
         if user is None:
             flash('用户不存在')
             return redirect(url_for('auth.login'))
-        if not user.check_password(data['password']):
-            flash('密码错误')
-            return redirect(url_for('auth.login'))
         if user.status == 0:
-            flash('您的账户已经被限制登录')
+            flash('该账户已经被限制登录')
+            return redirect(url_for('auth.login'))
+        if not user.check_password(form_data['password']):
+            flash('密码错误,请重试!')
+            return redirect(url_for('auth.login'))
+        if 'code_text' in session and form_data['validate'].lower() != session['code_text'].lower():
+            flash(u'验证码错误！')
             return redirect(url_for('auth.login'))
         login_user(user, remember=form.remember_me.data)
         user.last_login = datetime.datetime.now()
+        redis_store.delete('validateCount:%d' % user.id)
         try:
             ip_addr = request.headers['X-real-ip']
         except:
@@ -110,7 +132,7 @@ def login():
         flash('欢迎回来,%s' % user.username)
         next_url = request.args.get('next')
         return redirect(next_url or url_for('public.index'))
-    return render_template('auth/login.html', form=form, title='用户登录')
+    return render_template('auth/login.html', title='用户登录',form=form)
 
 
 # 用户登出
@@ -156,7 +178,7 @@ def reset_password(token):
         user = User.query.filter_by(email=email).first()
         user.password = form.password.data
         user.set_password(form.data['password'])
-        user.updated_at=datetime.datetime.now()
+        user.updated_at = datetime.datetime.now()
         db.session.add(user)
         db.session.commit()
         logout_user()

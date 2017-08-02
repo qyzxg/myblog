@@ -1,0 +1,15 @@
+ul.emailist {
+    border: 1px solid #30cc19;
+    background: #2B3E50;
+}
+
+ul.emailist>li{
+    cursor:pointer;
+    display: block;
+}
+
+ul.emailist>li:hover{
+    background: #d92d15;
+    cursor:pointer;
+    display: block;
+}

@@ -14,6 +14,8 @@ class Config:
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     FLASKY_SLOW_DB_QUERY_TIME = 0.5
 
+    REDIS_URL = "redis://localhost:6379/3"
+
     # 邮件
     MAIL_SERVER = 'smtp.qq.com'
     MAIL_PORT = 465

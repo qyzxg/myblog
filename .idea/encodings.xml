@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/app/static/javascripts/autop_email1.js" charset="GB2312" />
     <file url="file://$PROJECT_DIR$/logs/myblog.log" charset="GB2312" />
   </component>
 </project>

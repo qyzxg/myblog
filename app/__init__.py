@@ -13,11 +13,13 @@ from flaskext.markdown import Markdown
 from celery import Celery
 from config import config
 from flask_cache import Cache
+from flask_redis import FlaskRedis
 
 bootstrap = Bootstrap()
 mail = Mail()
 db = SQLAlchemy()
 login_manager = LoginManager()
+redis_store = FlaskRedis()
 
 celery = Celery(__name__)
 celery.config_from_object('celeryconfig')
@@ -46,6 +48,7 @@ def create_app(config_name='default'):
     login_manager.init_app(app)
     Markdown(app)
     flask_whooshalchemyplus.init_app(app)
+    redis_store.init_app(app)
 
     if not app.debug:
         import logging

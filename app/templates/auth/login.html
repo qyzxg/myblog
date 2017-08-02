@@ -1,6 +1,7 @@
 {% extends 'auth/base.html' %}
 {% block title %}{{ title|safe }}{% endblock %}
 
+
 {% block content %}
     <div id="content">
         <div class="container">
@@ -17,27 +18,52 @@
                 </div>
                 <div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1 register">
                     <div class="form-group">
-                        <label for="username" class="col-sm-3 control-label" style="font-size: 15px">用户名：</label>
+                        <label for="email" class="col-sm-3 control-label" style="font-size: 15px">邮&nbsp;&nbsp;&nbsp;&nbsp;箱：</label>
                         <div class="col-sm-8">
                             <div class="input-group">
-                                {{ form.username(placeholder='请输入用户名') }}
+                                {{ form.email(placeholder='请输入邮箱') }}
                                 <div class="input-group-addon">
+                                    {% for error in form.email.errors %}
+                                        <span style="color: #feff14;">{{ error }}</span>
+                                    {% endfor %}
                                     <span class="glyphicon glyphicon-user"></span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="password" class="col-sm-3 control-label" style="font-size: 15px">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
+                        <label for="password" class="col-sm-3 control-label" style="font-size: 15px">密&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
                         <div class="col-sm-8">
                             <div class="input-group">
                                 {{ form.password(placeholder='请输入密码') }}
                                 <div class="input-group-addon">
+                                    {% for error in form.password.errors %}
+                                        <span style="color: #feff14;">{{ error }}</span>
+                                    {% endfor %}
                                     <span class="glyphicon glyphicon-lock"></span>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="validate" class="col-sm-3 control-label" style="font-size: 15px">验证码：</label>
+                        <div class="col-sm-5">
+                            <div class="input-group">
+                                {{ form.validate(placeholder='请输入4位验证码') }}
+                                <div class="input-group-addon">
+                                    <a onclick="getPic()" title="刷新验证码">
+                                        {% for error in form.validate.errors %}
+                                            <span style="color: #feff14;">{{ error }}</span>
+                                        {% endfor %}
+                                        <span class="glyphicon glyphicon-refresh"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <img id="vali" onclick="getPic()" src="{{ url_for('auth.get_validate') }}">
+                        </div>
+                    </div>
+
                     <div class="form-group ">
                         <label for="remember_me" class="col-sm-3 control-label" style="font-size: 15px">记住我：</label>
                         <label name="remember_me" class="col-sm-1 control-label">{{ form.remember_me }}</label>
@@ -59,6 +85,20 @@
             </form>
         </div>
     </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script>
+        function getPic() {
+            $("#vali").attr("src", "/auth/get_validate/?flag=" + Math.random());
+        };
+        $("#email").mailAutoComplete({
+            autoClass: false,
+            textHint: true, //提示文字自动隐藏
+        });
+    </script>
+
 {% endblock %}
 
 {% block footer %}

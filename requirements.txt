@@ -38,5 +38,6 @@ Faker==0.7.12
 gunicorn==19.7.1
 qiniu==7.1.2
 flask-cache==0.13.1
+pillow==3.3.1
 
 

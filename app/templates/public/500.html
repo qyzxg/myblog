@@ -1,12 +1,20 @@
-{% extends 'public/base.html' %}
-
-{% block left_content %}
-    <div><h3>抱歉,服务器出问题了,<a href="{{ url_for('public.index') }}">返回首页</a></h3></div>
-{% endblock %}
-{% block right_content %}
-    <h3>hello</h3>
-{% endblock %}
-
-{% block footer %}
-    {{ super() }}
-{% endblock %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>抱歉，服务器内部错误</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'stylesheets/error.css') }}"/>
+    <link rel="shortcut icon" href="http://oqquc7c6d.bkt.clouddn.com/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<div class="lose-main">
+    <div class="lose-box">
+        <img src="{{ url_for('static', filename = 'images/500.png') }}">
+        <p>抱歉，服务器内部错误</p>
+        <p class="lose-en">Sorry, internal server error.</p>
+        <a href="{{ url_for('public.index') }}">返回首页</a>
+    </div>
+</div>
+</body>
+</html>
