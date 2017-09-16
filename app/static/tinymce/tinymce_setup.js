@@ -22,7 +22,7 @@ tinymce.init({
 
 
     imageupload_url: '/edit/upload_postimg/',
-    imagetools_cors_hosts: ['51datas.com', 'oqquiobc2.bkt.clouddn.com'],
+    imagetools_cors_hosts: ['51datas.com','51qinqing.com' ,'oqquiobc2.bkt.clouddn.com'],
     fontsize_formats: '10pt 12pt 14pt 18pt 24pt 36pt',
     nonbreaking_force_tab: true,
     style_formats_merge: true,

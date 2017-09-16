@@ -39,6 +39,6 @@ gunicorn==19.7.1
 qiniu==7.1.2
 flask-cache==0.13.1
 pillow==3.3.1
-flask_redis
-tornado
+flask_redis == 0.3.0
+tornado == 4.4.1
 

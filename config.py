@@ -25,7 +25,7 @@ class Config:
     # MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER')
     MAIL_DEFAULT_SENDER = 'qyzxg2012@126.com'
     MAIL_USERNAME = 'qyzxg2012@126.com'
-    MAIL_PASSWORD = ''
+    MAIL_PASSWORD = '2g35ggh9ds34'
     SECURITY_PASSWORD_SALT = 'GPXYdKtqLDhpvr60yVwz'
 
     # 缓存和异步
