@@ -4,12 +4,17 @@
 import random
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 from string import ascii_letters
+import platform
 
 _str = ascii_letters
 _nums = '0123456789'
 
 chars = ''.join((_str, _nums))
-default_font = "../static/fonts/arialbd.ttf"
+sys_tem = platform.system()
+if sys_tem == 'Linux':
+    default_font = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+else:
+    default_font = "../static/fonts/arialbd.ttf"
 
 
 def generate_verify_image(size=(110, 39),

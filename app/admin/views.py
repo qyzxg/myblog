@@ -89,8 +89,9 @@ def get_m_days():
 
 
 @admin.route('/admin/get_server_info')
-@fresh_login_required
-@admin_required
+# @login_required
+# @fresh_login_required
+# @admin_required
 def get_server_info():
     cpu = psutil.cpu_percent(interval=1)
     memory = float(psutil.virtual_memory().used) / float(psutil.virtual_memory().total) * 100.0
@@ -101,7 +102,11 @@ def get_server_info():
         perdisk=False).write_bytes - last_disk) / 1024
     network = (psutil.net_io_counters().bytes_sent + psutil.net_io_counters().packets_recv - last_network) / 1024
 
-    server_info = {'cpu': int(cpu), 'memory': int(memory), 'disk': int(disk), 'network': int(network)}
+    server_info = {'code': 'Success', 'message': 'Success', 'cpu': int(cpu), 'memory': int(memory), 'disk': int(disk), 'network': int(network)}
+    if not current_user.is_authenticated:
+        return jsonify({'code': 'error', 'message': 'You must login!'})
+    if current_user.role != 1:
+        return jsonify({'code': 'error', 'message': 'Permission denied!'})
     return jsonify(server_info)
 
 
@@ -118,6 +123,7 @@ def get_user_city():
 
 @admin.route('/admin')
 # @fresh_login_required
+@login_required
 @admin_required
 def admin_index():
     m = get_c_month()

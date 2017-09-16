@@ -220,9 +220,10 @@ class Post(db.Model):
     category = db.Column(db.String(50), default='Python')
     is_public = db.Column(db.Boolean, default=True)
     sort_score = db.Column(db.Float, default=0)
-    post_img = db.Column(db.String(500), doc='文章首页地址', default=r'http://oqquiobc2.bkt.clouddn.com/default_post_img.jpg')
+    post_img = db.Column(db.String(500), doc='文章图片', default=r'http://oqquiobc2.bkt.clouddn.com/default_post_img.jpg')
     tags = db.relationship('Tag', secondary=tag,
                            backref=db.backref('posts', lazy='dynamic'))
+    source = db.Column(db.String(100), default='www.51qinqing.com')
 
     def get_public(self):
         if self.is_public:

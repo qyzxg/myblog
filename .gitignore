@@ -3,9 +3,12 @@
 ### Example user template
 
 # IntelliJ project files
-#.idea
+.idea
 #*.iml
 #out
 #gen
-#.idea/
-
+.idea/
+__pycache__/
+*.pyc
+*.pyo
+.git

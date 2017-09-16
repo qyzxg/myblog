@@ -57,6 +57,11 @@ class UploadToQiniu():
         token = q.upload_token(self.bucket_name, k, self.expire)
         return put_data(token, k, self.file.read())
 
+    def upload_web(self, file_name, file):
+        q = Auth(self.access_key, self.secret_key)
+        token = q.upload_token(self.bucket_name, file_name, self.expire)
+        return put_data(token, file_name, file)
+
 
 @cache.cached(timeout=30, key_prefix='view_%s', unless=None)
 @public.route('/', methods=['POST', 'GET'])
@@ -186,8 +191,7 @@ def edit(id=0):
             post.style = form.style.data
             post.category = form.category.data
             post.is_public = form.is_public.data
-            post.created=datetime.datetime.now()
-
+            post.created = datetime.datetime.now()
             alltags = [i.name for i in Tag.query.all()]
             ptags = [i.name for i in post.tags]
             l = form.tags.data.split(',')
@@ -411,5 +415,3 @@ def recent_feed():
                  url=make_external(url_for('public.details', id=post.id))
                  )
     return feed.get_response()
-
-

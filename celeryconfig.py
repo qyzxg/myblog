@@ -12,10 +12,14 @@ CELERYBEAT_SCHEDULE = {
     'write_info': {
         'task': 'write_info',
         'args': (r'/var/log/nginx/access.log', r'/var/log/nginx/access.txt'),
-        'schedule': timedelta(seconds=300)
+        'schedule': timedelta(seconds=900)
     },
     'sort_score': {
         'task': 'sort_score',
-        'schedule': timedelta(seconds=600)
-    }
+        'schedule': timedelta(seconds=1800)
+    },
+    # 'get_post': {
+    #     'task': 'sort_score',
+    #     'schedule': timedelta(seconds=100)
+    # }
 }

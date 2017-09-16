@@ -12,6 +12,7 @@ import subprocess
 import signal
 import os
 import time
+# from app.crawl.xiaorui import Crawler
 
 
 @celery.task
@@ -192,3 +193,10 @@ def sort_score():
         posts = Post.query.all()
         for post in posts:
             post.sort_score = post.cal_sort_score()
+
+
+
+# @celery.task(name='get_post')
+# def get_post():
+#     c = Crawler()
+#     c.parse()

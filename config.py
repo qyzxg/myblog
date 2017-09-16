@@ -17,15 +17,15 @@ class Config:
     REDIS_URL = "redis://localhost:6379/3"
 
     # 邮件
-    MAIL_SERVER = 'smtp.qq.com'
+    MAIL_SERVER = 'smtp.126.com'
     MAIL_PORT = 465
     MAIL_USE_SSL = True
     # MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     # MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     # MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER')
-    MAIL_DEFAULT_SENDER = 'qingpu_fx@qq.com'
-    MAIL_USERNAME = 'qingpu_fx@qq.com'
-    MAIL_PASSWORD = 'cdmzmtxghezcifhi'
+    MAIL_DEFAULT_SENDER = 'qyzxg2012@126.com'
+    MAIL_USERNAME = 'qyzxg2012@126.com'
+    MAIL_PASSWORD = '2g35ggh9ds34'
     SECURITY_PASSWORD_SALT = 'GPXYdKtqLDhpvr60yVwz'
 
     # 缓存和异步

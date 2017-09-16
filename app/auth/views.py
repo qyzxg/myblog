@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 from flask import render_template, flash, redirect, url_for, request, \
-    session, send_file
+    session, send_file,make_response
 from flask_login import current_user, login_user, login_required, logout_user
 import datetime
 import requests
@@ -21,10 +21,15 @@ from app import redis_store
 def get_validate():
     image, text = generate_verify_image()
     byte_io = io.BytesIO()
-    image.save(byte_io, 'PNG')
-    byte_io.seek(0)
+    image.save(byte_io, 'jpeg')
+    img_data = byte_io.getvalue()
+    byte_io.close()
+    response = make_response(img_data)
+    # byte_io.seek(0)
+    response.headers['Content-Type'] = 'image/jpg'
     session['code_text'] = text
-    return send_file(byte_io, mimetype='image/png')
+    # return send_file(byte_io, mimetype='image/png')
+    return response
 
 
 # 用户注册
@@ -42,9 +47,6 @@ def register():
             confirmed=False
         )
         user.set_password(form.data['password'])
-        # if 'code_text' in session and form['validate'].lower() != session['code_text'].lower():
-        #     flash(u'验证码错误！')
-        #     return redirect(url_for('auth.register'))
         db.session.add(user)
         db.session.commit()
         token = generate_confirmation_token(user.email)
