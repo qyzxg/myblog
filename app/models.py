@@ -217,7 +217,7 @@ class Post(db.Model):
     comments = db.relationship('Comment', backref='post')
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     style = db.Column(db.String(50), default='原创')
-    category = db.Column(db.String(50), default='Python')
+    category = db.Column(db.String(50), default='Python 进阶')
     is_public = db.Column(db.Boolean, default=True)
     sort_score = db.Column(db.Float, default=0)
     post_img = db.Column(db.String(500), doc='文章图片', default=r'http://oqquiobc2.bkt.clouddn.com/default_post_img.jpg')
