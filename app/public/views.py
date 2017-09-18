@@ -55,7 +55,7 @@ def index():
     categories = Categories.query.all()
     tags = Tag.query.all()
     response = make_response(render_template('public/index.html',
-                                             title='PyData',
+                                             title='Python之家',
                                              posts_=posts_,
                                              posts=posts,
                                              pagination=pagination,
