@@ -7,7 +7,7 @@ from flask_login import current_user, login_required
 import flask_whooshalchemyplus as whoosh
 import time
 import datetime
-from ..tasks.celery_tasks import get_post_img
+from ..tasks.celery_tasks import get_post_img, text_filter
 from .. import db, cache
 from . import public
 from ..models import User, Post, Comment, Categories, Styles, Todo, Tag, Reply
@@ -237,8 +237,10 @@ def details(id):
     if request.method == 'POST':
         if current_user.confirmed == 1:
             if request.form:
+                comment_content = request.form['body']
+                c_content = text_filter.delay(comment_content).get()
                 comment = Comment(author=current_user,
-                                  body=request.form['body'],
+                                  body=c_content,
                                   post=post,
                                   created=datetime.datetime.now())
                 db.session.add(comment)
@@ -308,8 +310,9 @@ def add_reply():
         if current_user.is_authenticated:
             com_id = request.form['com_id']
             reply_content = request.form['reply_content']
+            r_content = text_filter.delay(reply_content).get()
             reply = Reply(
-                body=reply_content,
+                body=r_content,
                 comment_id=com_id,
                 author_id=current_user.id,
                 created=datetime.datetime.now()

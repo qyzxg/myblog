@@ -8,7 +8,7 @@ from ..models import LogInfo, Post
 import datetime
 import time
 from .xiaorui import CrawlerXiaorui
-
+from ..shares import DFAFilter
 
 @celery.task(name='defa_send_email')
 def send_email(to, subject, template):
@@ -141,3 +141,9 @@ def sort_score():
 def crawl_post():
     xiao_rui = CrawlerXiaorui()
     xiao_rui.parse()
+
+@celery.task(name='defa_text_filter')
+def text_filter(s):
+    text = DFAFilter()
+    text.parse('./app/static/text/keywords.txt')
+    return text.filter(s)
