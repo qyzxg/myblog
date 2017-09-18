@@ -382,7 +382,7 @@ def send_messages():
         flash('全体通知发送成功')
     elif cates == '邮件全体':
         for user in users:
-            subject = u"[noreply][51datas]通知邮件"
+            subject = u"[noreply][51qinqing-python之家]通知邮件"
             html = render_template('admin/email_notice.html', user=user, content=content)
             send_email.delay(user.email, subject, html)
             message = Message(content=content,
@@ -395,7 +395,7 @@ def send_messages():
         flash('发送全体邮件/通知成功')
     else:
         user = User.query.filter_by(username=cates).first()
-        subject = u"[noreply][51datas]通知邮件"
+        subject = u"[noreply][51qinqing-python之家]通知邮件"
         html = render_template('admin/email_notice.html', user=user, content=content)
         send_email.delay(user.email, subject, html)
         message = Message(content=content,

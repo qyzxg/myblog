@@ -1,8 +1,6 @@
 <div align="center">
-    <p>
-    <h3> 亲爱的{{ user.username }},您好! 这是一封系统通知:</h3></p>
-    <p>{{ content|safe }}</p>
-    <p>
-    <h3>谢谢!</h3></p>
+    <h3>亲爱的{{ user.username }},您好! 这是一封来自<a href="http://www.51qinqing.com">Python之家</a>的系统通知邮件:</h3>
+    <h2>{{ content|safe }}</h2>
+    <h3>谢谢,祝生活愉快!</h3>
 </div>
 

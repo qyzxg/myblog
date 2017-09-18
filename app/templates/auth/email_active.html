@@ -1,6 +1,10 @@
 <div align="center">
-    <p><h3> 亲爱的{{ current_user.username }},您好! 谢谢您的注册,请在一个小时内点击以下链接激活账号:</h3></p>
-    <p><a href="{{ confirm_url }}"><h2>快点击我吧!</h2></a></p>
-    <p><h3>谢谢!</h3></p>
+    <h3>亲爱的{{ current_user.username }},您好! 这是一封来自
+        <a href="http://www.51qinqing.com">
+            Python之家
+        </a>的账号激活邮件,请在一个小时内点击以下链接激活账号:
+    </h3>
+    <h1><a href="{{ confirm_url }}">现在激活!</a></h1>
+    <h3>谢谢,祝生活愉快!</h3>
 </div>
 
