@@ -1,0 +1,42 @@
+#!/usr/bin/python
+# -*- coding:utf-8 -*-
+
+from functools import wraps
+from flask_login import current_user
+from flask import flash, redirect, url_for, request
+import time
+from qiniu import Auth, put_data
+
+def admin_required(f):
+    @wraps(f)
+    def view_function(*args, **kwargs):
+        if not current_user.role == 1:
+            flash('您没有管理员权限!')
+            next_url = request.args.get('next')
+            return redirect(next_url or url_for('public.index'))
+        return f(*args, **kwargs)
+    return view_function
+
+
+class UploadToQiniu():
+    def __init__(self, domian_name, bucket_name, file, expire=3600):
+        self.access_key = 'iDfXDpVa4pxFW4tyqkJK8dPkeSeRPlEsGZN7qnST'
+        self.secret_key = 'iT3Z4r_z23zauKlyAsTCj51t6WOtJWbADhPKn2O6'
+        self.bucket_name = bucket_name
+        self.domian_name = domian_name
+        self.file = file
+        self.expire = expire
+
+    def upload(self):
+        user = current_user
+        ext = self.file.filename.split('.')[-1]
+        time_ = str(time.time()).replace('.', '')
+        k = time_ + '_' + str(user.id) + '.' + ext
+        q = Auth(self.access_key, self.secret_key)
+        token = q.upload_token(self.bucket_name, k, self.expire)
+        return put_data(token, k, self.file.read())
+
+    def upload_web(self, file_name, file):
+        q = Auth(self.access_key, self.secret_key)
+        token = q.upload_token(self.bucket_name, file_name, self.expire)
+        return put_data(token, file_name, file)

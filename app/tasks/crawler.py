@@ -2,27 +2,11 @@
 # -*- coding:utf-8 -*-
 
 import requests
-from abc import ABCMeta
+from abc import ABCMeta, abstractmethod
 from .. import create_app, db
 from ..models import Post
 import datetime
-# from app.public.views import UploadToQiniu
-from qiniu import Auth, put_data
-
-
-class UploadToQiniu():
-    def __init__(self, domian_name, bucket_name, file, expire=3600):
-        self.access_key = 'iDfXDpVa4pxFW4tyqkJK8dPkeSeRPlEsGZN7qnST'
-        self.secret_key = 'iT3Z4r_z23zauKlyAsTCj51t6WOtJWbADhPKn2O6'
-        self.bucket_name = bucket_name
-        self.domian_name = domian_name
-        self.file = file
-        self.expire = expire
-
-    def upload_web(self, file_name, file):
-        q = Auth(self.access_key, self.secret_key)
-        token = q.upload_token(self.bucket_name, file_name, self.expire)
-        return put_data(token, file_name, file)
+from ..shares import UploadToQiniu
 
 
 class BaseCrawler(metaclass=ABCMeta):
@@ -34,6 +18,7 @@ class BaseCrawler(metaclass=ABCMeta):
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/'
                           '60.0.3112.113 Safari/537.36'
         }
+        self.today = datetime.datetime.today().strftime('%Y-%m-%d')
 
     def fetch_page(self, url, data=None, headers=None, timeout=None):
         try:
@@ -85,3 +70,7 @@ class BaseCrawler(metaclass=ABCMeta):
         key = ret['key']
         url = domian_name + '/' + key
         return url
+
+    @abstractmethod
+    def parse(self):
+        pass

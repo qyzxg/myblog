@@ -8,8 +8,8 @@ import datetime
 
 
 class CrawlerXiaorui(BaseCrawler):
-    def __init__(self, *args, **kwargs):
-        super(CrawlerXiaorui, self).__init__(*args, **kwargs)
+    def __init__(self):
+        super(CrawlerXiaorui, self).__init__()
         self.site = 'xiaorui.cc'
 
     def fetch_page(self, *args, **kwargs):
@@ -25,7 +25,6 @@ class CrawlerXiaorui(BaseCrawler):
 
     def get_post_urls(self):
         total = self.get_total_page()
-        today = datetime.datetime.today().strftime('%Y-%m-%d')
         for i in range(1, total + 1):
             print('第{}页'.format(i))
             r = self.fetch_page(url='http://xiaorui.cc/category/python/page/{}/'.format(i))
@@ -38,7 +37,7 @@ class CrawlerXiaorui(BaseCrawler):
                 month = int(url.split('/')[4])
                 day = int(url.split('/')[5])
                 p_date = datetime.datetime(year, month, day).strftime('%Y-%m-%d')
-                if p_date == today:
+                if p_date == self.today:
                     yield url
                 else:
                     print('文章已过期')

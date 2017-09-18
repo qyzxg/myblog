@@ -42,4 +42,4 @@ pillow==3.3.1
 flask_redis == 0.3.0
 tornado == 4.4.1
 lxml==3.6.4
-beautifulsoup4=4.5.1
+bs4==0.0.1

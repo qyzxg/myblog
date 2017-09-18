@@ -22,7 +22,7 @@ login_manager = LoginManager()
 redis_store = FlaskRedis()
 
 celery = Celery(__name__)
-celery.config_from_object('celeryconfig')
+celery.config_from_object('celery_config')
 
 cache = Cache(config={'CACHE_TYPE': 'redis',
                       'CACHE_REDIS_HOST': 'localhost',  # Host, default 'localhost'

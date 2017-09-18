@@ -17,7 +17,7 @@ from app import redis_store
 
 
 # 获取验证码
-@auth.route('/get_validate/')
+@auth.route('/get_validate/', methods=['GET'])
 def get_validate():
     image, text = generate_verify_image()
     byte_io = io.BytesIO()
@@ -63,7 +63,7 @@ def register():
 
 
 # 邮件确认
-@auth.route('/confirm/<token>/')
+@auth.route('/confirm/<token>/', methods=['POST', 'GET'])
 @login_required
 def confirm_email(token):
     try:
@@ -138,7 +138,7 @@ def login():
 
 
 # 用户登出
-@auth.route('/logout/')
+@auth.route('/logout/', methods=['POST', 'GET'])
 @login_required
 def logout():
     logout_user()

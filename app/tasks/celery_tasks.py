@@ -7,7 +7,6 @@ import re
 from ..models import LogInfo, Post
 import datetime
 import time
-# from app.crawl.xiaorui import Crawler
 from .xiaorui import CrawlerXiaorui
 
 

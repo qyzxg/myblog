@@ -14,7 +14,7 @@ from ..models import User, Post, Comment, Categories, Styles, Todo, Tag, Reply
 from .forms import PostForm, CommentForm, SearchForm
 from werkzeug.contrib.atom import AtomFeed
 from urllib.parse import urljoin
-from qiniu import Auth, put_data
+from ..shares import UploadToQiniu
 
 
 # 搜索
@@ -36,35 +36,11 @@ public.add_app_template_filter(wdcount, name='wdcount')
 
 def allowed_file(filename):
     return '.' in filename and \
-           filename.rsplit('.', 1)[1] in current_app.config['ALLOWED_EXTENSIONS']
-
-
-class UploadToQiniu():
-    def __init__(self, domian_name, bucket_name, file, expire=3600):
-        self.access_key = 'iDfXDpVa4pxFW4tyqkJK8dPkeSeRPlEsGZN7qnST'
-        self.secret_key = 'iT3Z4r_z23zauKlyAsTCj51t6WOtJWbADhPKn2O6'
-        self.bucket_name = bucket_name
-        self.domian_name = domian_name
-        self.file = file
-        self.expire = expire
-
-    def upload(self):
-        user = current_user
-        ext = self.file.filename.split('.')[-1]
-        time_ = str(time.time()).replace('.', '')
-        k = time_ + '_' + str(user.id) + '.' + ext
-        q = Auth(self.access_key, self.secret_key)
-        token = q.upload_token(self.bucket_name, k, self.expire)
-        return put_data(token, k, self.file.read())
-
-    def upload_web(self, file_name, file):
-        q = Auth(self.access_key, self.secret_key)
-        token = q.upload_token(self.bucket_name, file_name, self.expire)
-        return put_data(token, file_name, file)
+           filename.rsplit('.', 1)[1].lower() in current_app.config['ALLOWED_EXTENSIONS']
 
 
 @cache.cached(timeout=30, key_prefix='view_%s', unless=None)
-@public.route('/', methods=['POST', 'GET'])
+@public.route('/', methods=['GET'])
 def index():
     # 记录cookie
     page_index = request.args.get('page', 1, type=int)
@@ -304,26 +280,26 @@ def details(id):
                            )
 
 
-@public.route('/get_comments', methods=['POST', 'GET'])
+@public.route('/get_comments', methods=['GET', 'POST'])
 def get_comments():
     if request.method == "POST":
         try:
             post_id = request.form.get('post_id')
+            comments = Comment.query.filter_by(post_id=int(post_id)).order_by(Comment.created.desc())
+            return render_template('includes/_comments_list.html', comments=comments)
         except:
-            pass
-        comments = Comment.query.filter_by(post_id=int(post_id)).order_by(Comment.created.desc())
-        return render_template('includes/_comments_list.html', comments=comments)
+            flash('评论不存在!')
 
 
-@public.route('/get_replies', methods=['POST', 'GET'])
+@public.route('/get_replies', methods=['GET', 'POST'])
 def get_replies():
     if request.method == "POST":
         try:
             com_id = request.form.get('com_id')
+            comment = Comment.query.filter_by(id=int(com_id)).first()
+            return render_template('includes/_reply_list.html', comment=comment)
         except:
-            pass
-        comment = Comment.query.filter_by(id=int(com_id)).first()
-        return render_template('includes/_reply_list.html', comment=comment)
+            flash('回复不存在!')
 
 
 @public.route('/add_reply', methods=['POST', 'GET'])
@@ -347,7 +323,7 @@ def add_reply():
             return json.dumps(error)
 
 
-@public.route('/hot_posts/')
+@public.route('/hot_posts/', methods=['GET'])
 def hot_posts():
     return render_template('includes/_hot_posts.html')
 
@@ -384,13 +360,13 @@ def search_results(key_word):
                            title='%s的搜索结果' % key_word)
 
 
-@public.route('/service/')
+@public.route('/service/', methods=['GET'])
 def service():
     posts_ = Post.query.filter(Post.is_public == 1).order_by(Post.comment_times.desc()).limit(5)
     return render_template('public/service.html', title='服务', posts_=posts_)
 
 
-@public.route('/about/')
+@public.route('/about/', methods=['GET'])
 def about():
     posts_ = Post.query.filter(Post.is_public == 1).order_by(Post.comment_times.desc()).limit(5)
     return render_template('public/about.html', title='关于', posts_=posts_)
@@ -400,7 +376,7 @@ def make_external(url):
     return urljoin(request.url_root, url)
 
 
-@public.route('/rss/')
+@public.route('/rss/', methods=['GET'])
 def recent_feed():
     feed = AtomFeed('最近文章',
                     feed_url=request.url, url=request.url_root)

@@ -8,7 +8,7 @@ import datetime
 from .. import db, cache
 from . import admin
 from ..models import User, Post, Comment, Categories, Message, LogInfo
-from ..decorators import admin_required
+from ..shares import admin_required
 from .forms import NewCategory
 import itertools
 import psutil
@@ -88,10 +88,7 @@ def get_m_days():
     return a
 
 
-@admin.route('/admin/get_server_info')
-# @login_required
-# @fresh_login_required
-# @admin_required
+@admin.route('/admin/get_server_info', methods=['GET', 'POST'])
 def get_server_info():
     cpu = psutil.cpu_percent(interval=1)
     memory = float(psutil.virtual_memory().used) / float(psutil.virtual_memory().total) * 100.0
@@ -102,7 +99,8 @@ def get_server_info():
         perdisk=False).write_bytes - last_disk) / 1024
     network = (psutil.net_io_counters().bytes_sent + psutil.net_io_counters().packets_recv - last_network) / 1024
 
-    server_info = {'code': 'Success', 'message': 'Success', 'cpu': int(cpu), 'memory': int(memory), 'disk': int(disk), 'network': int(network)}
+    server_info = {'code': 'Success', 'message': 'Success', 'cpu': int(cpu), 'memory': int(memory), 'disk': int(disk),
+                   'network': int(network)}
     if not current_user.is_authenticated:
         return jsonify({'code': 'error', 'message': 'You must login!'})
     if current_user.role != 1:
@@ -110,7 +108,7 @@ def get_server_info():
     return jsonify(server_info)
 
 
-@admin.route('/admin/get_user_city')
+@admin.route('/admin/get_user_city', methods=['GET', 'POST'])
 @fresh_login_required
 @admin_required
 def get_user_city():
@@ -121,7 +119,7 @@ def get_user_city():
 
 # 管理员后台首页
 
-@admin.route('/admin')
+@admin.route('/admin', methods=['GET'])
 # @fresh_login_required
 @login_required
 @admin_required
@@ -167,7 +165,7 @@ def new_category():
 
 
 # 用户管理
-@admin.route('/admin/users_manage/', methods=['POST', 'GET'])
+@admin.route('/admin/users_manage/', methods=['GET'])
 @login_required
 @admin_required
 def users_manage():
@@ -178,7 +176,7 @@ def users_manage():
 
 
 # 博客管理
-@admin.route('/admin/blogs_manage', methods=['POST', 'GET'])
+@admin.route('/admin/blogs_manage', methods=['GET'])
 @login_required
 @admin_required
 def blogs_manage():
@@ -196,22 +194,20 @@ def blogs_delete():
     if request.method == 'POST':
         try:
             id_str = request.form.get('id')
+            id_lst = id_str.split("#")[:-1]
+            for i in id_lst:
+                post = Post.query.filter_by(id=str(i)).first()
+                if not post:
+                    pass
+                else:
+                    post.del_comments()
+                    post.del_tags()
+                    db.session.delete(post)
+                    db.session.commit()
+            flash('%d篇文章删除成功!' % len(id_lst))
+            return "OK"
         except:
-            pass
-
-        id_lst = id_str.split("#")[:-1]
-        for i in id_lst:
-            post = Post.query.filter_by(id=str(i)).first()
-            if not post:
-                pass
-            else:
-                post.del_comments()
-                post.del_tags()
-                db.session.delete(post)
-                db.session.commit()
-        flash('%d篇文章删除成功!' % len(id_lst))
-        return "OK"
-    return "ERROR"
+            return "ERROR"
 
 
 @admin.route('/admin/users_delete', methods=['POST', 'GET'])
@@ -221,28 +217,27 @@ def users_delete():
     if request.method == 'POST':
         try:
             id_str = request.form.get('id')
+            id_lst = id_str.split("#")[:-1]
+            for i in id_lst:
+                user = User.query.filter_by(id=str(i)).first()
+                if not user:
+                    pass
+                else:
+                    user.del_comments()
+                    user.del_todos()
+                    user.delete_r_message()
+                    user.delete_s_message()
+                    posts = Post.query.filter_by(author_id=user.id).all()
+                    for post in posts:
+                        post.del_comments()
+                        post.del_tags()
+                        db.session.delete(post)
+                    db.session.delete(user)
+                    db.session.commit()
+            flash('%d个用户删除成功!' % len(id_lst))
+            return "OK"
         except:
-            pass
-        id_lst = id_str.split("#")[:-1]
-        for i in id_lst:
-            user = User.query.filter_by(id=str(i)).first()
-            if not user:
-                pass
-            else:
-                user.del_comments()
-                user.del_todos()
-                user.delete_r_message()
-                user.delete_s_message()
-                posts = Post.query.filter_by(author_id=user.id).all()
-                for post in posts:
-                    post.del_comments()
-                    post.del_tags()
-                    db.session.delete(post)
-                db.session.delete(user)
-                db.session.commit()
-        flash('%d个用户删除成功!' % len(id_lst))
-        return "OK"
-    return "ERROR"
+            return "ERROR"
 
 
 @admin.route('/admin/comments_delete', methods=['POST', 'GET'])
@@ -252,20 +247,19 @@ def comments_delete():
     if request.method == 'POST':
         try:
             id_str = request.form.get('id')
+            id_lst = id_str.split("#")[:-1]
+            for i in id_lst:
+                comment = Comment.query.filter_by(id=str(i)).first()
+                if not comment:
+                    pass
+                else:
+                    comment.delete_all_reply()
+                    db.session.delete(comment)
+                    db.session.commit()
+            flash('%d条评论删除成功!' % len(id_lst))
+            return "OK"
         except:
-            pass
-        id_lst = id_str.split("#")[:-1]
-        for i in id_lst:
-            comment = Comment.query.filter_by(id=str(i)).first()
-            if not comment:
-                pass
-            else:
-                comment.delete_all_reply()
-                db.session.delete(comment)
-                db.session.commit()
-        flash('%d条评论删除成功!' % len(id_lst))
-        return "OK"
-    return "ERROR"
+            return "ERROR"
 
 
 # 评论管理
@@ -281,7 +275,7 @@ def comments_manage():
 
 
 # 博客删除
-@admin.route('/admin/bolg_manage/<int:id>/')
+@admin.route('/admin/bolg_manage/<int:id>/', methods=['POST', 'GET'])
 @login_required
 @admin_required
 def blog_manage(id):
@@ -300,7 +294,7 @@ def blog_manage(id):
 
 
 # 评论删除
-@admin.route('/admin/comment_manage/<int:id>/')
+@admin.route('/admin/comment_manage/<int:id>/', methods=['POST', 'GET'])
 @login_required
 @admin_required
 def comment_manage(id):
@@ -315,7 +309,7 @@ def comment_manage(id):
 
 
 # 用户登录管理
-@admin.route('/admin/login_manage/<int:id>/<int:status>/<int:delete>/')
+@admin.route('/admin/login_manage/<int:id>/<int:status>/<int:delete>/', methods=['POST', 'GET'])
 @login_required
 @admin_required
 def login_manage(id, status, delete):
@@ -344,7 +338,7 @@ def login_manage(id, status, delete):
 
 
 # 角色管理
-@admin.route('/admin/role_manage/<int:id>/<int:role>/')
+@admin.route('/admin/role_manage/<int:id>/<int:role>/', methods=['POST', 'GET'])
 @login_required
 @admin_required
 def role_manage(id, role):
@@ -359,13 +353,13 @@ def role_manage(id, role):
     return redirect(url_for('admin.users_manage'))
 
 
-@admin.route('/admin/messages_manage/')
+@admin.route('/admin/messages_manage/', methods=['GET'])
 @login_required
 @admin_required
 def messages_manage():
     users = User.query.all()
     sended_messages = Message.query.order_by(Message.created_at.desc()).filter_by(sender=current_user)
-    return render_template('admin/messages_manage.html', sended_messages=sended_messages,users=users,
+    return render_template('admin/messages_manage.html', sended_messages=sended_messages, users=users,
                            title='通知管理', menu=5)
 
 

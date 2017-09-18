@@ -39,7 +39,7 @@ class Config:
     UPLOAD_FOLDER = r'app/static/avatar/avatar'
     ZFB_FOLDER = r'app/static/zfbimg/zfbimg'
     WX_FOLDER = r'app/static/wximg/wximg'
-    ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif', 'JPG'])
+    ALLOWED_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif', 'bmp']
     BASE_PATH = path.abspath(path.dirname(__file__))
 
     # 记住我
