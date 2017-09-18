@@ -14,13 +14,14 @@ from celery import Celery
 from config import config
 from flask_cache import Cache
 from flask_redis import FlaskRedis
+from flask_oauthlib.client import OAuth
 
 bootstrap = Bootstrap()
 mail = Mail()
 db = SQLAlchemy()
 login_manager = LoginManager()
 redis_store = FlaskRedis()
-
+oauth = OAuth()
 celery = Celery(__name__)
 celery.config_from_object('celery_config')
 
@@ -37,10 +38,16 @@ login_manager.needs_refresh_message = '为保证您的账号安全,请验证后�
 login_manager.login_view = 'auth.login'
 login_manager.refresh_view = "auth.login"
 
+qq = oauth.remote_app(
+    'qq',
+    app_key='QQ'
+)
+
 
 def create_app(config_name='default'):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
+    app.config['QQ'] = config[config_name].QQ
     bootstrap.init_app(app)
     mail.init_app(app)
     db.init_app(app)
@@ -49,6 +56,7 @@ def create_app(config_name='default'):
     Markdown(app)
     flask_whooshalchemyplus.init_app(app)
     redis_store.init_app(app)
+    oauth.init_app(app)
 
     if not app.debug:
         import logging

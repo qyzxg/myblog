@@ -46,6 +46,17 @@ class Config:
     REMEMBER_COOKIE_DURATION = datetime.timedelta(weeks=1)
     # JSON_AS_ASCII = False
 
+    # 第三方登录
+    QQ = {
+        'consumer_key': '',
+        'consumer_secret': '',
+        'base_url': 'https://graph.qq.com',
+        'request_token_url': None,
+        'request_token_params': {'scope': 'get_user_info'},
+        'access_token_url': '/oauth2.0/token',
+        'authorize_url': '/oauth2.0/authorize',
+    }
+
 
 class DevelopmentConfig(Config):  # mysqlconnector
     DEBUG = True

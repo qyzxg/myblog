@@ -1,12 +1,12 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 from flask import render_template, flash, redirect, url_for, request, \
-    session, send_file,make_response
+    session, send_file, make_response, json, jsonify
 from flask_login import current_user, login_user, login_required, logout_user
 import datetime
 import requests
 from . import auth
-from .. import db
+from .. import db, qq
 from .forms import LoginForm, RegistForm, AuthEmail, ResetPassword
 from ..token import generate_confirmation_token, confirm_token
 from ..tasks.celery_tasks import send_email
@@ -82,7 +82,6 @@ def confirm_email(token):
         flash('确认链接不可用或已过期!', 'danger')
 
 
-
 # 发送激活邮件
 @auth.route('/active/', methods=['POST', 'GET'])
 @login_required
@@ -135,7 +134,7 @@ def login():
         flash('欢迎回来,%s' % user.username)
         next_url = request.args.get('next')
         return redirect(next_url or url_for('public.index'))
-    return render_template('auth/login.html', title='用户登录',form=form)
+    return render_template('auth/login.html', title='用户登录', form=form)
 
 
 # 用户登出
@@ -189,3 +188,89 @@ def reset_password(token):
         flash('链接已过期!')
     return render_template('auth/reset_password.html', form=form, token=token,
                            title='重置密码')
+
+
+# 第三方登录
+@auth.route('/qq/login/')
+def qq_login():
+    return qq.authorize(callback=url_for('auth.qq_authorized', _external=True))
+
+
+def json_to_dict(x):
+    '''OAuthResponse class can't not parse the JSON data with content-type
+    text/html, so we need reload the JSON data manually'''
+    if x.find('callback') > -1:
+        pos_lb = x.find('{')
+        pos_rb = x.find('}')
+        x = x[pos_lb:pos_rb + 1]
+    try:
+        return json.loads(x, encoding='utf-8')
+    except:
+        return x
+
+
+@auth.route('/qq/authorized')
+def qq_authorized():
+    resp = qq.authorized_response()
+    if resp is None:
+        return 'Access denied: reason=%s error=%s' % (
+            request.args['error_reason'],
+            request.args['error_description']
+        )
+    session['qq_token'] = (resp['access_token'], '')
+    resp = qq.get('/oauth2.0/me', {'access_token': session['qq_token'][0]})
+    resp = json_to_dict(resp.data.decode('utf-8'))
+    if isinstance(resp, dict):
+        session['qq_openid'] = resp.get('openid')
+    return redirect(url_for('auth.get_qq_user_info'))
+
+
+def update_qq_api_request_data():
+    '''Update some required parameters for OAuth2.0 API calls'''
+    defaults = {
+        'openid': session.get('qq_openid'),
+        'access_token': session.get('qq_token')[0],
+        'oauth_consumer_key': '',
+    }
+    return defaults
+
+
+@auth.route('/qq/user_info/')
+def get_qq_user_info():
+    if 'qq_token' in session:
+        data = update_qq_api_request_data()
+        resp = qq.get('/user/get_user_info', data=data)
+        user_info = json_to_dict(resp.data.decode('utf-8'))
+        user_info.update({'status': resp.status})
+        open_id = session['qq_openid']
+        user = User.query.filter_by(open_id=str(open_id)).first()
+        if user:
+            login_user(user)
+            return redirect(url_for('public.index'))
+        else:
+            new_user = User(
+                email='{}@qq.com'.format(open_id[-10:]),
+                username=user_info['nickname'],
+                password=open_id,
+                created_at=datetime.datetime.now(),
+                updated_at=datetime.datetime.now(),
+                last_login=datetime.datetime.now(),
+                confirmed=True,
+                region=user_info['province'],
+                city=user_info['city'],
+                avatar=user_info['figureurl_qq_2'],
+                open_id=open_id,
+                confirmed_on=datetime.datetime.now(),
+                binded=0
+            )
+            new_user.set_password(str(open_id))
+            db.session.add(new_user)
+            db.session.commit()
+            login_user(new_user)
+            return redirect(url_for('public.index'))
+    return redirect(url_for('auth.login'))
+
+
+@qq.tokengetter
+def get_qq_oauth_token():
+    return session.get('qq_token')

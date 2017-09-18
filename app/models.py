@@ -81,6 +81,8 @@ class User(UserMixin, db.Model):
                                     primaryjoin='Message.sender_id==User.id')
     messages_send = db.relationship('Message', backref='sendto', lazy='dynamic',
                                     primaryjoin='Message.sendto_id==User.id')
+    open_id = db.Column(db.String(100))
+    binded = db.Column(db.Integer, nullable=True, default=1)
 
     def set_password(self, password):
         self.password = generate_password_hash(password)
@@ -224,6 +226,7 @@ class Post(db.Model):
     tags = db.relationship('Tag', secondary=tag,
                            backref=db.backref('posts', lazy='dynamic'))
     source = db.Column(db.String(100), default='www.51qinqing.com')
+
 
     def get_public(self):
         if self.is_public:
