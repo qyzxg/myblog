@@ -22,18 +22,13 @@
 {% block styles %}
     {{ super() }}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'stylesheets/bootstrap.min.css') }}">
-    <link rel="stylesheet" type="text/css"
-          href="{{ url_for('static', filename = 'font-awesome/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" type="text/css"
-          href="{{ url_for('static', filename='tinymce/plugins/codesample/css/prism.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'tinymce/plugins/codesample/css/prism.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'stylesheets/main.css') }}">
 {% endblock %}
 
 
-
-
 {% block content %}
-
     <div class="container">
         <div class="col-md-9">
             {% block left_content %}
@@ -52,7 +47,6 @@
             {% endblock %}
         </div>
     </div>
-
 {% endblock %}
 
 

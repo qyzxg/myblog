@@ -14,20 +14,16 @@
         <meta name="copyright" content="qyzxg">
         <meta name="revisit-after" content="1 days">
         <link rel="shortcut icon" href="http://oqquc7c6d.bkt.clouddn.com/favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" type="text/css"
-              href="{{ url_for('static', filename = 'font-awesome/css/font-awesome.min.css') }}">
         {% include 'includes/_navbar.html' %}
-
         <title>{% block title %}{{ title|safe }}{% endblock %}</title>
     </head>
 {% endblock %}
 
 {% block styles %}
     {{ super() }}
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.0/css/font-awesome.min.css" rel="stylesheet"
-          type="text/css"/>
-    <link rel="stylesheet" href="{{ url_for('static', filename = 'stylesheets/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename = 'stylesheets/main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'stylesheets/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'stylesheets/main.css') }}">
 {% endblock %}
 
 
