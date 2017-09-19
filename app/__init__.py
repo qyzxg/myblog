@@ -42,12 +42,17 @@ qq = oauth.remote_app(
     'qq',
     app_key='QQ'
 )
+github = oauth.remote_app(
+    'github',
+    app_key='GITHUB'
+)
 
 
 def create_app(config_name='default'):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
     app.config['QQ'] = config[config_name].QQ
+    app.config['GITHUB'] = config[config_name].GITHUB
     bootstrap.init_app(app)
     mail.init_app(app)
     db.init_app(app)

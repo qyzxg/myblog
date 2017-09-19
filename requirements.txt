@@ -43,3 +43,4 @@ flask_redis == 0.3.0
 tornado == 4.4.1
 lxml==3.6.4
 bs4==0.0.1
+Flask-OAuthlib==0.9.4

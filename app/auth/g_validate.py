@@ -57,13 +57,20 @@ def generate_verify_image(size=(110, 39),
         """生成随机字符"""
         return random.sample(chars, length)
 
+    def create_strs():
+        c_chars = get_strs()
+        strs = '  %s ' % (''.join(c_chars))
+        font = ImageFont.truetype(font_type, font_size)
+        draw.text((0, 0), strs, font=font, fill=fg_color)
+        return ''.join(c_chars)
+
     def create_lines():
         """生成干扰线"""
         line_num = random.randint(*n_line)
         for i in range(line_num):
             begin = (random.randint(0, size[0]), random.randint(0, size[1]))
             end = (random.randint(0, size[0]), random.randint(0, size[1]))
-            draw.line([begin, end], fill=(255, 0, 0), width=3)
+            draw.line([begin, end], fill=(random.randrange(255), random.randrange(255), random.randrange(255)), width=2)
 
     def create_dotts():
         """生成干扰点"""
@@ -74,18 +81,11 @@ def generate_verify_image(size=(110, 39),
                 if tmp > 100 - chance:
                     draw.point((w, h), fill=(0, 0, 0))
 
-    def create_strs():
-        c_chars = get_strs()
-        strs = '  %s ' % (''.join(c_chars))
-        font = ImageFont.truetype(font_type, font_size)
-        draw.text((0, 0), strs, font=font, fill=fg_color)
-        return ''.join(c_chars)
-
+    code_str = create_strs()
     if draw_lines:
         create_lines()
     if draw_dotts:
         create_dotts()
-    code_str = create_strs()
 
     params = [1 - float(random.randint(1, 2)) / 100, 0, 0, 0,
               1 - float(random.randint(1, 10)) / 100,

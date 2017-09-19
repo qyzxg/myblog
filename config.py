@@ -57,6 +57,17 @@ class Config:
         'authorize_url': '/oauth2.0/authorize',
     }
 
+    GITHUB = {
+        'consumer_key': '',
+        'consumer_secret': '',
+        'request_token_params': {'scope': 'user:email'},
+        'base_url': 'https://api.github.com/',
+        'request_token_url': None,
+        'access_token_method': 'POST',
+        'access_token_url': 'https://github.com/login/oauth/access_token',
+        'authorize_url': 'https://github.com/login/oauth/authorize'
+    }
+
 
 class DevelopmentConfig(Config):  # mysqlconnector
     DEBUG = True

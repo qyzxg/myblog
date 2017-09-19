@@ -6,8 +6,8 @@ from flask_login import current_user, login_user, login_required, logout_user
 import datetime
 import requests
 from . import auth
-from .. import db, qq
-from .forms import LoginForm, RegistForm, AuthEmail, ResetPassword
+from .. import db, qq, github
+from .forms import LoginForm, RegistForm, AuthEmail, ResetPassword, BindAccount
 from ..token import generate_confirmation_token, confirm_token
 from ..tasks.celery_tasks import send_email
 from ..models import User
@@ -70,13 +70,13 @@ def confirm_email(token):
         email = confirm_token(token)
         user = User.query.filter_by(email=email).first_or_404()
         if user.confirmed:
-            flash('您的账户已经激活过了!', 'success')
+            flash('您的账户已经激活/绑定过了!', 'success')
         else:
             user.confirmed = True
             user.confirmed_on = datetime.datetime.now()
             db.session.add(user)
             db.session.commit()
-            flash('您的账户已激活,谢谢!', 'success')
+            flash('您的账户激活/绑定成功,谢谢!', 'success')
         return redirect(url_for('public.index'))
     except:
         flash('确认链接不可用或已过期!', 'danger')
@@ -190,7 +190,32 @@ def reset_password(token):
                            title='重置密码')
 
 
-# 第三方登录
+@login_required
+@auth.route('/bind_account/', methods=["GET", "POST"])
+def bind_account():
+    user = User.query.filter_by(id=current_user.id).first()
+    form = BindAccount()
+    if form.validate_on_submit():
+        email = form.email.data
+        user_ = User.query.filter_by(email=email).first()
+        if user_:
+            flash('该邮箱已注册')
+            return redirect(url_for('auth.bind_account'))
+        else:
+            user.email = email
+            user.set_password(form.password.data)
+            subject = u"[noreply][51qinqing-python之家]绑定账号邮件"
+            token = generate_confirmation_token(user.email)
+            confirm_url = url_for('auth.confirm_email', token=token, _external=True)
+            html = render_template('auth/email_bind.html', confirm_url=confirm_url)
+            send_email.delay(user.email, subject, html)  # 异步
+            user.binded = 1
+            flash('验证邮件已发送至您的邮箱!')
+            return redirect(url_for('public.index'))
+    return render_template('auth/bind_account.html', form=form, title='绑定账号')
+
+
+# 第三方登录 qq
 @auth.route('/qq/login/')
 def qq_login():
     return qq.authorize(callback=url_for('auth.qq_authorized', _external=True))
@@ -248,25 +273,30 @@ def get_qq_user_info():
             login_user(user)
             return redirect(url_for('public.index'))
         else:
+            user_ = User.query.filter_by(username=user_info['nickname']).first()
+            if user_:
+                username = user_info['nickname'] + '1'
+            else:
+                username = user_info['nickname']
             new_user = User(
                 email='{}@qq.com'.format(open_id[-10:]),
-                username=user_info['nickname'],
+                username=username,
                 password=open_id,
                 created_at=datetime.datetime.now(),
                 updated_at=datetime.datetime.now(),
                 last_login=datetime.datetime.now(),
-                confirmed=True,
+                confirmed=False,
                 region=user_info['province'],
                 city=user_info['city'],
                 avatar=user_info['figureurl_qq_2'],
                 open_id=open_id,
-                confirmed_on=datetime.datetime.now(),
                 binded=0
             )
             new_user.set_password(str(open_id))
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user)
+            flash('qq登录成功,请及时验证邮箱')
             return redirect(url_for('public.index'))
     return redirect(url_for('auth.login'))
 
@@ -274,3 +304,64 @@ def get_qq_user_info():
 @qq.tokengetter
 def get_qq_oauth_token():
     return session.get('qq_token')
+
+
+# 第三方登录 github
+@auth.route('/github/login/')
+def github_login():
+    return github.authorize(callback=url_for('auth.github_authorized', _external=True))
+
+
+@auth.route('/github/authorized')
+def github_authorized():
+    resp = github.authorized_response()
+    if resp is None or resp.get('access_token') is None:
+        return 'Access denied: reason=%s error=%s resp=%s' % (
+            request.args['error'],
+            request.args['error_description'],
+            resp
+        )
+    access_token = resp['access_token']
+    session['github_token'] = (access_token, '')
+    me = github.get('user')
+    email_ = me.data.get('email')
+    github_id = me.data.get('id')
+    if email_ is not None:
+        email = email_
+    else:
+        email = '{}@github.com'.format(github_id)
+    user = User.query.filter_by(github_id=str(github_id)).first()
+    if user:
+        login_user(user)
+        return redirect(url_for('public.index'))
+    else:
+        user_ = User.query.filter_by(username=me.data.get('login')).first()
+        if user_:
+            username = me.data.get('login') + '1'
+        else:
+            username = me.data.get('login')
+        new_user = User(
+            email=email,
+            username=username,
+            password=str(github_id),
+            created_at=datetime.datetime.now(),
+            updated_at=datetime.datetime.now(),
+            last_login=datetime.datetime.now(),
+            confirmed=False,
+            area=me.data.get('location'),
+            avatar=me.data.get('avatar_url'),
+            github_id=str(github_id),
+            binded=0
+        )
+        new_user.set_password(str(github_id))
+        db.session.add(new_user)
+        db.session.commit()
+        login_user(new_user)
+        flash('github登录成功,请及时验证邮箱')
+        return redirect(url_for('public.index'))
+
+
+
+@github.tokengetter
+def get_github_oauth_token():
+    return session.get('github_token')

@@ -150,7 +150,10 @@
 
         <p align="center"><a href="{{ url_for('public.upload_avatar') }}">修改图像</a></p>
         <p align="center"><a href="{{ url_for('auth.reset_confirm_email') }}">修改密码</a></p>
-        {% if user.confirmed==0 %}
+        {% if user.binded==0 and user.confirmed==0%}
+            <p align="center"><a href="{{ url_for('auth.bind_account') }}">绑定账户</a></p>
+        {% endif %}
+        {% if user.binded!=0 and user.confirmed==0 %}
             <p align="center"><a href="{{ url_for('auth.active') }}">激活账户</a></p>
         {% endif %}
         {% if user.role==1 %}

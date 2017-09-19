@@ -82,6 +82,7 @@ class User(UserMixin, db.Model):
     messages_send = db.relationship('Message', backref='sendto', lazy='dynamic',
                                     primaryjoin='Message.sendto_id==User.id')
     open_id = db.Column(db.String(100))
+    github_id = db.Column(db.String(100))
     binded = db.Column(db.Integer, nullable=True, default=1)
 
     def set_password(self, password):

@@ -1,0 +1,89 @@
+{% extends 'auth/base.html' %}
+{% block title %}{{ title|safe }}{% endblock %}
+
+{% block content %}
+    <div id="content">
+        <div class="container">
+            {% for message in get_flashed_messages() %}
+                <div class="alert alert-warning">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ message }}
+                </div>
+            {% endfor %}
+            <form action="" method="post" class="form-horizontal" name="send">
+                <div class="row">
+                    <h1 class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1 page_title ">账号绑定</h1>
+                </div>
+                <div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1 register">
+                    <div class="form-group">
+                        <label for="email" class="col-sm-3 control-label" style="font-size: 15px">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                {{ form.email(placeholder='请输入邮箱') }}
+                                <div class="input-group-addon">
+                                    {% for error in form.email.errors %}
+                                        <span style="color: #feff14;">{{ error }}</span>
+                                    {% endfor %}
+                                    <span class="glyphicon glyphicon-envelope"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-sm-3 control-label" style="font-size: 15px">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                {{ form.password(placeholder='6-16位字母数字或下划线') }}
+                                <div class="input-group-addon">
+                                    {% for error in form.password.errors %}
+                                        <span style="color: #feff14;">{{ error }}</span>
+                                    {% endfor %}
+                                    <span class="glyphicon glyphicon-lock"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm" class="col-sm-3 control-label" style="font-size: 15px">确认密码：</label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                {{ form.confirm(placeholder='请重复输入以上密码') }}
+                                <div class="input-group-addon">
+                                    {% for error in form.confirm.errors %}
+                                        <span style="color: #feff14;">{{ error }}</span>
+                                    {% endfor %}
+                                    <span class="glyphicon glyphicon-exclamation-sign"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{ form.csrf_token }}
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-3 col-xs-12">
+                            <button type="reset" class="btn btn-default btn-block"><b>&nbsp&nbsp清空&nbsp&nbsp</b>
+                                <span class="glyphicon glyphicon-remove"></span></button>
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                            <button type="submit" class="btn btn-info btn-block"><b>&nbsp&nbsp绑定&nbsp&nbsp</b>
+                                <span class="glyphicon glyphicon-arrow-right"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script>
+        $("#email").mailAutoComplete({
+            autoClass: false,
+            textHint: true, //提示文字自动隐藏
+        });
+    </script>
+{% endblock %}
+
+{% block footer %}
+    {{ super() }}
+{% endblock %}
