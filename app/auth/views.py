@@ -14,7 +14,7 @@ from ..models import User
 from .g_validate import generate_verify_image
 import io
 from app import redis_store
-
+import os
 
 # 获取验证码
 @auth.route('/get_validate/', methods=['GET'])
@@ -255,7 +255,7 @@ def update_qq_api_request_data():
     defaults = {
         'openid': session.get('qq_openid'),
         'access_token': session.get('qq_token')[0],
-        'oauth_consumer_key': '',
+        'oauth_consumer_key': os.environ.get('QQ_KEY')
     }
     return defaults
 

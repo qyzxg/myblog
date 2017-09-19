@@ -9,7 +9,7 @@ from datetime import timedelta
 
 class Config:
     # 数据库
-    SECRET_KEY = 'zAs5AVQp9sGo5bpf0LzNUVyyyOTYjh'
+    SECRET_KEY = os.environ.get('SECRET_KEY')
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     FLASKY_SLOW_DB_QUERY_TIME = 0.5
@@ -20,13 +20,10 @@ class Config:
     MAIL_SERVER = 'smtp.126.com'
     MAIL_PORT = 465
     MAIL_USE_SSL = True
-    # MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
-    # MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    # MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER')
-    MAIL_DEFAULT_SENDER = 'qyzxg2012@126.com'
-    MAIL_USERNAME = 'qyzxg2012@126.com'
-    MAIL_PASSWORD = '2g35ggh9ds34'
-    SECURITY_PASSWORD_SALT = 'GPXYdKtqLDhpvr60yVwz'
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+    MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER')
+    SECURITY_PASSWORD_SALT = os.environ.get('SECURITY_PASSWORD_SALT')
 
     # 缓存和异步
 
@@ -48,8 +45,8 @@ class Config:
 
     # 第三方登录
     QQ = {
-        'consumer_key': '',
-        'consumer_secret': '',
+        'consumer_key': os.environ.get('QQ_KEY'),
+        'consumer_secret': os.environ.get('QQ_SECRET'),
         'base_url': 'https://graph.qq.com',
         'request_token_url': None,
         'request_token_params': {'scope': 'get_user_info'},
@@ -58,8 +55,8 @@ class Config:
     }
 
     GITHUB = {
-        'consumer_key': '',
-        'consumer_secret': '',
+        'consumer_key': os.environ.get('GITHUB_KEY'),
+        'consumer_secret': os.environ.get('GITHUB_SECRET'),
         'request_token_params': {'scope': 'user:email'},
         'base_url': 'https://api.github.com/',
         'request_token_url': None,
