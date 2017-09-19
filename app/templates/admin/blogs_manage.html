@@ -105,15 +105,15 @@
                 <tr>
                     <td></td>
                     <td><input type="checkbox" name="checkList" class="on_check" value="{{ post.id }}"></td>
-                    <td><a href="{{ url_for('public.details', id = post.id) }}">
+                    <td><a href="{{ url_for('public.details', id_ = post.id) }}">
                         <h5>{{ post.title|truncate(15, True) }}</h5>
                     </a></td>
                     <td>
                         {% if current_user.id == post.author_id %}
-                            <a href="{{ url_for('profile.user_index', username = post.author.username) }}">
+                            <a href="{{ url_for('profile.user_index', username=post.author.username) }}">
                                 <h5>{{ post.author.username }}</h5></a>
                         {% else %}
-                            <a href="{{ url_for('profile.others', username = post.author.username) }}">
+                            <a href="{{ url_for('profile.others', username=post.author.username) }}">
                                 <h5>{{ post.author.username }}</h5></a>
                         {% endif %}
                     </td>
@@ -122,8 +122,8 @@
                     <td><h5>{{ post.comment_times|default('0',true) }}</h5></td>
                     <td><h5>{{ post.read_times|default('0',true) }}</h5></td>
                     <td><h5>{{ post.get_col_times()|default('0',true) }}</h5></td>
-                    <td><a href="{{ url_for('public.edit',id=post.id) }}" class="btn btn-success">修改</a></td>
-                    <td><a href="{{ url_for('admin.blog_manage',id=post.id) }}" class="btn btn-danger">删除</a></td>
+                    <td><a href="{{ url_for('public.edit',id_=post.id) }}" class="btn btn-success">修改</a></td>
+                    <td><a href="{{ url_for('admin.blog_manage',id_=post.id) }}" class="btn btn-danger">删除</a></td>
                 </tr>
             {% endfor %}
             </tbody>

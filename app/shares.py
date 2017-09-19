@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
-
 from functools import wraps
 from flask_login import current_user
 from flask import flash, redirect, url_for, request
@@ -21,6 +20,7 @@ def admin_required(f):
 
 
 class UploadToQiniu():
+    '''上传文件到七牛'''
     def __init__(self, domian_name, bucket_name, file, expire=3600):
         self.access_key = 'iDfXDpVa4pxFW4tyqkJK8dPkeSeRPlEsGZN7qnST'
         self.secret_key = 'iT3Z4r_z23zauKlyAsTCj51t6WOtJWbADhPKn2O6'
@@ -106,3 +106,11 @@ class DFAFilter():
                 ret.append(message[start])
             start += 1
         return ''.join(ret)
+
+
+def do_pagination(query, per_page=10):
+    '''封装分页功能'''
+    page_index = request.args.get('page', 1, type=int)
+    pagination = query.paginate(page_index, per_page=per_page, error_out=False)
+    items = pagination.items
+    return pagination, items

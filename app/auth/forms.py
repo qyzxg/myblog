@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
-
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError, Regexp
@@ -95,7 +94,6 @@ class ResetPassword(FlaskForm):
 
 
 class BindAccount(FlaskForm):
-
     email = StringField('email', validators=[DataRequired("请输入您要绑定的的邮箱")],
                         render_kw={'class': "form-control", "required": "required"})
     password = PasswordField('password', validators=[DataRequired(), Length(min=6, max=16, message='密码必须大于6位! ')],

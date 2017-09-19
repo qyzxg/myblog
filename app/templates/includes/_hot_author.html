@@ -4,17 +4,17 @@
             <h3 class="panel-title">热门作者</h3>
         </div>
         <div class="panel-body" style="padding: 5px">
-            {% for author in hot_authors %}
+            {% for author in get_hot_authors(5) %}
                 <ul class="list-group" style="margin-bottom: 5px">
                     <li class="list-group-item" style="padding: inherit;margin: inherit">
                         <span><img src="{{ author.avatar }}" class="img-circle" width="32px" height="32px"></span>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         {% if current_user.id == author.id %}
                             <span class="badge">{{ author.post_total }}</span>
-                            <a href="{{ url_for('profile.user_index', username = author.username) }}">{{ author.username }}</a>
+                            <a href="{{ url_for('profile.user_index', username=author.username) }}">{{ author.username }}</a>
                         {% else %}
                             <span class="badge">{{ author.post_total }}</span>
-                            <a href="{{ url_for('profile.others', username = author.username) }}">{{ author.username }}</a>
+                            <a href="{{ url_for('profile.others', username=author.username) }}">{{ author.username }}</a>
                         {% endif %}
                     </li>
                 </ul>

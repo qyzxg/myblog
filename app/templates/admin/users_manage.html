@@ -127,22 +127,22 @@
                     <td><h5>{{ user.post_total }}</h5></td>
                     <td><h5>{{ user.get_roles() }}</h5></td>
                     {% if user.status == 1 %}
-                        <td><a href="{{ url_for('admin.login_manage',id=user.id,status=0,delete=0) }}"
+                        <td><a href="{{ url_for('admin.login_manage',id_=user.id,status=0,delete=0) }}"
                                class="btn btn-primary">限制</a></td>
                     {% else %}
-                        <td><a href="{{ url_for('admin.login_manage',id=user.id,status=1,delete=0) }}"
+                        <td><a href="{{ url_for('admin.login_manage',id_=user.id,status=1,delete=0) }}"
                                class="btn btn-success">解除</a></td>
                     {% endif %}
                     {% if user.role == 0 %}
-                        <td><a href="{{ url_for('admin.role_manage',id=user.id,role=1) }}"
+                        <td><a href="{{ url_for('admin.role_manage',id_=user.id,role=1) }}"
                                class="btn btn-warning">管理</a>
                         </td>
                     {% else %}
-                        <td><a href="{{ url_for('admin.role_manage',id=user.id,role=0) }}"
+                        <td><a href="{{ url_for('admin.role_manage',id_=user.id,role=0) }}"
                                class="btn btn-success">用户</a>
                         </td>
                     {% endif %}
-                    <td><a href="{{ url_for('admin.login_manage',id=user.id,status=0,delete=1) }}"
+                    <td><a href="{{ url_for('admin.login_manage',id_=user.id,status=0,delete=1) }}"
                            class="btn btn-danger">删除</a></td>
                 </tr>
             {% endfor %}

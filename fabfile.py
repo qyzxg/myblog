@@ -1,9 +1,9 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
-
 import os
 from fabric.api import *
 import datetime
+
 """这是一个自动部署脚本
 1.远程服务器安装好Python环境/Nginx/gunicorn/redis/mysql/supervisor
 2.配置Nginx:
@@ -95,7 +95,7 @@ import datetime
 这只是一个基本部署,具体细节自己Google,
 该部署流程要求本地计算机为*x平台,window需要在cygwin环境下执行
 """
-#fabric配置信息
+# fabric配置信息
 # env.hosts = ['你的服务器IP']
 # env.key_filename = "你的ssh私钥" #或者env.password='你的服务器ssh密码'
 # env.user = '服务器登录用户名'
@@ -122,6 +122,7 @@ _TAR_FILE = 'myblog.tar.gz'
 _REMOTE_TMP_TAR = '/www/%s' % _TAR_FILE
 _REMOTE_BASE_DIR = '/www'
 
+
 # 打包
 def build():
     print('开始打包...' + '\n')
@@ -135,6 +136,7 @@ def build():
         cmd.extend(includes)
         local(' '.join(cmd))
     print('打包完毕...' + '\n')
+
 
 @roles('aliyun')
 def deploy():
@@ -206,14 +208,14 @@ def clear():
 @roles('aws')
 def shutd():
     sudo('shutdown -r now')
-        # 重置软链接:
-        # with cd(_REMOTE_BASE_DIR):
-        #     sudo('rm -f myblog')
-        # sudo('ln -s %s myblog' % newdir)
-        # sudo('chown www-data:www-data www')
-        # sudo('chown -R www-data:www-data %s' % newdir)
-        # 重启Python服务和nginx服务器:
-        # with settings(warn_only=True):
-        #     sudo('supervisorctl stop awesome')
-        #     sudo('supervisorctl start awesome')
-        #     sudo('/etc/init.d/nginx reload')
+    # 重置软链接:
+    # with cd(_REMOTE_BASE_DIR):
+    #     sudo('rm -f myblog')
+    # sudo('ln -s %s myblog' % newdir)
+    # sudo('chown www-data:www-data www')
+    # sudo('chown -R www-data:www-data %s' % newdir)
+    # 重启Python服务和nginx服务器:
+    # with settings(warn_only=True):
+    #     sudo('supervisorctl stop awesome')
+    #     sudo('supervisorctl start awesome')
+    #     sudo('/etc/init.d/nginx reload')

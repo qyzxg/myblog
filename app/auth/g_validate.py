@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
-
 import random
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 from string import ascii_letters
@@ -8,9 +7,9 @@ import platform
 
 _str = ascii_letters
 _nums = '0123456789'
-
 chars = ''.join((_str, _nums))
 sys_tem = platform.system()
+
 if sys_tem == 'Linux':
     default_font = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 else:

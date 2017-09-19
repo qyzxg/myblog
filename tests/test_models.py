@@ -1,10 +1,10 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
-
 import unittest
-from app import create_app,db
+from app import create_app, db
 from app.models import User
 import datetime
+
 
 class ModelTest(unittest.TestCase):
     def setUp(self):
@@ -18,7 +18,6 @@ class ModelTest(unittest.TestCase):
         self.app_ctx.pop()
 
     def test_insert_user(self):
-
         user = User(username='qyzxg',
                     email='541020258@qq.com',
                     password='123456',
@@ -29,4 +28,3 @@ class ModelTest(unittest.TestCase):
         user.set_password(user.password)
         db.session.add(user)
         db.session.commit()
-

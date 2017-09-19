@@ -2,11 +2,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 import datetime
 from jieba.analyse import ChineseAnalyzer
-import re
 from . import db, login_manager
-from flask import current_app, request, url_for
-import time
-import math
+from flask import url_for
+
 
 follow = db.Table('followers',
                   db.Column('follower_id', db.Integer, db.ForeignKey('users.id')),
@@ -227,7 +225,6 @@ class Post(db.Model):
     tags = db.relationship('Tag', secondary=tag,
                            backref=db.backref('posts', lazy='dynamic'))
     source = db.Column(db.String(100), default='www.51qinqing.com')
-
 
     def get_public(self):
         if self.is_public:

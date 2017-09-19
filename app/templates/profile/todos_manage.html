@@ -64,13 +64,13 @@
                     </td>
                     <td><h5>{{ todo.get_status() }}</h5></td>
                     {% if todo.status==0 %}
-                        <td><a href="{{ url_for('profile.todo_done',id=todo.id) }}" class="btn btn-success">已完成</a></td>
+                        <td><a href="{{ url_for('profile.todo_done',id_=todo.id) }}" class="btn btn-success">已完成</a></td>
                     {% endif %}
                     {% if todo.status==1 %}
-                        <td><a href="{{ url_for('profile.todo_undone',id=todo.id) }}" class="btn btn-primary">未完成</a>
+                        <td><a href="{{ url_for('profile.todo_undone',id_=todo.id) }}" class="btn btn-primary">未完成</a>
                         </td>
                     {% endif %}
-                    <td><a href="{{ url_for('profile.todo_dele',id=todo.id) }}" class="btn btn-danger">删除</a></td>
+                    <td><a href="{{ url_for('profile.todo_dele',id_=todo.id) }}" class="btn btn-danger">删除</a></td>
                 </tr>
             {% endfor %}
             </tbody>

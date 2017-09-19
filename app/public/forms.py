@@ -1,10 +1,8 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
-
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, TextAreaField, SelectField,BooleanField
+from wtforms import StringField, SubmitField, TextAreaField, SelectField, BooleanField
 from wtforms.validators import DataRequired, Length
-from flask_pagedown.fields import PageDownField
 
 
 class PostForm(FlaskForm):
@@ -17,7 +15,7 @@ class PostForm(FlaskForm):
     body = TextAreaField(label="正文", validators=[DataRequired(message='文章内容必须大于10个字!'),
                                                  Length(min=10, message='文章内容必须大于10个字!')],
                          )
-    is_public = BooleanField(label='是否公开',render_kw={'checked':'checked'})
+    is_public = BooleanField(label='是否公开', render_kw={'checked': 'checked'})
     submit = SubmitField(label='发表', render_kw={'class': "btn btn-info btn-block"})
 
 

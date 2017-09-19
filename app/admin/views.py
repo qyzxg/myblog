@@ -275,11 +275,11 @@ def comments_manage():
 
 
 # 博客删除
-@admin.route('/admin/bolg_manage/<int:id>/', methods=['POST', 'GET'])
+@admin.route('/admin/bolg_manage/<int:id_>/', methods=['POST', 'GET'])
 @login_required
 @admin_required
-def blog_manage(id):
-    post = Post.query.filter_by(id=id).first()
+def blog_manage(id_):
+    post = Post.query.filter_by(id=id_).first()
     user = User.query.filter_by(id=post.author_id).first()
     user.post_total -= 1
     if post is None:
@@ -294,11 +294,11 @@ def blog_manage(id):
 
 
 # 评论删除
-@admin.route('/admin/comment_manage/<int:id>/', methods=['POST', 'GET'])
+@admin.route('/admin/comment_manage/<int:id_>/', methods=['POST', 'GET'])
 @login_required
 @admin_required
-def comment_manage(id):
-    comment = Comment.query.filter_by(id=id).first()
+def comment_manage(id_):
+    comment = Comment.query.filter_by(id=id_).first()
     if comment is None:
         flash('评论不存在!')
     comment.delete_all_reply()
@@ -309,11 +309,11 @@ def comment_manage(id):
 
 
 # 用户登录管理
-@admin.route('/admin/login_manage/<int:id>/<int:status>/<int:delete>/', methods=['POST', 'GET'])
+@admin.route('/admin/login_manage/<int:id_>/<int:status>/<int:delete>/', methods=['POST', 'GET'])
 @login_required
 @admin_required
-def login_manage(id, status, delete):
-    user = User.query.filter_by(id=id).first()
+def login_manage(id_, status, delete):
+    user = User.query.filter_by(id=id_).first()
     if user is None:
         flash('用户不存在!')
     else:
@@ -338,11 +338,11 @@ def login_manage(id, status, delete):
 
 
 # 角色管理
-@admin.route('/admin/role_manage/<int:id>/<int:role>/', methods=['POST', 'GET'])
+@admin.route('/admin/role_manage/<int:id_>/<int:role>/', methods=['POST', 'GET'])
 @login_required
 @admin_required
-def role_manage(id, role):
-    user = User.query.filter_by(id=id).first()
+def role_manage(id_, role):
+    user = User.query.filter_by(id=id_).first()
     if user is None:
         flash('用户不存在!')
     else:
@@ -409,11 +409,11 @@ def send_messages():
     return redirect(url_for('admin.messages_manage'))
 
 
-@admin.route('/admin/delete_messages/<int:id>/', methods=['POST', 'GET'])
+@admin.route('/admin/delete_messages/<int:id_>/', methods=['POST', 'GET'])
 @login_required
 @admin_required
-def delete_message(id):
-    message = Message.query.filter_by(id=id).first()
+def delete_message(id_):
+    message = Message.query.filter_by(id=id_).first()
     if not message.confirmed:
         flash('对方还没有读过这条消息,不能删除!')
         return redirect(url_for('admin.messages_manage'))

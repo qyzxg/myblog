@@ -1,10 +1,8 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
-
 import os
 from os import path
 import datetime
-from datetime import timedelta
 
 
 class Config:

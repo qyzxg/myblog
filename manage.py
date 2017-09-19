@@ -1,8 +1,9 @@
 from flask_script import Manager
 from app import create_app, db
-from app.models import Comment, User, Post, Styles
+from app.models import User, Styles
 import datetime
 from flask_migrate import MigrateCommand, Migrate, upgrade
+
 app = create_app('default')
 
 with app.app_context():

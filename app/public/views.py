@@ -1,11 +1,9 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
-
 from flask import render_template, make_response, flash, redirect, \
     url_for, request, g, current_app, json
 from flask_login import current_user, login_required
 import flask_whooshalchemyplus as whoosh
-import time
 import datetime
 from ..tasks.celery_tasks import get_post_img, text_filter
 from .. import db, cache
@@ -14,14 +12,14 @@ from ..models import User, Post, Comment, Categories, Styles, Todo, Tag, Reply
 from .forms import PostForm, CommentForm, SearchForm
 from werkzeug.contrib.atom import AtomFeed
 from urllib.parse import urljoin
-from ..shares import UploadToQiniu
+from ..shares import UploadToQiniu, do_pagination
 
 
 # 搜索
 @public.before_app_request
 def before_request():
     from .. import create_app
-    app = create_app()
+    app = create_app('default')
     whoosh.whoosh_index(app, Post)
     g.search_form = SearchForm()
 
@@ -31,7 +29,24 @@ def wdcount(stri):
     return len(stri)
 
 
-public.add_app_template_filter(wdcount, name='wdcount')
+def get_all_categories():
+    categories = Categories.query.all()
+    return categories
+
+
+def get_all_tags():
+    tags = Tag.query.all()
+    return tags
+
+
+def get_hot_authors(n=5):
+    hot_authors = User.query.order_by(User.post_total.desc()).limit(n)
+    return hot_authors
+
+
+def get_hot_posts(n=5):
+    hot_posts = Post.query.filter(Post.is_public == 1).order_by(Post.read_times.desc()).limit(n)
+    return hot_posts
 
 
 def allowed_file(filename):
@@ -39,30 +54,28 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in current_app.config['ALLOWED_EXTENSIONS']
 
 
+public.add_app_template_filter(wdcount, name='wdcount')
+public.add_app_template_global(get_all_categories, 'get_all_categories')
+public.add_app_template_global(get_all_tags, 'get_all_tags')
+public.add_app_template_global(get_hot_authors, 'get_hot_authors')
+public.add_app_template_global(get_hot_posts, 'get_hot_posts')
+
+
 @cache.cached(timeout=30, key_prefix='view_%s', unless=None)
 @public.route('/', methods=['GET'])
 def index():
     # 记录cookie
-    page_index = request.args.get('page', 1, type=int)
     query = Post.query.filter(Post.is_public == 1).order_by(Post.sort_score.desc())
-    pagination = query.paginate(page_index, per_page=10, error_out=False)
-    posts_ = Post.query.filter(Post.is_public == 1).order_by(Post.read_times.desc()).limit(5)
-    hot_authors = User.query.order_by(User.post_total.desc()).limit(5)
+    pagination, posts = do_pagination(query)
     todos = None
     if current_user.is_authenticated:
         todos = Todo.query.filter_by(user_id=current_user.id, status=0)
-    posts = pagination.items
-    categories = Categories.query.all()
-    tags = Tag.query.all()
     response = make_response(render_template('public/index.html',
                                              title='Python之家',
-                                             posts_=posts_,
                                              posts=posts,
                                              pagination=pagination,
                                              todos=todos,
-                                             hot_authors=hot_authors,
-                                             categories=categories,
-                                             tags=tags))
+                                             ))
     return response
 
 
@@ -145,18 +158,18 @@ def upload_postimg():
 
 # 发表/修改文章
 @public.route('/edit/', methods=['POST', 'GET'])
-@public.route('/edit/<int:id>/', methods=['POST', 'GET'])
+@public.route('/edit/<int:id_>/', methods=['POST', 'GET'])
 @login_required
-def edit(id=0):
+def edit(id_=0):
     form = PostForm()
     s = [('--请选择文章来源--', '--请选择文章来源--')]
     form.style.choices = s + [(str(a.name1), str(a.name)) for a in Styles.query.all()]
     c = [('--请选择文章分类--', '--请选择文章分类--')]
     form.category.choices = c + [(str(a.name1), str(a.name)) for a in Categories.query.all()]
-    if id == 0:
+    if id_ == 0:
         post = Post(author_id=current_user.id)
     else:
-        post = Post.query.get_or_404(id)
+        post = Post.query.get_or_404(id_)
     user = User.query.filter_by(id=current_user.id).first()
     if Post.query.filter(Post.is_public == 1).filter_by(author_id=current_user.id):
         user.post_total = len(Post.query.filter(Post.is_public == 1).filter_by(author_id=current_user.id).all())
@@ -212,9 +225,8 @@ def edit(id=0):
         s = ','.join(posttags)
     form.tags.data = s
     title = '添加新文章'
-    if id > 0:
+    if id_ > 0:
         title = '编辑文章'
-
     return render_template('public/edit_post.html',
                            title=title,
                            form=form,
@@ -222,14 +234,11 @@ def edit(id=0):
 
 
 # 文章详情页
-@public.route('/post/details/<int:id>', methods=['POST', 'GET'])
-def details(id):
-    post = Post.query.get_or_404(id)
+@public.route('/post/details/<int:id_>', methods=['POST', 'GET'])
+def details(id_):
+    post = Post.query.get_or_404(id_)
     post.comment_times = len(post.comments)
-    posts_ = Post.query.filter(Post.is_public == 1).order_by(Post.comment_times.desc()).limit(5)
-    hot_authors = User.query.order_by(User.post_total.desc()).limit(5)
     post.read_times += 1
-    categories = Categories.query.all()
     form = CommentForm()
     todos = None
     if current_user.is_authenticated:
@@ -253,8 +262,8 @@ def details(id):
                 pass
         else:
             flash('验证邮箱后才能发表评论哦!')
-    pre_p = Post.query.filter(Post.id < id).order_by(Post.id.desc()).limit(1).all()
-    next_p = Post.query.filter(Post.id > id).order_by(Post.id).limit(1).all()
+    pre_p = Post.query.filter(Post.id < id_).order_by(Post.id.desc()).limit(1).all()
+    next_p = Post.query.filter(Post.id > id_).order_by(Post.id).limit(1).all()
     if pre_p:
         pre_post = pre_p[0]
     else:
@@ -263,21 +272,15 @@ def details(id):
         next_post = next_p[0]
     else:
         next_post = None
-
-    page_index = request.args.get('page', 1, type=int)
-    query = Comment.query.filter_by(post_id=id).order_by(Comment.created.desc())
-    pagination = query.paginate(page_index, per_page=10, error_out=False)
-    comments = pagination.items
+    query = Comment.query.filter_by(post_id=id_).order_by(Comment.created.desc())
+    pagination, comments = do_pagination(query)
     return render_template('public/details.html',
                            title=post.title,
                            form=form,
                            post=post,
-                           posts_=posts_,
                            todos=todos,
                            pagination=pagination,
                            comments=comments,
-                           categories=categories,
-                           hot_authors=hot_authors,
                            pre_post=pre_post, next_post=next_post
                            )
 
@@ -349,11 +352,8 @@ def search():
 
 @public.route('/search_results/<key_word>/', methods=['POST', 'GET'])
 def search_results(key_word):
-    page_index = request.args.get('page', 1, type=int)
-
     query = Post.query.whoosh_search(key_word, current_app.config['MAX_SEARCH_RESULTS']).filter(Post.is_public == 1)
-    pagination = query.paginate(page_index, per_page=10, error_out=False)
-    results = pagination.items
+    pagination, results = do_pagination(query)
     total = len(query.all())
     return render_template('public/search_results.html',
                            key_word=key_word,

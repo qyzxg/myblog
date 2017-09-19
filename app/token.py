@@ -1,11 +1,9 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
-
 from . import create_app
+from itsdangerous import URLSafeTimedSerializer
 
 app = create_app('default')
-
-from itsdangerous import URLSafeTimedSerializer
 
 
 def generate_confirmation_token(email):

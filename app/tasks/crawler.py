@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
-
 import requests
 from abc import ABCMeta, abstractmethod
 from .. import create_app, db

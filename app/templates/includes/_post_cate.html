@@ -4,7 +4,7 @@
             <h3 class="panel-title">文章分类</h3>
         </div>
         <div class="panel-body" style="padding: 5px">
-            {% for category in categories %}
+            {% for category in get_all_categories() %}
                 <ul class="list-group" style="margin-bottom: 5px">
                     <li class="list-group-item" style="padding: 0px;margin: 0px">
                         <span class="badge">{{ category.get_total() }}</span>

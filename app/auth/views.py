@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 from flask import render_template, flash, redirect, url_for, request, \
-    session, send_file, make_response, json, jsonify
+    session, make_response, json
 from flask_login import current_user, login_user, login_required, logout_user
 import datetime
 import requests
@@ -15,6 +15,7 @@ from .g_validate import generate_verify_image
 import io
 from app import redis_store
 import os
+
 
 # 获取验证码
 @auth.route('/get_validate/', methods=['GET'])
@@ -359,7 +360,6 @@ def github_authorized():
         login_user(new_user)
         flash('github登录成功,请及时验证邮箱')
         return redirect(url_for('public.index'))
-
 
 
 @github.tokengetter

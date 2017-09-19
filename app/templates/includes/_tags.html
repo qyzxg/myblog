@@ -4,7 +4,7 @@
             <h3 class="panel-title">标签云</h3>
         </div>
         <div class="panel-body" style="padding: 5px" id="tagcloud">
-            {% for tag in tags %}
+            {% for tag in get_all_tags() %}
                 {% if tag.get_total()>2 %}
                     <span class="label" style="display:inline-block"><a
                             href="{{ url_for('cates.get_tags',tag=tag.name) }}"

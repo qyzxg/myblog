@@ -19,15 +19,12 @@
                 <li><a href="{{ url_for('public.about') }}"><i class="fa fa-info-circle"></i>&nbsp;关于</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">下拉框 <span class="caret"></span></a>
+                       aria-expanded="false">文章分类<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">flask入门</a></li>
-                        <li><a href="#">模块</a></li>
-                        <li><a href="#">函数</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">面向对象</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">机器学习</a></li>
+                        {% for category in get_all_categories() %}
+                            <li><a href="{{ url_for('cates.get_cates', cate = category.name) }}">{{ category.name }}</a>
+                            </li>
+                        {% endfor %}
                     </ul>
                 </li>
             </ul>
@@ -54,9 +51,11 @@
                     <li><a href="{{ url_for('auth.logout') }}"><i class="fa fa-sign-out"></i>&nbsp;退出</a></li>
                 {% else %}
                     <li><a href="{{ url_for('auth.qq_login') }}"><img
-                            src="http://oqquc7c6d.bkt.clouddn.com/qq_logo.png" width="21px" title="QQ快速登录" alt="QQ快速登录"></a></li>
+                            src="http://oqquc7c6d.bkt.clouddn.com/qq_logo.png" width="21px" title="QQ快速登录" alt="QQ快速登录"></a>
+                    </li>
                     <li><a href="{{ url_for('auth.github_login') }}"><img
-                            src="http://oqquc7c6d.bkt.clouddn.com/github_logo.png" width="21px" title="GitHub快速登录" alt="GitHub快速登录"></a></li>
+                            src="http://oqquc7c6d.bkt.clouddn.com/github_logo.png" width="21px" title="GitHub快速登录"
+                            alt="GitHub快速登录"></a></li>
                     <li><a href="{{ url_for('auth.login') }}"><i class="fa fa-sign-in"></i>&nbsp;登录</a></li>
                     <li><a href="{{ url_for('auth.register') }}"><i class="fa fa-registered"></i>&nbsp;注册</a></li>
                 {% endif %}

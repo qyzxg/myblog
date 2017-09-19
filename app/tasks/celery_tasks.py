@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
-
 from .. import celery, mail, create_app, db
 from flask_mail import Message
 import re

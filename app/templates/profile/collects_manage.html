@@ -44,7 +44,7 @@
             <tbody>
             {% for post in posts %}
                 <tr>
-                    <td><a href="{{ url_for('public.details', id = post.id) }}">
+                    <td><a href="{{ url_for('public.details', id_ = post.id) }}">
                         <h5>{{ post.title|truncate(22, True) }}</h5>
                     </a></td>
                     <td>
@@ -59,7 +59,7 @@
                     <td><h5>{{ post.created.strftime('%Y-%m-%d %H:%M') }}</h5></td>
                     <td><h5>{{ post.comment_times|default('0',true) }}</h5></td>
                     <td><h5>{{ post.read_times|default('0',true) }}</h5></td>
-                    <td><a href="{{ url_for('profile.user_collect_manage',id=post.id) }}"
+                    <td><a href="{{ url_for('profile.user_collect_manage',id_=post.id) }}"
                            class="btn btn-danger">取消</a></td>
                 </tr>
             {% endfor %}

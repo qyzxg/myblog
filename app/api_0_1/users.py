@@ -1,9 +1,10 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
-
 from flask import jsonify, request, url_for
 from . import api
 from ..models import User, Post
+from ..shares import do_pagination
+
 
 # @api.route('/users/')
 # def get_users():
@@ -11,51 +12,47 @@ from ..models import User, Post
 #     return jsonify(users.to_json())
 
 
-@api.route('/users/<int:id>/')
-def get_user(id):
-    user = User.query.get_or_404(id)
+@api.route('/users/<int:id_>/')
+def get_user(id_):
+    user = User.query.get_or_404(id_)
     return jsonify(user.to_json())
 
 
-@api.route('/users/<int:id>/posts/')
-def get_user_posts(id):
-    user = User.query.get_or_404(id)
+@api.route('/users/<int:id_>/posts/')
+def get_user_posts(id_):
+    user = User.query.get_or_404(id_)
     page = request.args.get('page', 1, type=int)
-    pagination = Post.query.filter_by(author_id=user.id).order_by(Post.created.desc()).paginate(
-        page, per_page=10,
-        error_out=False)
-    posts = pagination.items
+    query = Post.query.filter_by(author_id=user.id).order_by(Post.created.desc())
+    pagination, posts = do_pagination(query)
     prev = None
     if pagination.has_prev:
         prev = url_for('api.get_posts', page=page - 1, _external=True)
-    next = None
+    next_ = None
     if pagination.has_next:
-        next = url_for('api.get_posts', page=page + 1, _external=True)
+        next_ = url_for('api.get_posts', page=page + 1, _external=True)
     return jsonify({
         'posts': [post.to_json() for post in posts],
         'prev': prev,
-        'next': next,
+        'next': next_,
         'count': pagination.total
     })
 
 
-@api.route('/users/<int:id>/timeline/')
-def get_user_collected_posts(id):
-    user = User.query.get_or_404(id)
+@api.route('/users/<int:id_>/timeline/')
+def get_user_collected_posts(id_):
+    user = User.query.get_or_404(id_)
     page = request.args.get('page', 1, type=int)
-    pagination = user.collected_posts().paginate(
-        page, per_page=10,
-        error_out=False)
-    posts = pagination.items
+    query = user.collected_posts()
+    pagination, posts = do_pagination(query)
     prev = None
     if pagination.has_prev:
         prev = url_for('api.get_posts', page=page - 1, _external=True)
-    next = None
+    next_ = None
     if pagination.has_next:
-        next = url_for('api.get_posts', page=page + 1, _external=True)
+        next_ = url_for('api.get_posts', page=page + 1, _external=True)
     return jsonify({
         'posts': [post.to_json() for post in posts],
         'prev': prev,
-        'next': next,
+        'next': next_,
         'count': pagination.total
     })

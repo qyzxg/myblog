@@ -62,10 +62,10 @@ def user_blogs_manage():
                            menu=1)
 
 
-@profile.route('/user/bolg_manage/<int:id>/', methods=['POST', 'GET'])
+@profile.route('/user/bolg_manage/<int:id_>/', methods=['POST', 'GET'])
 @login_required
-def user_blog_manage(id):
-    post = Post.query.filter_by(id=id).first()
+def user_blog_manage(id_):
+    post = Post.query.filter_by(id=id_).first()
     user = User.query.filter_by(id=post.author_id).first()
     if post is None:
         flash('文章不存在!')
@@ -80,10 +80,10 @@ def user_blog_manage(id):
     return redirect(url_for('profile.user_blogs_manage'))
 
 
-@profile.route('/user/public_manage/<int:id>/<int:public>/', methods=['POST', 'GET'])
+@profile.route('/user/public_manage/<int:id_>/<int:public>/', methods=['POST', 'GET'])
 @login_required
-def user_public_manage(id, public):
-    post = Post.query.filter_by(id=id).first()
+def user_public_manage(id_, public):
+    post = Post.query.filter_by(id=id_).first()
     if not post:
         flash('文章不存在')
     if int(public) == 1:
@@ -103,10 +103,10 @@ def user_comments_manage():
                            menu=3)
 
 
-@profile.route('/user/comment_manage/<int:id>/', methods=['POST', 'GET'])
+@profile.route('/user/comment_manage/<int:id_>/', methods=['POST', 'GET'])
 @login_required
-def user_comment_manage(id):
-    comment = Comment.query.filter_by(id=id).first()
+def user_comment_manage(id_):
+    comment = Comment.query.filter_by(id=id_).first()
     if comment is None:
         flash('评论不存在!')
     if not current_user.is_authenticated:
@@ -144,7 +144,7 @@ def user_followers_manage():
                            menu=5)
 
 
-@profile.route('/user/reward_manage/',methods=['GET'])
+@profile.route('/user/reward_manage/', methods=['GET'])
 @login_required
 def user_reward_manage():
     user = current_user
@@ -152,10 +152,10 @@ def user_reward_manage():
                            user=user, title='打赏管理', meun=7)
 
 
-@profile.route('/user/collect_manage/<int:id>/',methods=['POST', 'GET'])
+@profile.route('/user/collect_manage/<int:id_>/', methods=['POST', 'GET'])
 @login_required
-def user_collect_manage(id):
-    post = Post.query.get_or_404(id)
+def user_collect_manage(id_):
+    post = Post.query.get_or_404(id_)
     current_user.uncollect(post)
     flash('取消收藏成功!')
     return redirect(url_for('profile.user_collects_manage'))
@@ -195,10 +195,10 @@ def todo_add():
         return redirect(url_for('profile.user_todos_manage'))
 
 
-@profile.route('/user/todo_add/<int:id>/', methods=['POST', 'GET'])
+@profile.route('/user/todo_add/<int:id_>/', methods=['POST', 'GET'])
 @login_required
-def todo_done(id):
-    todo = Todo.query.get_or_404(id)
+def todo_done(id_):
+    todo = Todo.query.get_or_404(id_)
     todo.status = 1
     todo.finished = datetime.datetime.now()
     db.session.add(todo)
@@ -207,10 +207,10 @@ def todo_done(id):
     return redirect(url_for('profile.user_todos_manage'))
 
 
-@profile.route('/user/todo_undone/<int:id>/', methods=['POST', 'GET'])
+@profile.route('/user/todo_undone/<int:id_>/', methods=['POST', 'GET'])
 @login_required
-def todo_undone(id):
-    todo = Todo.query.get_or_404(id)
+def todo_undone(id_):
+    todo = Todo.query.get_or_404(id_)
     todo.status = 0
     todo.finished = None
     db.session.add(todo)
@@ -219,10 +219,10 @@ def todo_undone(id):
     return redirect(url_for('profile.user_todos_manage'))
 
 
-@profile.route('/user/todo_dele/<int:id>/', methods=['POST', 'GET'])
+@profile.route('/user/todo_dele/<int:id_>/', methods=['POST', 'GET'])
 @login_required
-def todo_dele(id):
-    todo = Todo.query.get_or_404(id)
+def todo_dele(id_):
+    todo = Todo.query.get_or_404(id_)
     db.session.delete(todo)
     db.session.commit()
     flash('todo删除成功!')
@@ -231,10 +231,10 @@ def todo_dele(id):
 
 # 收藏
 
-@profile.route('/collect/<int:id>/', methods=['POST', 'GET'])
+@profile.route('/collect/<int:id_>/', methods=['POST', 'GET'])
 @login_required
-def collect(id):
-    post = Post.query.get_or_404(id)
+def collect(id_):
+    post = Post.query.get_or_404(id_)
     if current_user.is_authenticated:
         if current_user.collecting(post):
             flash('你已经收藏了这篇文章!')
@@ -250,10 +250,10 @@ def collect(id):
 
 # 取消收藏
 
-@profile.route('/uncollect/<int:id>/', methods=['POST', 'GET'])
+@profile.route('/uncollect/<int:id_>/', methods=['POST', 'GET'])
 @login_required
-def uncollect(id):
-    post = Post.query.get_or_404(id)
+def uncollect(id_):
+    post = Post.query.get_or_404(id_)
     if not current_user.collecting(post):
         flash('你没有收藏这篇文章!')
         return redirect(url_for('public.details', id=post.id))
@@ -329,10 +329,10 @@ def send_message():
     return redirect(url_for('profile.messages_manage'))
 
 
-@profile.route('/delete_message/<int:id>/', methods=['POST', 'GET'])
+@profile.route('/delete_message/<int:id_>/', methods=['POST', 'GET'])
 @login_required
-def delete_message(id):
-    message = Message.query.filter_by(id=id).first()
+def delete_message(id_):
+    message = Message.query.filter_by(id=id_).first()
     if not message.confirmed:
         flash('对方还没有读过这条消息,不能删除!')
         return redirect(url_for('profile.messages_manage'))
@@ -342,10 +342,10 @@ def delete_message(id):
     return redirect(url_for('profile.messages_manage'))
 
 
-@profile.route('/confirm_message/<int:id>/', methods=['POST', 'GET'])
+@profile.route('/confirm_message/<int:id_>/', methods=['POST', 'GET'])
 @login_required
-def confirm_message(id):
-    message = Message.query.filter_by(id=id).first()
+def confirm_message(id_):
+    message = Message.query.filter_by(id=id_).first()
     message.confirmed = 1
     flash('消息状态更改成功!')
     return redirect(url_for('profile.messages_manage'))

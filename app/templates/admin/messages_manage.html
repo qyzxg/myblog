@@ -76,7 +76,7 @@
                     <td><h5>{{ message.sendto.username }}</h5></td>
                     <td><h5>{{ message.get_status() }}</h5></td>
                     <td><h5>{{ message.get_cate() }}</h5></td>
-                    <td><a href="{{ url_for('admin.delete_message',id=message.id) }}" class="btn btn-danger">删除</a></td>
+                    <td><a href="{{ url_for('admin.delete_message',id_=message.id) }}" class="btn btn-danger">删除</a></td>
                 </tr>
             {% endfor %}
             </tbody>

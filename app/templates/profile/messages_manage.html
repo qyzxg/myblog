@@ -118,7 +118,7 @@
                             <td style="max-width: 500px"><h5>{{ message.content }}</h5></td>
                             <td><h5>{{ message.created_at.strftime('%Y-%m-%d %H:%M') }}</h5></td>
                             <td><h5>{{ message.sender.username }}</h5></td>
-                            <td><a href="{{ url_for('profile.confirm_message',id=message.id) }}"
+                            <td><a href="{{ url_for('profile.confirm_message',id_=message.id) }}"
                                    class="btn btn-primary">已读</a></td>
                         </tr>
                     {% endfor %}
@@ -151,7 +151,7 @@
                             <td style="max-width: 500px"><h5>{{ message.content }}</h5></td>
                             <td><h5>{{ message.created_at.strftime('%Y-%m-%d %H:%M') }}</h5></td>
                             <td><h5>{{ message.sender.username }}</h5></td>
-                            <td><a href="{{ url_for('profile.delete_message',id=message.id) }}" class="btn btn-danger">删除</a>
+                            <td><a href="{{ url_for('profile.delete_message',id_=message.id) }}" class="btn btn-danger">删除</a>
                             </td>
                         </tr>
                     {% endfor %}
@@ -188,7 +188,7 @@
                             <td><h5>{{ message.created_at.strftime('%Y-%m-%d %H:%M') }}</h5></td>
                             <td><h5>{{ message.sendto.username }}</h5></td>
                             <td><h5>{{ message.get_status() }}</h5></td>
-                            <td><a href="{{ url_for('profile.delete_message',id=message.id) }}" class="btn btn-danger">删除</a>
+                            <td><a href="{{ url_for('profile.delete_message',id_=message.id) }}" class="btn btn-danger">删除</a>
                             </td>
 
                         </tr>

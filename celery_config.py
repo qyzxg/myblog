@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 from datetime import timedelta
-from kombu import Exchange, Queue
+from kombu import Queue
 from celery.schedules import crontab
 
 
