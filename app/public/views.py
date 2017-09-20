@@ -86,9 +86,8 @@ def upload_avatar():
     if request.method == 'POST':
         file = request.files['file']
         if file and allowed_file(file.filename):
-            domian_name = 'http://oqqu0qp5g.bkt.clouddn.com'
-            bucket_name = 'avatar'
-            u = UploadToQiniu(domian_name, bucket_name, file)
+            domian_name = 'https://static.51qinqing.com'
+            u = UploadToQiniu(file, 'avatar/')
             ret, info = u.upload()
             key = ret['key']
             current_user.avatar = domian_name + '/' + key
@@ -105,9 +104,8 @@ def upload_zfbimg():
         file = request.files['file']
         if file and allowed_file(file.filename):
             form = request.form
-            domian_name = 'http://oqquasfn4.bkt.clouddn.com'
-            bucket_name = 'zfbimg'
-            u = UploadToQiniu(domian_name, bucket_name, file)
+            domian_name = 'https://static.51qinqing.com'
+            u = UploadToQiniu(file, 'pay/zfb/')
             ret, info = u.upload()
             key = ret['key']
             current_user.zfb_img = domian_name + '/' + key
@@ -125,9 +123,8 @@ def upload_wximg():
         file = request.files['file']
         if file and allowed_file(file.filename):
             form = request.form
-            domian_name = 'http://oqqur6lkr.bkt.clouddn.com'
-            bucket_name = 'wximg'
-            u = UploadToQiniu(domian_name, bucket_name, file)
+            domian_name = 'https://static.51qinqing.com'
+            u = UploadToQiniu(file, 'pay/wx/')
             ret, info = u.upload()
             key = ret['key']
             current_user.wx_img = domian_name + '/' + key
@@ -145,9 +142,8 @@ def upload_postimg():
     if request.method == 'POST':
         file = request.files['file']
         if file and allowed_file(file.filename):
-            domian_name = 'http://oqquiobc2.bkt.clouddn.com'
-            bucket_name = 'postimg'
-            u = UploadToQiniu(domian_name, bucket_name, file)
+            domian_name = 'https://static.51qinqing.com'
+            u = UploadToQiniu(file, 'postimg/')
             ret, info = u.upload()
             key = ret['key']
             return '{"error":false,"path":"' + domian_name + '/' + key + '"}'
@@ -209,7 +205,7 @@ def edit(id_=0):
             db.session.commit()
             user.post_total += 1
             flash('文章发表成功!')
-            return redirect(url_for('public.details', id=post.id))
+            return redirect(url_for('public.details', id_=post.id))
     else:
         flash('要发表文章请先验证您的邮箱')
         return redirect(url_for('public.index'))
@@ -391,6 +387,6 @@ def recent_feed():
                  author=post.author.username,
                  id=post.id,
                  updated=post.created,
-                 url=make_external(url_for('public.details', id=post.id))
+                 url=make_external(url_for('public.details', id_=post.id))
                  )
     return feed.get_response()

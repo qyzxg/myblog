@@ -5,22 +5,22 @@
 
 {% block left_content %}
     <div>
-    {% for message in get_flashed_messages() %}
-        <div class="alert alert-warning">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            {{ message }}
-        </div>
-    {% endfor %}
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ message }}
+            </div>
+        {% endfor %}
 
-    <a href="{{ url_for('public.edit') }}" class="btn btn-primary"><span class="icon-edit icon-large"></span>&nbsp;&nbsp;发表新文章</a>
-    {% for post in posts|sort(attribute='read_times',reverse=True ) %}
-        {% include 'includes/_posts_summary.html' %}
-    {% endfor %}
+        <a href="{{ url_for('public.edit') }}" class="btn btn-primary"><span class="icon-edit icon-large"></span>&nbsp;&nbsp;发表新文章</a>
+        {% for post in posts|sort(attribute='read_times',reverse=True ) %}
+            {% include 'includes/_posts_summary.html' %}
+        {% endfor %}
     </div>
 
     {% if pagination %}
-        <div  style="text-align: right">
-        {{ render_pagination(pagination) }}
+        <div style="text-align: right">
+            {{ render_pagination(pagination) }}
         </div>
     {% endif %}
 {% endblock %}

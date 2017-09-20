@@ -21,19 +21,21 @@ def admin_required(f):
 
 class UploadToQiniu():
     '''上传文件到七牛'''
-    def __init__(self, domian_name, bucket_name, file, expire=3600):
+
+    def __init__(self, file, prefix, domian_name='https://static.51qinqing.com', bucket_name='static', expire=3600):
         self.access_key = 'iDfXDpVa4pxFW4tyqkJK8dPkeSeRPlEsGZN7qnST'
         self.secret_key = 'iT3Z4r_z23zauKlyAsTCj51t6WOtJWbADhPKn2O6'
         self.bucket_name = bucket_name
         self.domian_name = domian_name
         self.file = file
         self.expire = expire
+        self.prefix = prefix
 
     def upload(self):
         user = current_user
         ext = self.file.filename.split('.')[-1]
         time_ = str(time.time()).replace('.', '')
-        k = time_ + '_' + str(user.id) + '.' + ext
+        k = self.prefix + time_ + '_' + str(user.id) + '.' + ext
         q = Auth(self.access_key, self.secret_key)
         token = q.upload_token(self.bucket_name, k, self.expire)
         return put_data(token, k, self.file.read())
@@ -41,7 +43,7 @@ class UploadToQiniu():
     def upload_web(self, file_name, file):
         q = Auth(self.access_key, self.secret_key)
         token = q.upload_token(self.bucket_name, file_name, self.expire)
-        return put_data(token, file_name, file)
+        return put_data(token, self.prefix + file_name, file)
 
 
 class DFAFilter():

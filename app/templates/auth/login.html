@@ -60,18 +60,19 @@
                             </div>
                         </div>
                         <span class="col-sm-2">
-                            <img id="vali" onclick="getPic()" src="{{ url_for('auth.get_validate') }}" title="点击刷新验证码" alt="点击刷新验证码">
+                            <img id="vali" onclick="getPic()" src="{{ url_for('auth.get_validate') }}" title="点击刷新验证码"
+                                 alt="点击刷新验证码">
                         </span>
                     </div>
 
                     <div class="form-group ">
                         <label for="remember_me" class="col-sm-3 control-label" style="font-size: 15px">记住我：</label>
                         <div class="col-sm-3 btn-group" data-toggle="buttons">
-                                <label class="btn btn-default">
-                                    7天内记住我{{ form.remember_me  }}
-                                </label>
-                            </div>
-{#                        <label name="remember_me" class="col-sm-3 control-label" data-toggle="buttons">{{ form.remember_me }}</label>#}
+                            <label class="btn btn-default">
+                                7天内记住我{{ form.remember_me }}
+                            </label>
+                        </div>
+                        {#                        <label name="remember_me" class="col-sm-3 control-label" data-toggle="buttons">{{ form.remember_me }}</label>#}
                         <label class="col-sm-3 control-label" style="font-size: 15px"><a
                                 href="{{ url_for('auth.reset_confirm_email') }}">忘记密码?</a></label>
                     </div>
@@ -80,16 +81,20 @@
                         <div class="col-sm-8">
                             <span style="padding-right: 40px; padding-left: 20px"><a
                                     href="{{ url_for('auth.qq_login') }}"> <img
-                                    src="http://oqquc7c6d.bkt.clouddn.com/qq_logo.png" width="39px" title="QQ快速登录" alt="QQ快速登录"></a></span>
+                                    src="https://static.51qinqing.com/logo/qq_logo.png" width="39px" title="QQ快速登录"
+                                    alt="QQ快速登录"></a></span>
                             <span><a
                                     href="{{ url_for('auth.github_login') }}"> <img
-                                    src="http://oqquc7c6d.bkt.clouddn.com/github_logo.png" width="39px" title="GitHub快速登录" alt="GitHub快速登录"></a></span>
+                                    src="https://static.51qinqing.com/logo/github_logo.png" width="39px"
+                                    title="GitHub快速登录" alt="GitHub快速登录"></a></span>
                             <span style="padding-right: 40px; padding-left: 40px"><a
                                     href="#"> <img
-                                    src="http://oqquc7c6d.bkt.clouddn.com/wechat_logo.png" width="39px" title="微信快速登录" alt="微信快速登录"></a></span>
+                                    src="https://static.51qinqing.com/logo/wechat_logo.png" width="39px" title="微信快速登录"
+                                    alt="微信快速登录"></a></span>
                             <span><a
                                     href="#"> <img
-                                    src="http://oqquc7c6d.bkt.clouddn.com/weibo_logo.png" width="39px" title="微博快速登录" alt="微博快速登录"></a></span>
+                                    src="https://static.51qinqing.com/logo/weibo_logo.png" width="39px" title="微博快速登录"
+                                    alt="微博快速登录"></a></span>
                         </div>
 
                     </div>

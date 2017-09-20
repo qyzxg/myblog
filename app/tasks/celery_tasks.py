@@ -148,3 +148,16 @@ def text_filter(s):
     text = DFAFilter()
     text.parse('./app/static/text/keywords.txt')
     return text.filter(s)
+
+# @celery.task(name='defa_ref')
+# def ref():
+#     app = create_app('default')
+#     with app.app_context():
+#         posts = Post.query.all()
+#         for post in posts:
+#             print(post.id)
+#             post.body = post.body.replace('http://owb9uk0r3.bkt.clouddn.com', 'https://static.51qinqing.com/crawl')
+#             post.body = post.body.replace('http://oqquiobc2.bkt.clouddn.com', 'https://static.51qinqing.com/postimg')
+#             post.post_img = post.post_img.replace('http://oqquiobc2.bkt.clouddn.com', 'https://static.51qinqing.com/postimg')
+#             post.post_img = post.post_img.replace('http://owb9uk0r3.bkt.clouddn.com', 'https://static.51qinqing.com/crawl')
+#             print('ok')

@@ -63,9 +63,9 @@ class BaseCrawler(metaclass=ABCMeta):
     def start(self):
         pass
 
-    def upload_img(self, file_name, file, domian_name='http://owb9uk0r3.bkt.clouddn.com', bucket_name='crawl'):
-        u = UploadToQiniu(domian_name, bucket_name, file)
-        ret, info = u.upload_web(file_name, file)
+    def upload_img(self, file_name, file, prefix, domian_name='https://static.51qinqing.com'):
+        u = UploadToQiniu(file, prefix)
+        ret, info = u.upload_web(prefix + file_name, file)
         key = ret['key']
         url = domian_name + '/' + key
         return url

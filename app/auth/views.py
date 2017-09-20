@@ -289,7 +289,7 @@ def get_qq_user_info():
                 confirmed=False,
                 region=user_info['province'],
                 city=user_info['city'],
-                avatar=user_info['figureurl_qq_2'],
+                avatar=user_info['figureurl_qq_2'].replace('http', 'https'),
                 open_id=open_id,
                 binded=0
             )

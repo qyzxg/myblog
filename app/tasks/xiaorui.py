@@ -72,7 +72,7 @@ class CrawlerXiaorui(BaseCrawler):
                         if str(url).startswith('/wp-content'):
                             url = 'http://xiaorui.cc' + url
                             r = self.fetch_page(url)
-                            url_ = self.upload_img(url.split('/')[-1], r.content)
+                            url_ = self.upload_img(url.split('/')[-1], r.content, 'crawl/')
                             img_list.append(url_)
                             new_img = soup.new_tag('img')
                             new_img.attrs['width'] = '100%'

@@ -238,14 +238,14 @@ def collect(id_):
     if current_user.is_authenticated:
         if current_user.collecting(post):
             flash('你已经收藏了这篇文章!')
-            return redirect(url_for('public.details', id=post.id))
+            return redirect(url_for('public.details', id_=post.id))
     else:
         flash('登录后才能收藏哦!')
-        return redirect(url_for('public.details', id=post.id))
+        return redirect(url_for('public.details', id_=post.id))
 
     current_user.collect(post)
     flash('收藏成功!')
-    return redirect(url_for('public.details', id=post.id))
+    return redirect(url_for('public.details', id_=post.id))
 
 
 # 取消收藏

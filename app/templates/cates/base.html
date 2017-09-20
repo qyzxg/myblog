@@ -13,7 +13,7 @@
         <meta name="author" content="qyzxg,qyzxg@live.com">
         <meta name="copyright" content="qyzxg">
         <meta name="revisit-after" content="1 days">
-        <link rel="shortcut icon" href="http://oqquc7c6d.bkt.clouddn.com/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="https://static.51qinqing.com/logo/favicon.ico" type="image/x-icon">
         {% include 'includes/_navbar.html' %}
         <title>{% block title %}{{ title|safe }}{% endblock %}</title>
     </head>
@@ -21,7 +21,8 @@
 
 {% block styles %}
     {{ super() }}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css"
+          href="{{ url_for('static', filename = 'font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'stylesheets/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'stylesheets/main.css') }}">
 {% endblock %}
