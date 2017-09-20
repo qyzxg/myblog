@@ -172,9 +172,9 @@ def reset_confirm_email():
 # 重置密码
 @auth.route('/reset/reset_password/<token>/', methods=["GET", "POST"])
 def reset_password(token):
+    form = ResetPassword()
     try:
         email = confirm_token(token)
-        form = ResetPassword()
         if form.validate_on_submit():
             user = User.query.filter_by(email=email).first()
             user.password = form.password.data
@@ -269,14 +269,15 @@ def get_qq_user_info():
         user_info = json_to_dict(resp.data.decode('utf-8'))
         user_info.update({'status': resp.status})
         open_id = session['qq_openid']
-        user = User.query.filter_by(open_id=str(open_id)).first()
+        user = User.query.filter_by(qq_id=str(open_id)).first()
         if user:
             login_user(user)
+            user.last_login = datetime.datetime.now()
             return redirect(url_for('public.index'))
         else:
             user_ = User.query.filter_by(username=user_info['nickname']).first()
             if user_:
-                username = user_info['nickname'] + '1'
+                username = user_info['nickname'] + '_1'
             else:
                 username = user_info['nickname']
             new_user = User(
@@ -290,13 +291,14 @@ def get_qq_user_info():
                 region=user_info['province'],
                 city=user_info['city'],
                 avatar=user_info['figureurl_qq_2'].replace('http', 'https'),
-                open_id=open_id,
+                qq_id=open_id,
                 binded=0
             )
             new_user.set_password(str(open_id))
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user)
+            new_user.last_login = datetime.datetime.now()
             flash('qq登录成功,请及时验证邮箱')
             return redirect(url_for('public.index'))
     return redirect(url_for('auth.login'))
@@ -338,7 +340,7 @@ def github_authorized():
     else:
         user_ = User.query.filter_by(username=me.data.get('login')).first()
         if user_:
-            username = me.data.get('login') + '1'
+            username = me.data.get('login') + '_1'
         else:
             username = me.data.get('login')
         new_user = User(

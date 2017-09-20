@@ -112,7 +112,7 @@ def get_server_info():
 @fresh_login_required
 @admin_required
 def get_user_city():
-    reg = db.session.query(User.city, func.count(User.city)).group_by(User.city).all()
+    reg = db.session.query(User.city, func.count(User.city)).filter(User.city is not None).group_by(User.city).all()
     city = list(map(lambda lst: {'name': lst[0], 'value': lst[1]}, reg))
     return jsonify(city)
 

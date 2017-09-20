@@ -182,7 +182,7 @@ def edit(id_=0):
             l = form.tags.data.split(',')
             ls = filter(None, l)
             for i in ls:
-                if i == '':
+                if not i:
                     l.remove(i)
                 if i.strip() not in alltags:
                     tag = Tag(name=i.strip())
@@ -331,14 +331,6 @@ def hot_posts():
 
 
 # 搜索
-@public.before_app_request
-def before_request():
-    from .. import create_app
-    app = create_app()
-    whoosh.whoosh_index(app, Post)
-    g.search_form = SearchForm()
-
-
 @public.route('/search/', methods=['POST', 'GET'])
 def search():
     if not g.search_form.validate_on_submit():

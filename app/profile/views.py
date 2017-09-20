@@ -14,7 +14,7 @@ from ..admin.views import get_c_month, get_m_days, get_day
 @login_required
 def user_index(username):
     user = User.query.filter_by(username=username).first()
-    if user == None:
+    if not user:
         flash('不存在用户：' + username + '！')
         return redirect(url_for('public.index'))
 
