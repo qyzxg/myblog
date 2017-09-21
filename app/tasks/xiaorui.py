@@ -5,6 +5,7 @@ from lxml import etree
 from bs4 import BeautifulSoup
 import random
 import datetime
+from ..shares import choice_img
 
 
 class CrawlerXiaorui(BaseCrawler):
@@ -77,6 +78,11 @@ class CrawlerXiaorui(BaseCrawler):
                             new_img = soup.new_tag('img')
                             new_img.attrs['width'] = '100%'
                             new_img.attrs['src'] = url_
+                            i.replace_with(new_img)
+                        else:
+                            new_img = soup.new_tag('img')
+                            new_img.attrs['width'] = '100%'
+                            new_img.attrs['src'] = choice_img()
                             i.replace_with(new_img)
                 for i in codes:
                     crayon_code = i.find_all('td', class_='crayon-code')

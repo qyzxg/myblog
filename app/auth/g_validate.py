@@ -10,11 +10,9 @@ _nums = '0123456789'
 chars = ''.join((_str, _nums))
 sys_tem = platform.system()
 
-if sys_tem == 'Linux':
-    default_font = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
-else:
-    default_font = "../static/fonts/arialbd.ttf"
-
+lin_font = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+win_font = "../static/fonts/arialbd.ttf"
+default_font = lin_font if sys_tem == 'Linux' else win_font
 
 def generate_verify_image(size=(110, 39),
                           chars=chars,

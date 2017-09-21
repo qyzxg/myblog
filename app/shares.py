@@ -5,6 +5,7 @@ from flask_login import current_user
 from flask import flash, redirect, url_for, request
 import time
 from qiniu import Auth, put_data
+import random
 
 
 def admin_required(f):
@@ -116,3 +117,39 @@ def do_pagination(query, per_page=10):
     pagination = query.paginate(page_index, per_page=per_page, error_out=False)
     items = pagination.items
     return pagination, items
+
+
+img_list = [
+    '1304525430-0.jpg',
+    '032013yUu.jpg',
+    '10772877275_bd4d764325_b.jpg',
+    '11801452763_50dde53de2_b.jpg',
+    '13241598423_9f492cacb6_b.jpg',
+    '6946443124_5bd6c88e9e_b.jpg',
+    '13822577795_5cd31f464a_b.jpg',
+    '11340601525_0b09f1133d_b.jpg',
+    '18212504776_40fe6548e2_b.jpg',
+    '20471528443_e39d992210_b.jpg',
+    '23606693854_a6b3fb86c2_b.jpg',
+    '28305390372_d3bd5fe460_b.jpg',
+    '28629559405_1f471929ce_b.jpg',
+    '29932753623_f9b8a4db63_b.jpg',
+    '30616861736_baa4b5e0a9_b.jpg',
+    '31397302444_cba4f0824d_b.jpg',
+    '18910440381_52fa9fe432_b.jpg',
+    'Materials19.jpg',
+    'apic14052.jpg',
+    '20140827184301734.jpg',
+    'Materials23.jpg',
+    'Materials12.jpg',
+    'Materials31.jpg',
+    'Materials27.jpg',
+    'Materials33.jpg',
+    'Materials38.jpg',
+    'Materials41.jpg',
+    'Materials44.jpg',
+    'Materials164.jpg'
+]
+
+def choice_img():
+    return 'https://static.51qinqing.com/postimg/' + random.choice(img_list)

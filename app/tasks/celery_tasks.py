@@ -7,7 +7,7 @@ from ..models import LogInfo, Post
 import datetime
 import time
 from .xiaorui import CrawlerXiaorui
-from ..shares import DFAFilter
+from ..shares import DFAFilter, choice_img
 
 
 @celery.task(name='defa_send_email')
@@ -149,6 +149,7 @@ def text_filter(s):
     text.parse('./app/static/text/keywords.txt')
     return text.filter(s)
 
+
 # @celery.task(name='defa_ref')
 # def ref():
 #     app = create_app('default')
@@ -156,8 +157,5 @@ def text_filter(s):
 #         posts = Post.query.all()
 #         for post in posts:
 #             print(post.id)
-#             post.body = post.body.replace('http://owb9uk0r3.bkt.clouddn.com', 'https://static.51qinqing.com/crawl')
-#             post.body = post.body.replace('http://oqquiobc2.bkt.clouddn.com', 'https://static.51qinqing.com/postimg')
-#             post.post_img = post.post_img.replace('http://oqquiobc2.bkt.clouddn.com', 'https://static.51qinqing.com/postimg')
-#             post.post_img = post.post_img.replace('http://owb9uk0r3.bkt.clouddn.com', 'https://static.51qinqing.com/crawl')
+#             post.body = post.body.replace('http://xiaorui.cc/refer.jpg', choice_img())
 #             print('ok')

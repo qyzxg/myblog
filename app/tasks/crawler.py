@@ -5,7 +5,7 @@ from abc import ABCMeta, abstractmethod
 from .. import create_app, db
 from ..models import Post
 import datetime
-from ..shares import UploadToQiniu
+from ..shares import UploadToQiniu, choice_img
 
 
 class BaseCrawler(metaclass=ABCMeta):
@@ -42,8 +42,7 @@ class BaseCrawler(metaclass=ABCMeta):
     def parser(self):
         pass
 
-    def save(self, title, body, style='转载', category='Python 进阶',
-             post_img=r'http://oqquiobc2.bkt.clouddn.com/default_post_img.jpg'):
+    def save(self, title, body, style='转载', category='Python 进阶', post_img=choice_img()):
         app = create_app('default')
         with app.app_context():
             post = Post(title=title,

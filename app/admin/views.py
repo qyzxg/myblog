@@ -318,10 +318,7 @@ def login_manage(id_, status, delete):
         flash('用户不存在!')
     else:
         posts = Post.query.filter_by(author_id=user.id).all()
-        if int(status) == 1:
-            user.status = 1
-        else:
-            user.status = 0
+        user.status = 1 if int(status) == 1 else 0
         if int(delete) == 1:
             # 同时删除该用户的文章和评论
             user.del_comments()
@@ -346,10 +343,7 @@ def role_manage(id_, role):
     if user is None:
         flash('用户不存在!')
     else:
-        if int(role) == 1:
-            user.role = 1
-        else:
-            user.role = 0
+        user.role = 1 if int(role) == 1 else 0
     return redirect(url_for('admin.users_manage'))
 
 

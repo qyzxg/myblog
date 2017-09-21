@@ -101,6 +101,10 @@ def active():
 # 用户登录
 @auth.route('/login/', methods=['POST', 'GET'])
 def login():
+    try:
+        ip_addr = request.headers['X-real-ip']
+    except:
+        ip_addr = request.remote_addr
     form = LoginForm()
     if form.validate_on_submit():
         form_data = form.data
@@ -113,17 +117,15 @@ def login():
             return redirect(url_for('auth.login'))
         if not user.check_password(form_data['password']):
             flash('密码错误,请重试!')
+            redis_store.incr('{}'.format(ip_addr), 1)
+            redis_store.expire('{}'.format(ip_addr), 3600)
             return redirect(url_for('auth.login'))
         if 'code_text' in session and form_data['validate'].lower() != session['code_text'].lower():
             flash(u'验证码错误！')
             return redirect(url_for('auth.login'))
         login_user(user, remember=form.remember_me.data)
         user.last_login = datetime.datetime.now()
-        redis_store.delete('validateCount:%d' % user.id)
-        try:
-            ip_addr = request.headers['X-real-ip']
-        except:
-            ip_addr = request.remote_addr
+        redis_store.delete('{}'.format(ip_addr))
         url = requests.get('http://ip.taobao.com/service/getIpInfo.php?ip=%s' % ip_addr)
         data = url.json()
         user.ip_addr = ip_addr
@@ -135,7 +137,17 @@ def login():
         flash('欢迎回来,%s' % user.username)
         next_url = request.args.get('next')
         return redirect(next_url or url_for('public.index'))
-    return render_template('auth/login.html', title='用户登录', form=form)
+    n_ip = redis_store.get('{}'.format(ip_addr))
+    pass_error_count = int(n_ip) if n_ip else None
+    if not pass_error_count:
+        try:
+            session.pop('code_text')
+        except:
+            pass
+    return render_template('auth/login.html',
+                           title='用户登录',
+                           form=form, pass_error_count=pass_error_count
+                           )
 
 
 # 用户登出
@@ -276,10 +288,7 @@ def get_qq_user_info():
             return redirect(url_for('public.index'))
         else:
             user_ = User.query.filter_by(username=user_info['nickname']).first()
-            if user_:
-                username = user_info['nickname'] + '_1'
-            else:
-                username = user_info['nickname']
+            username = user_info['nickname'] + '_1' if user_ else user_info['nickname']
             new_user = User(
                 email='{}@qq.com'.format(open_id[-10:]),
                 username=username,
@@ -329,20 +338,14 @@ def github_authorized():
     me = github.get('user')
     email_ = me.data.get('email')
     github_id = me.data.get('id')
-    if email_ is not None:
-        email = email_
-    else:
-        email = '{}@github.com'.format(github_id)
+    email = email_ if email_ else '{}@github.com'.format(github_id)
     user = User.query.filter_by(github_id=str(github_id)).first()
     if user:
         login_user(user)
         return redirect(url_for('public.index'))
     else:
         user_ = User.query.filter_by(username=me.data.get('login')).first()
-        if user_:
-            username = me.data.get('login') + '_1'
-        else:
-            username = me.data.get('login')
+        username = me.data.get('login') + '_1' if user_ else me.data.get('login')
         new_user = User(
             email=email,
             username=username,

@@ -26,8 +26,7 @@ def user_index(username):
     lst = [
         Post.query.filter_by(author_id=user.id).filter(
             Post.created.between('2017-%s-%d 0:0:0' % (n, i), '2017-%s-%d 0:0:0' % (n, (i + 1)))).count()
-        for
-        i in range(1, days)]
+        for i in range(1, days)]
     x = list(range(1, days))
     m = get_c_month()
     day = get_day()
@@ -86,10 +85,7 @@ def user_public_manage(id_, public):
     post = Post.query.filter_by(id=id_).first()
     if not post:
         flash('文章不存在')
-    if int(public) == 1:
-        post.is_public = 1
-    else:
-        post.is_public = 0
+    post.is_public = 1 if int(public) == 1 else 0
     return redirect(url_for('profile.user_blogs_manage'))
 
 

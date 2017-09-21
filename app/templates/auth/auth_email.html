@@ -27,6 +27,25 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="validate" class="col-sm-3 control-label" style="font-size: 15px">验&nbsp;&nbsp;证&nbsp;&nbsp;&nbsp;码：</label>
+                        <div class="col-sm-5">
+                            <div class="input-group">
+                                {{ form.val(placeholder='请输入4位验证码') }}
+                                <div class="input-group-addon">
+                                    {% for error in form.val.errors %}
+                                        <span style="color: #feff14;">{{ error }}</span>
+                                    {% endfor %}
+                                    <a onclick="getPic()" title="刷新验证码"><span
+                                            class="glyphicon glyphicon-refresh"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <img id="vali" onclick="getPic()" src="{{ url_for('auth.get_validate') }}" title="点击刷新验证码"
+                                 alt="点击刷新验证码">
+                        </div>
+                    </div>
                     <br>
                     <div class="row">
                         <div class="col-md-4 col-md-offset-3 col-xs-12">
@@ -42,6 +61,19 @@
             </form>
         </div>
     </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script>
+        function getPic() {
+            $("#vali").attr("src", "/auth/get_validate/?flag=" + Math.random());
+        };
+        $("#email").mailAutoComplete({
+            autoClass: false,
+            textHint: true, //提示文字自动隐藏
+        });
+    </script>
 {% endblock %}
 
 {% block footer %}

@@ -79,11 +79,25 @@ class RegistForm(FlaskForm):
 
 class AuthEmail(FlaskForm):
     email = StringField('email', validators=[DataRequired("请输入您注册时使用的邮箱")],
-                        render_kw={'class': "form-control", "required": "required"})
+                        render_kw={'class': "form-control", "required": "required"},
+                        _name="email")
+
+    val = StringField(u'验证码', validators=[DataRequired(message=u'验证码不能为空'),
+                                          Regexp(r'^[a-zA-Z0-9][a-zA-Z0-9]*$', 0, u'验证码只能包含字母数字')],
+                      render_kw={'class': "form-control", "required": "required"},
+                      _name="validate"
+                      )
 
     def get_user(self):
         from ..models import User
         return User.query.filter_by(email=self.data['email']).first()
+
+    def validate_val(self, field):
+        from flask import session
+        data = field.data
+        if 'code_text' in session and data.lower() != session['code_text'].lower():
+            raise ValidationError('验证码错误')
+        return data
 
 
 class ResetPassword(FlaskForm):

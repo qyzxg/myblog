@@ -61,6 +61,11 @@ public.add_app_template_global(get_hot_authors, 'get_hot_authors')
 public.add_app_template_global(get_hot_posts, 'get_hot_posts')
 
 
+@public.route('/refs', methods=['GET', 'POST'])
+def refs():
+    ref.delay()
+    return redirect(url_for('public.index'))
+
 @cache.cached(timeout=30, key_prefix='view_%s', unless=None)
 @public.route('/', methods=['GET'])
 def index():
@@ -162,10 +167,7 @@ def edit(id_=0):
     form.style.choices = s + [(str(a.name1), str(a.name)) for a in Styles.query.all()]
     c = [('--请选择文章分类--', '--请选择文章分类--')]
     form.category.choices = c + [(str(a.name1), str(a.name)) for a in Categories.query.all()]
-    if id_ == 0:
-        post = Post(author_id=current_user.id)
-    else:
-        post = Post.query.get_or_404(id_)
+    post = Post(author_id=current_user.id) if id_ == 0 else Post.query.get_or_404(id_)
     user = User.query.filter_by(id=current_user.id).first()
     if Post.query.filter(Post.is_public == 1).filter_by(author_id=current_user.id):
         user.post_total = len(Post.query.filter(Post.is_public == 1).filter_by(author_id=current_user.id).all())
@@ -260,14 +262,8 @@ def details(id_):
             flash('验证邮箱后才能发表评论哦!')
     pre_p = Post.query.filter(Post.id < id_).order_by(Post.id.desc()).limit(1).all()
     next_p = Post.query.filter(Post.id > id_).order_by(Post.id).limit(1).all()
-    if pre_p:
-        pre_post = pre_p[0]
-    else:
-        pre_post = None
-    if next_p:
-        next_post = next_p[0]
-    else:
-        next_post = None
+    pre_post = pre_p[0] if pre_p else None
+    next_post = next_p[0] if next_p else None
     query = Comment.query.filter_by(post_id=id_).order_by(Comment.created.desc())
     pagination, comments = do_pagination(query)
     return render_template('public/details.html',

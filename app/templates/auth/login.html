@@ -45,25 +45,27 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="validate" class="col-sm-3 control-label" style="font-size: 15px">验证码：</label>
-                        <div class="col-sm-5">
-                            <div class="input-group">
-                                {{ form.validate(placeholder='请输入4位验证码') }}
-                                <div class="input-group-addon">
-                                    <a onclick="getPic()" title="刷新验证码">
-                                        {% for error in form.validate.errors %}
-                                            <span style="color: #feff14;">{{ error }}</span>
-                                        {% endfor %}
-                                        <span class="glyphicon glyphicon-refresh"></span></a>
+                    {% if pass_error_count and pass_error_count >=3 %}
+                        <div class="form-group">
+                            <label for="validate" class="col-sm-3 control-label" style="font-size: 15px">验证码：</label>
+                            <div class="col-sm-5">
+                                <div class="input-group">
+                                    {{ form.validate(placeholder='请输入4位验证码') }}
+                                    <div class="input-group-addon">
+                                        <a onclick="getPic()" title="刷新验证码">
+                                            {% for error in form.validate.errors %}
+                                                <span style="color: #feff14;">{{ error }}</span>
+                                            {% endfor %}
+                                            <span class="glyphicon glyphicon-refresh"></span></a>
+                                    </div>
                                 </div>
                             </div>
+                            <span class="col-sm-2">
+                                <img id="vali" onclick="getPic()" src="{{ url_for('auth.get_validate') }}"
+                                     title="点击刷新验证码" alt="点击刷新验证码">
+                            </span>
                         </div>
-                        <span class="col-sm-2">
-                            <img id="vali" onclick="getPic()" src="{{ url_for('auth.get_validate') }}" title="点击刷新验证码"
-                                 alt="点击刷新验证码">
-                        </span>
-                    </div>
+                    {% endif %}
 
                     <div class="form-group ">
                         <label for="remember_me" class="col-sm-3 control-label" style="font-size: 15px">记住我：</label>
@@ -81,19 +83,19 @@
                         <div class="col-sm-8">
                             <span style="padding-right: 40px; padding-left: 20px"><a
                                     href="{{ url_for('auth.qq_login') }}"> <img
-                                    src="https://static.51qinqing.com/logo/qq_logo.png" width="39px" title="QQ快速登录"
+                                    src="http://oqquc7c6d.bkt.clouddn.com/qq_logo.png" width="39px" title="QQ快速登录"
                                     alt="QQ快速登录"></a></span>
                             <span><a
                                     href="{{ url_for('auth.github_login') }}"> <img
-                                    src="https://static.51qinqing.com/logo/github_logo.png" width="39px"
+                                    src="http://oqquc7c6d.bkt.clouddn.com/github_logo.png" width="39px"
                                     title="GitHub快速登录" alt="GitHub快速登录"></a></span>
                             <span style="padding-right: 40px; padding-left: 40px"><a
                                     href="#"> <img
-                                    src="https://static.51qinqing.com/logo/wechat_logo.png" width="39px" title="微信快速登录"
+                                    src="http://oqquc7c6d.bkt.clouddn.com/wechat_logo.png" width="39px" title="微信快速登录"
                                     alt="微信快速登录"></a></span>
                             <span><a
                                     href="#"> <img
-                                    src="https://static.51qinqing.com/logo/weibo_logo.png" width="39px" title="微博快速登录"
+                                    src="http://oqquc7c6d.bkt.clouddn.com/weibo_logo.png" width="39px" title="微博快速登录"
                                     alt="微博快速登录"></a></span>
                         </div>
 

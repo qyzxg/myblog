@@ -4,6 +4,7 @@ import datetime
 from jieba.analyse import ChineseAnalyzer
 from . import db, login_manager
 from flask import url_for
+from .shares import choice_img
 
 follow = db.Table('followers',
                   db.Column('follower_id', db.Integer, db.ForeignKey('users.id')),
@@ -221,7 +222,7 @@ class Post(db.Model):
     is_public = db.Column(db.Boolean, default=True)
     sort_score = db.Column(db.Float, default=0)
     post_img = db.Column(db.String(500), doc='文章图片',
-                         default=r'https://static.51qinqing.com/postimg/default_post_img.jpg')
+                         default=choice_img())
     tags = db.relationship('Tag', secondary=tag,
                            backref=db.backref('posts', lazy='dynamic'))
     source = db.Column(db.String(100), default='www.51qinqing.com')
