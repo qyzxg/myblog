@@ -69,19 +69,17 @@ class CrawlerXiaorui(BaseCrawler):
                 img_list = []
                 if images:
                     for i in images:
+                        new_img = soup.new_tag('img')
+                        new_img.attrs['width'] = '100%'
                         url = i.get('src')
                         if str(url).startswith('/wp-content'):
                             url = 'http://xiaorui.cc' + url
                             r = self.fetch_page(url)
                             url_ = self.upload_img(url.split('/')[-1], r.content, 'crawl/')
                             img_list.append(url_)
-                            new_img = soup.new_tag('img')
-                            new_img.attrs['width'] = '100%'
                             new_img.attrs['src'] = url_
                             i.replace_with(new_img)
                         else:
-                            new_img = soup.new_tag('img')
-                            new_img.attrs['width'] = '100%'
                             new_img.attrs['src'] = choice_img()
                             i.replace_with(new_img)
                 for i in codes:

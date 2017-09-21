@@ -60,7 +60,7 @@ def register():
         login_user(user, remember=True)
         flash('注册成功,请登录您的邮箱按照提示激活账户')
         return redirect(url_for('public.index'))
-    return render_template('auth/register.html', form=form, title='用户注册')
+    return render_template('auth/register.html', form=form, title='注册账号')
 
 
 # 邮件确认
@@ -178,7 +178,7 @@ def reset_confirm_email():
             send_email.delay(user.email, subject, html)  # 异步
             flash('验证邮件已发送至您的邮箱!')
             return redirect(url_for('public.index'))
-    return render_template('auth/auth_email.html', form=form, title='邮箱验证')
+    return render_template('auth/auth_email.html', form=form, title='验证邮箱')
 
 
 # 重置密码
@@ -309,7 +309,8 @@ def get_qq_user_info():
             login_user(new_user)
             new_user.last_login = datetime.datetime.now()
             flash('qq登录成功,请及时验证邮箱')
-            return redirect(url_for('public.index'))
+            next_url = request.args.get('next')
+            return redirect(next_url or url_for('public.index'))
     return redirect(url_for('auth.login'))
 
 
@@ -364,7 +365,9 @@ def github_authorized():
         db.session.commit()
         login_user(new_user)
         flash('github登录成功,请及时验证邮箱')
-        return redirect(url_for('public.index'))
+        next_url = request.args.get('next')
+        return redirect(next_url or url_for('public.index'))
+
 
 
 @github.tokengetter

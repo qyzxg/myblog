@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 from flask import render_template, make_response, flash, redirect, \
-    url_for, request, g, current_app, json
+    url_for, request, g, current_app, json, jsonify
 from flask_login import current_user, login_required
 import flask_whooshalchemyplus as whoosh
 import datetime
@@ -61,10 +61,6 @@ public.add_app_template_global(get_hot_authors, 'get_hot_authors')
 public.add_app_template_global(get_hot_posts, 'get_hot_posts')
 
 
-@public.route('/refs', methods=['GET', 'POST'])
-def refs():
-    ref.delay()
-    return redirect(url_for('public.index'))
 
 @cache.cached(timeout=30, key_prefix='view_%s', unless=None)
 @public.route('/', methods=['GET'])
@@ -148,7 +144,7 @@ def upload_postimg():
         file = request.files['file']
         if file and allowed_file(file.filename):
             domian_name = 'https://static.51qinqing.com'
-            u = UploadToQiniu(file, 'postimg/')
+            u = UploadToQiniu(file, 'postimg/', mark=True)
             ret, info = u.upload()
             key = ret['key']
             return '{"error":false,"path":"' + domian_name + '/' + key + '"}'
@@ -285,7 +281,7 @@ def get_comments():
             comments = Comment.query.filter_by(post_id=int(post_id)).order_by(Comment.created.desc())
             return render_template('includes/_comments_list.html', comments=comments)
         except:
-            flash('评论不存在!')
+            return jsonify({'error': '文章不存在'})
 
 
 @public.route('/get_replies', methods=['GET', 'POST'])
@@ -296,7 +292,7 @@ def get_replies():
             comment = Comment.query.filter_by(id=int(com_id)).first()
             return render_template('includes/_reply_list.html', comment=comment)
         except:
-            flash('回复不存在!')
+            return jsonify({'error': '回复不存在!'})
 
 
 @public.route('/add_reply', methods=['POST', 'GET'])

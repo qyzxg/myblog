@@ -4,9 +4,9 @@ from functools import wraps
 from flask_login import current_user
 from flask import flash, redirect, url_for, request
 import time
-from qiniu import Auth, put_data
+from qiniu import Auth, put_data, PersistentFop, urlsafe_base64_encode
 import random
-
+import os
 
 def admin_required(f):
     @wraps(f)
@@ -23,28 +23,46 @@ def admin_required(f):
 class UploadToQiniu():
     '''上传文件到七牛'''
 
-    def __init__(self, file, prefix, domian_name='https://static.51qinqing.com', bucket_name='static', expire=3600):
-        self.access_key = 'iDfXDpVa4pxFW4tyqkJK8dPkeSeRPlEsGZN7qnST'
-        self.secret_key = 'iT3Z4r_z23zauKlyAsTCj51t6WOtJWbADhPKn2O6'
+    def __init__(self, file, prefix, domian_name='https://static.51qinqing.com', bucket_name='static', expire=3600, mark=False):
+        self.access_key = os.environ.get('QINIU_ACCESS_KEY')
+        self.secret_key = os.environ.get('QINIU_SECRET_KEY')
         self.bucket_name = bucket_name
         self.domian_name = domian_name
         self.file = file
         self.expire = expire
         self.prefix = prefix
+        self.q = Auth(self.access_key, self.secret_key)
+        self.pipeline = 'water_mark'
+        self.fops = r'imageView2/0/q/75|watermark/2/text/d3d3LjUxcWlucWluZy5jb20=/font/6buR5L2T/fontsize/360/fill/I0ZGRkJGQg==/dissolve/100/gravity/SouthEast/dx/10/dy/10'
+        self.mark = mark
+
+
+    def water_mark(self, key):
+        # 为上传的图片添加水印
+        saveas_key = urlsafe_base64_encode('{}:{}'.format(self.bucket_name, key))
+        fops = self.fops + '|saveas/' + saveas_key
+        pfop = PersistentFop(self.q, self.bucket_name, self.pipeline)
+        ops = list()
+        ops.append(fops)
+        pfop.execute(key, ops, 1)
 
     def upload(self):
         user = current_user
         ext = self.file.filename.split('.')[-1]
         time_ = str(time.time()).replace('.', '')
         k = self.prefix + time_ + '_' + str(user.id) + '.' + ext
-        q = Auth(self.access_key, self.secret_key)
-        token = q.upload_token(self.bucket_name, k, self.expire)
-        return put_data(token, k, self.file.read())
+        token = self.q.upload_token(self.bucket_name, k, self.expire)
+        ret, info = put_data(token, k, self.file.read())
+        if self.mark:
+            self.water_mark(k)
+        return ret, info
 
     def upload_web(self, file_name, file):
-        q = Auth(self.access_key, self.secret_key)
-        token = q.upload_token(self.bucket_name, file_name, self.expire)
-        return put_data(token, self.prefix + file_name, file)
+        token = self.q.upload_token(self.bucket_name, file_name, self.expire)
+        ret, info = put_data(token, self.prefix + file_name, file)
+        if self.mark:
+            self.water_mark(self.prefix + file_name)
+        return ret, info
 
 
 class DFAFilter():
@@ -150,6 +168,7 @@ img_list = [
     'Materials44.jpg',
     'Materials164.jpg'
 ]
+
 
 def choice_img():
     return 'https://static.51qinqing.com/postimg/' + random.choice(img_list)
