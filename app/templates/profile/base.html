@@ -35,13 +35,6 @@
 
 {% endblock %}
 
-{% block scripts %}
-    {{ super() }}
-    <script src="{{ url_for('static', filename ='javascripts/echarts.common.min.js') }}"
-            type="text/javascript"></script>
-    <script src="{{ url_for('static', filename ='javascripts/datatables.min.js') }}" type="text/javascript"></script>
-    <script src="{{ url_for('static', filename ='javascripts/user_tables.js') }}" type="text/javascript"></script>
-{% endblock %}
 
 {% block content %}
     <div class="container">
@@ -105,3 +98,10 @@
     </div>
 {% endblock %}
 
+{% block scripts %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename ='javascripts/echarts.common.min.js') }}"
+            type="text/javascript"></script>
+    <script src="{{ url_for('static', filename ='javascripts/datatables.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename ='javascripts/user_tables.js') }}" type="text/javascript"></script>
+{% endblock %}
