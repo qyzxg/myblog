@@ -61,7 +61,6 @@ public.add_app_template_global(get_hot_authors, 'get_hot_authors')
 public.add_app_template_global(get_hot_posts, 'get_hot_posts')
 
 
-
 @cache.cached(timeout=30, key_prefix='view_%s', unless=None)
 @public.route('/', methods=['GET'])
 def index():

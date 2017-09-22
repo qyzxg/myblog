@@ -8,6 +8,7 @@ from qiniu import Auth, put_data, PersistentFop, urlsafe_base64_encode
 import random
 import os
 
+
 def admin_required(f):
     @wraps(f)
     def view_function(*args, **kwargs):
@@ -23,7 +24,8 @@ def admin_required(f):
 class UploadToQiniu():
     '''上传文件到七牛'''
 
-    def __init__(self, file, prefix, domian_name='https://static.51qinqing.com', bucket_name='static', expire=3600, mark=False):
+    def __init__(self, file, prefix, domian_name='https://static.51qinqing.com', bucket_name='static', expire=3600,
+                 mark=False):
         self.access_key = os.environ.get('QINIU_ACCESS_KEY')
         self.secret_key = os.environ.get('QINIU_SECRET_KEY')
         self.bucket_name = bucket_name
@@ -35,7 +37,6 @@ class UploadToQiniu():
         self.pipeline = 'water_mark'
         self.fops = r'imageView2/0/q/75|watermark/2/text/d3d3LjUxcWlucWluZy5jb20=/font/6buR5L2T/fontsize/360/fill/I0ZGRkJGQg==/dissolve/100/gravity/SouthEast/dx/10/dy/10'
         self.mark = mark
-
 
     def water_mark(self, key):
         # 为上传的图片添加水印

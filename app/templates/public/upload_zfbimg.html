@@ -13,7 +13,7 @@
                 {{ message }}
             </div>
         {% endfor %}
-        <h3 style="padding-top: 30px">修改支付宝打赏信息,当前收款金额: ￥  {{ current_user.zfb_num }}</h3>
+        <h3 style="padding-top: 30px">修改支付宝打赏信息,当前收款金额: ￥ {{ current_user.zfb_num }}</h3>
         <img src="{{ current_user.zfb_img }}" width="100px" height="100px">
         <div id="dropbox">
             <span class="message"><h4>请把图片拖到这里,每次一张<br>支持png,jpg,jpeg,gif,bmp格式,大小不超过5M</h4></span>
