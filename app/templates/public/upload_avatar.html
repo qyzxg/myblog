@@ -1,6 +1,10 @@
 {% extends 'public/base.html' %}
 {% block title %}{{ title|safe }}{% endblock %}
 
+{% block styles %}
+    {{ super() }}
+{% endblock %}
+
 {% block content %}
     <div align="center" style="margin-top: 50px">
         {% for message in get_flashed_messages() %}
@@ -9,15 +13,19 @@
                 {{ message }}
             </div>
         {% endfor %}
-        <div><h3>您当前的图像是:</h3></div>
-        <div><img src="{{ current_user.avatar }}" class="img-circle" width="200px" ,height="200px"></div>
-        <form action="" method="post" enctype="multipart/form-data">
-
-            <p><input type="file" name="file"></p>
-            <p><input type="submit" value="上传图片"></p>
-        </form>
+        <h3 style="padding-top: 30px">上传图像</h3>
+        <img src="{{ current_user.avatar }}" width="100px" height="100px">
+        <div id="dropbox">
+            <span class="message"><h4>请把图片拖到这里,每次一张<br>支持png,jpg,jpeg,gif,bmp格式,大小不超过5M</h4></span>
+        </div>
     </div>
 {% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename ='javascripts/upload_avatar.js') }}" type="text/javascript"></script>
+{% endblock %}
+
 
 {% block footer %}
     {{ super() }}

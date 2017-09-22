@@ -92,8 +92,7 @@ def upload_avatar():
             ret, info = u.upload()
             key = ret['key']
             current_user.avatar = domian_name + '/' + key
-            flash('图像修改成功!')
-            return redirect(url_for('public.upload_avatar'))
+            return jsonify({"success": True})
         flash('您上传的文件不合法!')
     return render_template('public/upload_avatar.html', title='上传图像')
 
@@ -102,38 +101,46 @@ def upload_avatar():
 @login_required
 def upload_zfbimg():
     if request.method == 'POST':
-        file = request.files['file']
-        if file and allowed_file(file.filename):
+        if request.form:
             form = request.form
-            domian_name = 'https://static.51qinqing.com'
-            u = UploadToQiniu(file, 'pay/zfb/')
-            ret, info = u.upload()
-            key = ret['key']
-            current_user.zfb_img = domian_name + '/' + key
             current_user.zfb_num = form['num']
-            flash('支付宝二维码上传成功!')
             return redirect(url_for('public.upload_zfbimg'))
-        flash('您上传的文件不合法!')
-    return render_template('public/upload_zfbimg.html', title='上传支付宝二维码')
+        if request.files['file']:
+            file = request.files['file']
+            if allowed_file(file.filename):
+                domian_name = 'https://static.51qinqing.com'
+                u = UploadToQiniu(file, 'pay/zfb/')
+                ret, info = u.upload()
+                key = ret['key']
+                current_user.zfb_img = domian_name + '/' + key
+                return jsonify({"success": True})
+            else:
+                flash('文件格式不允许')
+                return redirect(url_for('public.upload_zfbimg'))
+    return render_template('public/upload_zfbimg.html', title='修改支付宝打赏信息')
 
 
 @public.route('/upload_wximg/', methods=['POST', 'GET'])
 @login_required
 def upload_wximg():
     if request.method == 'POST':
-        file = request.files['file']
-        if file and allowed_file(file.filename):
+        if request.form:
             form = request.form
-            domian_name = 'https://static.51qinqing.com'
-            u = UploadToQiniu(file, 'pay/wx/')
-            ret, info = u.upload()
-            key = ret['key']
-            current_user.wx_img = domian_name + '/' + key
             current_user.wx_num = form['num']
-            flash('微信二维码上传成功!')
             return redirect(url_for('public.upload_wximg'))
-        flash('您上传的文件不合法!')
-    return render_template('public/upload_wximg.html', title='上传微信二维码')
+        if request.files['file']:
+            file = request.files['file']
+            if allowed_file(file.filename):
+                domian_name = 'https://static.51qinqing.com'
+                u = UploadToQiniu(file, 'pay/wx/')
+                ret, info = u.upload()
+                key = ret['key']
+                current_user.wx_img = domian_name + '/' + key
+                return jsonify({"success": True})
+            else:
+                flash('文件格式不允许')
+                return redirect(url_for('public.upload_wximg'))
+    return render_template('public/upload_wximg.html', title='修改微信打赏信息')
 
 
 # 文章图片上传

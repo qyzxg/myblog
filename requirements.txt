@@ -45,3 +45,4 @@ lxml>=3.6.4
 bs4>=0.0.1
 Flask-OAuthlib>=0.9.4
 virtualenv>=15.1.0
+simplejson>=3.11.1
