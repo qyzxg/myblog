@@ -12,6 +12,7 @@
 {% endblock %}
 {% block right_content %}
     {{ super() }}
+    <h3>我发表的文章</h3>
     {% if not posts %}
         <div><p>您还没有发表文章哦!</p><a href="{{ url_for('public.edit') }}">去发表一篇试试吧!</a></div>
     {% else %}
@@ -74,7 +75,8 @@
                             </td>
                         {% endif %}
                         <td><a href="{{ url_for('public.edit',id_=post.id) }}" class="btn btn-success">修改</a></td>
-                        <td><a href="{{ url_for('profile.user_blog_manage',id_=post.id) }}" class="btn btn-danger">删除</a>
+                        <td><a href="{{ url_for('profile.user_blog_manage',id_=post.id) }}"
+                               class="btn btn-danger">删除</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -82,13 +84,8 @@
             </table>
         </div>
     {% endif %}
-
-
-    {% block scripts %}
-        {{ super() }}
-    {% endblock %}
 {% endblock %}
 
-{% block footer %}
+{% block scripts %}
     {{ super() }}
 {% endblock %}

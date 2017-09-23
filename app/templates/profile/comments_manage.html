@@ -11,6 +11,7 @@
 {% endblock %}
 {% block right_content %}
     {{ super() }}
+    <h3>我发表的评论</h3>
     {% if not comments %}
         <div><p>您还没有发表评论哦!</p><a href="{{ url_for('public.index') }}">先去首页看看文章吧!</a></div>
     {% else %}
@@ -43,7 +44,8 @@
                         </a></td>
                         <td><h5>{{ comment.body|striptags|truncate(30, True) }}</h5></td>
                         <td><h5>{{ comment.created.strftime('%Y-%m-%d %H:%M') }}</h5></td>
-                        <td><a href="{{ url_for('profile.user_comment_manage',id_=comment.id) }}" class="btn btn-danger">删除</a>
+                        <td><a href="{{ url_for('profile.user_comment_manage',id_=comment.id) }}"
+                               class="btn btn-danger">删除</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -51,11 +53,8 @@
             </table>
         </div>
     {% endif %}
-    {% block scripts %}
-        {{ super() }}
-    {% endblock %}
 {% endblock %}
 
-{% block footer %}
+{% block scripts %}
     {{ super() }}
 {% endblock %}

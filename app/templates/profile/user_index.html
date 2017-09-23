@@ -10,8 +10,75 @@
     </ol>
 {% endblock %}
 
+
+
+{% block right_content %}
+    {{ super() }}
+    <h3>我的主页</h3>
+    <div class="media">
+        <div class="media-left">
+            <p><img src="{{ user.avatar }}" width="128px" height="128px" class="img-thumbnail"></p>
+        </div>
+        <div class="media-right">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover ">
+                    <thead>
+                    <tr>
+                        <th>
+                            <mark>我的邮箱</mark>
+                        </th>
+                        <th>
+                            <mark>注册时间</mark>
+                        </th>
+                        <th>
+                            <mark>最后登录</mark>
+                        </th>
+                        <th>
+                            <mark>登录位置</mark>
+                        </th>
+                        <th>
+                            <mark>我的角色</mark>
+                        </th>
+                        <th>
+                            <mark>文章数量</mark>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><h5>{{ user.email }}</h5></td>
+                        <td><h5>{{ user.created_at.strftime('%Y-%m-%d %H:%M') }}</h5></td>
+                        <td><h5>{{ user.last_login.strftime('%Y-%m-%d %H:%M') }}</h5></td>
+                        <td><h5>{{ user.city|default('未知',true) }}</h5></td>
+                        <td><h5>{{ user.get_roles() }}</h5></td>
+                        <td><h5>{{ user.post_total|default('0',true) }}</h5></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <div id="pc" style="width: 766px; height:300px; border: solid 1px; float: right"></div>
+    <div style="width: 128px;height: 300px;float: left">
+
+        <p align="center"><a href="{{ url_for('public.upload_avatar') }}">修改图像</a></p>
+        <p align="center"><a href="{{ url_for('auth.reset_confirm_email') }}">修改密码</a></p>
+        {% if user.binded==0 and user.confirmed==0%}
+            <p align="center"><a href="{{ url_for('auth.bind_account') }}">绑定账户</a></p>
+        {% endif %}
+        {% if user.binded!=0 and user.confirmed==0 %}
+            <p align="center"><a href="{{ url_for('auth.active') }}">激活账户</a></p>
+        {% endif %}
+        {% if user.role==1 %}
+            <p align="center"><a href="{{ url_for('admin.admin_index') }}">后台管理</a></p>
+        {% endif %}
+    </div>
+{% endblock %}
+
 {% block scripts %}
     {{ super() }}
+
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('pc'));
@@ -98,71 +165,3 @@
     </script>
 {% endblock %}
 
-{% block right_content %}
-    {{ super() }}
-    <div class="media">
-        <div class="media-left">
-            <p><img src="{{ user.avatar }}" width="128px" height="128px" class="img-thumbnail"></p>
-        </div>
-        <div class="media-right">
-            <div class="table-responsive">
-                <table class="table table-bordered table-hover ">
-                    <thead>
-                    <tr>
-                        <th>
-                            <mark>我的邮箱</mark>
-                        </th>
-                        <th>
-                            <mark>注册时间</mark>
-                        </th>
-                        <th>
-                            <mark>最后登录</mark>
-                        </th>
-                        <th>
-                            <mark>登录位置</mark>
-                        </th>
-                        <th>
-                            <mark>我的角色</mark>
-                        </th>
-                        <th>
-                            <mark>文章数量</mark>
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td><h5>{{ user.email }}</h5></td>
-                        <td><h5>{{ user.created_at.strftime('%Y-%m-%d %H:%M') }}</h5></td>
-                        <td><h5>{{ user.last_login.strftime('%Y-%m-%d %H:%M') }}</h5></td>
-                        <td><h5>{{ user.city|default('未知',true) }}</h5></td>
-                        <td><h5>{{ user.get_roles() }}</h5></td>
-                        <td><h5>{{ user.post_total|default('0',true) }}</h5></td>
-
-                    </tr>
-                    </tbody>
-                </table>
-
-            </div>
-        </div>
-    </div>
-    <div id="pc" style="width: 766px; height:300px; border: solid 1px; float: right"></div>
-    <div style="width: 128px;height: 300px;float: left">
-
-        <p align="center"><a href="{{ url_for('public.upload_avatar') }}">修改图像</a></p>
-        <p align="center"><a href="{{ url_for('auth.reset_confirm_email') }}">修改密码</a></p>
-        {% if user.binded==0 and user.confirmed==0%}
-            <p align="center"><a href="{{ url_for('auth.bind_account') }}">绑定账户</a></p>
-        {% endif %}
-        {% if user.binded!=0 and user.confirmed==0 %}
-            <p align="center"><a href="{{ url_for('auth.active') }}">激活账户</a></p>
-        {% endif %}
-        {% if user.role==1 %}
-            <p align="center"><a href="{{ url_for('admin.admin_index') }}">后台管理</a></p>
-        {% endif %}
-    </div>
-{% endblock %}
-
-
-{% block footer %}
-    {{ super() }}
-{% endblock %}

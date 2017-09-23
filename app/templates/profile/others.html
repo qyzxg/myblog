@@ -8,9 +8,7 @@
             {{ message }}
         </div>
     {% endfor %}
-    <div>
-        <h3>{{ user.username }}的资料:</h3>
-    </div>
+    <h3>{{ user.username }}的资料</h3>
     <div class="media">
         <div class="media-left">
             <p><img src="{{ user.avatar }}" width="128px" height="128px" class="img-thumbnail"></p>
@@ -68,9 +66,9 @@
 
         {% endif %}
     </div>
-    <div>
-        <h3>{{ user.username }}发表的文章:</h3>
-    </div>
+
+    <h3>{{ user.username }}发表的文章</h3>
+
     <div class="table-responsive">
         <div class="" style="float:right;">
             搜索：<input type="text" id="dsearch" placeholder="请输入关键词">
@@ -112,14 +110,12 @@
             </tbody>
         </table>
     </div>
-    {% block scripts %}
-        {{ super() }}
-    {% endblock %}
+
 {% endblock %}
 {% block right_content %}
     {% include 'includes/_hot_posts.html' %}
 {% endblock %}
 
-{% block footer %}
+{% block scripts %}
     {{ super() }}
 {% endblock %}

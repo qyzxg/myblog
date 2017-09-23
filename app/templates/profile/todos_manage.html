@@ -13,6 +13,7 @@
 
 {% block right_content %}
     {{ super() }}
+    <h4>添加TODO</h4>
     <form class="input-group" action="{{ url_for('profile.todo_add') }}" method="post">
         <input class="form-control" id="centent" name="content" type="text" required="required">
         <span class="input-group-btn">
@@ -20,11 +21,11 @@
     </span>
     </form>
     <br><br>
-    <h4>TODO列表:</h4>
+    <h4>TODO列表</h4>
     <div class="table-responsive">
-    <div class="" style="float:right;">
-                搜索：<input type="text" id="dsearch" placeholder="请输入关键词">
-            </div>
+        <div class="" style="float:right;">
+            搜索：<input type="text" id="dsearch" placeholder="请输入关键词">
+        </div>
         <table class="table table-bordered table-hover " id="stable">
             <thead>
             <tr>
@@ -64,7 +65,8 @@
                     </td>
                     <td><h5>{{ todo.get_status() }}</h5></td>
                     {% if todo.status==0 %}
-                        <td><a href="{{ url_for('profile.todo_done',id_=todo.id) }}" class="btn btn-success">已完成</a></td>
+                        <td><a href="{{ url_for('profile.todo_done',id_=todo.id) }}" class="btn btn-success">已完成</a>
+                        </td>
                     {% endif %}
                     {% if todo.status==1 %}
                         <td><a href="{{ url_for('profile.todo_undone',id_=todo.id) }}" class="btn btn-primary">未完成</a>
@@ -76,11 +78,8 @@
             </tbody>
         </table>
     </div>
-    {% block scripts %}
-        {{ super() }}
-    {% endblock %}
 {% endblock %}
 
-{% block footer %}
+{% block scripts %}
     {{ super() }}
 {% endblock %}

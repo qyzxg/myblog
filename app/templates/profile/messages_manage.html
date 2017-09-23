@@ -13,7 +13,7 @@
 
 {% block right_content %}
     {{ super() }}
-    <h3>发送消息(相互关注才可以发消息):</h3>
+    <h3>发送消息(相互关注才可以发消息)</h3>
     <form class="form-inline" action="{{ url_for('profile.send_message') }}" method="post">
         <div class="form-group">
             <label class="sr-only" for="sendto"></label>
@@ -39,7 +39,7 @@
         <button class="btn btn-default" type="submit">发送</button>
     </form>
     <br>
-    <h3>消息列表:</h3>
+    <h4>消息列表</h4>
     <ul class="nav nav-tabs nav-justified" role="tablist">
         <li role="presentation" class="active"><a href="#sys_messages" aria-controls="home" role="tab"
                                                   data-toggle="tab"><i
@@ -198,12 +198,8 @@
             </div>
         </div>
     </div>
-    {% block scripts %}
-        {{ super() }}
-    {% endblock %}
 {% endblock %}
 
-
-{% block footer %}
+{% block scripts %}
     {{ super() }}
 {% endblock %}

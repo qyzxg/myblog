@@ -14,22 +14,25 @@
 
 {% block right_content %}
     {{ super() }}
-    现有分类为:
+    <h3>分类管理</h3>
+    <h4>现有分类</h4>
     {% for category in categories %}
         <mark>{{ category.name }}&nbsp;&nbsp;&nbsp;&nbsp;</mark>
     {% endfor %}
     <br>
     <br>
-    <form action="" method="post">
+    <h4>添加分类</h4>
+    <form action="" method="post" class="form-inline">
         {{ form.csrf_token }}
-        {{ form.name(placeholder='请输入文章分类') }}
-        {{ form.submit }}
+        {{ form.name(placeholder='请输入文章分类',class="form-control") }}
+        {{ form.submit(class="btn btn-default") }}
     </form>
     {% for error in form.name.errors %}
         <span style="color: #feff14;">{{ error }}</span>
     {% endfor %}
 {% endblock %}
 
-{% block footer %}
+
+{% block scripts %}
     {{ super() }}
 {% endblock %}

@@ -14,6 +14,7 @@
 
 {% block right_content %}
     {{ super() }}
+    <h3>全站用户管理</h3>
     <ul class="showul"
         style="display:none;list-style: none;  position:absolute; left:600px; top:100px;z-index:9999; background-color:#2B3E50; border:1px solid #ccc; width:120px;">
         <li>
@@ -54,7 +55,7 @@
         </li>
     </ul>
     <div class="table-responsive">
-    {% include 'includes/_modal.html' %}
+        {% include 'includes/_modal.html' %}
         <div class="" style="float:right;">
             <a class="btn btn-danger btn-sm" onclick='check()' id="dels">批量删除</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a class="btn btn-primary btn-sm" id="hids">隐藏字段</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -79,9 +80,9 @@
                 <th>
                     <mark>最后登录</mark>
                 </th>
-{#                <th>#}
-{#                    <mark>国家</mark>#}
-{#                </th>#}
+                {#                <th>#}
+                {#                    <mark>国家</mark>#}
+                {#                </th>#}
                 <th>
                     <mark>城市</mark>
                 </th>
@@ -121,7 +122,7 @@
                     </td>
                     <td><h5>{{ user.email }}</h5></td>
                     <td><h5>{{ user.last_login.strftime('%y-%m-%d') }}</h5></td>
-{#                    <td><h5>{{ user.country|default('未知',true) }}</h5></td>#}
+                    {#                    <td><h5>{{ user.country|default('未知',true) }}</h5></td>#}
                     <td><h5>{{ user.city|default('未知',true) }}</h5></td>
                     <td><h5>{{ user.get_status() }}</h5></td>
                     <td><h5>{{ user.post_total }}</h5></td>
@@ -149,53 +150,48 @@
             </tbody>
         </table>
     </div>
-
-    {% block scripts %}
-        {{ super() }}
-        <script type="text/javascript">
-            function check() {
-                var chk_value = [];
-                $('input[name="checkList"]:checked').each(function () {
-                    chk_value.push($(this).val() + "#");
-                });
-                if (chk_value.length == 0) {
-                    $('#selec_nothing').modal({
-                        keyboard: true
-                    });
-                } else {
-                    //把要删除的文章 id#id#id# 字符串写入temp_check_value标签 待提供后台
-                    $('#temp_check_value').html(chk_value).appendTo("body")
-                    $('#delet_all').modal({
-                        keyboard: true
-                    });
-
-                }
-            };
-
-            //文章管理 提交文章id字符串 , 删除已选文章
-            $(document).ready(function () {
-                $("#s_delet_all").click(function () {
-                    var v = document.getElementById('temp_check_value').innerHTML
-                    $.post("/admin/users_delete", {
-                            id: v
-                        },
-                        function (data, status) {
-                            if (data == "OK") {
-                                location.reload(location.href)
-                            } else {
-                                alert("未知错误 , 请重试");
-                                location.reload(location.href);
-                            }
-                        });
-
-                });
-                return false
-            });
-        </script>
-    {% endblock %}
 {% endblock %}
 
-
-{% block footer %}
+{% block scripts %}
     {{ super() }}
+    <script type="text/javascript">
+        function check() {
+            var chk_value = [];
+            $('input[name="checkList"]:checked').each(function () {
+                chk_value.push($(this).val() + "#");
+            });
+            if (chk_value.length == 0) {
+                $('#selec_nothing').modal({
+                    keyboard: true
+                });
+            } else {
+                //把要删除的文章 id#id#id# 字符串写入temp_check_value标签 待提供后台
+                $('#temp_check_value').html(chk_value).appendTo("body")
+                $('#delet_all').modal({
+                    keyboard: true
+                });
+
+            }
+        };
+
+        //文章管理 提交文章id字符串 , 删除已选文章
+        $(document).ready(function () {
+            $("#s_delet_all").click(function () {
+                var v = document.getElementById('temp_check_value').innerHTML
+                $.post("/admin/users_delete", {
+                        id: v
+                    },
+                    function (data, status) {
+                        if (data == "OK") {
+                            location.reload(location.href)
+                        } else {
+                            alert("未知错误 , 请重试");
+                            location.reload(location.href);
+                        }
+                    });
+
+            });
+            return false
+        });
+    </script>
 {% endblock %}

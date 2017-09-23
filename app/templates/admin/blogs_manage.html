@@ -12,6 +12,7 @@
 {% endblock %}
 {% block right_content %}
     {{ super() }}
+    <h3>全站文章管理</h3>
     <ul class="showul"
         style="display:none;list-style: none;  position:absolute; left:600px; top:100px;z-index:9999; background-color:#2B3E50; border:1px solid #ccc; width:120px;">
         <li>
@@ -129,52 +130,48 @@
             </tbody>
         </table>
     </div>
-
-    {% block scripts %}
-        {{ super() }}
-        <script type="text/javascript">
-            function check() {
-                var chk_value = [];
-                $('input[name="checkList"]:checked').each(function () {
-                    chk_value.push($(this).val() + "#");
-                });
-                if (chk_value.length == 0) {
-                    $('#selec_nothing').modal({
-                        keyboard: true
-                    });
-                } else {
-                    //把要删除的文章 id#id#id# 字符串写入temp_check_value标签 待提供后台
-                    $('#temp_check_value').html(chk_value).appendTo("body")
-                    $('#delet_all').modal({
-                        keyboard: true
-                    });
-
-                }
-            };
-
-            //文章管理 提交文章id字符串 , 删除已选文章
-            $(document).ready(function () {
-                $("#s_delet_all").click(function () {
-                    var v = document.getElementById('temp_check_value').innerHTML
-                    $.post("/admin/blogs_delete", {
-                            id: v
-                        },
-                        function (data, status) {
-                            if (data == "OK") {
-                                location.reload(location.href)
-                            } else {
-                                alert("未知错误 , 请重试");
-                                location.reload(location.href);
-                            }
-                        });
-
-                });
-                return false
-            });
-        </script>
-    {% endblock %}
 {% endblock %}
 
-{% block footer %}
+{% block scripts %}
     {{ super() }}
+    <script type="text/javascript">
+        function check() {
+            var chk_value = [];
+            $('input[name="checkList"]:checked').each(function () {
+                chk_value.push($(this).val() + "#");
+            });
+            if (chk_value.length == 0) {
+                $('#selec_nothing').modal({
+                    keyboard: true
+                });
+            } else {
+                //把要删除的文章 id#id#id# 字符串写入temp_check_value标签 待提供后台
+                $('#temp_check_value').html(chk_value).appendTo("body")
+                $('#delet_all').modal({
+                    keyboard: true
+                });
+
+            }
+        };
+
+        //文章管理 提交文章id字符串 , 删除已选文章
+        $(document).ready(function () {
+            $("#s_delet_all").click(function () {
+                var v = document.getElementById('temp_check_value').innerHTML
+                $.post("/admin/blogs_delete", {
+                        id: v
+                    },
+                    function (data, status) {
+                        if (data == "OK") {
+                            location.reload(location.href)
+                        } else {
+                            alert("未知错误 , 请重试");
+                            location.reload(location.href);
+                        }
+                    });
+
+            });
+            return false
+        });
+    </script>
 {% endblock %}

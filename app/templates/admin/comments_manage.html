@@ -10,6 +10,7 @@
 {% endblock %}
 {% block right_content %}
     {{ super() }}
+    <h3>全站评论管理</h3>
     <ul class="showul"
         style="display:none;list-style: none;  position:absolute; left:600px; top:100px;z-index:9999; background-color:#2B3E50; border:1px solid #ccc; width:120px;">
         <li>
@@ -85,8 +86,9 @@
             </tbody>
         </table>
     </div>
+{% endblock %}
 
-    {% block scripts %}
+{% block scripts %}
         {{ super() }}
         <script type="text/javascript">
             function check() {
@@ -104,7 +106,6 @@
                     $('#delet_all').modal({
                         keyboard: true
                     });
-
                 }
             };
 
@@ -123,14 +124,8 @@
                                 location.reload(location.href);
                             }
                         });
-
                 });
                 return false
             });
         </script>
     {% endblock %}
-{% endblock %}
-
-{% block footer %}
-    {{ super() }}
-{% endblock %}

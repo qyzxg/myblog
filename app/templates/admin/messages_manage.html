@@ -13,7 +13,8 @@
 <!-- 右侧内容 -->
 {% block right_content %}
     {{ super() }}
-    <h3>发送通知:</h3>
+    <h3>全站通知管理</h3>
+    <h4>发送通知</h4>
     <form class="form-inline" action="{{ url_for('admin.send_messages') }}" method="post">
         <div class="form-group">
             <label class="sr-only" for="cate"></label>
@@ -40,7 +41,7 @@
         <button class="btn btn-default" type="submit">发送</button>
     </form>
     <br>
-    <h3>已发通知:</h3>
+    <h4>已发通知</h4>
     <div class="table-responsive">
         <div class="" style="float:right;">
             搜索：<input type="text" id="esearch" placeholder="请输入关键词">
@@ -76,19 +77,15 @@
                     <td><h5>{{ message.sendto.username }}</h5></td>
                     <td><h5>{{ message.get_status() }}</h5></td>
                     <td><h5>{{ message.get_cate() }}</h5></td>
-                    <td><a href="{{ url_for('admin.delete_message',id_=message.id) }}" class="btn btn-danger">删除</a></td>
+                    <td><a href="{{ url_for('admin.delete_message',id_=message.id) }}" class="btn btn-danger">删除</a>
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
     </div>
-
-    {% block scripts %}
-        {{ super() }}
-    {% endblock %}
 {% endblock %}
 
-
-{% block footer %}
+{% block scripts %}
     {{ super() }}
 {% endblock %}

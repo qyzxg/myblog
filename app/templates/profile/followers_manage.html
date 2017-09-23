@@ -12,19 +12,20 @@
 {% endblock %}
 {% block right_content %}
     {{ super() }}
+    <h3>我的好友列表</h3>
     <ul class="nav nav-tabs nav-justified" role="tablist">
         <li role="presentation" class="active"><a href="#f_stable" aria-controls="home" role="tab"
                                                   data-toggle="tab"><i
                 class="fa fa-user "></i>我的好友<span class="badge"
-                                                     style="color: #ebebeb;font-size: 13px;background-color: #cc2729">{{ n_sy }}</span></a>
+                                                  style="color: #ebebeb;font-size: 13px;background-color: #cc2729">{{ n_sy }}</span></a>
         </li>
         <li role="presentation"><a href="#f_stable1" aria-controls="profile" role="tab" data-toggle="tab"><i
                 class="fa fa-user-plus"></i>关注我的<span class="badge"
-                                                       style="color: #ebebeb;font-size: 13px;background-color: #15cc0a">{{ n_u }}</span></a>
+                                                      style="color: #ebebeb;font-size: 13px;background-color: #15cc0a">{{ n_u }}</span></a>
         </li>
         <li role="presentation"><a href="#f_stable2" aria-controls="messages" role="tab" data-toggle="tab"><i
                 class="fa fa-user-o"></i>我关注的<span class="badge"
-                                                          style="color: #ebebeb;font-size: 13px;background-color: #cccc0c">{{ n_c }}</span></a>
+                                                   style="color: #ebebeb;font-size: 13px;background-color: #cccc0c">{{ n_c }}</span></a>
         </li>
     </ul>
     <div class="tab-content tabs">
@@ -164,13 +165,8 @@
             </div>
         </div>
     </div>
-
-
-    {% block scripts %}
-        {{ super() }}
-    {% endblock %}
 {% endblock %}
 
-{% block footer %}
+{% block scripts %}
     {{ super() }}
 {% endblock %}
