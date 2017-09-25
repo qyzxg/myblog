@@ -3,7 +3,7 @@
 
 ### 项目介绍
 myblog是一个基于flask的开源多用户博客系统,功能基本完整,目前主要功能如下,代码简单易懂,比较适合作为入门参考:
-- [x] 用户注册登录,邮件激活 
+- [x] 用户注册登录,邮件激活,登录输错密码三次出现验证码 
 - [x] 发表(CKeditor,开启文件上传功能),修改博客,发布评论
 - [x] 全文搜索,支持中文搜索
 - [x] 文章收藏,文章分类,打赏
@@ -42,7 +42,10 @@ myblog是一个基于flask的开源多用户博客系统,功能基本完整,目�
 * 建议自己注册账号测试,欢迎发布文章
 
 ### 网站截图
-
+#### 注册
+![image](https://static.51qinqing.com/GitHub/%E6%B3%A8%E5%86%8C.png)
+#### 登录
+![image](https://static.51qinqing.com/GitHub/%E7%99%BB%E5%BD%95.png)
 #### 首页
 ![image](https://static.51qinqing.com/GitHub/%E9%A6%96%E9%A1%B5.png)
 #### 文章详情页
