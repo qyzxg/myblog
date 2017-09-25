@@ -6,7 +6,7 @@ myblog是一个基于flask的开源多用户博客系统,功能基本完整,目�
 - [x] 用户注册登录,邮件激活 
 - [x] 发表(CKeditor,开启文件上传功能),修改博客,发布评论
 - [x] 全文搜索,支持中文搜索
-- [x] 文章收藏,文章分类
+- [x] 文章收藏,文章分类,打赏
 - [x] 用户关注,用户资料页
 - [x] 站内信功能
 - [x] 用户后台,修改图像(本地上传),密码,查看个人信息统计(echarts图表),管理自己的文章,评论,好友,消息等
@@ -49,14 +49,18 @@ myblog是一个基于flask的开源多用户博客系统,功能基本完整,目�
 ![image](https://static.51qinqing.com/GitHub/%E6%96%87%E7%AB%A0%E8%AF%A6%E6%83%85%E9%A1%B5.png)
 #### 文章评论
 ![image](https://static.51qinqing.com/GitHub/%E6%96%87%E7%AB%A0%E8%AF%84%E8%AE%BA.png)
-#### 个人首页
-![image](https://static.51qinqing.com/GitHub/%E4%B8%AA%E4%BA%BA%E9%A6%96%E9%A1%B5.png)
-#### 其他人首页
+#### 个人主页
+![image](https://static.51qinqing.com/GitHub/%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5.png)
+#### 修改资料页
+![image](https://static.51qinqing.com/GitHub/%E8%B5%84%E6%96%99%E4%BF%AE%E6%94%B9%E9%A1%B5.png)
+#### 其他人主页
 ![image](https://static.51qinqing.com/GitHub/%E5%85%B6%E4%BB%96%E4%BA%BA%E9%A6%96%E9%A1%B5.png)
 #### 个人博客管理
 ![image](https://static.51qinqing.com/GitHub/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%AE%A1%E7%90%86.png)
 #### 消息管理
 ![image](https://static.51qinqing.com/GitHub/%E6%B6%88%E6%81%AF%E7%AE%A1%E7%90%86.png)
+#### 打赏管理
+![image](https://static.51qinqing.com/GitHub/%E6%89%93%E8%B5%8F%E7%AE%A1%E7%90%86.png)
 #### 站内搜索
 ![image](https://static.51qinqing.com/GitHub/%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2.png)
 #### 管理员首页
