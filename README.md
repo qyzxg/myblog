@@ -136,34 +136,28 @@ myblog是一个基于flask的开源多用户博客系统,功能基本完整,目�
 ### 网站截图
 
 #### 首页
-![image](https://github.com/qyzxg/myblog/blob/master/screenshot/首页.png)
+![image](https://static.51qinqing.com/GitHub/%E9%A6%96%E9%A1%B5.png)
 #### 文章详情页
-![image](https://github.com/qyzxg/myblog/blob/master/screenshot/文章详情页.png)
+![image](https://static.51qinqing.com/GitHub/%E6%96%87%E7%AB%A0%E8%AF%A6%E6%83%85%E9%A1%B5.png)
 #### 文章评论
-![image](https://github.com/qyzxg/myblog/blob/master/screenshot/文章评论.png)
+![image](https://static.51qinqing.com/GitHub/%E6%96%87%E7%AB%A0%E8%AF%84%E8%AE%BA.png)
 #### 个人首页
-![image](https://github.com/qyzxg/myblog/blob/master/screenshot/个人首页.png)
+![image](https://static.51qinqing.com/GitHub/%E4%B8%AA%E4%BA%BA%E9%A6%96%E9%A1%B5.png)
 #### 其他人首页
-![image](https://github.com/qyzxg/myblog/blob/master/screenshot/其他人首页.png)
+![image](https://static.51qinqing.com/GitHub/%E5%85%B6%E4%BB%96%E4%BA%BA%E9%A6%96%E9%A1%B5.png)
 #### 个人博客管理
-![image](https://github.com/qyzxg/myblog/blob/master/screenshot/个人博客管理.png)
+![image](https://static.51qinqing.com/GitHub/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%AE%A1%E7%90%86.png)
 #### 消息管理
-![image](https://github.com/qyzxg/myblog/blob/master/screenshot/消息管理.png)
+![image](https://static.51qinqing.com/GitHub/%E6%B6%88%E6%81%AF%E7%AE%A1%E7%90%86.png)
 #### 站内搜索
-![image](https://github.com/qyzxg/myblog/blob/master/screenshot/站内搜索.png)
-#### 个人博客管理
-![image](https://github.com/qyzxg/myblog/blob/master/screenshot/个人博客管理.png)
+![image](https://static.51qinqing.com/GitHub/%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2.png)
 #### 管理员首页
-![image](https://github.com/qyzxg/myblog/blob/master/screenshot/管理员首页.png)
+![image](https://static.51qinqing.com/GitHub/%E7%AE%A1%E7%90%86%E5%91%98%E9%A6%96%E9%A1%B5.png)
 #### 用户管理
-![image](https://github.com/qyzxg/myblog/blob/master/screenshot/用户管理.png)
-#### 个人博客管理
-![image](https://github.com/qyzxg/myblog/blob/master/screenshot/个人博客管理.png)
+![image](https://static.51qinqing.com/GitHub/%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86.png)
 #### pv/uv统计
-![image](https://github.com/qyzxg/myblog/blob/master/screenshot/pv统计.png)
-#### 个人博客管理
-![image](https://github.com/qyzxg/myblog/blob/master/screenshot/个人博客管理.png)
+![image](https://static.51qinqing.com/GitHub/pv%E7%BB%9F%E8%AE%A1.png)
 #### 用户分布
-![image](https://github.com/qyzxg/myblog/blob/master/screenshot/用户分布.png)
+![image](https://static.51qinqing.com/GitHub/%E7%94%A8%E6%88%B7%E5%88%86%E5%B8%83.png)
 #### 博客数据统计
-![image](https://github.com/qyzxg/myblog/blob/master/screenshot/博客数据统计.png)
+![image](https://static.51qinqing.com/GitHub/%E5%8D%9A%E5%AE%A2%E6%95%B0%E6%8D%AE%E7%BB%9F%E8%AE%A1.png)

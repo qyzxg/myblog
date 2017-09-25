@@ -216,7 +216,6 @@ class UserInfo(db.Model):
     language = db.Column(db.String(30))
     website = db.Column(db.String(100))
 
-#
 
 class Post(db.Model):
     __tablename__ = 'posts'

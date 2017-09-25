@@ -12,7 +12,7 @@ from ..models import User, Post, Comment, Categories, Styles, Todo, Tag, Reply
 from .forms import PostForm, CommentForm, SearchForm
 from werkzeug.contrib.atom import AtomFeed
 from urllib.parse import urljoin
-from ..shares import UploadToQiniu, do_pagination
+from ..shares import UploadToQiniu, do_pagination, allowed_file
 
 
 # 搜索
@@ -49,9 +49,7 @@ def get_hot_posts(n=5):
     return hot_posts
 
 
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in current_app.config['ALLOWED_EXTENSIONS']
+
 
 
 public.add_app_template_filter(wdcount, name='wdcount')

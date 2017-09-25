@@ -1,8 +1,9 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 
-# 在celery_worker.py目录下运行   celery  worker -A celery_worker.celery --loglevel=info --queues=default,crontab,schedule
-# 运行定时任务 celery beat -A celery_worker.celery --loglevel=info
+'''在celery_worker.py目录下运行   celery  worker -A celery_worker.celery --loglevel=info --queues=default,crontab,schedule
+运行定时任务 celery beat -A celery_worker.celery --loglevel=info'''
+
 from app import create_app, celery
 from celery import platforms
 

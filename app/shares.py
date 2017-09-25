@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 from functools import wraps
 from flask_login import current_user
-from flask import flash, redirect, url_for, request
+from flask import flash, redirect, url_for, request, current_app
 import time
 from qiniu import Auth, put_data, PersistentFop, urlsafe_base64_encode
 import random
@@ -173,3 +173,7 @@ img_list = [
 
 def choice_img():
     return 'https://static.51qinqing.com/postimg/' + random.choice(img_list)
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in current_app.config['ALLOWED_EXTENSIONS']

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
-from flask import render_template, flash, redirect, url_for, request, current_app, jsonify
+from flask import render_template, flash, redirect, url_for, request, jsonify
 from flask_login import current_user, login_required
 import datetime
 from ..models import User, Post, Comment, Todo, Message, UserInfo
@@ -8,14 +8,9 @@ from . import profile
 from .. import db
 from ..admin.views import get_c_month, get_m_days, get_day
 from .forms import UserInfoForm
-from ..shares import UploadToQiniu, do_pagination
+from ..shares import UploadToQiniu, allowed_file
 import json
 import os
-
-
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in current_app.config['ALLOWED_EXTENSIONS']
 
 
 # 用户资料页
@@ -23,15 +18,12 @@ def allowed_file(filename):
 @login_required
 def user_index(username):
     user = User.query.filter_by(username=username).first()
-
     if not user:
         flash('不存在用户：' + username + '！')
         return redirect(url_for('public.index'))
-
     if user.id != current_user.id:
         flash('您没有权限访问该页面!')
         return redirect(url_for('public.index'))
-
     user_ = UserInfo.query.get(user.id)
     n = get_c_month()
     days = get_m_days()
@@ -47,7 +39,7 @@ def user_index(username):
                            menu=0, x=x, lst=lst, m=m, day=day, days=days)
 
 
-# 上传图像
+# 修改用户资料
 @profile.route('/modify_info/', methods=['POST', 'GET'])
 @login_required
 def modify_info():
@@ -106,7 +98,6 @@ def modify_info():
                 user_.industry = industry[0] if industry else industry
                 user_.language = language[0] if language else user_.language
                 user_.website = website[0] if website else user_.website
-                # db.session.commit()
             else:
                 db.session.add(user_info)
                 db.session.commit()

@@ -14,9 +14,10 @@ lin_font = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 win_font = "../static/fonts/arialbd.ttf"
 default_font = lin_font if sys_tem == 'Linux' else win_font
 
+
 def generate_verify_image(size=(110, 39),
                           chars=chars,
-                          img_type='gif',
+                          # img_type='gif',
                           mode='RGB',
                           bg_color=(255, 255, 255),
                           fg_color=(212, 193, 175),
@@ -27,12 +28,13 @@ def generate_verify_image(size=(110, 39),
                           n_line=(3, 5),
                           draw_dotts=True,
                           dotts_chance=2,
-                          save_img=False):
+                          # save_img=False,
+                          ):
     """
     生成验证码图片
     :param size: 图片的大小，格式（宽，高），默认为(120, 30)
     :param chars: 允许的字符集合，格式字符串
-    :param img_type: 图片保存的格式，默认为GIF，可选的为GIF，JPEG，TIFF，PNG
+    # :param img_type: 图片保存的格式，默认为GIF，可选的为GIF，JPEG，TIFF，PNG
     :param mode: 图片模式，默认为RGB
     :param bg_color: 背景颜色，默认为白色
     :param fg_color: 前景色，验证码字符颜色，默认为蓝色#0000FF
@@ -43,7 +45,7 @@ def generate_verify_image(size=(110, 39),
     :param n_line: 干扰线的条数范围，格式元组，默认为(1, 2)，只有draw_lines为True时有效
     :param draw_dotts: 是否画干扰点
     :param dotts_chance: 干扰点出现的概率，大小范围[0, 100]
-    :param save_img: 是否保存为图片
+    # :param save_img: 是否保存为图片
     :return: [0]: 验证码字节流, [1]: 验证码图片中的字符串
     """
     width, height = size

@@ -7,7 +7,7 @@ from ..models import LogInfo, Post
 import datetime
 import time
 from .xiaorui import CrawlerXiaorui
-from ..shares import DFAFilter, choice_img
+from ..shares import DFAFilter
 
 
 @celery.task(name='defa_send_email')

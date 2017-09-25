@@ -7,6 +7,9 @@
 #out
 #gen
 .idea/
+search/
+migrations/
+logs/
 __pycache__/
 *.pyc
 *.pyo

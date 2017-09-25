@@ -12,7 +12,7 @@ class Config:
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     FLASKY_SLOW_DB_QUERY_TIME = 0.5
 
-    REDIS_URL = "redis://localhost:6379/3"
+    REDIS_URL = "redis://localhost:6379/3" #存储输入密码错误用户的IP
 
     # 邮件
     MAIL_SERVER = 'smtp.126.com'
@@ -23,19 +23,19 @@ class Config:
     MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER')
     SECURITY_PASSWORD_SALT = os.environ.get('SECURITY_PASSWORD_SALT')
 
-    # 缓存和异步
+    # 文件上传
+    # UPLOAD_FOLDER = r'app/static/avatar/avatar'
+    # ZFB_FOLDER = r'app/static/zfbimg/zfbimg'
+    # WX_FOLDER = r'app/static/wximg/wximg'
+    ALLOWED_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif', 'bmp']
+    BASE_PATH = path.abspath(path.dirname(__file__))
+
 
     # 搜索
-    WHOOSH_BASE = 'search'
+    WHOOSH_BASE = os.path.join(BASE_PATH, 'search')
     MAX_SEARCH_RESULTS = 50
     PROPAGATE_EXCEPTIONS = True
 
-    # 文件上传
-    UPLOAD_FOLDER = r'app/static/avatar/avatar'
-    ZFB_FOLDER = r'app/static/zfbimg/zfbimg'
-    WX_FOLDER = r'app/static/wximg/wximg'
-    ALLOWED_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif', 'bmp']
-    BASE_PATH = path.abspath(path.dirname(__file__))
 
     # 记住我
     REMEMBER_COOKIE_DURATION = datetime.timedelta(weeks=1)
@@ -65,17 +65,20 @@ class Config:
 
 
 class DevelopmentConfig(Config):  # mysqlconnector
+    # 开发 模式
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:qyzxg@localhost:3306/blog??charset=utf8mb4'
 
 
 class TestingConfig(Config):
+    # 测试 模式
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:qyzxg@localhost:3306/test_blog??charset=utf8mb4'
+    SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:qyzxg@localhost:3306/test_blog??charset=utf8mb4'
 
 
 class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:qyzxg@localhost:3306/blog??charset=utf8mb4'
+    # 发布 模式
+    SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:qyzxg@localhost:3306/blog??charset=utf8mb4'
 
 
 config = {

@@ -2,8 +2,8 @@
 # -*- coding:utf-8 -*-
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, SubmitField, BooleanField, IntegerField, SelectField
-from wtforms.validators import DataRequired, Length, Regexp, NumberRange, URL
+from wtforms import StringField, TextAreaField, SubmitField, BooleanField, SelectField
+from wtforms.validators import DataRequired, Length
 
 
 class PostForm(FlaskForm):
