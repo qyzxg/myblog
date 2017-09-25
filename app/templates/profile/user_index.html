@@ -55,14 +55,59 @@
                     </tr>
                     </tbody>
                 </table>
+                <table class="table table-bordered table-hover ">
+                    <thead>
+                    <tr>
+                        <th>
+                            <mark>年龄</mark>
+                        </th>
+                        <th>
+                            <mark>性别</mark>
+                        </th>
+                        <th>
+                            <mark>学历</mark>
+                        </th>
+                        <th>
+                            <mark>毕业院校</mark>
+                        </th>
+                        <th>
+                            <mark>语言</mark>
+                        </th>
+                        <th>
+                            <mark>职位</mark>
+                        </th>
+                        <th>
+                            <mark>行业</mark>
+                        </th>
+                        <th>
+                            <mark>公司</mark>
+                        </th>
+                        <th>
+                            <mark>网站</mark>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><h5>{{ user_.age }}</h5></td>
+                        <td><h5>{{ user_.gender }}</h5></td>
+                        <td><h5>{{ user_.education }}</h5></td>
+                        <td><h5>{{ user_.graduated }}</h5></td>
+                        <td><h5>{{ user_.language }}</h5></td>
+                        <td><h5>{{ user_.position }}</h5></td>
+                        <td><h5>{{ user_.industry }}</h5></td>
+                        <td><h5>{{ user_.company }}</h5></td>
+                        <td><h5>{{ user_.website }}</h5></td>
+                    </tr>
+                    </tbody>
+                </table>
 
             </div>
         </div>
     </div>
     <div id="pc" style="width: 766px; height:300px; border: solid 1px; float: right"></div>
     <div style="width: 128px;height: 300px;float: left">
-
-        <p align="center"><a href="{{ url_for('public.upload_avatar') }}">修改图像</a></p>
+        <p align="center"><a href="{{ url_for('profile.modify_info') }}">修改资料</a></p>
         <p align="center"><a href="{{ url_for('auth.reset_confirm_email') }}">修改密码</a></p>
         {% if user.binded==0 and user.confirmed==0%}
             <p align="center"><a href="{{ url_for('auth.bind_account') }}">绑定账户</a></p>

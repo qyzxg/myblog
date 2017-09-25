@@ -1,12 +1,21 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, current_app, jsonify
 from flask_login import current_user, login_required
 import datetime
-from ..models import User, Post, Comment, Todo, Message
+from ..models import User, Post, Comment, Todo, Message, UserInfo
 from . import profile
 from .. import db
 from ..admin.views import get_c_month, get_m_days, get_day
+from .forms import UserInfoForm
+from ..shares import UploadToQiniu, do_pagination
+import json
+import os
+
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in current_app.config['ALLOWED_EXTENSIONS']
 
 
 # 用户资料页
@@ -14,6 +23,7 @@ from ..admin.views import get_c_month, get_m_days, get_day
 @login_required
 def user_index(username):
     user = User.query.filter_by(username=username).first()
+
     if not user:
         flash('不存在用户：' + username + '！')
         return redirect(url_for('public.index'))
@@ -21,6 +31,8 @@ def user_index(username):
     if user.id != current_user.id:
         flash('您没有权限访问该页面!')
         return redirect(url_for('public.index'))
+
+    user_ = UserInfo.query.get(user.id)
     n = get_c_month()
     days = get_m_days()
     lst = [
@@ -30,9 +42,137 @@ def user_index(username):
     x = list(range(1, days))
     m = get_c_month()
     day = get_day()
-    return render_template('profile/user_index.html', user=user,
+    return render_template('profile/user_index.html', user=user, user_=user_,
                            title='%s的后台' % user.username,
                            menu=0, x=x, lst=lst, m=m, day=day, days=days)
+
+
+# 上传图像
+@profile.route('/modify_info/', methods=['POST', 'GET'])
+@login_required
+def modify_info():
+    file = open(os.path.join(os.path.dirname(__file__), 'select.json'), 'r', encoding='utf-8')
+    form = UserInfoForm()
+    choices = json.load(file)
+    form.gender.choices = choices['gender']
+    form.graduated.choices = choices['graduated']
+    form.position.choices = choices['position']
+    form.industry.choices = choices['industry']
+    form.education.choices = choices['education']
+    form.language.choices = choices['language']
+    file.close()
+    user_ = UserInfo.query.get(current_user.id)
+    if user_:
+        form.age.data = user_.age
+        form.gender.data = user_.gender
+        form.education.data = user_.education
+        form.graduated.data = user_.graduated
+        form.position.data = user_.position
+        form.company.data = user_.company
+        form.industry.data = user_.industry
+        form.language.data = user_.language
+        form.website.data = user_.website
+    if request.method == 'POST':
+        if request.form:
+            form1 = request.form
+            age = form1['age'],
+            gender = form1['gender'],
+            education = form1['education'],
+            graduated = form1['graduated'],
+            position = form1['position'],
+            company = form1['company'],
+            industry = form1['industry'],
+            language = form1['language'],
+            website = form1['website'],
+            user_info = UserInfo(
+                age=age[0],
+                gender=str(gender[0]),
+                education=education[0],
+                graduated=graduated[0],
+                position=position[0],
+                company=company[0],
+                industry=industry[0],
+                language=language[0],
+                website=website[0],
+                id=current_user.id,
+            )
+            if user_:
+                user_.age = age[0] if age else user_.age
+                user_.gender = gender[0] if gender else user_.gender
+                user_.education = education[0] if education else user_.education
+                user_.graduated = graduated[0] if graduated else user_.graduated
+                user_.position = position[0] if position else user_.position
+                user_.company = company[0] if company else user_.company
+                user_.industry = industry[0] if industry else industry
+                user_.language = language[0] if language else user_.language
+                user_.website = website[0] if website else user_.website
+                # db.session.commit()
+            else:
+                db.session.add(user_info)
+                db.session.commit()
+            flash('资料修改成功')
+            return redirect(url_for('profile.user_index', username=current_user.username))
+        if request.files['file']:
+            file = request.files['file']
+            if file and allowed_file(file.filename):
+                domian_name = 'https://static.51qinqing.com'
+                u = UploadToQiniu(file, 'avatar/')
+                ret, info = u.upload()
+                key = ret['key']
+                current_user.avatar = domian_name + '/' + key
+                return jsonify({"success": True})
+            flash('文件格式不允许!')
+    return render_template('profile/modify_info.html', title='修改资料', form=form)
+
+
+@profile.route('/upload_zfbimg/', methods=['POST', 'GET'])
+@login_required
+def upload_zfbimg():
+    if request.method == 'POST':
+        if request.form:
+            form = request.form
+            if form['num']:
+                current_user.zfb_num = form['num']
+            flash('支付宝信息修改成功')
+            return redirect(url_for('profile.user_reward_manage'))
+        if request.files['file']:
+            file = request.files['file']
+            if allowed_file(file.filename):
+                domian_name = 'https://static.51qinqing.com'
+                u = UploadToQiniu(file, 'pay/zfb/')
+                ret, info = u.upload()
+                key = ret['key']
+                current_user.zfb_img = domian_name + '/' + key
+                return jsonify({"success": True})
+            else:
+                flash('文件格式不允许')
+                return redirect(url_for('profile.upload_zfbimg'))
+    return render_template('profile/upload_zfbimg.html', title='修改支付宝打赏信息')
+
+
+@profile.route('/upload_wximg/', methods=['POST', 'GET'])
+@login_required
+def upload_wximg():
+    if request.method == 'POST':
+        if request.form:
+            form = request.form
+            if form['num']:
+                current_user.wx_num = form['num']
+            flash('微信信息修改成功')
+            return redirect(url_for('profile.user_reward_manage'))
+        if request.files['file']:
+            file = request.files['file']
+            if allowed_file(file.filename):
+                domian_name = 'https://static.51qinqing.com'
+                u = UploadToQiniu(file, 'pay/wx/')
+                ret, info = u.upload()
+                key = ret['key']
+                current_user.wx_img = domian_name + '/' + key
+                return jsonify({"success": True})
+            else:
+                flash('文件格式不允许')
+                return redirect(url_for('profile.upload_wximg'))
+    return render_template('profile/upload_wximg.html', title='修改微信打赏信息')
 
 
 @profile.route('/others/<username>/', methods=['GET'])

@@ -7,7 +7,7 @@ $(function(){
 		paramname: 'file',
 		maxfiles: 1,
     	maxfilesize: 5,
-		url: '/upload_avatar/',
+		url: '/modify_info/',
 		uploadFinished:function(i,file,response){
 			$.data(file).addClass('done');
 		},

@@ -35,5 +35,10 @@ def sys_init(username, email, password):
     db.session.commit()
 
 
+@manager.command
+def init():
+    pass
+
+
 if __name__ == '__main__':
     manager.run()

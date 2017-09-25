@@ -55,6 +55,7 @@ class User(UserMixin, db.Model):
     region = db.Column(db.String(30), doc='省份')
     city = db.Column(db.String(30), doc='城市')
     county = db.Column(db.String(30), doc='区县')
+    # user_info = db.relationship('UserInfo', backref='user_info')
     last_login = db.Column(db.DateTime, doc='最后登录时间', index=True)
     posts = db.relationship('Post', backref='author')
     comments = db.relationship('Comment', backref='author')
@@ -195,15 +196,27 @@ class User(UserMixin, db.Model):
             db.session.delete(message)
             db.session.commit()
 
-    def __repr__(self):
-        return '<User %r>' % self.username
-
 
 @login_manager.user_loader
 def load_user(user_id):
     """ 登录回调"""
     return User.query.get(user_id)
 
+
+class UserInfo(db.Model):
+    __tablename__ = 'user_info'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=False)
+    age = db.Column(db.Integer)
+    gender = db.Column(db.String(10), default='保密')
+    education = db.Column(db.String(100))
+    graduated = db.Column(db.String(100))
+    position = db.Column(db.String(100))
+    company = db.Column(db.String(100))
+    industry = db.Column(db.String(100))
+    language = db.Column(db.String(30))
+    website = db.Column(db.String(100))
+
+#
 
 class Post(db.Model):
     __tablename__ = 'posts'

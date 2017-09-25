@@ -66,16 +66,16 @@ class Config:
 
 class DevelopmentConfig(Config):  # mysqlconnector
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:qyzxg@localhost:3306/blog'
+    SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:qyzxg@localhost:3306/blog??charset=utf8mb4'
 
 
 class TestingConfig(Config):
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:qyzxg@localhost:3306/test_blog'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:qyzxg@localhost:3306/test_blog??charset=utf8mb4'
 
 
 class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:qyzxg@localhost:3306/blog'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:qyzxg@localhost:3306/blog??charset=utf8mb4'
 
 
 config = {

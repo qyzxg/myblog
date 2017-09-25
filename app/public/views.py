@@ -79,69 +79,6 @@ def index():
     return response
 
 
-# 上传图像
-@public.route('/upload_avatar/', methods=['POST', 'GET'])
-@login_required
-def upload_avatar():
-    if request.method == 'POST':
-        file = request.files['file']
-        if file and allowed_file(file.filename):
-            domian_name = 'https://static.51qinqing.com'
-            u = UploadToQiniu(file, 'avatar/')
-            ret, info = u.upload()
-            key = ret['key']
-            current_user.avatar = domian_name + '/' + key
-            return jsonify({"success": True})
-        flash('您上传的文件不合法!')
-    return render_template('public/upload_avatar.html', title='上传图像')
-
-
-@public.route('/upload_zfbimg/', methods=['POST', 'GET'])
-@login_required
-def upload_zfbimg():
-    if request.method == 'POST':
-        if request.form:
-            form = request.form
-            current_user.zfb_num = form['num']
-            return redirect(url_for('public.upload_zfbimg'))
-        if request.files['file']:
-            file = request.files['file']
-            if allowed_file(file.filename):
-                domian_name = 'https://static.51qinqing.com'
-                u = UploadToQiniu(file, 'pay/zfb/')
-                ret, info = u.upload()
-                key = ret['key']
-                current_user.zfb_img = domian_name + '/' + key
-                return jsonify({"success": True})
-            else:
-                flash('文件格式不允许')
-                return redirect(url_for('public.upload_zfbimg'))
-    return render_template('public/upload_zfbimg.html', title='修改支付宝打赏信息')
-
-
-@public.route('/upload_wximg/', methods=['POST', 'GET'])
-@login_required
-def upload_wximg():
-    if request.method == 'POST':
-        if request.form:
-            form = request.form
-            current_user.wx_num = form['num']
-            return redirect(url_for('public.upload_wximg'))
-        if request.files['file']:
-            file = request.files['file']
-            if allowed_file(file.filename):
-                domian_name = 'https://static.51qinqing.com'
-                u = UploadToQiniu(file, 'pay/wx/')
-                ret, info = u.upload()
-                key = ret['key']
-                current_user.wx_img = domian_name + '/' + key
-                return jsonify({"success": True})
-            else:
-                flash('文件格式不允许')
-                return redirect(url_for('public.upload_wximg'))
-    return render_template('public/upload_wximg.html', title='修改微信打赏信息')
-
-
 # 文章图片上传
 @public.route('/edit/upload_postimg/', methods=['POST', 'GET'])
 @login_required
