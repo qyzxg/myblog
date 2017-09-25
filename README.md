@@ -35,6 +35,7 @@ myblog是一个基于flask的开源多用户博客系统,功能基本完整,目�
 * supervisor
 
 ### 网站demo部署在阿里云ECS上
+* 部署方法参考DEPLOY.md
 * 网址:https://www.51qinqing.com
 * 可以自己注册账号测试,需要管理员账号的请发邮件给我
 * 建议自己注册账号测试,欢迎发布文章
